@@ -1,33 +1,43 @@
-# Handoff — 2026-11-23
+# Handoff — UFPN Phase 2
 
-## Branch and commits
-- Branch: `feat/french-ipa-ufpn-engine`, based on `main`.
-- Starting SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
-- Main implementation commit: `1dba48d49007777d06310e4441d5aa019064058c`.
-- PR-check workflow follow-up: `cdf4c09b726035fc8fb308b248bdae5532779575`.
-- Execution matrix update: `ad87c97093b5a5bc36c11b769d225b34d317312a`; browser/CI blocker update follows in branch history.
+## Repository
+- Default branch: main.
+- Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
+- Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
+- Previous branch compare: 6 commits ahead, 0 behind main.
+- Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
-## Implemented
-Static web app; IPA-first pipeline; experimental UFPN mapping; non-standard Latin guide; provisional seed lexicon; low-confidence fallback; narrow liaison/elision; word-level provenance/explanations; copy/TXT/print-to-PDF; Node tests; GitHub Pages workflow; research, source, audit and handoff docs.
+## Implemented in this phase
+- Data-driven UFPN specification with 37 segmental entries.
+- Basic, Detailed and Extended output levels.
+- Dedicated IPA-only adapter; unsupported IPA remains visible.
+- Unicode NFC/NFD tests.
+- Allophone, context-process, prosody and regional-profile registers.
+- UI selector for UFPN level.
 
-## Verification
-- `npm test` — PASS, 11/11.
-- `npm run check` — PASS, syntax checks for engine/app.
-- Static HTML/JS ID references — PASS, no missing literal IDs.
-- GitHub compare — branch is ahead of main, with no divergence; PR #1 is open, draft, and mergeable.
-- `fetch_commit_workflow_runs` — no run returned for the final head; CI status is therefore NOT VERIFIED.
-- Chromium headless attempt — BLOCKED: command timed out after 20 seconds; no DOM/browser result produced.
-- Browser/mobile/accessibility, live Pages deploy, expert phonology review and linguistic benchmark — NOT RUN.
-- `git clone` — BLOCKED by DNS/network; GitHub connector APIs used for remote inspection and writes.
+## Previous verification
+- Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
+- Previous handoff records npm test 11/11 and npm run check passing.
+- Phase 2 CI must be checked after commit.
+- No browser/mobile/accessibility QA or independent phonetic review has been run.
+
+## Linguistic findings
+- /ɛ̃–œ̃/ merger is widespread in contemporary northern/Parisian French but not universal.
+- /a–ɑ/ contrast is neutralized for many speakers but retained in some varieties/speakers.
+- Mid-vowel height varies with syllable structure, duration and speaker.
+- Schwa deletion and reduction are distinct; epenthetic schwa is a separate phenomenon.
+- Liaison is lexically and syntactically constrained with a large variable periphery.
+- /ʁ/ and some /ɲ/ realizations vary; regional profiles must not be conflated.
+- Extended prosody markers require audio/annotation; text punctuation is insufficient.
 
 ## Remaining blockers
-1. Independent IPA review by a French phonologist.
-2. UFPN review by a Ukrainian phonetician and usability testing.
-3. Licensed, source-backed gold corpus.
-4. Full POS/context engine, liaison, schwa, numbers, names and abbreviations.
-5. Browser/mobile/accessibility QA and live Pages validation.
-6. Repository license selection by the owner.
+1. Independent review by French phonologist and Ukrainian phonetician.
+2. Licensed, independently verified gold IPA/UFPN corpus (currently 0).
+3. Full morphology/POS/syntax, lexical candidates, complete liaison/schwa/enchaînement engine.
+4. Browser/mobile/accessibility testing in Chromium, Firefox and WebKit.
+5. Speaker-balanced regional data for Québec/Belgium/Switzerland/Southern France.
+6. Owner's repository license decision.
 
 ## Readiness
-**Partial prototype / research scaffold.** Not release-ready and not an authoritative arbitrary-text pronunciation service.
+Partial research prototype. UFPN specification and adapter can be iterated, but arbitrary French text is not yet reliably transcribed and no scientific accuracy score is claimed.

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/blob/main/data/ufpn-mapping.schema.json",
+  "title": "UFPN mapping registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "notation",
+    "status",
+    "unicode",
+    "levels",
+    "diacritics",
+    "phonemes",
+    "allophones",
+    "processes",
+    "prosody",
+    "profiles"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "notation": {
+      "const": "UFPN"
+    },
+    "status": {
+      "type": "string"
+    },
+    "unicode": {
+      "type": "object",
+      "required": [
+        "normalization",
+        "unknownIpaPolicy"
+      ]
+    },
+    "levels": {
+      "type": "object",
+      "required": [
+        "basic",
+        "detailed",
+        "extended"
+      ]
+    },
+    "diacritics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "glyph",
+          "unicode",
+          "meaning"
+        ]
+      }
+    },
+    "phonemes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "ipa",
+          "category",
+          "phonologicalStatus",
+          "articulation",
+          "descriptionUk",
+          "basic",
+          "detailed",
+          "extended",
+          "sources",
+          "evidenceStatus"
+        ]
+      }
+    },
+    "allophones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "phoneme",
+          "realizations",
+          "scope",
+          "decision",
+          "sources"
+        ]
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "requirements",
+          "status"
+        ]
+      }
+    },
+    "prosody": {
+      "type": "array"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "coverage",
+          "features"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}\n

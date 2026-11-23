@@ -1,17 +1,29 @@
-# Source Registry
+# Source Registry — French phonetics & UFPN
 
-| ID | Джерело | Дані / застосування | Ліцензія й обмеження | Статус |
+| ID | Джерело | Підтверджує | Ліцензія/обмеження | Статус |
 |---|---|---|---|---|
-| S1 | [Wiktionary French pronunciation](https://en.wiktionary.org/wiki/Appendix:French_pronunciation) | IPA конвенції, варіанти | Текст CC BY-SA/GFDL; кожен аудіофайл Commons має власну ліцензію. Опис попереджає про застарілі традиційні протиставлення | Довідка, не імпортовано |
-| S2 | [Lexique 4](https://www.lexique.org/?lang=en) | ~140k французьких слів, фонологічні форми, леми, частоти, POS | CC BY-SA 4.0; потрібні атрибуція й ShareAlike | Кандидат на майбутній лексикон, не імпортовано |
-| S3 | [LeXiK / ORTOLANG](https://hdl.handle.net/11403/lexik) | Словоформи, складова IPA, морфологія, grapheme-phoneme alignment | Ліцензію конкретного депозиту/версії треба перевірити; mirror не достатній | Не імпортовано |
-| S4 | [UT Austin — liaison](https://www.laits.utexas.edu/fi/html/pho/12.html) | Обов'язкова, факультативна й заборонена liaison | Вебнавчальний матеріал; не копіювати аудіо/контент без перевірки | Дослідницька довідка |
-| S5 | [Griffiths & Renwick 2025](https://doi.org/10.5565/rev/isogloss.503) | Середні голосні паризької французької | Open access CC BY за видавничою сторінкою | Наукове обґрунтування варіативності |
-| S6 | [Dow 2020](https://doi.org/10.1017/S0959269520000122) | Носова коартикуляція | Умови Cambridge; не припускати права на копіювання повного тексту/даних | Довідка |
-| S7 | [OpenIPA](https://github.com/hfellerhoff/openipa) | Функціональний референс: realtime IPA, per-letter/group feedback, responsive, copy/PDF | AGPL-3.0; мережеве використання похідної роботи має copyleft-вимоги | Лише clean-room функціональний орієнтир; код/бренд/активи/копірайт не скопійовано |
-| S8 | [Replica skill](https://github.com/Jakeschincariol/replica-skill) | Clean-room recon/architect/design/build/test/diff workflow | MIT для skill, не ліцензія OpenIPA | README досліджено; skill-файли не інтегровані |
+| S1 | [Wiktionary: French pronunciation](https://en.wiktionary.org/wiki/Appendix:French_pronunciation) | довідкова IPA-інвентаризація та орфографічні правила | текст CC BY-SA/GFDL; аудіо має окремі ліцензії | Довідкове |
+| S2 | [Lexique](https://www.lexique.org/?lang=en) | лексикон, IPA, POS/частотність | CC BY-SA 4.0 за умовами конкретної версії; імпорт потребує атрибуції/ShareAlike | Не імпортовано |
+| S3 | [LeXiK / ORTOLANG](https://hdl.handle.net/11403/lexik) | словоформи, складова IPA, морфологія/alignment | ліцензію конкретного депозиту/версії перевірити | Не імпортовано |
+| S4 | [UT Austin: French liaison](https://www.laits.utexas.edu/fi/html/pho/12.html) | навчальна класифікація liaison | не повна корпусна модель | Довідкове |
+| S5 | [Laks, Calderone & Celata 2018, French Liaison in Corpus Phonology](https://doi.org/10.7208/chicago/9780226562599.003.0013) | 27 788 liaison sites; лексичні та змінні патерни | академічний розділ; дані не включено | Наукове |
+| S6 | [Hewson 1986, A New Look at French Liaison](https://journals.lib.unb.ca/index.php/la/article/view/32413) | obligatory/optional/forbidden liaison | наукова стаття | Наукове |
+| S7 | [Jun & Fougeron 2002, Realizations of accentual phrase in French intonation](https://doi.org/10.1515/prbs.2002.002) | акцентуальна фраза й інтонація | стаття; дані не імпортовано | Наукове |
+| S8 | [Dow 2020, Nasal coarticulation in French](https://doi.org/10.1017/S0959269520000083) | назальна коартикуляція та висота голосних у 20 північних metropolitan speakers | стаття; акустичні дані не імпортовано | Наукове |
+| S9 | [Griffiths & Renwick 2025, Reconsidering the mid-vowel system of Parisian French](https://doi.org/10.5565/rev/isogloss.503) | /e ɛ o ɔ ø œ/, структура складу, тривалість і варіативність | Open access; ліцензію перевіряти перед копіюванням | Наукове |
+| S10 | [Nasal vowels in Parisian French, Journal of French Language Studies](https://www.cambridge.org/core/journals/journal-of-french-language-studies/article/role-of-speaker-sex-and-sexuality-in-an-ongoing-sound-change-nasal-vowels-in-parisian-french/CA0D5593A22115D0F583FC826690AF8D) | /ɛ̃–œ̃/ merger, nasal chain shift, speaker variation | стаття; дані не імпортовано | Наукове |
+| S11 | [Pooley 2006, Varieties of Spoken French](https://doi.org/10.1093/acprof:oso/9780199573714.003.0032) | Parisian regional/social variation | академічний розділ; доступ обмежений | Наукове |
+| S12 | [Berns 2015, Merging low vowels in metropolitan French](https://doi.org/10.1017/S0959269514000222) | варіантність /a–ɑ/ | стаття; не імпортовано | Наукове |
+| S14 | [Eychenne 2019, On the deletion of word-final schwa in Southern French](https://doi.org/10.1017/S0952675719000198) | градієнтне видалення schwa, 7 787 випадків/45 мовців | стаття; дані не імпортовано | Наукове |
+| S15 | [Bürki et al. 2011, Phonetic reduction versus phonological deletion of French schwa](https://doi.org/10.1016/j.wocn.2010.07.003) | відмінність редукції та фонологічного видалення | стаття; не імпортовано | Наукове |
+| S16 | [Hutin et al. 2021, Word-final schwa in Standard French](https://doi.org/10.5565/rev/isogloss.152) | корпусний аналіз schwa, понад 110 годин мовлення; CC BY за сторінкою журналу | відкритий доступ; корпуси не включено | Наукове |
+| S17 | [Hansen & Østby 2016, Variation in the capital city of France: Paris](https://doi.org/10.1093/acprof:oso/9780199573714.003.0032) | social/diachronic variation, palatalization /k/, /ɲ/ variants, liaison/schwa | академічний розділ | Наукове |
+| S18 | [Gendrot, Kuhnert & Demolin 2015, French /ʁ/](https://www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2015/Papers/ICPHS0642.pdf) | manner/voicing variability of uvular rhotic | proceedings | Наукове |
+| S19 | [Acquiring rhoticity across languages: ultrasound study](https://pmc.ncbi.nlm.nih.gov/articles/PMC4902022/) | uvular French rhotic and dialectal alveolar variants | open article | Наукове |
+| S20 | [ICPhS 2023: /R/ co-occurring as allophones in Québec French](https://www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2023/full_papers/39.pdf) | regional/age variation and multiple rhotic allophones in Québec | conference paper | Наукове |
+| S21 | [Jun & Fougeron 2002, accentual phrase](https://www.degruyterbrill.com/document/doi/10.1515/prbs.2002.002/html) | phrase-final prominence, duration and pitch contour | academic paper | Наукове |
+| S22 | [Michelas & D'Imperio 2012, When syntax meets prosody](https://doi.org/10.1016/j.wocn.2012.08.004) | syntax/prosody, duration and tonal variability | academic paper | Наукове |
+| S23 | [OpenIPA](https://github.com/hfellerhoff/openipa) | функціональний референс | AGPL-3.0; реалізація clean-room | Не копіювали |
+| S24 | [Replica Skill](https://github.com/Jakeschincariol/replica-skill) | clean-room recon/build/test | MIT для skill, не ліцензія OpenIPA | Довідкове |
 
-Forvo, Le Robert, Larousse, CNRTL: точкові довідкові ресурси; масове вилучення/перепублікацію не припускати. Wikimedia audio має окремі ліцензії файлів. Wikidata не замінює вимовний лексикон. Жодного аудіо не включено.
-
-## Ліцензійне рішення
-LICENSE не додано: вибір належить власнику. OpenIPA AGPL-3.0 дозволяє повторне використання за умовами ліцензії, але ця реалізація clean-room і не включає його код. Майбутній Lexique/LeXiK import потребує окремої сумісності ліцензій.
+Доступність сторінки не означає дозвіл на масовий імпорт. Не включати аудіо/словникові бази без перевірки ліцензії конкретного файлу/релізу. Репозиторій поки не має власної LICENSE; це рішення власника.

@@ -1,7 +1,17 @@
-# Тестування
+# Тестування UFPN
 
-`npm test` — Node built-in test runner. `npm run check` — syntax checks для engine/app.
+Запуск: npm test. UFPN-тести: tests/ufpn.test.js.
 
-Покрито 11 тестів: IPA-first adapters, provenance, liaison шаблон і заборона після et, low-confidence fallback, повнота mapping, NFC normalization, elision prefixes, unsupported numbers, блокування liaison пунктуацією, nasal graphemes перед голосною, подвоєні приголосні.
+Покриття:
+- 37 одиниць референсного інвентарю;
+- передні огублені голосні;
+- чотири носові категорії;
+- увулярний ротичний /ʁ/;
+- /ɲ/ і периферійний /ŋ/;
+- межі складів, довгота, наголос та інтонаційні маркери;
+- вузькі IPA-модифікатори;
+- збереження невідомого IPA;
+- NFC/NFD;
+- provenance/evidence metadata.
 
-Не перевірено: браузерна автоматизація, реальний clipboard permission, PDF rendering, screen readers/WCAG, mobile snapshots, performance, різні браузери, фонетична коректність, clean install на різних ОС, live Pages deployment.
+Це перевірки адаптера та структури даних, не gold pronunciation benchmark і не доказ вимови прикладів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.

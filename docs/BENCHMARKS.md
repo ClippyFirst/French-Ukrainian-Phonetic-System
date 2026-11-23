@@ -1,12 +1,12 @@
 # Benchmarks
 
-| Рівень | Обсяг | Ціль проходження | Статус |
+| Рівень | Обсяг | Acceptance target | Результат |
 |---|---|---|---|
-| A | Базові фонеми/графеми | ≥95% phoneme accuracy на незалежному gold set | BLOCKED: gold set відсутній |
-| B | Складні графеми, носові, liaison/elision | PER ≤5%, context precision/recall ≥95% | BLOCKED |
-| C | Довгі фрази, POS, омографи, числа, імена | PER ≤8% із оцінкою alternatives/uncertainty | BLOCKED |
-| D | Розмовна мова, регіональні профілі | окремий gold set, PER ≤10% у кожному | DEFERRED |
+| A | базові сегменти та UFPN adapter invariants | 100% mapping/schema invariants; окремо ≥95% phoneme accuracy на gold set | adapter tests автоматизовані; gold accuracy NOT MEASURED |
+| B | середні/носові голосні, liaison, elision, schwa | PER ≤5%, context precision/recall ≥95% | BLOCKED: gold set 0 |
+| C | омографи, POS, довгі речення, числа, імена, редукція | PER ≤8%, альтернативи оцінюються окремо | BLOCKED |
+| D | спонтанне мовлення й регіональні профілі | speaker-balanced gold set; PER ≤10% у кожному профілі | DEFERRED |
 
-Пороги — майбутні acceptance targets, не результати. Gold IPA entries: 0 незалежно верифікованих; UFPN gold labels: 0. PER/WER не обчислювалися. 11 unit tests перевіряють кодові інваріанти, не лінгвістичну точність.
+Метрики: PER, WER, liaison class accuracy, syllabification/resyllabification accuracy, частка непідтверджених сегментів, IPA→UFPN adaptation accuracy, міжекспертна узгодженість, coverage.
 
-Кожен gold record повинен містити input, profile, IPA, допустимі альтернативи, UFPN, source/version/page/license, context/POS, confidence та reviewer. Не включати вимову, виведену лише з графем.
+Попередні 11 engine tests і нові UFPN adapter tests перевіряють програмні інваріанти, а не лінгвістичну точність. Незалежного gold set немає. PER/WER не обчислювалися. Пороги — acceptance criteria, не виміряні результати.

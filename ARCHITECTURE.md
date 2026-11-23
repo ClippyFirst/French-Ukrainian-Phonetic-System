@@ -1,24 +1,24 @@
 # Архітектура
 
-```text
-French input → NFC/tokenizer → lexical lookup / orthographic fallback
- → narrow contextual rules → phonological IPA
- → phoneme tokenization → IPA display
-                         ├→ IPA-to-UFPN adapter
-                         └→ IPA-to-Latin-guide adapter
-```
+Поточний pipeline:
 
-`src/engine.js` — детерміноване ядро. `transcribe()` повертає послівні IPA, сегменти, source, confidence, alternatives, profile та пояснення. Обидва адаптери споживають тільки IPA-токени; вони не читають французькі графеми.
+French orthography → tokenization / lexical lookup / conservative G2P → contextual rules → canonical IPA → IPA tokenizer → UFPN adapter / Latin guide adapter → aligned UI output.
 
-| Модуль | Стан |
-|---|---|
-| Unicode/tokenizer | Частково |
-| Морфологія/POS | TODO |
-| Лексикон | Малий project-seed-unverified |
-| G2P fallback | Евристичний, низька впевненість |
-| Liaison/elision | Обмежена підмножина |
-| IPA/UFPN/Latin adapters | Базова реалізація |
-| Alignment/explanations | Послівне вирівнювання, не grapheme-level |
-| UI | Live input, три формати, copy/export |
+## UFPN boundary
 
-Не реалізовані: повний синтаксис, схеми фонологічних правил з rule IDs, повна schwa-модель, регіональні профілі, audio, corpus import. Надалі морфологія має повертати POS/features до правил; IPA має зберігати provenance й альтернативи.
+- data/ufpn-mapping.json — канонічна машинозчитувана специфікація: phoneme records, diacritics, allophones, contextual processes, prosody, regional profiles.
+- src/ufpn.js — чистий IPA → UFPN adapter з режимами Basic/Detailed/Extended.
+- src/engine.js — наявний французький прототип, який повертає IPA; його словникова база та G2P fallback залишаються неповними.
+- src/app.js — live UI; перемикач UFPN level перераховує лише адаптер, не запускає незалежний French→Ukrainian шлях.
+
+## Дані та provenance
+
+Кожна одиниця mapping містить IPA, category, артикуляційний опис, рівні запису, приклади, source IDs, confidence та evidenceStatus. Allophone/process registries позначають scope та статус реалізації. Наявність джерела не означає, що його corpus data імпортовані.
+
+## Важливі межі
+
+- Фонологічна транскрипція та вузька фонетична реалізація — різні рівні.
+- Unknown IPA зберігається як ⟦…⟧ і потрапляє в unsupported.
+- Prosody/allophone marks не виводяться з орфографії чи пунктуації.
+- Регіональні профілі, крім metropolitan seed, поки описові, не виконувані.
+- French G2P engine не є повною довільнотекстовою моделлю.
