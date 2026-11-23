@@ -3,14 +3,16 @@
 ## Verified repository state (2026-11-23)
 - Starting default-branch SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
 - PR #1 merged into `main` by squash merge; merge SHA `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
-- PR #2 (Cyrillic UFPN typography) merged by squash merge; merge SHA `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- PR #2 (initial Cyrillic UFPN typography attempt) merged by squash merge; merge SHA `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- PR #3 (Charis SIL diacritic positioning correction) merged by squash merge; merge SHA `01919e72d3ff1c46b5709b4a96f550db488e6498`.
 - Merged head: `276c0375b3843ff1aa9c85d54d052dd0ddf1089b`; 69 commits and 84 changed files.
 - Feature CI run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235) passed build, 46/46 tests and syntax checks.
 - Main CI run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970) passed `npm run build`, `npm test` and `npm run check`; 46 tests passed.
 - Main deploy run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `actions/deploy-pages@v4`; deployed SHA `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
 - Environment URL emitted by the successful deploy: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content verification remains unavailable: web fetch reported inaccessible and container DNS could not resolve the host. Previous run 45192430970 failed due artifact metadata; retrying only deploy duplicated the artifact, so a clean new run was used.
 - PR #2 CI [45195492754](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195492754) passed build, all 46 tests and syntax checks.
-- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) passed build, 46 tests, syntax checks and Pages deployment for the typography fix.
+- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) passed build, 46 tests, syntax checks and Pages deployment for the initial typography fix.
+- PR #3 CI run [45197892356](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45197892356) passed build, 46 tests and syntax checks; merged commit `01919e72d3ff1c46b5709b4a96f550db488e6498`. Production deployment for this correction is not yet verified.
 - Local clone failed because this environment could not resolve github.com. No manual browser QA was performed.
 
 ## Website service audit
