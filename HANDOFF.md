@@ -176,3 +176,34 @@
 - Pages deployment of main `95ec26e6127465d0f3152194c07db1b3dbf089e2` succeeded in workflow `45264961792`.
 - Live page verified with HTTP 200: the Ukrainian reference table has five columns including **«Як вимовити»**, exactly 37 sound rows, and all 37 have articulation guidance.
 - The later main commit `2606e437bc9003ebd546afd65b2f28ac2612fc65` corrects the /œ/ guide (preserve [ɛ] height, add rounding). Its main workflow `45265379491` passed build/tests/syntax/font audit; browser verification and deployment are still pending at the time of this note. Current live page is therefore the earlier five-column release, not yet the final /œ/ wording refinement.
+
+
+## Design refinement handoff — 2026-11-23
+
+- Base commit: `81098345c69a3c58d770b95fd63949133fa872d7`.
+- Branch: `design/phonetic-workspace-refinement`.
+- PR: [#25 — Refine the phonetics workbench UI](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/25).
+- Latest branch commit: `19157268124a46121c9c260c3abdb48a9b289ed3`.
+- Changed files: `index.html`, `styles.css`, `scripts/charis-browser-render.mjs`, `.github/workflows/pages.yml`, `README.md`, and new `DESIGN.md`.
+- No phonetic runtime, IPA/UFPN data, parser, export or dependency changes.
+
+### Verification completed
+Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405) passed:
+1. `npm run build`.
+2. `npm test`: 57 passed, 0 failed.
+3. `npm run check`.
+4. Python Charis 7 glyph and OpenType anchor audit.
+5. Playwright browser checks: Chromium, Firefox and WebKit at 1440×1000, 1024×900, 768×1024 and 390×844. All 12 combinations passed output presence, expected result grid columns, skip-link keyboard focus and no-horizontal-overflow assertions.
+6. Uploaded artifact: [browser specimen and four responsive workbench screenshots](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405/artifacts/14864086549).
+
+### Remaining
+- Human visual inspection of the generated screenshots and manual accessibility checks (screen reader, zoom/reflow and real devices) remain PARTIAL.
+- PR #25 is intentionally left open for review; it has not been merged or deployed. The public site still serves the current main branch.
+- Main workflow `45265871092` had a successful test job but the Pages deploy step failed while fetching the `github-pages` artifact metadata. This is recorded as an external Actions/Pages API blocker; retry deployment after PR merge rather than changing app code speculatively.
+- Next acceptance: inspect the five uploaded screenshots, approve/adjust the visual result, merge PR #25, then verify the new main commit's Pages deployment and scrape the live page at desktop and mobile widths.
+
+
+### Existing live-site baseline
+- Main before this design branch: `81098345c69a3c58d770b95fd63949133fa872d7`.
+- Last verified live Pages commit: `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The current main /œ/ articulation wording correction is therefore not yet reflected on the public site.
+- Main workflow `45265871092` passed build, 57 tests, syntax, font audit and browser rendering; deployment failed only when `actions/deploy-pages@v4` could not retrieve the uploaded `github-pages` artifact metadata. Retry the Pages deployment after the external Actions/Pages API issue clears.

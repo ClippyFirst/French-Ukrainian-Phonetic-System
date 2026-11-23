@@ -160,3 +160,31 @@
 - Main commit `95ec26e6127465d0f3152194c07db1b3dbf089e2` deployed successfully in workflow `45264961792` (test and Pages deploy jobs both successful).
 - Fresh live scrape returned HTTP 200 and verified the five-column sound table, the **«Як вимовити»** header, exactly 37 rows, and non-empty guidance in every row.
 - Main commit `2606e437bc9003ebd546afd65b2f28ac2612fc65` contains a later /œ/ instruction refinement. Its workflow `45265379491` has passed build, unit tests, syntax and font audit; browser rendering and the follow-up Pages deployment are pending. The live site therefore currently reflects `95ec26e`, not the final `2606e` text refinement.
+
+
+## Design refinement audit — phonetics workbench (2026-11-23)
+
+### Findings addressed
+- The original workbench had a strong editorial identity, but small metadata, compressed control spacing and inconsistent button/focus treatments weakened the reading hierarchy.
+- Tablet-width sound-reference content could force a wide table beyond its container.
+- Keyboard users had no dedicated skip link; reduced-motion behavior was not explicitly handled by the project stylesheet.
+
+### Changes
+- Preserved the warm-paper / forest-green palette and existing serif/sans identity while improving the hero, input controls, result hierarchy, explanatory copy, reference table and mobile action layout.
+- Added visible focus treatment, a first-in-order skip link, short interaction feedback and `prefers-reduced-motion` handling.
+- Kept the reference table horizontally scrollable within its own surface at tablet and phone widths.
+- Added `DESIGN.md` with project-specific visual, interaction, accessibility and product-truth constraints. Upstream skill files and assets were not copied.
+
+### Verification
+- PR #25 head: `19157268124a46121c9c260c3abdb48a9b289ed3`.
+- Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405) passed `npm run build`, `npm test` (57/57), `npm run check`, Charis 7 glyph/OpenType audit, and Playwright checks in Chromium, Firefox and WebKit at 1440, 1024, 768 and 390 px.
+- Automated checks verified non-empty IPA/UFPN/Latin outputs, expected result-column counts (3/3/2/1), keyboard focus on the skip link and no horizontal page overflow. The run uploaded the Charis specimen and four workbench screenshots as artifact [14864086549](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405/artifacts/14864086549).
+
+### Limits and status
+- Code and automated checks: DONE_VERIFIED.
+- Human inspection of the rendered screenshots, screen-reader behavior, zoom/reflow and physical-device testing: PARTIAL; not claimed as passed.
+- PR #25 remains open. The live Pages site is unchanged until merge and a successful main deployment.
+- The latest prior main Pages deployment attempt, workflow `45265871092`, passed the test job but failed in `actions/deploy-pages@v4` while fetching artifact metadata ("No artifacts named github-pages were found"). The log suggests a transient GitHub Actions/Pages artifact API failure; no repository code change is justified by that message alone. Retry deployment after merge and record the resulting live verification.
+
+
+Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa872d7`, while the live Pages deployment remains `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The /œ/ guide refinement is in main but is not yet on the public site. Workflow `45265871092` passed its test job and failed only at the Pages artifact metadata fetch; treat this as an external deployment blocker, not an application test failure.
