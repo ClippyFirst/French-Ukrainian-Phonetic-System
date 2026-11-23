@@ -221,7 +221,7 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 ## Authoritative continuation handoff — 2026-11-23
 
 - Starting main for this continuation: `0503cfe0b0450b88a2a4b9bedff5ee594323668d`.
-- Current main: `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`.
+- Current main HEAD: `5ec0ff1e2b456733fffad619f8d88e287a4096f6` (documentation-only on top of tested application commit `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`).
 - PR #26 merged docs reconciliation; PR #27 merged the six-row OpenIPA fixture coverage/provenance assertions; PR #28 merged accessible source naming and functional skip-link focus.
 - PR #27 CI [45277660637](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45277660637): 58/58 tests, build, syntax, font audit and all browser checks passed.
 - PR #28 CI [45278479262](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278479262): 58/58 tests, build, syntax, font audit and all 12 Chromium/Firefox/WebKit × viewport checks passed. Each combination verified the source textarea's accessible name and skip-link focus transfer to `main`.
