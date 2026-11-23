@@ -154,6 +154,12 @@ def main():
     for record in data["diacritics"]:
         codepoint = int(record["unicode"].split()[0].removeprefix("U+"), 16)
         expected[codepoint] = record["id"]
+    # Also audit every adopted standalone Cyrillic grapheme; new mappings must
+    # not silently render as missing-glyph boxes in the shipped Charis font.
+    for record in data.get("graphemeInventory", {}).get("adopted", []):
+        for char in record["grapheme"]:
+            if not unicodedata.combining(char):
+                expected.setdefault(ord(char), f"grapheme {record['grapheme']}")
 
     missing = [f"U+{cp:04X} {name}" for cp, name in expected.items() if cp not in cmap]
     if missing:
