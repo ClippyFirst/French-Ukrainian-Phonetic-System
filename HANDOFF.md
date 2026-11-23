@@ -115,3 +115,10 @@
 - The previous unconditional `ɾ→ʁ` adapter rule was too broad: it erased a deliberate lyric-diction pronunciation. The adapter is now profile-aware: Metropolitan uses broad `/ʁ/`; lyric diction preserves `[ɾ]` and UFPN `р̌`.
 - `õ→ɔ̃` and `ε→ɛ` broad-IPA normalizations remain; original upstream IPA is preserved in provenance. Tests cover both profiles.
 - This corrects the profile semantics; do not treat either output as independently expert-validated pronunciation for every speaker.
+
+
+## Final verified profile-aware deployment — 2026-11-23
+- Main commit: `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5` (PR #13).
+- Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029): build passed; 52/52 tests passed; syntax and Charis 7 audits passed; Chromium, Firefox and WebKit desktop/mobile checks passed; GitHub Pages deployment passed.
+- Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
+- Remaining independent gates: French/Ukrainian specialist phonetic review, licensed gold benchmark, broader G2P coverage, keyboard/screen-reader and physical-device/owner visual acceptance.
