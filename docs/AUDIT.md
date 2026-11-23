@@ -7,7 +7,7 @@
 - Previous GitHub Actions run 45149960488: test and check jobs success; deploy skipped on PR.
 
 ## Verified implementation inventory (current branch candidate)
-- 37 segmental entries, 15 allophone mappings, 24 diacritic/prosodic markers, 13 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
+- 37 segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
 - UFPN levels Basic/Detailed/Extended; IPA remains canonical input.
 - Québec /t,d/ affrication and diphthongization are profile-specific; cross-word nasal place and fricative voicing assimilation are Extended/audio-gated.
 

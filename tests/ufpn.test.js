@@ -41,6 +41,23 @@ test('Extended preserves gradient place assimilation and fricative voicing chang
  assert.equal(renderUfpn('n͡ŋ s̬ z̥','basic').text,'н с з');
 });
 test('feature dimension registry classifies phonetic coverage and evidence',()=>{
- assert.ok(UFPN_MAPPING.featureDimensions.length>=12);
+ assert.equal(UFPN_MAPPING.featureDimensions.length,18);
+ assert.equal(UFPN_MAPPING.diacritics.length,36);
+ assert.equal(UFPN_MAPPING.allophoneMappings.length,15);
+ assert.equal(UFPN_MAPPING.allophones.length,19);
+ assert.equal(UFPN_MAPPING.processes.length,13);
+ assert.equal(UFPN_MAPPING.profiles.length,7);
  for(const feature of UFPN_MAPPING.featureDimensions){assert.ok(feature.status,feature.id);assert.ok(feature.ufpn,feature.id);assert.ok(feature.sources.length,feature.id)}
+});
+
+test('Extended preserves optional aspiration, release, syllabicity and voice-quality marks',()=>{
+ assert.equal(renderUfpn('pʰ t̚ n̩ s̤ kˤ','extended').text,'пʰ т̚ н̩ с̤ кˤ');
+ assert.equal(renderUfpn('pʰ t̚ n̩ s̤ kˤ','basic').text,'п т н с к');
+});
+
+test('IPA mapping schema declares all registries used by the adapter',()=>{
+ assert.equal(UFPN_MAPPING.schemaVersion,'1.0.0');
+ assert.ok(Array.isArray(UFPN_MAPPING.allophones));
+ assert.ok(Array.isArray(UFPN_MAPPING.processes));
+ assert.ok(Array.isArray(UFPN_MAPPING.profiles));
 });

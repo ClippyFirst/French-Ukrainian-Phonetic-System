@@ -9,7 +9,7 @@
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
 ## Implemented in this phase
-- Data-driven UFPN specification with 37 phonemic/segmental entries, 15 allophone mappings, 24 diacritic/prosodic markers, 13 phonetic feature dimensions, 19 allophone phenomena, 13 context processes and 7 profile records.
+- Data-driven UFPN specification with 37 phonemic/segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 phonetic feature dimensions, 19 allophone phenomena, 13 context processes and 7 profile records.
 - Basic, Detailed and Extended output levels.
 - Dedicated IPA-only adapter; unsupported IPA remains visible.
 - Unicode NFC/NFD tests.

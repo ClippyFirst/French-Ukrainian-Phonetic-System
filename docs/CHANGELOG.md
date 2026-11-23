@@ -10,3 +10,5 @@
 
 ## 0.1.0 — 2026-11-23
 - Initial IPA-first static workbench, provisional lexicon, heuristic fallback and experimental UFPN.
+
+- Added 12 optional IPA modifiers for aspiration/release, syllabicity, voice quality, rounding and secondary articulation; added feature dimensions for gemination, fluency and speech rate.

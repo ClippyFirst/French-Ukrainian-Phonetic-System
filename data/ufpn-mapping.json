@@ -11,7 +11,7 @@
   },
   "designPrinciples": [
     "IPA is the canonical phonetic input; UFPN never reads French graphemes.",
-    "Basic preserves distinctions present in supplied IPA; profile mergers are explicit upstream.",
+    "Basic preserves phonemic contrasts in broad IPA; predictable allophones and gradient coarticulation may be omitted unless profile-relevant.",
     "Each custom diacritic has one documented UFPN meaning.",
     "Detailed/Extended distinguish phonological categories from observed phonetic realizations.",
     "Allophone/prosody marks require evidence; spelling/punctuation alone are insufficient.",
@@ -43,7 +43,8 @@
         "All Detailed distinctions",
         "Pass through standardized IPA modifiers on Ukrainian graphemes",
         "Preserve ˈ/ˌ, ‖ and ↗/↘ only when supplied by audio annotation",
-        "Unknown symbols remain visibly bracketed"
+        "Unknown symbols remain visibly bracketed",
+        "Preserve aspiration/release, syllabicity, voice-quality and secondary-articulation modifiers only when supplied by narrow IPA/audio; these are not default French rules."
       ]
     }
   },
@@ -191,6 +192,78 @@
       "glyph": "◌̯",
       "unicode": "U+032F COMBINING INVERTED BREVE BELOW",
       "meaning": "UFPN: напівголосний/нескладовий статус у відповіднику /w/ (в̯); не плутати з відкритістю голосних."
+    },
+    {
+      "id": "aspiration",
+      "glyph": "ʰ",
+      "unicode": "U+02B0 MODIFIER LETTER SMALL H",
+      "meaning": "Extended: придих після приголосного; не є типовою контрастною ознакою французьких глухих проривних, не додавати без вузького IPA."
+    },
+    {
+      "id": "unreleased",
+      "glyph": "◌̚",
+      "unicode": "U+031A COMBINING LEFT ANGLE ABOVE",
+      "meaning": "Extended: відсутній чутний вибух/нерелізований зімкнений; лише за аудіодоказом."
+    },
+    {
+      "id": "syllabic",
+      "glyph": "◌̩",
+      "unicode": "U+0329 COMBINING VERTICAL LINE BELOW",
+      "meaning": "Extended: складотворчий приголосний; не припускати для звичайної французької форми."
+    },
+    {
+      "id": "breathy-voice",
+      "glyph": "◌̤",
+      "unicode": "U+0324 COMBINING DIAERESIS BELOW",
+      "meaning": "Extended: придихова фонація голосного/сонорного; потребує аудіоакустичного підтвердження."
+    },
+    {
+      "id": "creaky-voice",
+      "glyph": "◌̰",
+      "unicode": "U+0330 COMBINING TILDE BELOW",
+      "meaning": "Extended: скрипуча фонація; потребує аудіоакустичного підтвердження."
+    },
+    {
+      "id": "more-rounded",
+      "glyph": "◌̹",
+      "unicode": "U+0339 COMBINING RIGHT HALF RING BELOW",
+      "meaning": "Extended: додаткове огублення; не плутати з базовим округленням передніх голосних."
+    },
+    {
+      "id": "less-rounded",
+      "glyph": "◌̜",
+      "unicode": "U+031C COMBINING LEFT HALF RING BELOW",
+      "meaning": "Extended: послаблене огублення."
+    },
+    {
+      "id": "velarized",
+      "glyph": "ˠ",
+      "unicode": "U+02E0 MODIFIER LETTER SMALL GAMMA",
+      "meaning": "Extended: веляризована вторинна артикуляція."
+    },
+    {
+      "id": "pharyngealized",
+      "glyph": "ˤ",
+      "unicode": "U+02E4 MODIFIER LETTER SMALL REVERSED GLOTTAL STOP",
+      "meaning": "Extended: фарингалізована вторинна артикуляція; не вважати типовою для стандартної французької."
+    },
+    {
+      "id": "rhoticized",
+      "glyph": "˞",
+      "unicode": "U+02DE MODIFIER LETTER RHOTIC HOOK",
+      "meaning": "Extended: ротичність голосного/сегмента, якщо вона наявна у вузькому IPA."
+    },
+    {
+      "id": "nasal-release",
+      "glyph": "ⁿ",
+      "unicode": "U+207F SUPERSCRIPT LATIN SMALL LETTER N",
+      "meaning": "Extended: носовий випуск зімкненого приголосного."
+    },
+    {
+      "id": "lateral-release",
+      "glyph": "ˡ",
+      "unicode": "U+02E1 MODIFIER LETTER SMALL L",
+      "meaning": "Extended: боковий випуск зімкненого приголосного."
     }
   ],
   "phonemes": [
@@ -1156,8 +1229,7 @@
       "scope": "widespread in northern/supralocal/Parisian speech, not universal",
       "decision": "Keep /œ̃/ in mapping; merge only in explicitly selected profile.",
       "sources": [
-        "S10",
-        "S11"
+        "S10"
       ]
     },
     {
@@ -2093,6 +2165,88 @@
         "S20",
         "S25",
         "S27"
+      ]
+    },
+    {
+      "id": "aspiration-release",
+      "dimension": "Aspiration and stop release",
+      "values": [
+        "unaspirated",
+        "aspirated",
+        "unreleased",
+        "nasal release",
+        "lateral release"
+      ],
+      "ufpn": "ʰ, ◌̚, ⁿ, ˡ in Extended; French default is not aspirated, only observed tokens are marked",
+      "status": "EXTENDED_AUDIO_ONLY",
+      "sources": [
+        "S1"
+      ]
+    },
+    {
+      "id": "syllabicity",
+      "dimension": "Syllabicity of consonants/glides",
+      "values": [
+        "syllabic",
+        "non-syllabic",
+        "resyllabified"
+      ],
+      "ufpn": "◌̩ and ◌̯ in Extended/Detailed where supplied",
+      "status": "EXTENDED_OR_ANALYSIS_ONLY",
+      "sources": [
+        "S1",
+        "S7"
+      ]
+    },
+    {
+      "id": "gemination",
+      "dimension": "Segment length and gemination",
+      "values": [
+        "singleton",
+        "geminate",
+        "emphatic lengthening",
+        "boundary-induced lengthening"
+      ],
+      "ufpn": "ː/ˑ plus segment alignment; audio/lexical evidence required",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S21",
+        "S22"
+      ]
+    },
+    {
+      "id": "speech-fluency",
+      "dimension": "Speech fluency and disfluency",
+      "values": [
+        "pause",
+        "filled pause",
+        "repetition",
+        "repair",
+        "hesitation",
+        "restart"
+      ],
+      "ufpn": "separate timed annotation layer; not encoded as segment diacritics",
+      "status": "AUDIO_ANNOTATION_ONLY",
+      "sources": [
+        "S22"
+      ]
+    },
+    {
+      "id": "speech-rate",
+      "dimension": "Speech rate and reduction",
+      "values": [
+        "careful",
+        "normal",
+        "fast",
+        "compressed",
+        "reduced"
+      ],
+      "ufpn": "profile/context metadata; affects schwa, liaison and coarticulation, not a single symbol",
+      "status": "AUDIO_OR_STYLE_METADATA",
+      "sources": [
+        "S14",
+        "S15",
+        "S30"
       ]
     }
   ]
