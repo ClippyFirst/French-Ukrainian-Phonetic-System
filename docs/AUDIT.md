@@ -196,3 +196,7 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 - Screenshot artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) manually inspected at desktop, laptop, tablet and mobile sizes. Two issues found in earlier review were corrected: confidence marks no longer resemble browser spellcheck waves, and tablet section headings take a full row above controls.
 - Remaining manual accessibility work: screen-reader testing, physical-device testing and browser zoom/reflow. No claim is made that these passed.
 - PR changed presentation/documentation only; the French phonetic pipeline and datasets were preserved. Main Pages deployment and live verification are tracked separately in HANDOFF.md.
+
+
+## Current main Pages workflow — run 45272944761 (2026-11-23)
+The authoritative workflow for main SHA `0503cfe0b0450b88a2a4b9bedff5ee594323668d` is [run 45272944761](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45272944761). Build, 57/57 unit tests, syntax check and Charis 7 glyph/OpenType audit passed. The Playwright browser-engine installation step remains in progress; cross-browser rendering, artifact upload and Pages deploy are pending. Earlier run 45272182990 was superseded/cancelled by concurrency. Therefore Pages publication and live-site verification remain PARTIAL, not DONE_VERIFIED.
