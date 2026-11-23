@@ -182,9 +182,9 @@
 
 ### Limits and status
 - Code and automated checks: DONE_VERIFIED.
-- Human inspection of the rendered screenshots, screen-reader behavior, zoom/reflow and physical-device testing: PARTIAL; not claimed as passed.
-- PR #25 remains open. The live Pages site is unchanged until merge and a successful main deployment.
-- The latest prior main Pages deployment attempt, workflow `45265871092`, passed the test job but failed in `actions/deploy-pages@v4` while fetching artifact metadata ("No artifacts named github-pages were found"). The log suggests a transient GitHub Actions/Pages artifact API failure; no repository code change is justified by that message alone. Retry deployment after merge and record the resulting live verification.
+- Human inspection of the rendered screenshots: completed for desktop/laptop/tablet/mobile from artifact 14865776425. Screen-reader behavior, zoom/reflow and physical-device testing remain PARTIAL; not claimed as passed.
+- PR #25 is merged. Live Pages publication is not yet verified; main workflow 45272182990 is still in progress at Playwright browser installation, and the deploy job has not started.
+- Historical main deployment `45265871092` failed in `actions/deploy-pages@v4` while fetching artifact metadata. A fresh post-merge main run `45272182990` is the current deployment gate; do not infer deployment success until its test and deploy jobs finish and the live site is checked.
 
 
 Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa872d7`, while the live Pages deployment remains `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The /œ/ guide refinement is in main but is not yet on the public site. Workflow `45265871092` passed its test job and failed only at the Pages artifact metadata fetch; treat this as an external deployment blocker, not an application test failure.
