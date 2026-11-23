@@ -122,3 +122,13 @@
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029): build passed; 52/52 tests passed; syntax and Charis 7 audits passed; Chromium, Firefox and WebKit desktop/mobile checks passed; GitHub Pages deployment passed.
 - Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
 - Remaining independent gates: French/Ukrainian specialist phonetic review, licensed gold benchmark, broader G2P coverage, keyboard/screen-reader and physical-device/owner visual acceptance.
+
+
+## Expanded Cyrillic inventory and Ukrainian sound table — 2026-11-23
+
+- Feature branch: `feat/extended-cyrillic-and-ukrainian-sound-table`, based on `main` `682767c361715e116628eec4cff29f5c47c70688`.
+- Owner requested fewer diacritics and a mandatory explanatory table of UFPN letter → sound → Ukrainian word. The implementation adds single-letter mappings `ү` /y/, `ӧ` /ø/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, and `ғ` /ʁ/; `/œ/` is `ӧ̆`, and `/ɥ/` is `ү̯`. Existing `ў` /w/ and `э` /ɛ/ remain.
+- New visible searchable web table lists all 37 segments and marks each Ukrainian comparison as exact, contextual allophone, approximate only, or no exact equivalent. It explicitly avoids false examples for French nasal vowels, /ɥ/, /ɲ/, /ŋ/ and /ʁ/.
+- Machine-readable mapping schema 1.2.0 now includes Ukrainian example/status/note fields. Tests require complete example metadata. Charis font audit checks all adopted extended-Cyrillic glyphs.
+- Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Mari `ӧ` /ø/ and Hill Mari `ӹ` /ə/.
+- Verification and merge status will be appended only after actual CI and browser/deployment results; until then U5/W1 remain PARTIAL.
