@@ -6,15 +6,15 @@
 - Merged head: `276c0375b3843ff1aa9c85d54d052dd0ddf1089b`; 69 commits and 84 changed files.
 - Feature CI run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235) passed build, 46/46 tests and syntax checks.
 - Main CI run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970) passed `npm run build`, `npm test` and `npm run check`; 46 tests passed.
-- Main deploy job failed after artifact upload: first attempt reported zero `github-pages` artifacts; retrying only deploy uploaded a second same-name artifact, then failed because two artifacts matched. A clean new workflow run is needed; avoid retrying only the deploy job after artifact upload.
-- GitHub Pages is enabled (`has_pages=true`); workflow deploy is gated to `main`. No public URL or deployed SHA has been verified yet.
+- Main deploy run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `actions/deploy-pages@v4`; deployed SHA `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
+- Environment URL emitted by the successful deploy: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content verification remains unavailable: web fetch reported inaccessible and container DNS could not resolve the host. Previous run 45192430970 failed due artifact metadata; retrying only deploy duplicated the artifact, so a clean new run was used.
 - Local clone failed because this environment could not resolve github.com. No manual browser QA was performed.
 
 ## Website service audit
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
 - **Build/test integration: DONE_VERIFIED.** Main CI run 45192430970 passes build, 46 tests and syntax check.
-- **Public hosting: PARTIAL.** Pages enabled; deploy artifact was uploaded but the deploy action failed during artifact metadata lookup. Clean workflow run and public URL/HTTP/content verification remain.
+- **Public hosting: PARTIAL.** Clean deploy run 45192891355 succeeded and emitted the public Pages URL; direct HTTP response, page content and asset smoke verification remain unconfirmed because DNS/web access from this environment failed.
 - **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run.
 
 ## Verified implementation inventory
@@ -41,7 +41,7 @@
 - `õ` and other upstream notation conventions need independent review.
 
 ## Remaining acceptance blockers
-- Obtain a clean successful Pages deployment; verify public URL, HTTP response, app assets and deployed commit.
+- Verify the emitted public Pages URL over HTTP, inspect app assets and run a browser smoke test; the deployment action and deployed SHA are already confirmed.
 - Run browser/mobile/accessibility QA.
 - Obtain independent French and Ukrainian phonetic review.
 - Obtain independently licensed gold IPA/UFPN data.

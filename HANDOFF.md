@@ -32,15 +32,14 @@
 
 ## Verification and deployment
 - Feature-branch Actions run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235): build, 46/46 tests and syntax checks passed.
-- Main push Actions run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970): test job passed (`npm run build`, `npm test`, `npm run check`); deployment failed during GitHub artifact lookup.
-- First deploy attempt reported zero `github-pages` artifacts despite successful upload. Retrying only the failed deploy job re-uploaded a second artifact with the same name; deploy then correctly rejected two matching artifacts. This is a workflow-run artifact/retry issue, not a build or application test failure.
-- GitHub Pages is enabled (`has_pages=true`); workflow deploys only from `main`. A clean new workflow run is required; do not rerun only the deploy job after a failed upload/deploy attempt.
-- No live Pages URL or deployed commit is verified yet. The documentation refresh commit triggers a fresh `main` workflow; verify its deploy job and then inspect the published URL.
+- Main push run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970): tests passed; its deploy attempt failed because of artifact metadata lookup. Retrying only that job created duplicate same-name artifacts.
+- Clean main run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `deploy-pages@v4`. GitHub Actions emitted the environment URL: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Deployment commit: `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
+- GitHub Pages is enabled (`has_pages=true`); workflow deploys only from `main`. The public deployment action is verified, but direct HTTP/content smoke verification remains unverified: web/container access from this environment could not resolve the GitHub Pages host (DNS failure / inaccessible via web fetch).
 - Node CI output: 46 passed, 0 failed. Node deprecation notices from transitive/action dependencies remain non-blocking.
 - A fresh local clone and manual Chromium/Firefox/WebKit/mobile/accessibility QA could not be run in this environment.
 
 ## Remaining acceptance gates
-1. **Public hosting — PARTIAL:** Pages is enabled and workflow configured; clean main-branch deploy plus HTTP/content verification remain.
+1. **Public hosting — PARTIAL:** Pages deploy succeeded and returned the public URL; direct HTTP/content verification remains because this environment could not resolve the host.
 2. **Browser QA — TODO:** Chromium, Firefox, WebKit, mobile viewport, keyboard and screen-reader checks.
 3. **Expert review — BLOCKED:** independent French phonologist and Ukrainian phonetician review IPA conventions and UFPN mappings.
 4. **Gold benchmark — BLOCKED:** independently curated/licensed IPA and UFPN references; do not report accuracy scores without them.
@@ -48,4 +47,4 @@
 6. **IPA conventions — PARTIAL:** resolve `õ` and any other upstream notation only with independent phonetic evidence.
 
 ## Readiness
-**Partial research prototype with a functioning static browser app and passing hosted build/test/check. Not yet verified as publicly deployed, not release-ready, and not independently validated for arbitrary French text.**
+**Partial research prototype with a functioning static browser app and passing hosted build/test/check. Deployed through GitHub Pages (deployment action verified; direct HTTP smoke test pending), not release-ready, and not independently validated for arbitrary French text.**

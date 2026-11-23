@@ -18,7 +18,7 @@
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
-| D3 | Pages deployment | PARTIAL | Pages enabled; main deploy job зібрав і завантажив artifact, але GitHub deploy не зміг знайти artifact; повторний запуск job створив дублікат. Потрібен чистий workflow run і live URL verification |
+| D3 | Pages deployment | PARTIAL | Clean main run 45192891355: deploy-pages успішний; environment URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/content smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
 
@@ -39,5 +39,5 @@
 - Static browser app is implemented and documented in README and `docs/WEB-SERVICE.md`.
 - Main Actions run 45192430970: build, 46 tests and syntax check passed.
 - GitHub Pages is enabled and workflow deploys only from `main`.
-- Deploy failed after artifact upload: first attempt saw no artifact; retry of the same job produced duplicate `github-pages` artifacts. Do not retry only deploy again; a fresh main workflow run is required.
+- Clean main run 45192891355 successfully deployed commit `422430fe142e8f15e55d8ef2bd1876853b2e209e` and emitted URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content verification remains unavailable because this environment could not resolve the host.
 - Public URL and deployed SHA remain unverified; the next docs commit triggers a clean run.

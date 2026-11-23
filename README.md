@@ -19,7 +19,7 @@ npm run check
 python3 -m http.server 8000
 ```
 
-Відкрийте http://localhost:8000. GitHub Pages увімкнено, а автоматичне розгортання запускається з `main`; поточний статус перевірки публікації — у [WEB-SERVICE.md](docs/WEB-SERVICE.md).
+Відкрийте http://localhost:8000. GitHub Pages увімкнено; deployment run 45192891355 успішно опублікував сайт за адресою https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Прямий HTTP/browser smoke test ще потребує перевірки; подробиці — у [WEB-SERVICE.md](docs/WEB-SERVICE.md).
 
 ## Зараз працює
 

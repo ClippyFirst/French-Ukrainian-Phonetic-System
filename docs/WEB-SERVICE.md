@@ -37,9 +37,9 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 
 - PR #1 злито в `main`: `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
 - Main CI run 45192430970 успішно виконав build, 46 тестів і syntax check.
-- Deploy поки не завершився: GitHub не знайшов Pages artifact у першій спробі; повторний запуск лише deploy job створив два artifacts з однаковою назвою, які action відхилив як неоднозначні.
-- Потрібен новий чистий workflow run на `main` (новий commit запускає його автоматично). Не перезапускати лише невдалий deploy job у межах цього run, бо upload створить другий однойменний artifact.
-- Після успішного deploy перевірити environment URL, HTTP 200, завантаження JS/CSS і фактичну роботу застосунку. Поки це не зроблено, публічний URL не вважається підтвердженим.
+- Clean main workflow run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) завершився успішно, включно з `actions/deploy-pages@v4`; deployed commit: `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
+- GitHub Actions повернув environment URL: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ .
+- Прямий HTTP/content smoke test із цього середовища не вдався через DNS resolution failure / недоступність URL через web fetch. Потрібно окремо перевірити HTTP 200, JS/CSS assets і фактичну роботу інтерфейсу у браузері.
 
 ## Межі
 
@@ -49,5 +49,5 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 
 - Feature CI run 45179583235: build passed, 46/46 tests passed, `npm run check` passed.
 - Main CI run 45192430970: build passed, 46/46 tests passed, `npm run check` passed.
-- Pages deploy у main run завершився помилкою пошуку artifacts; потрібен чистий новий run.
+- Pages deploy у main run 45192891355 завершився успішно; прямий HTTP/content smoke test не підтверджено через DNS failure у цьому середовищі.
 - Локальний браузерний smoke test та Chromium/Firefox/WebKit accessibility QA ще не виконані.
