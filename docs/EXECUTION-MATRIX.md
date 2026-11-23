@@ -8,12 +8,12 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 phonemic units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; not complete narrow-phonetic inventory |
 | U3 | IPA→UFPN adapter | PARTIAL | deterministic adapter + tests + UI level selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD tests; browser grapheme/cursor/mobile checks not run |
-| U5 | Extended Cyrillic grapheme inventory | PARTIAL | `ў` → /w/ and `э` → /ɛ, ɛ̃/ implemented with source-backed candidate register; expert usability review pending |
+| U5 | Extended Cyrillic grapheme inventory | PARTIAL | `ў` → /w/ and `э` → /ɛ, ɛ̃/ implemented; `ў` source distinguishes Belarusian orthographic status from [w] phonetic realization; `ы`, `ё` remain unassigned; expert usability review pending |
 | F1 | Allophone registry | PARTIAL | evidence-backed cases documented; not every possible speaker realization |
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |
 | E1 | French G2P and syntax | PARTIAL | prior seed fallback/narrow liaison; no full morphology/POS/context |
-| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions 45161219147 on b82ee50: npm test (34 tests) + npm run check both passed |
+| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions 45161219147 on b82ee50: npm test (35 tests: 12 engine + 23 UFPN) + npm run check both passed on 5a599fba22f2f; GitHub Actions 45161676953 |
 | Q2 | Browser/mobile/accessibility | BLOCKED | no browser automation available in current runtime; prior Chromium timeout |
 | Q3 | Linguistic benchmark | BLOCKED | independent gold IPA/UFPN set = 0; expert reviewers unavailable |
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |

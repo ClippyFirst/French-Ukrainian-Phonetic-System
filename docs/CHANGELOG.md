@@ -18,3 +18,5 @@
 - Adopted Belarusian `ў` for /w/ and Russian/Belarusian `э` for /ɛ/; nasal counterpart /ɛ̃/ is `э̃`.
 - Preserved /v/ → `в`, /ɥ/ → `й̊`, /j/ → `й`.
 - Added machine-readable adopted/candidate grapheme register; explicitly rejected arbitrary assignments of `ы` to /ə/ and `ё` to /ø, œ/.
+
+- Verified cross-registry Cyrillic inventory integrity (unique adopted graphemes, IPA/base-grapheme consistency and candidate provenance); GitHub Actions run 45161676953 passed 35 tests and syntax checks.
