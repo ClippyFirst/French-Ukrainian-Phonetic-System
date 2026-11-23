@@ -72,3 +72,13 @@
 - Branch `fix/typographic-diacritic-scale` changes marks to regular Charis SIL at `.42em` (about 9.2px at 22px). This is a measured proportional adjustment, not a ratio mandated by the sources.
 - No changes to canonical combining Unicode, phonetic mappings, clipboard or export.
 - PR #7 CI run [45210184497](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45210184497) passed build, tests and syntax checks. Merged as `a5b338077089c2653fd40d05d722d90574583b81`. Main run [45210252551](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45210252551) passed build, tests, syntax checks and Pages deployment. Owner visual acceptance remains pending; no browser screenshot was available, so visual resolution is not claimed.
+
+
+## Native OpenType shaping correction — PR #8 (2026-11-23)
+- Branch: `fix/native-opentype-diacritic-shaping`; PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/8
+- Root cause: the previous renderer decomposed canonical combining sequences into independent DOM spans, substituted spacing modifier glyphs for selected marks, and positioned them with CSS. That bypassed font shaping and its GPOS mark-to-base/mark-to-mark attachment.
+- Fix: `src/ufpn-display.js` now passes the complete NFC-normalized UFPN string to a single text node via `textContent`; manual overlay CSS was removed. Existing `mark`/`mkmk` features remain enabled.
+- Regression tests cover stacked combining marks and affricate tie bars. The IPA→UFPN adapter, mapping data, clipboard/export and phonetic semantics are unchanged.
+- Research references: https://googlefonts.github.io/gf-guide/diacritics.html ; https://learn.microsoft.com/en-us/typography/opentype/spec/gpos ; https://software.sil.org/charis/release-7-000/
+- Verification: local clone and test execution blocked because DNS cannot resolve github.com. Available workflow-run lookup has not yet returned PR CI status. No browser runtime/screenshot QA is available; visual acceptance remains PARTIAL.
+- Font caveat: current Google Fonts Charis SIL import remains; official SIL Charis 7.000 WOFF2 was not downloaded or vendored. Do not claim the current SIL package is installed.
