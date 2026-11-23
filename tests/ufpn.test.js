@@ -121,3 +121,8 @@ test('every phoneme has a Ukrainian sound example or an explicit no-equivalent s
 });
 
 test('voiced velar and uvular fricatives remain distinct',()=>{assert.equal(renderUfpn('ɣ ʁ').text,'х̬ ғ')});
+
+test('all 37 phoneme rows have Ukrainian articulation guidance',()=>{
+ assert.equal(UFPN_MAPPING.phonemes.length,37);
+ for(const p of UFPN_MAPPING.phonemes){assert.ok(typeof p.pronunciationGuideUk==='string'&&p.pronunciationGuideUk.length>=25,p.id);}
+});
