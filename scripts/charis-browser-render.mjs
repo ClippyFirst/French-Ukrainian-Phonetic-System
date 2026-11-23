@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
 import { mkdir, readFile, stat } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
 const root = new URL("../", import.meta.url);
 const mapping = JSON.parse(await readFile(new URL("../data/ufpn-mapping.json", import.meta.url), "utf8"));
