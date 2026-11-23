@@ -23,6 +23,13 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run check
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit Charis 7 UFPN glyphs and OpenType anchors
+        run: |
+          python -m pip install --disable-pip-version-check fonttools brotli uharfbuzz
+          python scripts/audit-charis-font.py
   deploy:
     needs: test
     if: github.ref == 'refs/heads/main'
