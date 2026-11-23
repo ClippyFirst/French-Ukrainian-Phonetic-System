@@ -53,11 +53,39 @@ for (const [name, browserType] of browserTypes) {
   const browser = await browserType.launch({ headless: true });
   try {
     for (const viewport of [
-      { label: "desktop", width: 1440, height: 1100 },
-      { label: "mobile", width: 390, height: 844 }
+      { label: "desktop", width: 1440, height: 1000, columns: 3 },
+      { label: "laptop", width: 1024, height: 900, columns: 3 },
+      { label: "tablet", width: 768, height: 1024, columns: 2 },
+      { label: "mobile", width: 390, height: 844, columns: 1 }
     ]) {
       const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
       await page.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
+      const ui = await page.evaluate(() => {
+        const results = document.querySelector(".results");
+        const skip = document.querySelector(".skip-link");
+        return {
+          skipLinkFirst: document.body.firstElementChild === skip,
+          outputPanels: ["#ipa-output", "#ufpn-output", "#romanized-output"]
+            .every((selector) => document.querySelector(selector)?.textContent.trim().length > 0),
+          resultColumns: getComputedStyle(results).gridTemplateColumns.trim().split(/\\s+/).length,
+          horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+          sourcePresent: Boolean(document.querySelector("#source")?.value)
+        };
+      });
+      if (name === "chromium") {
+        const uiScreenshot = fileURLToPath(new URL(`../artifacts/ui-${viewport.label}.png`, import.meta.url));
+        await page.screenshot({ path: uiScreenshot, fullPage: true });
+      }
+      await page.keyboard.press("Tab");
+      ui.skipLinkReceivesKeyboardFocus = await page.evaluate(() => document.activeElement?.classList.contains("skip-link"));
+      if (!ui.skipLinkFirst || !ui.skipLinkReceivesKeyboardFocus) {
+        throw new Error(`${name}/${viewport.label}: skip link is not the first keyboard stop`);
+      }
+      if (!ui.outputPanels || !ui.sourcePresent) throw new Error(`${name}/${viewport.label}: workbench content did not render`);
+      if (ui.resultColumns !== viewport.columns) {
+        throw new Error(`${name}/${viewport.label}: expected ${viewport.columns} result columns, found ${ui.resultColumns}`);
+      }
+      if (ui.horizontalOverflow) throw new Error(`${name}/${viewport.label}: page has horizontal overflow`);
       const result = await page.evaluate(async (values) => {
         const style = document.createElement("style");
         style.textContent = `
@@ -119,15 +147,15 @@ for (const [name, browserType] of browserTypes) {
       if (!result.resources.some((entry) => entry.name === "Charis-Regular.woff2")) {
         throw new Error(`${name}/${viewport.label}: local Charis WOFF2 not requested`);
       }
-      if (viewport.label === "mobile" && result.horizontalOverflow) {
-        throw new Error(`${name}: mobile specimen causes horizontal page overflow`);
+      if (result.horizontalOverflow) {
+        throw new Error(`${name}/${viewport.label}: specimen causes horizontal page overflow`);
       }
       let screenshot = null;
       if (name === "chromium" && viewport.label === "desktop") {
         screenshot = fileURLToPath(new URL("../artifacts/charis-7.000-ufpn.png", import.meta.url));
         await page.screenshot({ path: screenshot, fullPage: true });
       }
-      results.push({ browser: name, viewport: viewport.label, ...result, screenshot });
+      results.push({ browser: name, viewport: viewport.label, ui, ...result, screenshot });
       await page.close();
     }
   } finally {
