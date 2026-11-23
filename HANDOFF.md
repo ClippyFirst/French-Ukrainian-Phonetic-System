@@ -5,11 +5,14 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Final implementation commit (CI-verified): 2e21c8fe78075d41109676fbd79d21a7276d1dd4.
-- Current branch compare at implementation head: 12 commits ahead, 0 behind main.
+- Latest verified implementation commit: b82ee50aa77a899204fb86a03ede97e0f12b01bd.
+- Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
+- Current branch compare: 14 commits ahead, 0 behind main.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
 ## Latest continuation: extended Cyrillic inventory
+
+Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375bac5d caught one stale expected string for the nasal /ɛ̃/ test. The expectation was corrected; the subsequent CI run 45161219147 passed all tests and syntax checks on b82ee50aa77a899204fb86a03ede97e0f12b01bd.
 - Adopted Belarusian `ў` for IPA /w/, preserving /v/ → `в`, /ɥ/ → `й̊`, /j/ → `й`.
 - Adopted Russian/Belarusian `э` for /ɛ/ and `э̃` for /ɛ̃/.
 - Added machine-readable `graphemeInventory` with provenance and candidate decisions. `ы` is not mapped to schwa ([ɨ] is not /ə/); `ё` is not mapped to /ø, œ/ (its ordinary value is iotated/contextual).
@@ -25,7 +28,7 @@
 
 ## Previous verification
 - Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
-- Final implementation SHA 2e21c8fe78075d41109676fbd79d21a7276d1dd4 passed GitHub Actions run 45154509214: npm test (31 tests: 12 engine + 19 UFPN) and npm run check succeeded.
+- Final implementation SHA 2e21c8fe78075d41109676fbd79d21a7276d1dd4 passed GitHub Actions run 45154509214: npm test (34 tests in the latest run) and npm run check succeeded on b82ee50aa77a899204fb86a03ede97e0f12b01bd; GitHub Actions run 45161219147.
 - Deploy job was skipped because this is a PR branch; GitHub Pages settings/public deployment were not verified.
 - No browser/mobile/accessibility QA or independent phonetic review has been run.
 

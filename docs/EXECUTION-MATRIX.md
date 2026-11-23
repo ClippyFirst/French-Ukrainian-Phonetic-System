@@ -2,7 +2,7 @@
 
 | ID | Завдання | Статус | Доказ / blocker |
 |---|---|---|---|
-| R1 | Default branch, PR, branch, commits | DONE_VERIFIED | main; working branch feat/french-ipa-ufpn-engine; PR #1 draft; 12 commits ahead, 0 behind at implementation head |
+| R1 | Default branch, PR, branch, commits | DONE_VERIFIED | main; working branch feat/french-ipa-ufpn-engine; PR #1 draft; 14 commits ahead, 0 behind at current head |
 | R2 | Research audit of French phonetic variation | PARTIAL | Source registry extended with academic sources; full literature review/specialist review remain |
 | U1 | UFPN three-level specification | PARTIAL | Basic/Detailed/Extended defined; expert validation pending |
 | U2 | Machine-readable mapping | PARTIAL | 37 phonemic units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; not complete narrow-phonetic inventory |
@@ -13,7 +13,7 @@
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |
 | E1 | French G2P and syntax | PARTIAL | prior seed fallback/narrow liaison; no full morphology/POS/context |
-| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions 45154509214 on 2e21c8f: npm test (31 tests) + npm run check both passed |
+| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions 45161219147 on b82ee50: npm test (34 tests) + npm run check both passed |
 | Q2 | Browser/mobile/accessibility | BLOCKED | no browser automation available in current runtime; prior Chromium timeout |
 | Q3 | Linguistic benchmark | BLOCKED | independent gold IPA/UFPN set = 0; expert reviewers unavailable |
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |
