@@ -32,6 +32,7 @@ test('OpenIPA full-text parser applies schwa elision only when enabled',()=>{
  const sung=transcribe('calme ami',{profile:'lyric-diction-fr'});
  assert.equal(spoken.words[0].ipa,'kalmə');
  assert.equal(sung.words[0].ipa,'kalm');
+ assert.ok(sung.words[0].ruleTrace.every(item=>item.start>=0&&item.end<=5));
 });
 
 test('OpenIPA liaison trace is attached to the preceding word in lyric profile',()=>{
@@ -39,4 +40,5 @@ test('OpenIPA liaison trace is attached to the preceding word in lyric profile',
  assert.equal(result.words[0].ipa,'lez‿');
  assert.equal(result.words[0].liaisonApplied,true);
  assert.ok(result.words[0].ruleTrace.some(item=>item.boundary&&item.ipa==='z‿'));
+ assert.ok(result.words[0].ruleTrace.every(item=>item.start>=0&&item.end<=3));
 });

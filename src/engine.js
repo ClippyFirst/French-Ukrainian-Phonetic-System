@@ -34,7 +34,7 @@ export function transcribe(text,options={}){
   const parserTrace=parsedText.trace.filter(item=>
    (item.boundary&&item.start===partEnd)||
    (!item.boundary&&item.start>=partStart&&item.end<=partEnd)
-  );
+  ).map(item=>({...item,start:item.start-partStart,end:item.end-partStart}));
   const boundaryTrace=parserTrace.filter(item=>item.boundary);
   const parserIpa=parserTrace.map(item=>item.ipa).join('');
   const parserSourceIpa=parserTrace.map(item=>item.sourceIpa).join('');
