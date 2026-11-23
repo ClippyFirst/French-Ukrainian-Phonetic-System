@@ -104,7 +104,7 @@ select{min-height:44px;width:100%;padding:10px 38px 10px 12px;font-size:14px}
 textarea{min-height:154px;padding:18px 20px;border-radius:12px;font-size:19px;line-height:1.7;transition:border-color 150ms var(--ease-out),box-shadow 150ms var(--ease-out)}
 textarea:focus,select:focus,.ufpn-reference input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(36,91,73,.13)}
 button{font-family:var(--sans);cursor:pointer;transition:background-color 150ms var(--ease-out),border-color 150ms var(--ease-out),color 150ms var(--ease-out),transform 120ms var(--ease-out),box-shadow 150ms var(--ease-out)}
-button:active{transform:translateY(1px) scale(.985)}
+button:active:not(:focus-visible){transform:translateY(1px) scale(.985)}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .input-foot,.status{font:12px/1.5 var(--sans);color:#56645b}
 .input-foot{align-items:center;padding:14px 0 26px}
