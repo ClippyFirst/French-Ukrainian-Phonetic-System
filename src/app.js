@@ -27,20 +27,36 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',(
 $('copy-all').addEventListener('click',()=>copy(['French: '+result.text,'IPA: '+result.ipa,'UFPN ('+levelSelect.value+'): '+result.ufpn,'Latin guide: '+result.romanized].join('\n')));
 $('export-txt').addEventListener('click',()=>{const blob=new Blob([['French: '+result.text,'IPA: '+result.ipa,'UFPN ('+levelSelect.value+'): '+result.ufpn,'Latin guide: '+result.romanized,'Позначені форми потребують перевірки.'].join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='french-ukrainian-phonetics.txt';a.click();URL.revokeObjectURL(url)});
 $('export-pdf').addEventListener('click',()=>window.print());$('show-explanations').addEventListener('change',e=>$('explain-panel').hidden=!e.target.checked);
-const reference=document.createElement('details');reference.className='ufpn-reference';
-const refSummary=document.createElement('summary');refSummary.textContent='Довідник UFPN · фонеми, алофони та фонетичні виміри';reference.append(refSummary);
-const refIntro=document.createElement('p');refIntro.textContent='Пошуковий довідник розширеної кириличної UFPN-нотації. Використовуються обґрунтовані графеми інших кириличних абеток; варіантні й регіональні форми не вмикаються автоматично без профілю або вузького IPA.';reference.append(refIntro);
-const refSearch=document.createElement('input');refSearch.type='search';refSearch.placeholder='Шукати IPA, UFPN або артикуляцію…';refSearch.setAttribute('aria-label','Пошук у довіднику UFPN');reference.append(refSearch);
-const refTable=document.createElement('table');refTable.innerHTML='<thead><tr><th>IPA</th><th>Basic</th><th>Detailed</th><th>Extended</th><th>Опис / статус</th></tr></thead><tbody></tbody>';reference.append(refTable);
+const reference=document.createElement('section');reference.className='ufpn-reference';
+const refTitle=document.createElement('h2');refTitle.textContent='Буква — звук — українське слово';reference.append(refTitle);
+const refIntro=document.createElement('p');refIntro.textContent='У таблиці показано, чи можна почути цей самий звук у нормативній українській вимові. «Контекстний» означає позиційний алофон; «наближений» — схожий, але не тотожний звук. Якщо точного відповідника немає, ми так і пишемо — без вигаданих прикладів.';reference.append(refIntro);
+const refSearch=document.createElement('input');refSearch.type='search';refSearch.placeholder='Шукати літеру, IPA або українське слово…';refSearch.setAttribute('aria-label','Пошук у таблиці українських звукових відповідників');reference.append(refSearch);
+const ukrTable=document.createElement('table');ukrTable.className='ukrainian-sound-table';ukrTable.innerHTML='<thead><tr><th>Літера UFPN</th><th>Звук (IPA)</th><th>Де почути в українській</th><th>Відповідність</th></tr></thead><tbody></tbody>';reference.append(ukrTable);
+const ukrBody=ukrTable.querySelector('tbody');
+const statusLabels={EXACT:'Точний звук',CONTEXTUAL:'У певній позиції',APPROXIMATE:'Лише наближення',NONE:'Немає точного відповідника'};
+function renderReference(query=''){
+ ukrBody.replaceChildren();
+ for(const item of UFPN_MAPPING.phonemes){
+  const haystack=[item.basic,item.ipa,item.ukrainianExample,item.ukrainianExampleNote,item.ukrainianExampleStatus].join(' ').toLocaleLowerCase();
+  if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
+  const tr=document.createElement('tr');
+  const values=[item.basic,item.ipa,item.ukrainianExample+(item.ukrainianExampleNote?' — '+item.ukrainianExampleNote:''),statusLabels[item.ukrainianExampleStatus]||item.ukrainianExampleStatus];
+  for(const [index,value] of values.entries()){const td=document.createElement('td');td.textContent=value;if(index===3)td.dataset.status=item.ukrainianExampleStatus;tr.append(td)}
+  ukrBody.append(tr);
+ }
+}
+refSearch.addEventListener('input',()=>renderReference(refSearch.value.trim()));
+renderReference();
+const technicalDetails=document.createElement('details');technicalDetails.className='ufpn-technical';
+const technicalSummary=document.createElement('summary');technicalSummary.textContent='Технічна таблиця IPA → Basic / Detailed / Extended';technicalDetails.append(technicalSummary);
+const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>Basic</th><th>Detailed</th><th>Extended</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
 const refBody=refTable.querySelector('tbody');
 const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
-function renderReference(query=''){
+function renderTechnicalReference(){
  refBody.replaceChildren();
  for(const item of referenceRows){
   const description=item.descriptionUk||item.description||'';
   const status=item.phonologicalStatus||item.evidenceStatus||'';
-  const haystack=[item.ipa,item.basic,item.detailed,item.extended,description,status,(item.sources||[]).join(' ')].join(' ').toLocaleLowerCase();
-  if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
   const tr=document.createElement('tr');
   for(const [index,value] of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].entries()){
    const td=document.createElement('td');
@@ -50,8 +66,7 @@ function renderReference(query=''){
   refBody.append(tr);
  }
 }
-refSearch.addEventListener('input',()=>renderReference(refSearch.value.trim()));
-renderReference();
+renderTechnicalReference();reference.append(technicalDetails);
 const featureDetails=document.createElement('details');featureDetails.className='ufpn-features';
 const featureSummary=document.createElement('summary');featureSummary.textContent='Повний перелік фонетичних вимірів';featureDetails.append(featureSummary);
 const featureList=document.createElement('ul');
