@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Explicit overlay retained; new branch `fix/typographic-diacritic-scale` switches mark glyphs from bold Manrope `.62em` to regular Charis SIL `.42em` (about 13.6px → 9.2px at 22px output). Based on Google Fonts diacritic design guidance; canonical Unicode/mappings unchanged. CI, deployment and owner visual acceptance pending |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Explicit overlay retained; new branch `fix/typographic-diacritic-scale` switches mark glyphs from bold Manrope `.62em` to regular Charis SIL `.42em` (about 13.6px → 9.2px at 22px output). Based on Google Fonts diacritic design guidance; canonical Unicode/mappings unchanged. PR CI 45210184497 and main Pages deployment 45210252551 passed; owner visual acceptance pending |
 
 ## OpenIPA engine integration
 
