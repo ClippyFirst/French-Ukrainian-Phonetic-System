@@ -12,7 +12,11 @@ const parserOptions = (options = {}) => ({
   },
 });
 
-const normalizeOpenIpa = (value) => String(value ?? '').replaceAll('ε', 'ɛ');
+// Normalize OpenIPA's internal symbols at the adapter boundary; preserve exact raw values in sourceIpa.
+const normalizeOpenIpa = (value) => String(value ?? '')
+  .replaceAll('ε', 'ɛ')
+  .replaceAll('õ', 'ɔ̃')
+  .replaceAll('ɾ', 'ʁ');
 
 export function transcribeFrenchText(text, options = {}) {
   return parseFrench(String(text ?? '').normalize('NFC'), parserOptions(options));

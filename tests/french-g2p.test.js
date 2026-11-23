@@ -10,14 +10,22 @@ test('OpenIPA contextual consonants and digraphs', () => {
 });
 
 test('OpenIPA nasal and vowel sequences retain upstream conventions', () => {
-  assert.equal(transcribeFrenchWord('garçon'), 'gaɾsõ');
+  assert.equal(transcribeFrenchWord('garçon'), 'gaʁsɔ̃');
   assert.equal(transcribeFrenchWord('eau'), 'o');
   assert.equal(transcribeFrenchWord('oui'), 'wi');
 });
 
-test('the adapter keeps upstream raw IPA while normalizing Greek epsilon', () => {
+test('OpenIPA nasal-O and flipped-R symbols normalize to canonical French IPA', () => {
+  const bonjour = transcribeFrenchWordDetailed('bonjour');
+  assert.equal(bonjour.ipa, 'bɔ̃ʒuʁ');
+  assert.equal(bonjour.sourceIpa, 'bõʒuɾ');
+  assert.ok(bonjour.trace.some((item) => item.sourceIpa.includes('õ') && item.ipa.includes('ɔ̃')));
+  assert.ok(bonjour.trace.some((item) => item.sourceIpa.includes('ɾ') && item.ipa.includes('ʁ')));
+});
+
+test('the adapter keeps upstream raw IPA while normalizing legacy symbols', () => {
   const result = transcribeFrenchWordDetailed('mer');
-  assert.equal(result.ipa, 'mɛɾ');
+  assert.equal(result.ipa, 'mɛʁ');
   assert.equal(result.sourceIpa, 'mεɾ');
   assert.ok(result.trace.some((item) => item.sourceIpa.includes('ε') && item.ipa.includes('ɛ')));
 });
