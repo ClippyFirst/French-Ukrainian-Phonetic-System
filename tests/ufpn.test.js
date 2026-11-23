@@ -8,8 +8,8 @@ test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal
 test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'њ ң'));
 test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бо̆̃·жуːғ'));
 test('Basic suppresses prosodic annotation while Extended preserves it',()=>{
- assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пе̇ті');
- assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпе̇·ті↗');
+ assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пӹті');
+ assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпӹ·ті↗');
 });
 test('Extended preserves narrow phonetic modifiers',()=>assert.equal(renderUfpn('ʁ̞ tʲ kʷ','extended').text,'ғ̞ тʲ кʷ'));
 test('unknown IPA remains visible and is reported',()=>{
@@ -109,7 +109,7 @@ test('UFPN display keeps affricate tie bars in the same native text run',()=>{
 });
 
 test('Basic uses dedicated extended Cyrillic letters instead of stacked quality marks where exact graphemes exist',()=>{
- assert.equal(renderUfpn('y ø œ ɲ ŋ ʁ').text,'ү ӧ ӧ̆ њ ң ғ ӹ');
+ assert.equal(renderUfpn('y ø œ ɲ ŋ ʁ').text,'ү ӧ ӧ̆ њ ң ғ');
 });
 test('every phoneme has a Ukrainian sound example or an explicit no-equivalent statement',()=>{
  for(const p of UFPN_MAPPING.phonemes){
