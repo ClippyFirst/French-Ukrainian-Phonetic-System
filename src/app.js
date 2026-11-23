@@ -42,8 +42,10 @@ function renderReference(query=''){
   const haystack=[item.ipa,item.basic,item.detailed,item.extended,description,status,(item.sources||[]).join(' ')].join(' ').toLocaleLowerCase();
   if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
   const tr=document.createElement('tr');
-  for(const value of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status]){
-   const td=document.createElement('td');if(['Basic','Detailed','Extended'].includes(['IPA','Basic','Detailed','Extended','Опис / статус'][[item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].indexOf(value)]))renderUfpnDisplay(td,value);else td.textContent=value;tr.append(td);
+  for(const [index,value] of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].entries()){
+   const td=document.createElement('td');
+   if(index>=1&&index<=3)renderUfpnDisplay(td,value);else td.textContent=value;
+   tr.append(td);
   }
   refBody.append(tr);
  }
