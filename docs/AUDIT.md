@@ -26,7 +26,7 @@
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
 - **Build/test integration: DONE_VERIFIED.** PR CI 45195492754 and main CI 45195557498 pass build, 46 tests and syntax check.
-- **UFPN typography: PARTIAL.** Font-only changes failed owner visual acceptance. The current follow-up branch uses explicit CSS placement of spacing modifier glyphs over/under Cyrillic bases, independent of font mark anchors. Canonical Unicode output and IPA→UFPN mappings remain unchanged. Awaiting CI, deployment and owner browser confirmation.
+- **UFPN typography: PARTIAL.** Font-only changes failed owner visual acceptance. PR #4 (`1560bbb65d6e142c9d25cb45d2307d1db5f7b65a`) implements explicit CSS placement of spacing modifier glyphs over/under Cyrillic bases. PR #5 (`214c65e527b83a565371309599fa2d47251cd6d4`) preserves affricate tie bars. Main run [45201504905](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201504905) passed build, tests, syntax checks and Pages deployment. Canonical Unicode output and IPA→UFPN mappings remain unchanged. Owner visual confirmation remains outstanding.
 - **Public hosting: PARTIAL.** Clean deploy run 45192891355 succeeded and emitted the public Pages URL; direct HTTP response, page content and asset smoke verification remain unconfirmed because DNS/web access from this environment failed.
 - **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run; visual appearance of stacked combining marks must be confirmed in browsers.
 
@@ -60,3 +60,4 @@
 - Obtain independently licensed gold IPA/UFPN data.
 - Expand morphology/context and edge-case coverage with source-backed fixtures.
 - Resolve upstream IPA notation conventions only with evidence.
+\n- PR #4 CI [45201122860](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201122860) passed; PR #5 CI [45201424564](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201424564) passed. Main deployment run [45201504905](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201504905) passed for `214c65e527b83a565371309599fa2d47251cd6d4`. The page is deployed; visual acceptance in the owner's browser remains the only typography acceptance item.

@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Font-only attempts failed owner visual acceptance. Branch `fix/deterministic-cyrillic-diacritic-layout` adds explicit CSS placement of spacing modifier glyphs over/under bases; adapter strings remain combining Unicode. CI/deploy/owner browser acceptance pending |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Font-only attempts failed owner visual acceptance. Branch `fix/deterministic-cyrillic-diacritic-layout` adds explicit CSS placement of spacing modifier glyphs over/under bases; adapter strings remain combining Unicode. PR #4/#5 CI and main Pages deploy 45201504905 passed; owner browser visual acceptance pending |
 
 ## OpenIPA engine integration
 
@@ -49,3 +49,4 @@
 - Added `src/ufpn-display.js`, CSS overlay positioning, display decomposition tests and syntax-check coverage.
 - This is a visual rendering layer only; copied/exported UFPN remains canonical combining Unicode.
 - Status remains PARTIAL until CI, deployment and owner visual acceptance pass.
+\n- PR #4 merged as `1560bbb65d6e142c9d25cb45d2307d1db5f7b65a`; PR #5 merged as `214c65e527b83a565371309599fa2d47251cd6d4`. PR CI runs 45201122860 and 45201424564 passed; main run 45201504905 passed build, tests, syntax checks and Pages deployment.
