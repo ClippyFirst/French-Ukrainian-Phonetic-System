@@ -160,3 +160,6 @@
 - PR #18 merged pronunciation guides for all 37 segments; PR #19 fixed the browser harness and merged.
 - PR #19 workflow `45263336209`: build, tests, syntax, Charis font audit and all six browser viewport checks passed.
 - Final main push workflow `45263533099`: build, tests, syntax and font audit passed; Playwright installation/browser checks and Pages deployment were still running at last inspection.
+
+
+- /œ/ pronunciation-guide refinement: the correct cue is [ɛ] with the same front open-mid tongue position plus lip rounding; do not lower the tongue further. A dedicated regression guards the instruction.
