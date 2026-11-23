@@ -72,7 +72,7 @@
   --white:#fffefa;
   --surface-soft:#f7f7f1;
   --surface-green:#edf2e9;
-  --focus:#879b35;
+  --focus:#6f8426;
   --ease-out:cubic-bezier(.23,1,.32,1);
   --radius-control:9px;
   --radius-panel:16px;
@@ -214,7 +214,7 @@ footer a:hover{color:var(--green);text-decoration:underline}
 /* Keep low-confidence cues legible without resembling browser spellcheck marks. */
 .low-confidence{
   text-decoration-style:dotted;
-  text-decoration-color:#b49b8c;
+  text-decoration-color:#9a8274;
   text-decoration-thickness:1px;
 }
 @media(max-width:900px){
