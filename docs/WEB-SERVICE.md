@@ -51,5 +51,6 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 - Main CI run 45192430970: build passed, 46/46 tests passed, `npm run check` passed.
 - PR #2 із виправленням кириличних діакритиків злито: `360ef54a08af2ff7146d2a4052c326fec6968173`.
 - Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) пройшов build, 46 тестів, syntax check і Pages deploy.
-- Візуальне підтвердження рендерингу у браузері та прямий HTTP smoke test ще не виконані через DNS failure у цьому середовищі.
+- Попереднє Noto Sans оформлення не усунуло відрив діакритиків від кириличних базових літер. У follow-up використано Charis SIL із підтримкою кирилиці та OpenType-якорями; CI/деплой і візуальне підтвердження цього виправлення очікуються.
+- Прямий HTTP smoke test і браузерна візуальна перевірка не виконані через недоступність Pages із цього середовища.
 - Локальний браузерний smoke test та Chromium/Firefox/WebKit accessibility QA ще не виконані.
