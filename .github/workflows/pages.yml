@@ -25,7 +25,7 @@ jobs:
       - run: npm run check
   deploy:
     needs: test
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/french-ipa-ufpn-engine')
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
