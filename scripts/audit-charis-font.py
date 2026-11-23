@@ -159,7 +159,9 @@ def main():
         raise SystemExit(1)
 
     font_bytes = FONT_PATH.read_bytes()
-    hb_font = hb.Font(hb.Face(font_bytes))
+    hb_face = hb.Face(font_bytes)
+    hb_font = hb.Font(hb_face)
+    hb.ot_font_set_funcs(hb_font)
     hb_font.scale = (font["head"].unitsPerEm, font["head"].unitsPerEm)
     mark_glyphs = set(glyph_for.values())
     shaped = 0
