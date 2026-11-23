@@ -7,8 +7,8 @@ by stacked UFPN graphemes, or HarfBuzz .notdef output.
 """
 from __future__ import annotations
 
+import io
 import json
-import sys
 import unicodedata
 from pathlib import Path
 
@@ -158,8 +158,12 @@ def main():
             print("Missing mark-to-mark anchor pairs:", *sorted(set(missing_stack)), sep="\n  ")
         raise SystemExit(1)
 
-    font_bytes = FONT_PATH.read_bytes()
-    hb_face = hb.Face(font_bytes)
+    # HarfBuzz's Python wheel may not include WOFF2 decoding. Let fontTools
+    # decode the verified WOFF2 first, then shape the equivalent sfnt bytes.
+    sfnt_buffer = io.BytesIO()
+    font.flavor = None
+    font.save(sfnt_buffer)
+    hb_face = hb.Face(sfnt_buffer.getvalue())
     hb_font = hb.Font(hb_face)
     hb.ot_font_set_funcs(hb_font)
     hb_font.scale = (font["head"].unitsPerEm, font["head"].unitsPerEm)
