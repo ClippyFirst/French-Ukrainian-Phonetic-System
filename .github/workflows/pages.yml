@@ -54,12 +54,9 @@ jobs:
             artifacts/ui-*.png
           if-no-files-found: warn
           retention-days: 7
-  deploy:
+  pages-artifact:
     needs: test
     if: github.ref == 'refs/heads/main'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -68,8 +65,18 @@ jobs:
           node-version: 22
       - run: npm run build
       - uses: actions/configure-pages@v5
+      # Keep artifact creation out of the deploy job. Re-running deploy alone
+      # must reuse this single artifact rather than upload a duplicate.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+  deploy:
+    needs: [test, pages-artifact]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
