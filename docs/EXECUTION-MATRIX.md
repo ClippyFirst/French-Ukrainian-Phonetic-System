@@ -33,7 +33,7 @@
 | Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source у `vendor/openipa/`; upstream revision зазначена в THIRD_PARTY_NOTICES.md |
 | Build upstream TypeScript into browser ESM bundle | DONE_VERIFIED | `npm run build` passed in CI |
 | Route French G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`, `src/engine.js`; integration tests included |
-| Align upstream IPA notation to canonical IPA | PARTIAL | Adapter normalizes OpenIPA `õ` → `ɔ̃` and parser-default `ɾ` → `ʁ`; raw upstream form remains in `sourceIpa`. Regression coverage for `bonjour`, `garçon`, and `mer`; independent phonetic review still pending. Other upstream notation/edge cases remain to audit |
+| Align upstream IPA notation to canonical IPA | PARTIAL | Adapter normalizes OpenIPA `õ` → `ɔ̃`; maps `ɾ` → `ʁ` only for `metropolitan-fr`, and preserves `ɾ` for `lyric-diction-fr`. Raw upstream form remains in `sourceIpa`. Regression coverage for both profiles; independent phonetic review still pending. Other upstream notation/edge cases remain to audit |
 | Adopt AGPL-3.0 and upstream attribution | DONE_VERIFIED | LICENSE, THIRD_PARTY_NOTICES.md, README; owner approval explicit |
 | Expand upstream fixture and edge-case coverage | TODO | Port additional upstream tests; distinguish regression fixtures from independent gold data |
 | Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |
@@ -93,7 +93,14 @@
 
 
 ### OpenIPA canonical IPA adapter correction (2026-11-23)
-- Source inspection verified `IPA.NASAL_O = 'õ'`, `IPA.FLIPPED_R = 'ɾ'`, and `parseR` supplies `ɾ` as the default French `r` output. The project's broad French inventory instead uses `/ɔ̃/` and `/ʁ/`; the direct IPA mapping for a genuinely supplied regional `[ɾ]` remains the distinct tap `р̌`.
-- `src/french-g2p.js` now normalizes only the vendored OpenIPA output at the adapter boundary: `õ` → `ɔ̃`, `ɾ` → `ʁ`, and `ε` → `ɛ`. Exact raw OpenIPA values remain available in `sourceIpa` and per-rule trace; no French-grapheme→UFPN shortcut was introduced.
-- Added regressions for `bonjour`, `garçon`, and `mer`, including the end-to-end `bonjour` UFPN output `бо̆̃жух̬̠` and an empty unsupported-symbol list.
+- Primary-source check: the official OpenIPA site describes itself as a Lyric Diction tool and explicitly documents flipped French `r` as `[ɾ]`. Therefore the tap is intentional in the lyric profile, not a parser error.
+- Adapter behavior is profile-aware: `metropolitan-fr` converts OpenIPA's lyric-diction `[ɾ]` convention to broad `/ʁ/`; `lyric-diction-fr` preserves `[ɾ]` → UFPN `р̌`. The raw upstream value remains in `sourceIpa` and trace. `õ` → `ɔ̃` and `ε` → `ɛ` remain explicit broad-IPA normalizations; no French-grapheme→UFPN shortcut was introduced.
+- Added regressions for `bonjour`, `garçon`, and `mer`, including `bonjour` in both profiles: Metropolitan `бо̆̃жух̬̠`, lyric diction `бо̆̃жур̌`; both have no unsupported IPA.
 - Status: implementation committed to a feature branch; CI and Pages deployment are pending. This is an adapter normalization based on the vendored parser's own enum and default `parseR` implementation, not independent expert validation of every French speaker or dialect.
+
+
+### Profile-aware OpenIPA rhotic normalization (2026-11-23)
+- Primary-source check: the official OpenIPA site describes itself as a Lyric Diction tool and explicitly describes flipped French `r` as `[ɾ]` (https://www.openipa.org/).
+- Adapter behavior is profile-aware: `metropolitan-fr` converts OpenIPA's lyric-diction `[ɾ]` convention to broad `/ʁ/`; `lyric-diction-fr` preserves `[ɾ]` → UFPN `р̌`. The raw upstream value remains in `sourceIpa` and trace. `õ` → `ɔ̃` and `ε` → `ɛ` remain explicit broad-IPA normalizations.
+- Regressions cover `bonjour` in both profiles, `garçon`, and `mer`; lyric-profile output is intentionally `бо̆̃жур̌`, while default Metropolitan output is `бо̆̃жух̬̠`.
+- Independent expert review remains pending.
