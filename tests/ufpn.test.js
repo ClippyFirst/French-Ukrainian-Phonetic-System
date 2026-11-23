@@ -126,3 +126,10 @@ test('all 37 phoneme rows have Ukrainian articulation guidance',()=>{
  assert.equal(UFPN_MAPPING.phonemes.length,37);
  for(const p of UFPN_MAPPING.phonemes){assert.ok(typeof p.pronunciationGuideUk==='string'&&p.pronunciationGuideUk.length>=25,p.id);}
 });
+
+test('the /œ/ articulation guide keeps open-mid tongue height and adds lip rounding',()=>{
+ const phoneme=UFPN_MAPPING.phonemes.find((item)=>item.id==='v_oe_open');
+ assert.match(phoneme.pronunciationGuideUk,/напіввідкрите положення язика/);
+ assert.match(phoneme.pronunciationGuideUk,/округліть губи/);
+ assert.match(phoneme.pronunciationGuideUk,/не змінюючи висоту голосного/);
+});
