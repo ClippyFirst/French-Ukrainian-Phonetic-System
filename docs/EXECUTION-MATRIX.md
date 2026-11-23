@@ -141,3 +141,6 @@
 | UI-04 | Publish the design refinement to GitHub Pages | TODO | PR #25 is open and not merged. Merge only after visual review; then require a successful main Pages deployment and fresh live-page verification |
 
 Scope guard: no French G2P, IPA normalization, IPA → UFPN mapping, phonetic data, confidence/provenance logic, export behavior or runtime dependencies were changed. The repository remains a research prototype; this UI work does not change linguistic validation or release-readiness status.
+
+
+Current baseline at the start of PR #25: main `81098345c69a3c58d770b95fd63949133fa872d7`; public Pages still serves `95ec26e6127465d0f3152194c07db1b3dbf089e2`. Main includes the later /œ/ articulation correction, but its deployment is not yet live because workflow `45265871092` failed at the Pages artifact-metadata step after all test checks passed.
