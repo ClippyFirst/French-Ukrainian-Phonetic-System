@@ -19,7 +19,7 @@ npm run check
 python3 -m http.server 8000
 ```
 
-Відкрийте http://localhost:8000. GitHub Pages deploy job наразі очікує ввімкнення Pages у Settings → Pages → Build and deployment → GitHub Actions; докладніше — у [WEB-SERVICE.md](docs/WEB-SERVICE.md).
+Відкрийте http://localhost:8000. GitHub Pages увімкнено, а автоматичне розгортання запускається з `main`; поточний статус перевірки публікації — у [WEB-SERVICE.md](docs/WEB-SERVICE.md).
 
 ## Зараз працює
 

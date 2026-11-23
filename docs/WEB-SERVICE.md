@@ -2,9 +2,9 @@
 
 ## Стан
 
-У репозиторії вже є клієнтський вебзастосунок: `index.html`, `styles.css`, `src/app.js`, `src/engine.js`, `src/french-g2p.js`, `src/ufpn.js` та дані `data/ufpn-mapping.json`.
+У репозиторії є клієнтський вебзастосунок: `index.html`, `styles.css`, `src/app.js`, `src/engine.js`, `src/french-g2p.js`, `src/ufpn.js` та дані `data/ufpn-mapping.json`.
 
-Це статичний браузерний застосунок без власного backend/API та без передавання введеного тексту на сервер. Французький текст обробляється локально у вкладці браузера; браузерний модуль OpenIPA збирається з vendored upstream TypeScript під час build.
+Це статичний браузерний застосунок без власного backend/API та без передавання введеного тексту на сервер застосунку. Французький текст обробляється локально у вкладці браузера; браузерний модуль OpenIPA збирається з vendored upstream TypeScript під час build.
 
 ## Функції, які вже реалізовані в інтерфейсі
 
@@ -31,17 +31,15 @@ python3 -m http.server 8000
 
 Відкрити http://localhost:8000. Build створює `src/openipa-french.js` з оригінального OpenIPA parser; цей згенерований файл навмисно не комітиться.
 
-## Хостинг
+## Хостинг GitHub Pages
 
-GitHub Actions workflow `.github/workflows/pages.yml` перевіряє feature branch і PR, але deploy job виконується лише на `main`. Це навмисно: Pages ще не ввімкнено для репозиторію. Перевірка deployment з feature branch 23.11.2026 підтвердила, що build, 46 тестів і syntax check проходять, але `actions/configure-pages@v5` повертає `Get Pages site failed: Not Found`, оскільки GitHub Pages не налаштовано.
+GitHub Pages увімкнено для репозиторію; workflow `.github/workflows/pages.yml` запускає build/test/check і виконує deploy лише з `main`.
 
-Щоб опублікувати сервіс:
-1. Відкрити Settings → Pages у репозиторії GitHub.
-2. У Build and deployment вибрати **GitHub Actions**.
-3. Після цього злити PR #1 у `main` (або вручну запустити workflow на `main` після злиття).
-4. Дочекатися успішного deploy job; URL публікації буде показано в environment `github-pages`.
-
-Поки Pages не ввімкнено і deploy не завершився успішно, публічний URL не вважається підтвердженим. Не слід підміняти цей статус припущенням про стандартний URL.
+- PR #1 злито в `main`: `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
+- Main CI run 45192430970 успішно виконав build, 46 тестів і syntax check.
+- Deploy поки не завершився: GitHub не знайшов Pages artifact у першій спробі; повторний запуск лише deploy job створив два artifacts з однаковою назвою, які action відхилив як неоднозначні.
+- Потрібен новий чистий workflow run на `main` (новий commit запускає його автоматично). Не перезапускати лише невдалий deploy job у межах цього run, бо upload створить другий однойменний artifact.
+- Після успішного deploy перевірити environment URL, HTTP 200, завантаження JS/CSS і фактичну роботу застосунку. Поки це не зроблено, публічний URL не вважається підтвердженим.
 
 ## Межі
 
@@ -49,6 +47,7 @@ GitHub Actions workflow `.github/workflows/pages.yml` перевіряє feature
 
 ## Статус перевірки
 
-- CI run `45177924718`, commit `0acb2e83a4b5ca9f1530d57a8f6c53ecd9cda310`: build passed, 46/46 tests passed, `npm run check` passed.
-- Pages deployment failed at configuration because the repository has no Pages site enabled; upload/deploy steps were skipped.
+- Feature CI run 45179583235: build passed, 46/46 tests passed, `npm run check` passed.
+- Main CI run 45192430970: build passed, 46/46 tests passed, `npm run check` passed.
+- Pages deploy у main run завершився помилкою пошуку artifacts; потрібен чистий новий run.
 - Локальний браузерний smoke test та Chromium/Firefox/WebKit accessibility QA ще не виконані.

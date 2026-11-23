@@ -1,20 +1,20 @@
 # Audit Register — Phase 2 and Website Service
 
 ## Verified repository state (2026-11-23)
-- Default branch `main`: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
-- Working branch: `feat/french-ipa-ufpn-engine`; before this audit refresh the head was `eb92e2ecddded35a823725400539732ed0789d70).
-- PR #1 remains open, Draft, targets `main`, and is not merged.
-- Branch comparison before this documentation refresh: 68 commits ahead, 0 behind.
-- Current-head Actions run [45178726418](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45178726418) succeeded: `npm run build`, `npm test` (46/46), and `npm run check` passed. Deploy job skipped on feature branch.
-- Pages probe [45177924718](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45177924718): build/tests/check passed; `actions/configure-pages@v5` returned HTTP 404 because Pages is not configured. Latest recorded repository state is `has_pages=false`.
-- Workflow deploy remains restricted to `main`; no repository settings or PR merge were changed.
-- Local clone attempt failed because this environment could not resolve github.com. No local browser QA was performed.
+- Starting default-branch SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
+- PR #1 merged into `main` by squash merge; merge SHA `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
+- Merged head: `276c0375b3843ff1aa9c85d54d052dd0ddf1089b`; 69 commits and 84 changed files.
+- Feature CI run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235) passed build, 46/46 tests and syntax checks.
+- Main CI run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970) passed `npm run build`, `npm test` and `npm run check`; 46 tests passed.
+- Main deploy job failed after artifact upload: first attempt reported zero `github-pages` artifacts; retrying only deploy uploaded a second same-name artifact, then failed because two artifacts matched. A clean new workflow run is needed; avoid retrying only the deploy job after artifact upload.
+- GitHub Pages is enabled (`has_pages=true`); workflow deploy is gated to `main`. No public URL or deployed SHA has been verified yet.
+- Local clone failed because this environment could not resolve github.com. No manual browser QA was performed.
 
 ## Website service audit
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
-- **Build integration: DONE_VERIFIED.** Current-head hosted CI passes build, 46 tests and syntax check.
-- **Public hosting: BLOCKED.** Pages is not enabled/configured; configure-pages returned 404. The available GitHub integration has no operation to enable Pages. Owner must select Settings → Pages → Build and deployment → GitHub Actions, then review/merge PR #1 and verify the live URL/deployed SHA.
+- **Build/test integration: DONE_VERIFIED.** Main CI run 45192430970 passes build, 46 tests and syntax check.
+- **Public hosting: PARTIAL.** Pages enabled; deploy artifact was uploaded but the deploy action failed during artifact metadata lookup. Clean workflow run and public URL/HTTP/content verification remain.
 - **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run.
 
 ## Verified implementation inventory
@@ -28,7 +28,7 @@
 - `src/french-g2p.js` calls the original parser and preserves per-grapheme rule descriptions, source spans and source IPA. Only upstream Greek epsilon `ε` is normalized to IPA `ɛ`; `õ` remains unresolved/unsupported rather than guessed.
 - Project seed overrides and hand-written liaison/final-schwa postprocessing were removed from runtime.
 - Regression fixtures validate integration, not independent pronunciation accuracy.
-- AGPL-3.0 and upstream attribution/network-source notices are present.
+- AGPL-3.0 and upstream attribution/network-source notices are present; repository owner explicitly approved AGPL-3.0 on 2026-11-23.
 - Known fixture discrepancy: legacy CSV expects `descends` → `d(e)sɑ̃`, while executable parser emits `dɛssɑ̃`; discrepancy is documented.
 
 ## Main linguistic risks
@@ -41,7 +41,7 @@
 - `õ` and other upstream notation conventions need independent review.
 
 ## Remaining acceptance blockers
-- Enable Pages, review/merge PR #1, then verify public deployment URL and deployed commit.
+- Obtain a clean successful Pages deployment; verify public URL, HTTP response, app assets and deployed commit.
 - Run browser/mobile/accessibility QA.
 - Obtain independent French and Ukrainian phonetic review.
 - Obtain independently licensed gold IPA/UFPN data.
