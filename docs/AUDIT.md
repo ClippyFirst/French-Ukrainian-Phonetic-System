@@ -1,15 +1,13 @@
 # Audit Register — Phase 2
 
 ## Verified repository state
-- Latest CI-verified code head: `3d0d756ec031ff80148436c3484d080705074ec2` on `feat/french-ipa-ufpn-engine`; branch was 52 commits ahead and 0 behind `main` at this code commit.
-- GitHub Actions run `45175694114` on code head `3d0d756ec031ff80148436c3484d080705074ec2` passed `npm run build`, `npm test` (46/46: 14 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration) and `npm run check`. Pages deploy skipped because this is not `main`.
-- CI concurrency was corrected: push and PR runs now use distinct concurrency groups so they no longer cancel each other. Earlier failed runs exposed and helped fix source escaping, final consonant ordering, nasal cancellation, and lexical exceptions.
-- Local clone/test attempt failed before checkout: `Could not resolve host: github.com`; hosted CI is the verification evidence.
-- main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
-- Phase 2 starting working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
-- Earlier CI-verified code head: 594cb0be465a6dff6fc5427f9873f4c1b3e0c0f8 (44 tests + syntax check; run 45168613204). Latest verification is recorded above.
-- Draft PR #1 open; based on main with 0 commits behind; consult PR #1 for live ahead count.
-- GitHub Actions run 45154509214 on implementation head: test job success; npm test (31 tests) and npm run check passed; deploy skipped on PR.
+- Main SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
+- Working branch: `feat/french-ipa-ufpn-engine`; PR #1 remains open/draft and targets main.
+- Latest code change in this continuation: CI/deployment workflow adjusted, then reverted to safe Pages-on-main-only policy after confirming Pages is not configured. Documentation commits record the current state.
+- CI run `45177924718` on commit `0acb2e83a4b5ca9f1530d57a8f6c53ecd9cda310`: build passed; 46/46 tests passed; syntax check passed. Pages deploy failed at `actions/configure-pages@v5` with `Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions` (HTTP 404). The repository API currently reports `has_pages=false`.
+- The failed Pages attempt was a controlled deployment probe from the feature branch. The workflow was restored to deploy only from `main`; no Pages settings were changed. The feature branch still runs CI on push and PR.
+- Latest branch head should be read from GitHub after this audit update; latest documentation changes follow commit `0acb2e83a4b5ca9f1530d57a8f6c53ecd9cda310`.
+- Local clone/test attempt remains blocked by DNS resolution for github.com; hosted CI is the verification evidence.
 
 ## Verified implementation inventory (current branch candidate)
 - 37 segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
@@ -25,11 +23,20 @@
 ## OpenIPA French parser integration
 - Vendored the original OpenIPA French parser, all per-letter parsers, exception/rule dictionaries and minimal supporting constants/helpers from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504` under `vendor/openipa/`.
 - The original TypeScript source is bundled for browser use by `scripts/build-openipa.mjs` and pinned esbuild 0.25.0.
-- `src/french-g2p.js` now calls the original parser and preserves its per-grapheme rule descriptions, source spans and source IPA. It normalizes only the upstream Greek epsilon notation `ε` to standard IPA `ɛ`; `õ` is deliberately not guessed.
+- `src/french-g2p.js` calls the original parser and preserves its per-grapheme rule descriptions, source spans and source IPA. It normalizes only the upstream Greek epsilon notation `ε` to standard IPA `ɛ`; `õ` is deliberately not guessed.
 - The former project seed lexicon and hand-written liaison/final-schwa overrides have been removed from the runtime path. Every French word now comes from OpenIPA's full-text parser.
 - Added upstream fixture regression tests and adapter provenance tests. They test integration, not independent pronunciation accuracy.
 - AGPL-3.0 is now the repository license; source attribution and network-use requirements are in `THIRD_PARTY_NOTICES.md`.
-- Latest hosted CI run `45175694114` passed build, 46/46 tests and syntax checks after removing project IPA overrides. No local test was run in this connector-only environment.
+- Latest relevant hosted CI run `45177924718` passed build, 46/46 tests and syntax checks. No local test was run in this connector-only environment.
+
+## Web application audit (2026-11-23)
+- Confirmed the repository already contains a static browser app: `index.html`, `styles.css`, `src/app.js`, `src/engine.js`, `src/french-g2p.js`, `src/ufpn.js`.
+- User-visible capabilities include French text input/examples, OpenIPA profile selection, IPA/UFPN/Latin outputs, Basic/Detailed/Extended modes, word-level trace explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
+- Added `docs/WEB-SERVICE.md` and surfaced the app and deployment instructions in README. This documents an existing app; it does not claim browser QA or public hosting.
+- Repository API reports `has_pages=false`. Deployment probe `45177924718`: build/test/check all passed; Pages configuration returned 404; artifact upload and deploy were skipped.
+- Workflow reverted to deploy only from `main`, avoiding a permanently failing deploy job on every feature-branch push. No external Pages setting was changed.
+- Required external action: repository owner enables Settings → Pages → Build and deployment → GitHub Actions. Then PR #1 can be merged or workflow run on main; verify the resulting environment URL.
+- Browser/mobile/accessibility QA remains TODO; run in Chromium, Firefox and WebKit after a public preview exists.
 
 ## Main linguistic risks
 - UFPN is a project notation, not an established standard.
@@ -42,13 +49,4 @@
 - independently licensed gold data;
 - complete morphology/context engine;
 - browser/mobile/accessibility QA;
-- Pages deployment and browser/mobile/accessibility QA.
-
-- Latest trace-span correction localizes OpenIPA source spans to each output word; regression assertions verify the spans remain within the word. The latest change removes project seed overrides and passed CI run 45175694114 (46/46).
-
-
-## Single-source OpenIPA verification
-- Code commit `3d0d756ec031ff80148436c3484d080705074ec2` removes all project IPA seed overrides and custom liaison/final-schwa postprocessing. The complete French text is now processed by the vendored OpenIPA parser before the word-level output is assembled.
-- CI run `45175694114`: build passed; 46/46 tests passed (14 engine, 23 UFPN, 4 French G2P adapter, 5 OpenIPA parser/integration); syntax check passed.
-- Documentation reconciliation commit `6352990f780f8f8fd9eadeab58c81c2f4e8c51bb` also passed CI run `45176329594`: build passed, 46/46 tests passed, syntax check passed; deploy skipped on feature branch.
-- Current branch comparison at this audit refresh: 55 commits ahead of `main`, 0 behind. PR #1 remains open/draft.
+- enable GitHub Pages in repository settings and verify a successful deployment.
