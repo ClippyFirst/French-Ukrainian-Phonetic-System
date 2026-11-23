@@ -129,3 +129,15 @@
 
 
 | U6 | Ukrainian articulation guidance for all sound-table entries | DONE_VERIFIED | `data/ufpn-mapping.json` contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage. PR #19 workflow `45263336209` passed the six-browser rendering checks (Chromium, Firefox, WebKit × desktop/mobile) after fixing the test helper. Final `main` deployment is tracked separately under D3. |
+
+
+## Design refinement — phonetics workbench (2026-11-23)
+
+| ID | Task | Status | Evidence / remaining acceptance |
+|---|---|---|---|
+| UI-01 | Refine existing editorial UI, responsive layout, controls, outputs, focus states and reduced-motion behavior without changing phonetic logic | DONE_VERIFIED | PR #25 branch `design/phonetic-workspace-refinement`, commit `19157268124a46121c9c260c3abdb48a9b289ed3`; workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405) passed build, 57/57 tests, syntax checks, Charis audit and 12 browser/viewport combinations |
+| UI-02 | Automated responsive and keyboard checks | DONE_VERIFIED | Chromium, Firefox and WebKit × 1440, 1024, 768 and 390 px; checks confirm output panels render, expected 3/3/2/1 result columns, first-tab skip-link focus and no horizontal page overflow. Five screenshots uploaded as workflow artifact [14864086549](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405/artifacts/14864086549) |
+| UI-03 | Human visual review, screen-reader and physical-device accessibility review | PARTIAL | Screenshots are generated and available as an artifact but have not been manually inspected in this session. Screen-reader and real-device checks remain outstanding |
+| UI-04 | Publish the design refinement to GitHub Pages | TODO | PR #25 is open and not merged. Merge only after visual review; then require a successful main Pages deployment and fresh live-page verification |
+
+Scope guard: no French G2P, IPA normalization, IPA → UFPN mapping, phonetic data, confidence/provenance logic, export behavior or runtime dependencies were changed. The repository remains a research prototype; this UI work does not change linguistic validation or release-readiness status.
