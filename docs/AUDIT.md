@@ -45,3 +45,10 @@
 - Pages deployment and browser/mobile/accessibility QA.
 
 - Latest trace-span correction localizes OpenIPA source spans to each output word; regression assertions verify the spans remain within the word. The latest change removes project seed overrides and passed CI run 45175694114 (46/46).
+
+
+## Single-source OpenIPA verification
+- Code commit `3d0d756ec031ff80148436c3484d080705074ec2` removes all project IPA seed overrides and custom liaison/final-schwa postprocessing. The complete French text is now processed by the vendored OpenIPA parser before the word-level output is assembled.
+- CI run `45175694114`: build passed; 46/46 tests passed (14 engine, 23 UFPN, 4 French G2P adapter, 5 OpenIPA parser/integration); syntax check passed.
+- Documentation reconciliation commit `6352990f780f8f8fd9eadeab58c81c2f4e8c51bb` also passed CI run `45176329594`: build passed, 46/46 tests passed, syntax check passed; deploy skipped on feature branch.
+- Current branch comparison at this audit refresh: 55 commits ahead of `main`, 0 behind. PR #1 remains open/draft.
