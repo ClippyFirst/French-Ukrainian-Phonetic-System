@@ -48,7 +48,7 @@ export function transcribe(text,options={}){
   const alternatives=entry?.alternatives||[];
   const ruleTrace=entry?[{start:0,end:raw.length,grapheme:raw,ipa,ruleId:'lexicon-entry',explanationUk:'Словниковий запис; джерело й незалежна перевірка ще мають бути додані.'},...boundaryTrace]:g2p.trace;
   let liaisonApplied=boundaryTrace.some(item=>item.ipa);
-  if(profile==='lyric-diction-fr'&&/(?:e|es)$/i.test(key)&&!new Set(['les','des','mes','tes','ses','ces']).has(key)&&!ipa.endsWith('ə')){
+  if(entry&&profile==='lyric-diction-fr'&&/(?:e|es)$/i.test(key)&&!new Set(['les','des','mes','tes','ses','ces']).has(key)&&!ipa.endsWith('ə')){
    ipa+='ə';sourceIpa+='ə';
    const pos=key.endsWith('es')?raw.length-2:raw.length-1;
    ruleTrace.push({start:pos,end:pos+1,grapheme:raw[pos],ipa:'ə',ruleId:'lyric-final-schwa',explanationUk:'У профілі вокальної дикції кінцеве німе e реалізується як /ə/ за лексичними та поетичними умовами.'});
