@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {renderUfpn,UFPN_MAPPING,tokenizeIpa} from '../src/ufpn.js';
 test('reference inventory contains 37 entries',()=>assert.equal(UFPN_MAPPING.phonemes.length,37));
 test('Basic preserves front rounded vowel contrasts',()=>assert.equal(renderUfpn('i y ø œ').text,'і і̊ е̊́ е̊̆'));
-test('nasal vowels retain quality, rounding and nasalization',()=>assert.equal(renderUfpn('ɑ̃ ɛ̃ ɔ̃ œ̃').text,'а̠̃ ӗ̃ о̆̃ е̊̆̃'));
+test('nasal vowels retain quality, rounding and nasalization',()=>assert.equal(renderUfpn('ɑ̃ ɛ̃ ɔ̃ œ̃').text,'а̠̃ ӗ̃ о̆̃ е̊̆̃'));
 test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal(renderUfpn('ʁ').text,'х̬̠'));
 test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'нь нґ'));
 test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бо̆̃·жуːх̬̠'));
