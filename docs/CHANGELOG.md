@@ -26,4 +26,4 @@
 - Replaced the generic longest-match spelling fallback with a clean-room context-sensitive French grapheme pass for common digraphs, vowel groups, nasal spellings, glides, contextual consonants, suffixes and silent endings.
 - Added source-span rule traces with rule identifiers and Ukrainian explanations to word details.
 - Added focused French G2P tests and OpenIPA scope/reuse comparison.
-- This remains a low-confidence fallback; CI for the current head and independent pronunciation evaluation are pending.
+- This remains a low-confidence fallback; GitHub Actions run 45167053528 passed all 41 tests and syntax checks. Independent pronunciation evaluation remains pending.

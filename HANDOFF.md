@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Previous verified baseline: e9f1c952b31d0bb91155b6663ddee61c1778942f (35 tests + syntax check passed). Current unverified working head: e693b15717b71f3bf30be12cd434e346b1d8d60c.
+- Latest CI-verified code head: 375f329095527aecd7e741c4e75b6d8c593da153 (41 tests + syntax check passed; run 45167053528).
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -13,9 +13,10 @@
 ## Latest continuation: OpenIPA-oriented French G2P implementation
 - Inspected OpenIPA's public French parser, contextual letter rules, exception registry, per-grapheme explanation path, French regression tests and README. OpenIPA is lyric-diction oriented, uses rule-driven transcription and acknowledges incomplete exceptions/POS-dependent rules.
 - Added clean-room `src/french-g2p.js` to replace the old generic longest-match fallback with contextual French grapheme rules; no OpenIPA code or database was copied.
+- Added an explicit exception layer for common forms where spelling rules are insufficient (e.g. `hiver`, `mer/ver/fer/cher`, `ville/mille`, `tranquille`).
 - Added source spans, IPA result, rule IDs and Ukrainian explanations for each processed grapheme, surfaced in the word-detail UI.
 - Added French G2P regression tests and `docs/OPENIPA-COMPARISON.md`.
-- Current G2P fallback remains low confidence and is not yet at proven OpenIPA quality; unresolved POS-dependent `-ent`, lexical exceptions, schwa, liaison, h-aspiré and regional profiles are documented.
+- Current G2P fallback remains low confidence and is not yet at proven OpenIPA quality; unresolved POS-dependent `-ent`, broader lexical exceptions, schwa, liaison, h-aspiré and regional profiles are documented.
 
 ## Previous continuation: extended Cyrillic inventory
 
@@ -34,8 +35,9 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Current verification status
-- Current head e693b15717b71f3bf30be12cd434e346b1d8d60c; CI run 45166534429 was pending with no jobs returned at last check. Local `git clone` and test execution blocked by DNS resolution for github.com. Do not claim current tests passed.
-- A previous attempted run on 54a878ce failed on escaped quotes in the new module; source was corrected in follow-up commits, but current CI evidence is still outstanding.
+- GitHub Actions run 45167053528 completed successfully on 375f329095527aecd7e741c4e75b6d8c593da153: `npm test` passed 41/41 and `npm run check` passed. Deploy was skipped on the feature branch.
+- The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
+- Local `git clone` and test execution remain blocked by DNS resolution for github.com.
 
 ## Previous verification
 - Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
