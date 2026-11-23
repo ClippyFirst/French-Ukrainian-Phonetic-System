@@ -19,3 +19,16 @@
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |
 | D2 | Repository LICENSE | DEFERRED | owner decision required |
 | D3 | Pages deployment | PARTIAL | previous head CI test job succeeded; Pages deploy skipped on PR branch; Pages settings not verified |
+
+
+## OpenIPA engine integration (2026-11-23)
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_PENDING_CI | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; build and CI must pass |
+| Build upstream TypeScript into browser ESM bundle | DONE_PENDING_CI | `npm run build` via pinned esbuild 0.25.0; bundle is generated as `src/openipa-french.js` |
+| Route fallback G2P through upstream parser and preserve rule traces | DONE_PENDING_CI | `src/french-g2p.js`; `src/engine.js`; regression tests in `tests/openipa-french.test.js` |
+| Align upstream IPA notation to canonical IPA | PARTIAL | `ε` → `ɛ` explicit notation normalization; `õ` and other conventions remain visible pending phonetic review |
+| Adopt AGPL-3.0 and upstream attribution | DONE_PENDING_CI | `LICENSE`, `THIRD_PARTY_NOTICES.md`, README; verify CI |
+| Verify full seed lexicon against upstream and external dictionaries | TODO | Compare every seed entry; only independently verified entries may receive high confidence |
+| Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |

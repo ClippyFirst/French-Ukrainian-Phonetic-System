@@ -22,11 +22,14 @@
 - `ы` is not assigned to /ə/ because [ɨ] is a different vowel quality; `ё` is not assigned to /ø, œ/ because its ordinary value is iotated/contextual.
 - Machine-readable decisions and sources are in `data/ufpn-mapping.json` → `graphemeInventory`; S31 records the Belarusian orthographic form and S33 its phonetic [w] realization.
 
-## French G2P parity work added on current branch
-- Replaced the longest-match fallback with a clean-room context-sensitive grapheme pass covering common consonant groups, soft/hard c/g, intervocalic s, x, glides, oral/nasal vowel spellings, common suffixes, silent h/final letters and consonant doubling.
-- Added per-grapheme source spans, IPA output, rule IDs and Ukrainian explanations to the word detail model and UI.
-- Generic fallback remains low confidence. POS-sensitive `-ent`, lexical exception classes, schwa variation, liaison and regional variants remain explicitly unresolved. This is not a measured OpenIPA parity claim.
-- Added `docs/OPENIPA-COMPARISON.md` describing scope and clean-room reuse boundary.
+## OpenIPA French parser integration
+- Vendored the original OpenIPA French parser, all per-letter parsers, exception/rule dictionaries and minimal supporting constants/helpers from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504` under `vendor/openipa/`.
+- The original TypeScript source is bundled for browser use by `scripts/build-openipa.mjs` and pinned esbuild 0.25.0.
+- `src/french-g2p.js` now calls the original parser and preserves its per-grapheme rule descriptions, source spans and source IPA. It normalizes only the upstream Greek epsilon notation `ε` to standard IPA `ɛ`; `õ` is deliberately not guessed.
+- The existing project seed lexicon still has precedence over OpenIPA for entries already present. Those entries remain unverified and can diverge from upstream.
+- Added upstream fixture regression tests and adapter provenance tests. They test integration, not independent pronunciation accuracy.
+- AGPL-3.0 is now the repository license; source attribution and network-use requirements are in `THIRD_PARTY_NOTICES.md`.
+- Hosted CI must run `npm run build`, `npm test` (expected 44 tests) and `npm run check` before this batch can be marked DONE_VERIFIED. No local test was run in this connector-only environment.
 
 ## Main linguistic risks
 - UFPN is a project notation, not an established standard.
@@ -39,4 +42,4 @@
 - independently licensed gold data;
 - complete morphology/context engine;
 - browser/mobile/accessibility QA;
-- Pages deployment and repository license decision.
+- Pages deployment and browser/mobile/accessibility QA.

@@ -4,7 +4,7 @@ import {transcribe,adaptIpa,INVENTORY,describeSegment} from '../src/engine.js';
 test('IPA is the source for both adapters',()=>{const a=adaptIpa('ʃɑ̃');assert.equal(a.ufpn,'ша̠̃');assert.equal(a.romanized,'shan');assert.deepEqual(a.tokens,['ʃ','ɑ̃'])});
 test('lexical entries retain IPA and provenance',()=>{const r=transcribe('Bonjour !');assert.equal(r.words[0].ipa,'bɔ̃.ʒuʁ');assert.equal(r.words[0].source,'project-seed-unverified');assert.equal(r.words[0].confidence,'medium')});
 test('liaison applies only to supported determiner-vowel pattern',()=>{const r=transcribe('les amis');assert.equal(r.words[0].ipa,'lez');assert.equal(r.words[0].liaisonApplied,true);assert.equal(transcribe('et amis').words[0].ipa,'e')});
-test('unknown fallback is low confidence',()=>{const r=transcribe('zorblique');assert.equal(r.words[0].confidence,'low');assert.equal(r.words[0].source,'orthographic-fallback');assert.ok(r.warnings.includes('zorblique'))});
+test('unknown fallback is low confidence',()=>{const r=transcribe('zorblique');assert.equal(r.words[0].confidence,'low');assert.equal(r.words[0].source,'openipa-french-engine');assert.ok(r.warnings.includes('zorblique'))});
 test('every adapter mapping has a value',()=>{for(const [ipa,ufpn] of Object.entries(INVENTORY))assert.ok(ufpn.length>0,'missing '+ipa)});
 test('Unicode normalization is stable',()=>{assert.equal(transcribe('école').text,transcribe('e\u0301cole').text)});
 test('elision prefixes remain pronounced segments',()=>{const r=transcribe("j'aime");assert.equal(r.words[0].text,"j'");assert.equal(r.words[0].ipa,'ʒ')});

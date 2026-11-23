@@ -1,22 +1,43 @@
-# French G2P engine — scope and rule contract
+# OpenIPA integration and scope
 
-The generic engine now uses a deterministic, context-sensitive grapheme pass for words absent from the reviewed seed lexicon. It is a practical fallback, not a claim of complete French phonology. The implementation is clean-room code: OpenIPA is an architectural/behavioral reference, not a source of copied code or database records.
+## Integration status
 
-## Rule families implemented
-- multi-letter consonant groups (`ch`, `gn`, `ph`, `th`, `qu`, `gu`, `ill`);
-- contextual soft/hard `c` and `g`, intervocalic `s`, and common `x` values;
-- common oral vowel groups, glides, and nasal-vowel spellings;
-- common suffix spellings (`-tion`, `-sion`, `-er`, `-ez`);
-- silent `h`, common final-consonant behavior, and consonant doubling.
+The project now vendors and executes OpenIPA's original French TypeScript parser rather than approximating its rules with a separate clean-room G2P fallback.
 
-## Scope alignment
-The UI exposes a separate `lyric-diction-fr` profile for the upstream project's stated vocal/lyric diction use case. It realizes final mute `e` as schwa in supported patterns; the default `metropolitan-fr` profile remains spoken French. This is a scoped compatibility layer, not a complete classical singing/poetic scansion engine.
+Vendored components:
+- `ParseFrench.ts` — text-level parser, word exception dispatch, liaison/elision hooks and post-processing;
+- all original French per-letter parsers under `parse-letters/`;
+- original `FrenchRules.ts`, `FrenchExceptions.ts`, `FrenchHelper.ts`, and `FrenchNotes.ts`;
+- required generic helpers/constants under `vendor/openipa/src/constants/` and `vendor/openipa/src/util/`.
 
-## Explicit limitations
-- `-ent` is morphosyntactically ambiguous: the fallback currently emits a nasal vowel and cannot reliably distinguish verb inflection from lexical endings.
-- schwa deletion, liaison, enchaînement, h-aspiré lexical classes, POS, homographs, regional variants, proper names, and loanwords require lexical/contextual data.
-- final `e`, mid-vowel openness, and some nasal-vowel mergers vary by lexical item, region, register, and speaking style.
-- generic fallback output remains low confidence. Add exceptions to the reviewed lexicon only with an inspectable pronunciation source.
+The upstream modules are bundled to `src/openipa-french.js` with esbuild at build time. `src/french-g2p.js` is a thin adapter; it calls the upstream parser and preserves its rule descriptions, source spans and raw IPA output. IPA is then passed into the existing UFPN adapter. No second spelling-to-UFPN path was added.
 
-## OpenIPA comparison
-OpenIPA's public repository documents rule-driven French transcription, per-letter feedback, exceptions, and lyric-diction orientation. Its README acknowledges that exceptions are still being added and POS-dependent rules remain incomplete. This project targets comparable practical behavior, not identical output or broader linguistic coverage. OpenIPA is AGPL-3.0; this project does not copy its implementation or database.
+## Upstream provenance and license
+
+- Project: [hfellerhoff/openipa](https://github.com/hfellerhoff/openipa)
+- Revision inspected and vendored: `266c002d6c03c6b581b2bea74ca39bf1a92a7504`
+- License: AGPL-3.0; the full license is in the repository's `LICENSE`.
+- Attribution and scope: `THIRD_PARTY_NOTICES.md`.
+
+The source is retained under `vendor/openipa/` with its upstream module layout. Only the project-facing adapter and build integration are newly authored here. The project is distributed under AGPL-3.0, and network deployment must comply with section 13.
+
+## IPA notation boundary
+
+OpenIPA's IPA enum uses Greek epsilon `ε` as a project symbol for the open-mid front vowel. The adapter normalizes that specific symbol to standard IPA `ɛ` before the UFPN adapter and retains the original in `sourceIpa`/per-rule `sourceIpa` fields. Other upstream conventions such as `õ` are not silently guessed into another IPA symbol; if unsupported by UFPN, they remain visible and must be explicitly reconciled.
+
+## Scope and known limitations
+
+OpenIPA is primarily oriented toward vocal/lyric diction. Its parser includes substantial contextual letter rules and lexical exceptions, plus optional liaison and elision analysis. It does not establish complete modern conversational French coverage. Upstream comments and tests themselves document incomplete POS-dependent `-ent` handling and additional rules still to implement.
+
+The project seed lexicon still has precedence for words already present in it; those entries are separately marked as project seed data and have not all been independently verified. Unlisted words use the OpenIPA parser. This precedence must be reconsidered after an independently checked comparison corpus exists.
+
+## Verification
+
+Regression tests now include the upstream French test fixtures (`calme`, `éclate`, `docile`, `céleste`, `descends`, `garçon`) and adapter-level rule-trace checks. Passing these tests demonstrates integration and regression behavior, not phonetic accuracy across arbitrary French text.
+
+Remaining work:
+- reconcile all upstream IPA conventions with the canonical IPA inventory without guessing;
+- compare the project's existing seed lexicon against OpenIPA and authoritative dictionaries;
+- port upstream's original larger French word corpus where redistribution terms permit;
+- add explicit POS/morphology and h-aspiré coverage only with evidence;
+- browser/mobile/accessibility QA and independent French phonetics review.

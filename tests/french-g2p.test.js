@@ -1,52 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {transcribeFrenchWord} from '../src/french-g2p.js';
+import { transcribeFrenchWord, transcribeFrenchWordDetailed } from '../src/french-g2p.js';
 
-test('core consonant digraphs',()=>{
- assert.equal(transcribeFrenchWord('chat'),'ʃa');
- assert.equal(transcribeFrenchWord('champ'),'ʃɑ̃');
- assert.equal(transcribeFrenchWord('montagne'),'mɔ̃taɲ');
- assert.equal(transcribeFrenchWord('phare'),'faʁ');
-});
-test('contextual c and g',()=>{
- assert.equal(transcribeFrenchWord('cité'),'site');
- assert.equal(transcribeFrenchWord('cadeau'),'kado');
- assert.equal(transcribeFrenchWord('girafe'),'ʒiʁaf');
- assert.equal(transcribeFrenchWord('gare'),'gaʁ');
-});
-test('common vowel groups and glides',()=>{
- assert.equal(transcribeFrenchWord('eau'),'o');
- assert.equal(transcribeFrenchWord('boîte'),'bwat');
- assert.equal(transcribeFrenchWord('oui'),'wi');
- assert.equal(transcribeFrenchWord('nuit'),'nɥi');
-});
-test('nasal spellings and oral-vowel context',()=>{
- assert.equal(transcribeFrenchWord('bon'),'bɔ̃');
- assert.equal(transcribeFrenchWord('année'),'ane');
-});
-test('final consonant heuristic',()=>{
- assert.equal(transcribeFrenchWord('petit'),'pəti');
- assert.equal(transcribeFrenchWord('avec'),'avɛk');
- assert.equal(transcribeFrenchWord('hiver'),'ivɛʁ');
- assert.equal(transcribeFrenchWord('mer'),'mɛʁ');
- assert.equal(transcribeFrenchWord('ville'),'vil');
+test('OpenIPA contextual consonants and digraphs', () => {
+  assert.equal(transcribeFrenchWord('chat'), 'ʃa');
+  assert.equal(transcribeFrenchWord('cité'), 'site');
+  assert.equal(transcribeFrenchWord('cadeau'), 'kado');
+  assert.equal(transcribeFrenchWord('ville'), 'vilə');
 });
 
-import {transcribeFrenchWordDetailed} from '../src/french-g2p.js';
-test('rule trace covers every source grapheme with spans and explanations',()=>{
- const d=transcribeFrenchWordDetailed('chat');
- assert.equal(d.ipa,'ʃa');
- assert.equal(d.trace.map(x=>x.grapheme).join(''),'chat');
- assert.ok(d.trace.every(x=>Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.ruleId&&x.explanationUk));
- assert.equal(d.trace.at(-1).ruleId,'silent-final-consonant');
+test('OpenIPA nasal and vowel sequences retain upstream conventions', () => {
+  assert.equal(transcribeFrenchWord('garçon'), 'gaɾsõ');
+  assert.equal(transcribeFrenchWord('eau'), 'o');
+  assert.equal(transcribeFrenchWord('oui'), 'wi');
 });
 
-test('vowel-to-glide contexts include ou and final il',()=>{
- assert.equal(transcribeFrenchWord('jouer'),'ʒwe');
- assert.equal(transcribeFrenchWord('travail'),'tʁavaj');
+test('the adapter keeps upstream raw IPA while normalizing Greek epsilon', () => {
+  const result = transcribeFrenchWordDetailed('mer');
+  assert.equal(result.ipa, 'mɛɾ');
+  assert.equal(result.sourceIpa, 'mεɾ');
+  assert.ok(result.trace.some((item) => item.sourceIpa.includes('ε') && item.ipa.includes('ɛ')));
 });
 
-test('lyric-diction profile realizes final mute e as schwa',()=>{
- assert.equal(transcribeFrenchWord('table'),'tabl');
- assert.equal(transcribeFrenchWord('table',{profile:'lyric-diction-fr'}),'tablə');
+test('rule traces preserve the upstream explanations', () => {
+  const result = transcribeFrenchWordDetailed('chat');
+  assert.equal(result.ipa, 'ʃa');
+  assert.ok(result.trace.every((item) => item.rule && item.source === 'OpenIPA'));
 });

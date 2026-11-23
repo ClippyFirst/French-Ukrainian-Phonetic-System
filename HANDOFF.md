@@ -10,15 +10,16 @@
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
-## Latest continuation: OpenIPA-oriented French G2P implementation
-- Inspected OpenIPA's public French parser, contextual letter rules, exception registry, per-grapheme explanation path, French regression tests and README. OpenIPA is lyric-diction oriented, uses rule-driven transcription and acknowledges incomplete exceptions/POS-dependent rules.
-- Added clean-room `src/french-g2p.js` to replace the old generic longest-match fallback with contextual French grapheme rules; no OpenIPA code or database was copied.
-- Added an explicit exception layer for common forms where spelling rules are insufficient (e.g. `hiver`, `mer/ver/fer/cher`, `ville/mille`, `tranquille`).
-- Added source spans, IPA result, rule IDs and Ukrainian explanations for each processed grapheme, surfaced in the word-detail UI.
-- Added /w/ glide handling for `ou` before vowels and /j/ for vowel+`il` sequences; regression examples include `jouer` and `travail`.
-- Added a dedicated `lyric-diction-fr` profile to match OpenIPA's stated vocal/lyric diction scope: final mute `e` is realized as schwa while the default Metropolitan spoken profile remains unchanged.
-- Added French G2P regression tests and `docs/OPENIPA-COMPARISON.md`.
-- Current G2P fallback remains low confidence and is not yet at proven OpenIPA quality; unresolved POS-dependent `-ent`, broader lexical exceptions, schwa, liaison, h-aspiré and regional profiles are documented.
+## Latest continuation: direct OpenIPA parser integration
+
+- User approved adopting AGPL-3.0 for the research/educational repository.
+- Vendored the original OpenIPA French TypeScript parser, per-letter modules, exception/rule dictionaries and minimal helper/constants from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
+- Added repository `LICENSE` (AGPL-3.0) and `THIRD_PARTY_NOTICES.md` with attribution and AGPL section 13 network-service requirements.
+- Added a pinned esbuild browser bundle step and wired it into CI tests and Pages deployment.
+- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, source spans and raw source IPA are retained. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
+- The project's existing seed lexicon still takes precedence over OpenIPA for known entries. Its records remain unverified and need systematic reconciliation.
+- Regression tests mirror a small set of OpenIPA's own published French test fixtures. They are integration tests, not independent gold data or accuracy evidence.
+- Await hosted CI for the first full build/test/syntax validation. Do not claim completion before it passes.
 
 ## Previous continuation: extended Cyrillic inventory
 
@@ -62,7 +63,7 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 3. Full morphology/POS/syntax, lexical candidates, complete liaison/schwa/enchaînement engine.
 4. Browser/mobile/accessibility testing in Chromium, Firefox and WebKit.
 5. Speaker-balanced regional data for Québec/Belgium/Switzerland/Southern France.
-6. Owner's repository license decision.
+6. Final license choice is no longer blocked: AGPL-3.0 was approved and adopted.
 
 ## Readiness
 Partial research prototype. New G2P fallback and explanations improve practical behavior but do not establish parity or accuracy without a completed CI run and independently checked lexical benchmark. UFPN specification and adapter can be iterated, but arbitrary French text is not yet reliably transcribed and no scientific accuracy score is claimed.

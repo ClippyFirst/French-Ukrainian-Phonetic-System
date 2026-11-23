@@ -23,7 +23,7 @@
 | S20 | [ICPhS 2023: /R/ co-occurring as allophones in Québec French](https://www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2023/full_papers/39.pdf) | regional/age variation and multiple rhotic allophones in Québec | conference paper | Наукове |
 | S21 | [Jun & Fougeron 2002, accentual phrase](https://www.degruyterbrill.com/document/doi/10.1515/prbs.2002.002/html) | phrase-final prominence, duration and pitch contour | academic paper | Наукове |
 | S22 | [Michelas & D'Imperio 2012, When syntax meets prosody](https://doi.org/10.1016/j.wocn.2012.08.004) | syntax/prosody, duration and tonal variability | academic paper | Наукове |
-| S23 | [OpenIPA](https://github.com/hfellerhoff/openipa) | функціональний референс | AGPL-3.0; реалізація clean-room | Не копіювали |
+| S23 | [OpenIPA](https://github.com/hfellerhoff/openipa) | оригінальний французький parser, контекстні правила, винятки, liaison/elision hooks | AGPL-3.0; vendored code attribution and copyleft obligations apply | Інтегровано з фіксацією upstream revision 266c002d6c03c6b581b2bea74ca39bf1a92a7504 |
 | S24 | [Replica Skill](https://github.com/Jakeschincariol/replica-skill) | clean-room recon/build/test | MIT для skill, не ліцензія OpenIPA | Довідкове |
 
 Доступність сторінки не означає дозвіл на масовий імпорт. Не включати аудіо/словникові бази без перевірки ліцензії конкретного файлу/релізу. Репозиторій поки не має власної LICENSE; це рішення власника.
@@ -38,3 +38,8 @@
 | S31 | [Закон Республіки Білорусь №420-З (2008), Правілы беларускай арфаграфіі і пунктуацыі](https://uploads.philology.by/bel_grammar/bel_arfagr_punktuac_zakon.pdf) | нормативний білоруський алфавіт і розрізнення ў/у; контекстні значення е/ё/ю/я | використано для опису графем; корпус не імпортовано | Первинне нормативне джерело |
 | S32 | [Kerek & Niemi 2009, Russian orthography and learning to read](https://files.eric.ed.gov/fulltext/EJ838386.pdf) | російські голосні графеми: ы [ɨ], э [ɛ], ё як /j/+o або контекстна голосна | наукова стаття; не імпортовано | Наукове |
 | S33 | [Cambridge Handbook of the International Phonetic Association: Belarusian](https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/belarusian/12CED258A76872A8E9D381383D654130) | [w] у білоруській після голосних у коді; описує різні аналізи фонологічного статусу [w] (алофон /v/ або фонема) | академічний фонетичний опис; використано лише як доказ звукової реалізації, не імпортовано | Наукове |
+
+
+## OpenIPA implementation provenance
+
+OpenIPA French source files are vendored under `vendor/openipa/` from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`. The upstream license is reproduced as `LICENSE`; attribution and network-source obligations are documented in `THIRD_PARTY_NOTICES.md`. A small number of upstream French regression fixture examples are mirrored in tests; no full OpenIPA word corpus or external pronunciation database was imported.
