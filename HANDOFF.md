@@ -1,76 +1,58 @@
-# Handoff — French G2P parity continuation / UFPN Phase 2
+# Handoff — French–Ukrainian phonetic web service
 
-## Repository
-- Default branch: main.
-- Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
-- Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
-- Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest CI-verified code head: `3d0d756ec031ff80148436c3484d080705074ec2`; latest docs reconciliation commit: `6352990f780f8f8fd9eadeab58c81c2f4e8c51bb`. Branch was 52 ahead at the code commit and 55 ahead at the docs reconciliation commit, 0 behind `main`. CI run `45175694114` passed build, 46/46 tests and syntax check; docs commit CI run `45176329594` also passed build, 46/46 tests and syntax check. Pages deploy skipped on the feature branch.
-- Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
-- Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
-- Git clone blocked by DNS; GitHub connector used for remote reads/writes.
+## Repository state
+- Default branch: `main`, starting SHA `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
+- Working branch: `feat/french-ipa-ufpn-engine`.
+- Draft PR #1: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1 (not merged).
+- No other branches were present at the latest inspection.
+- The current branch head must be read from GitHub after this handoff commit.
+- Git clone was previously blocked by DNS; GitHub connector remote operations and hosted CI were used.
 
-## Latest continuation: direct OpenIPA parser integration
+## Web service
+The repository already contains a static browser app, not merely a library:
+- `index.html`, `styles.css`, `src/app.js`;
+- engine path: browser ESM bundle of vendored OpenIPA → IPA → UFPN / Latin guide;
+- French text input and examples, profile selector, synchronized IPA/UFPN/Latin output;
+- Basic / Detailed / Extended UFPN levels;
+- word-level rule explanations, uncertainty warnings, searchable UFPN inventory;
+- copy, TXT export and browser print-to-PDF;
+- responsive styles.
 
-- User approved adopting AGPL-3.0 for the research/educational repository.
-- Vendored the original OpenIPA French TypeScript parser, per-letter modules, exception/rule dictionaries and minimal helper/constants from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
-- Added repository `LICENSE` (AGPL-3.0) and `THIRD_PARTY_NOTICES.md` with attribution and AGPL section 13 network-service requirements.
-- Added a pinned esbuild browser bundle step and wired it into CI tests and Pages deployment.
-- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, word-local source spans and raw source IPA are retained. No project IPA override is applied. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
-- The project's old seed lexicon and manual liaison/final-schwa postprocessors have been removed from runtime. All French words now use OpenIPA directly, eliminating local pronunciation overrides.
-- Regression tests mirror a small set of OpenIPA's own published French test fixtures and exercise full-text liaison/elision. They are integration tests, not independent gold data or accuracy evidence.
-- The `lyric-diction-fr` profile now runs OpenIPA's text-level liaison/elision hooks. The `metropolitan-fr` profile runs base parser rules without automatic cross-word liaison/elision.
-- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). Text-level liaison/elision and word-local spans passed CI run `45174869729` (47/47). The latest single-source alignment commit `3d0d756ec031ff80148436c3484d080705074ec2` passed CI run `45175694114` (build, 46/46 tests, syntax check).
+A full capability and hosting guide was added at `docs/WEB-SERVICE.md`; README now links it.
 
-## Previous continuation: extended Cyrillic inventory
+## Deployment finding
+- Repository API reports `has_pages=false`.
+- CI run `45177924718`, commit `0acb2e83a4b5ca9f1530d57a8f6c53ecd9cda310`: build passed, 46/46 tests passed, `npm run check` passed.
+- A feature-branch deployment probe reached `actions/configure-pages@v5` and failed with HTTP 404: no Pages site exists/configured. Upload and deploy were skipped.
+- The workflow was restored to its safe policy: build/test/check on feature branch and PR; deploy only from `main`. No repository Pages setting was changed.
+- Owner action required: GitHub repository Settings → Pages → Build and deployment → **GitHub Actions**. After enabling, merge PR #1 or run workflow on main and confirm the `github-pages` environment URL. Until then, no public website URL is verified.
+- Do not claim hosted service is live yet.
 
-Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375bac5d caught one stale expected string for the nasal /ɛ̃/ test. The expectation was corrected; the subsequent CI run 45161219147 passed all tests and syntax checks on b82ee50aa77a899204fb86a03ede97e0f12b01bd.
-- Adopted Belarusian `ў` for IPA /w/, preserving /v/ → `в`, /ɥ/ → `й̊`, /j/ → `й`.
-- Adopted Russian/Belarusian `э` for /ɛ/ and `э̃` for /ɛ̃/.
-- Added machine-readable `graphemeInventory` with provenance and candidate decisions. `ы` is not mapped to schwa ([ɨ] is not /ə/); `ё` is not mapped to /ø, œ/ (its ordinary value is iotated/contextual).
-- Updated adapter mapping, UI reference, tests and notation/source documentation.
+## Latest engine architecture
+- Vendored original OpenIPA French parser from revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
+- Every French word goes through original OpenIPA full-text parser; project seed lexicon, hand-written liaison postprocessing and manual lyric-final-schwa injection were removed.
+- `lyric-diction-fr` enables OpenIPA text-level liaison/elision hooks; `metropolitan-fr` uses base parser without automatic cross-word liaison.
+- IPA is the only input to the UFPN adapter. Unsupported IPA remains visible.
+- Only explicit notation normalization currently made: OpenIPA Greek epsilon `ε` → standard IPA `ɛ`. `õ` remains visible pending expert review.
+- AGPL-3.0 adopted with owner approval; see LICENSE and THIRD_PARTY_NOTICES.md.
 
-## Implemented in this phase
-- Data-driven UFPN specification with 37 phonemic/segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 phonetic feature dimensions, 19 allophone phenomena, 13 context processes and 7 profile records.
-- Basic, Detailed and Extended output levels.
-- Dedicated IPA-only adapter; unsupported IPA remains visible.
-- Unicode NFC/NFD tests.
-- Allophone, context-process, prosody and regional-profile registers; Québec /t,d/ affrication and diphthongization are evidence-backed research entries, not default metropolitan rules.
-- UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
+## Verification
+- Latest implementation CI before web-service docs: run `45176571302` passed build, 46/46 tests and syntax checks on `c84e7274baf4c5bb4d5a31931f073da6bd69ee2c`.
+- Latest CI after workflow deployment probe: run `45177924718`; build passed, 46/46 tests passed, syntax check passed; deploy failed only at Pages configuration because Pages is disabled.
+- No local test/browser run was possible in the connector-only environment. Browser QA remains outstanding.
 
-## Current verification status
-- Latest GitHub Actions run 45175694114 passed build, 46/46 tests and syntax checks on code head 3d0d756ec031ff80148436c3484d080705074ec2. Deploy was skipped on the feature branch.
-- The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
-- Local `git clone` and test execution remain blocked by DNS resolution for github.com.
+## Preserved implementation
+- 37 segmental mappings, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
+- Three UFPN levels; extended Cyrillic inventory including `ў` for /w/ and `э` for /ɛ/; `ы` and `ё` remain unassigned.
+- Parser trace, provenance, NFC normalization, tests, documentation and PR #1 retained.
 
-## Previous verification
-- Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
-- Final implementation SHA 2e21c8fe78075d41109676fbd79d21a7276d1dd4 passed GitHub Actions run 45154509214: npm test (34 tests in the latest run) and npm run check succeeded on b82ee50aa77a899204fb86a03ede97e0f12b01bd; GitHub Actions run 45161219147.
-- Deploy job was skipped because this is a PR branch; GitHub Pages settings/public deployment were not verified.
-- No browser/mobile/accessibility QA or independent phonetic review has been run.
-
-## Linguistic findings
-- /ɛ̃–œ̃/ merger is widespread in contemporary northern/Parisian French but not universal.
-- /a–ɑ/ contrast is neutralized for many speakers but retained in some varieties/speakers.
-- Mid-vowel height varies with syllable structure, duration and speaker.
-- Schwa deletion and reduction are distinct; epenthetic schwa is a separate phenomenon.
-- Liaison is lexically and syntactically constrained with a large variable periphery.
-- /ʁ/ and some /ɲ/ realizations vary; regional profiles must not be conflated.
-- Extended prosody markers require audio/annotation; text punctuation is insufficient.
-
-## Remaining blockers
-1. Independent review by French phonologist and Ukrainian phonetician.
-2. Licensed, independently verified gold IPA/UFPN corpus (currently 0).
-3. Full morphology/POS/syntax, lexical candidates, complete liaison/schwa/enchaînement engine.
-4. Browser/mobile/accessibility testing in Chromium, Firefox and WebKit.
-5. Speaker-balanced regional data for Québec/Belgium/Switzerland/Southern France.
-6. Final license choice is no longer blocked: AGPL-3.0 was approved and adopted.
+## Remaining tasks and acceptance criteria
+1. **Enable Pages (BLOCKED by owner setting):** Settings → Pages → GitHub Actions; then successful deployment job and verified environment URL.
+2. **Browser QA (TODO):** smoke test and responsive/keyboard/accessibility checks in Chromium, Firefox and WebKit.
+3. **Expert phonetic review (BLOCKED):** independent French phonologist and Ukrainian phonetician approve IPA conventions, UFPN mappings and edge cases.
+4. **Gold benchmark (BLOCKED):** independently curated/licensed French IPA and UFPN references with provenance; report error metrics only after review.
+5. **Linguistic coverage (PARTIAL):** POS/morphology, h-aspiré, lexical exception coverage, full liaison/schwa/enchaînement and regional G2P need source-backed expansion.
+6. **IPA notation reconciliation (PARTIAL):** review `õ` and other upstream conventions; no speculative mappings.
 
 ## Readiness
-Partial research prototype. New G2P fallback and explanations improve practical behavior but do not establish parity or accuracy without a completed CI run and independently checked lexical benchmark. UFPN specification and adapter can be iterated, but arbitrary French text is not yet reliably transcribed and no scientific accuracy score is claimed.
-
-
-## Single-source OpenIPA change
-- All words are now transcribed by the original OpenIPA full-text parser; project seed IPA overrides, hand-written liaison postprocessing, and manual lyric-final-schwa injection are removed.
-- Regression tests now assert direct delegation to OpenIPA for common words and ensure the Metropolitan profile does not invent cross-word liaison.
-- Latest docs reconciliation CI run `45176329594` passed build, 46/46 tests and syntax check.
+Partial research prototype with a functioning static browser app in the branch and passing hosted CI. Not release-ready, not yet publicly hosted, and not independently validated for arbitrary French text.
