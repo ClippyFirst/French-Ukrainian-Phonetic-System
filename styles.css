@@ -205,3 +205,8 @@ footer a:hover{color:var(--green);text-decoration:underline}
   .workspace,.ufpn-reference{box-shadow:none;border:0}
   .results article{border:1px solid #bbb;background:#fff!important}
 }
+
+@media(max-width:900px){
+  .ufpn-reference{overflow-x:auto}
+  .ufpn-reference .ukrainian-sound-table{min-width:850px}
+}
