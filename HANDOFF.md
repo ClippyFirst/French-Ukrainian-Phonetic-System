@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest verified branch commit: e7c8708ec97217c38cf190a94d91b7f4df39c430.
+- Latest verified branch commit: 4c604082d66e4870535e025dc7e6868d2bc872e0.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
