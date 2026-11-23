@@ -97,7 +97,7 @@
 
 
 ## Live deployment and browser verification follow-up (2026-11-23)
-- Current deployed main SHA: `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; main Actions run [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) passed test and deploy.
-- Public app and stylesheet both returned HTTP 200. The app rendered its current sample; deployed CSS references `./assets/fonts/Charis-Regular.woff2` and `Charis-Bold.woff2`, and no longer imports Charis SIL from Google Fonts.
-- PR #10 adds Chromium/Firefox/WebKit × desktop/mobile coverage for all 23 UFPN base/mark clusters. Do not merge its six browser/viewport checks passed in run 45233413912.
-- The browser tests are automated typography checks, not a substitute for owner visual acceptance, keyboard/screen-reader review or testing on physical mobile devices.
+- Deployed main commit `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; workflow [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) passed test and deploy. Public app and stylesheet returned HTTP 200; CSS references local Charis Regular/Bold WOFF2.
+- PR #10 was merged at `87ae7c3566e373633ad53b945ef811951d3f4ea0` after [run 45233413912](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45233413912) passed all six Chromium/Firefox/WebKit desktop/mobile typography checks.
+- Current main HEAD is `d4f417ad01785b6d2f4a7413b7930a4aa9427585` (matrix evidence update). Post-merge workflow [45236513836](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236513836): build, 48 tests, syntax check and Charis audit passed; Playwright browser installation is in progress. Earlier run 45236413859 was superseded/cancelled before browser rendering, not a test failure.
+- Automated cross-browser typography is DONE_VERIFIED from PR #10. Remaining separate gates: owner-side visual acceptance, keyboard/screen-reader and physical mobile device QA. Linguistic expert review and an independently curated/licensed gold benchmark remain BLOCKED.
