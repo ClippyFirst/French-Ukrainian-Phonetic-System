@@ -42,7 +42,7 @@ test('text-level parser returns OpenIPA word and line structure', () => {
 });
 
 test('NFC normalization is applied before parsing', () => {
-  assert.equal(transcribeFrenchWord('e\\u0301clate'), transcribeFrenchWord('éclate'));
+  assert.equal(transcribeFrenchWord('e\u0301clate'), transcribeFrenchWord('éclate'));
 });
 
 test('OpenIPA text-level elision marks final schwa before a vowel as absent', () => {
