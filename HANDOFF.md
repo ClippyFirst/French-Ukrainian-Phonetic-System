@@ -170,3 +170,9 @@
 
 
 - /œ/ pronunciation-guide refinement: the correct cue is [ɛ] with the same front open-mid tongue position plus lip rounding; do not lower the tongue further. A dedicated regression guards the instruction.
+
+
+## Live deployment verification update (2026-11-23)
+- Pages deployment of main `95ec26e6127465d0f3152194c07db1b3dbf089e2` succeeded in workflow `45264961792`.
+- Live page verified with HTTP 200: the Ukrainian reference table has five columns including **«Як вимовити»**, exactly 37 sound rows, and all 37 have articulation guidance.
+- The later main commit `2606e437bc9003ebd546afd65b2f28ac2612fc65` corrects the /œ/ guide (preserve [ɛ] height, add rounding). Its main workflow `45265379491` passed build/tests/syntax/font audit; browser verification and deployment are still pending at the time of this note. Current live page is therefore the earlier five-column release, not yet the final /œ/ wording refinement.

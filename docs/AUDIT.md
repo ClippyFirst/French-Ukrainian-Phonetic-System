@@ -154,3 +154,9 @@
 
 
 - Articulation-guide review: corrected the /œ/ instruction to keep the same open-mid tongue height as [ɛ] and add lip rounding only. A regression now guards this articulatory distinction.
+
+
+## Live pronunciation table deployment confirmed (2026-11-23)
+- Main commit `95ec26e6127465d0f3152194c07db1b3dbf089e2` deployed successfully in workflow `45264961792` (test and Pages deploy jobs both successful).
+- Fresh live scrape returned HTTP 200 and verified the five-column sound table, the **«Як вимовити»** header, exactly 37 rows, and non-empty guidance in every row.
+- Main commit `2606e437bc9003ebd546afd65b2f28ac2612fc65` contains a later /œ/ instruction refinement. Its workflow `45265379491` has passed build, unit tests, syntax and font audit; browser rendering and the follow-up Pages deployment are pending. The live site therefore currently reflects `95ec26e`, not the final `2606e` text refinement.
