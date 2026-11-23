@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a`; branch was 48 ahead and 0 behind `main` at that point. CI run `45174088150` passed build, 47/47 tests and syntax check; Pages deploy skipped on the feature branch.
+- Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a`; latest docs/handoff commit before this update: `f4a0bf9fb86be3e93e0cd3ccf2a8b0de497c00b4`. At the code commit the branch was 48 ahead and 0 behind `main`; after the docs commit it was 49 ahead. CI run `45174088150` passed build, 47/47 tests and syntax check; the docs-only commit run `45174547238` also passed build, 47/47 tests and syntax check. Pages deploy skipped on the feature branch.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -18,8 +18,9 @@
 - Added a pinned esbuild browser bundle step and wired it into CI tests and Pages deployment.
 - Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, source spans and raw source IPA are retained. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
 - The project's existing seed lexicon still takes precedence over OpenIPA for known entries. Its records remain unverified and need systematic reconciliation.
-- Regression tests mirror a small set of OpenIPA's own published French test fixtures. They are integration tests, not independent gold data or accuracy evidence.
-- Await hosted CI for the first full build/test/syntax validation. Do not claim completion before it passes.
+- Regression tests mirror a small set of OpenIPA's own published French test fixtures and exercise full-text liaison/elision. They are integration tests, not independent gold data or accuracy evidence.
+- The `lyric-diction-fr` profile now runs OpenIPA's text-level liaison/elision hooks. The `metropolitan-fr` profile runs base parser rules without automatic cross-word liaison/elision.
+- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). After text-level liaison/elision was wired into the app, CI run `45174088150` passed build, 47/47 tests and syntax check on code commit `2b81ebb90b256ec2e74c22066bacb634ac59b64a`. The latest docs-only commit `f4a0bf9fb86be3e93e0cd3ccf2a8b0de497c00b4` also passed CI run `45174547238` (47/47 + syntax check).
 
 ## Previous continuation: extended Cyrillic inventory
 
