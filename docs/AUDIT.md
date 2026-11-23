@@ -16,10 +16,17 @@
 - Local clone failed because this environment could not resolve github.com. No manual browser QA was performed.
 
 ## Website service audit
+
+### Cyrillic diacritic rendering follow-up (2026-11-23)
+- Earlier font-only fixes (Noto Sans, then Charis SIL) did not resolve the owner-reported detached-mark rendering.
+- Inspection confirmed mapping output uses combining Unicode code points after Cyrillic bases (for example `е́` = U+0435 U+0301); no spacing accents were found in the mapping records inspected.
+- New branch `fix/deterministic-cyrillic-diacritic-layout` adds `src/ufpn-display.js`: split grapheme clusters into base + visual mark tokens and place spacing modifier glyphs with CSS above/below the base. The canonical adapter strings, NFC normalization, and clipboard/export values remain unchanged.
+- New unit coverage checks mark decomposition and display-glyph mapping. Browser visual QA is still required; do not claim the owner's rendering issue is resolved until they confirm in the deployed site.
+
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
 - **Build/test integration: DONE_VERIFIED.** PR CI 45195492754 and main CI 45195557498 pass build, 46 tests and syntax check.
-- **UFPN typography: PARTIAL.** PR #2's Noto Sans change did not resolve the detached-mark appearance reported by the owner. Follow-up branch `fix/charis-cyrillic-diacritic-anchors` replaces it with Charis SIL, a language/phonetic font with Cyrillic coverage and OpenType combining-mark anchors; Unicode IPA→UFPN mappings remain unchanged. Pending CI, deployment and browser visual confirmation.
+- **UFPN typography: PARTIAL.** Font-only changes failed owner visual acceptance. The current follow-up branch uses explicit CSS placement of spacing modifier glyphs over/under Cyrillic bases, independent of font mark anchors. Canonical Unicode output and IPA→UFPN mappings remain unchanged. Awaiting CI, deployment and owner browser confirmation.
 - **Public hosting: PARTIAL.** Clean deploy run 45192891355 succeeded and emitted the public Pages URL; direct HTTP response, page content and asset smoke verification remain unconfirmed because DNS/web access from this environment failed.
 - **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run; visual appearance of stacked combining marks must be confirmed in browsers.
 
