@@ -27,9 +27,9 @@
 |---|---|---|
 | Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; CI run 45175694114 passed build, 46 tests and syntax check |
 | Build upstream TypeScript into browser ESM bundle | DONE_VERIFIED | `npm run build` via pinned esbuild 0.25.0; CI run 45175694114 passed |
-| Route fallback G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`; `src/engine.js`; upstream fixture and trace tests; CI run 45174088150 passed 46/46 |
+| Route all French G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`; `src/engine.js`; upstream fixture and trace tests; CI run 45175694114 passed 46/46 |
 | Align upstream IPA notation to canonical IPA | PARTIAL | `ε` → `ɛ` explicit notation normalization; `õ` and other conventions remain visible pending phonetic review |
 | Adopt AGPL-3.0 and upstream attribution | DONE_VERIFIED | `LICENSE`, `THIRD_PARTY_NOTICES.md`, README; owner approved AGPL-3.0 |
 | Expand upstream fixture and edge-case coverage | TODO | Port additional upstream tests where feasible; distinguish regression fixtures from independent gold data |
 | Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |
-| Use OpenIPA text-level liaison/elision hooks in lyric profile | DONE_VERIFIED | `src/engine.js` calls full-text adapter; `tests/engine.test.js` covers `les amis` liaison and `calme ami` elision; CI run 45174088150 passed 47/47 and syntax check |
+| Use OpenIPA text-level liaison/elision hooks in lyric profile | DONE_VERIFIED | `src/engine.js` calls full-text adapter; `tests/engine.test.js` covers `les amis` liaison and `calme ami` elision; CI run 45175694114 passed 46/46 and syntax check |

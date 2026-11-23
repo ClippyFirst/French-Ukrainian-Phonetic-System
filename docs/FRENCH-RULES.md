@@ -2,7 +2,7 @@
 
 ## Виконуваний рушій
 
-Французька транскрипція використовує оригінальний rule-based parser OpenIPA, vendored під AGPL-3.0 у `vendor/openipa/`. Основний parser: `src/transcription/french/ParseFrench.ts`; його модулі включають контекстні парсери літер, `FrenchRules.ts`, `FrenchExceptions.ts`, `FrenchHelper.ts` і parse-functions.
+Французька транскрипція використовує оригінальний rule-based parser OpenIPA, vendored під AGPL-3.0 у `vendor/openipa/`. Основний parser: `vendor/openipa/src/transcription/french/ParseFrench.ts`; його модулі включають контекстні парсери літер, `FrenchRules.ts`, `FrenchExceptions.ts`, `FrenchHelper.ts` і parse-functions.
 
 Це не самописна імітація правил: браузерний adapter викликає скомпільований upstream parser. Збірка: `npm run build`.
 
@@ -25,7 +25,7 @@
 - OpenIPA має власні TODO й неповне POS-залежне правило `-ent`; наш перенос не усуває upstream обмеження.
 - OpenIPA legacy fixture `_words.csv` очікує `descends` → `d(e)sɑ̃`, але виконуваний parser наразі повертає `dɛssɑ̃`. Розбіжність зафіксована тестом і потребує розгляду; ми не підганяємо код під CSV.
 - Upstream використовує `õ` та `ɾ`; `ε` нормалізується до `ɛ`, але `õ` не перетворюється на `ɔ̃` без фонетичного підтвердження.
-- Seed lexicon має пріоритет для наявних слів і не пройшов повну незалежну верифікацію.
+- Проєктний seed lexicon та ручні IPA override видалено з runtime; усі слова обробляє OpenIPA.
 - Власні назви, числа, абревіатури, запозичення, повна морфологія та регіональні варіанти не мають гарантії коректної обробки.
 
 ## Архітектурна межа

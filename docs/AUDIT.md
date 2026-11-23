@@ -1,7 +1,7 @@
 # Audit Register — Phase 2
 
 ## Verified repository state
-- Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a` on `feat/french-ipa-ufpn-engine`; branch was 48 commits ahead and 0 behind `main` at this code commit.
+- Latest CI-verified code head: `3d0d756ec031ff80148436c3484d080705074ec2` on `feat/french-ipa-ufpn-engine`; branch was 52 commits ahead and 0 behind `main` at this code commit.
 - GitHub Actions run `45175694114` on code head `3d0d756ec031ff80148436c3484d080705074ec2` passed `npm run build`, `npm test` (46/46: 14 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration) and `npm run check`. Pages deploy skipped because this is not `main`.
 - CI concurrency was corrected: push and PR runs now use distinct concurrency groups so they no longer cancel each other. Earlier failed runs exposed and helped fix source escaping, final consonant ordering, nasal cancellation, and lexical exceptions.
 - Local clone/test attempt failed before checkout: `Could not resolve host: github.com`; hosted CI is the verification evidence.
