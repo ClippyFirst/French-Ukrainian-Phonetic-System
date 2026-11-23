@@ -2,14 +2,14 @@
 
 ## Repository state
 - Default branch: `main`, starting SHA `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
-- Working branch: `feat/french-ipa-ufpn-engine`.
+- Working branch: `feat/french-ipa-ufpn-engine`, latest head before this final handoff refresh: `1bc4240995b5d01fc39906ff2f12922eca580086`.
 - Draft PR #1: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1 (not merged).
 - No other branches were present at the latest inspection.
-- The current branch head must be read from GitHub after this handoff commit.
+- Branch comparison: 63 commits ahead of main, 0 behind.
 - Git clone was previously blocked by DNS; GitHub connector remote operations and hosted CI were used.
 
 ## Web service
-The repository already contains a static browser app, not merely a library:
+The repository contains a static browser app, not merely a library:
 - `index.html`, `styles.css`, `src/app.js`;
 - engine path: browser ESM bundle of vendored OpenIPA → IPA → UFPN / Latin guide;
 - French text input and examples, profile selector, synchronized IPA/UFPN/Latin output;
@@ -37,8 +37,9 @@ A full capability and hosting guide was added at `docs/WEB-SERVICE.md`; README n
 - AGPL-3.0 adopted with owner approval; see LICENSE and THIRD_PARTY_NOTICES.md.
 
 ## Verification
-- Latest implementation CI before web-service docs: run `45176571302` passed build, 46/46 tests and syntax checks on `c84e7274baf4c5bb4d5a31931f073da6bd69ee2c`.
-- Latest CI after workflow deployment probe: run `45177924718`; build passed, 46/46 tests passed, syntax check passed; deploy failed only at Pages configuration because Pages is disabled.
+- Engine CI run `45176571302` passed build, 46/46 tests and syntax checks on `c84e7274baf4c5bb4d5a31931f073da6bd69ee2c`.
+- Pages probe `45177924718`: build passed, 46/46 tests passed, syntax check passed; deploy failed only at Pages configuration because Pages is disabled.
+- Latest documentation/workflow CI on final head `1bc4240995b5d01fc39906ff2f12922eca580086`: push run `45178260179` and PR run `45178274841` both passed build, 46/46 tests and syntax checks; deploy skipped as expected on feature/PR refs.
 - No local test/browser run was possible in the connector-only environment. Browser QA remains outstanding.
 
 ## Preserved implementation
