@@ -34,3 +34,6 @@
 
 | S29 | [Gradient assimilation in French cross-word /n/+velar stop sequences](https://doi.org/10.1017/S0025100317000573) | gradient coronal–velar gestural overlap; no categorical [ŋ] replacement in studied tokens | JIPA article; no data imported | Наукове |
 | S30 | [Abdelli-Beruh 2012, Voicing and devoicing assimilation of French /s/ and /z/](https://doi.org/10.1007/s10936-011-9187-x) | regressive voicing/devoicing across word boundaries; partial/complete and tempo effects | peer-reviewed article; no audio/data imported | Наукове |
+
+| S31 | [Закон Республіки Білорусь №420-З (2008), Правілы беларускай арфаграфіі і пунктуацыі](https://uploads.philology.by/bel_grammar/bel_arfagr_punktuac_zakon.pdf) | нормативний білоруський алфавіт і розрізнення ў/у; контекстні значення е/ё/ю/я | використано для опису графем; корпус не імпортовано | Первинне нормативне джерело |
+| S32 | [Kerek & Niemi 2009, Russian orthography and learning to read](https://files.eric.ed.gov/fulltext/EJ838386.pdf) | російські голосні графеми: ы [ɨ], э [ɛ], ё як /j/+o або контекстна голосна | наукова стаття; не імпортовано | Наукове |

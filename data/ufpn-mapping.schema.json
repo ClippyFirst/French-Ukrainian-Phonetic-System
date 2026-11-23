@@ -16,7 +16,8 @@
     "prosody",
     "profiles",
     "allophoneMappings",
-    "featureDimensions"
+    "featureDimensions",
+    "graphemeInventory"
   ],
   "properties": {
     "schemaVersion": {
@@ -145,6 +146,50 @@
           "status",
           "sources"
         ]
+      }
+    },
+    "graphemeInventory": {
+      "type": "object",
+      "required": [
+        "policy",
+        "adopted",
+        "candidates",
+        "inventoryStatus"
+      ],
+      "properties": {
+        "policy": {
+          "type": "string"
+        },
+        "adopted": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "grapheme",
+              "origin",
+              "ipa",
+              "decision",
+              "rationale",
+              "sources"
+            ]
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "grapheme",
+              "origin",
+              "decision",
+              "rationale",
+              "sources"
+            ]
+          }
+        },
+        "inventoryStatus": {
+          "type": "string"
+        }
       }
     }
   },

@@ -1,4 +1,4 @@
-# Handoff — UFPN Phase 2
+# Handoff — UFPN Phase 2 / Extended Cyrillic update
 
 ## Repository
 - Default branch: main.
@@ -8,6 +8,12 @@
 - Final implementation commit (CI-verified): 2e21c8fe78075d41109676fbd79d21a7276d1dd4.
 - Current branch compare at implementation head: 12 commits ahead, 0 behind main.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
+
+## Latest continuation: extended Cyrillic inventory
+- Adopted Belarusian `ў` for IPA /w/, preserving /v/ → `в`, /ɥ/ → `й̊`, /j/ → `й`.
+- Adopted Russian/Belarusian `э` for /ɛ/ and `э̃` for /ɛ̃/.
+- Added machine-readable `graphemeInventory` with provenance and candidate decisions. `ы` is not mapped to schwa ([ɨ] is not /ə/); `ё` is not mapped to /ø, œ/ (its ordinary value is iotated/contextual).
+- Updated adapter mapping, UI reference, tests and notation/source documentation.
 
 ## Implemented in this phase
 - Data-driven UFPN specification with 37 phonemic/segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 phonetic feature dimensions, 19 allophone phenomena, 13 context processes and 7 profile records.

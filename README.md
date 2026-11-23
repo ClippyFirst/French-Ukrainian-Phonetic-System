@@ -17,7 +17,8 @@ python3 -m http.server 8000
 ## Зараз працює
 - Синхронізовані IPA, UFPN та Latin guide.
 - IPA — єдиний вхід для UFPN adapter.
-- UFPN має Basic / Detailed / Extended режими.
+- UFPN має Basic / Detailed / Extended режими та розширений кириличний інвентар (зокрема білоруське `ў` для /w/ і `э` для /ɛ/).
+- UFPN не обмежена українською абеткою: `ў` = /w/, `в` = /v/; `ы` та `ё` поки не призначені.
 - Mapping містить 37 сегментних одиниць, 15 allophone mappings, 36 діакритичних/просодичних маркерів і 18 вимірів фонетичних характеристик.
 - Невідомі IPA символи не губляться: позначаються й потрапляють у список unsupported.
 - Регіональні Québec affrication/diphthongization та cross-word assimilation описані окремо й не застосовуються до Metropolitan French за замовчуванням.

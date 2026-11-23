@@ -30,7 +30,10 @@ test('documented rhotic allophones have explicit practical mappings',()=>{
  assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ х̬̠̞ р̌ р р̞ х');
 });
 
-test('glide /w/ uses a dedicated non-syllabic marker, not the open-mid vowel breve',()=>assert.equal(renderUfpn('j ɥ w').text,'й й̊ в̯'));
+test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й й̊ ў'));
+test('/w/ and /v/ remain distinct in every level',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('w v',level).text,'ў в')});
+test('/ɛ/ uses э and nasal /ɛ̃/ preserves its nasal marker',()=>assert.equal(renderUfpn('ɛ ɛ̃').text,'э э̃'));
+test('extended Cyrillic inventory records adopted graphemes and rejected candidates',()=>{const g=UFPN_MAPPING.graphemeInventory;assert.ok(g.adopted.some(x=>x.grapheme==='ў'&&x.ipa.includes('w')));assert.ok(g.adopted.some(x=>x.grapheme==='э'&&x.ipa.includes('ɛ')));assert.ok(g.candidates.some(x=>x.grapheme==='ы'&&x.decision==='NOT_ASSIGNED'));assert.ok(g.candidates.some(x=>x.grapheme==='ё'&&x.decision==='NOT_ASSIGNED'))});
 test('Québec coronal affricates preserve the tie bar in every UFPN level',()=>{
  assert.equal(renderUfpn('t͡s d͡z','basic').text,'т͡с д͡з');
  assert.equal(renderUfpn('t͜s d͜z','extended').text,'т͜с д͜з');

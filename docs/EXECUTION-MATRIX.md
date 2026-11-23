@@ -8,6 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 phonemic units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; not complete narrow-phonetic inventory |
 | U3 | IPA→UFPN adapter | PARTIAL | deterministic adapter + tests + UI level selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD tests; browser grapheme/cursor/mobile checks not run |
+| U5 | Extended Cyrillic grapheme inventory | PARTIAL | `ў` → /w/ and `э` → /ɛ, ɛ̃/ implemented with source-backed candidate register; expert usability review pending |
 | F1 | Allophone registry | PARTIAL | evidence-backed cases documented; not every possible speaker realization |
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |

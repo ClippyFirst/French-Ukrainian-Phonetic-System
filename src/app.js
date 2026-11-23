@@ -28,7 +28,7 @@ $('export-txt').addEventListener('click',()=>{const blob=new Blob([['French: '+r
 $('export-pdf').addEventListener('click',()=>window.print());$('show-explanations').addEventListener('change',e=>$('explain-panel').hidden=!e.target.checked);
 const reference=document.createElement('details');reference.className='ufpn-reference';
 const refSummary=document.createElement('summary');refSummary.textContent='Довідник UFPN · фонеми, алофони та фонетичні виміри';reference.append(refSummary);
-const refIntro=document.createElement('p');refIntro.textContent='Пошуковий довідник українських відповідників. Варіантні й регіональні форми не вмикаються автоматично без відповідного профілю або вузького IPA.';reference.append(refIntro);
+const refIntro=document.createElement('p');refIntro.textContent='Пошуковий довідник розширеної кириличної UFPN-нотації. Використовуються обґрунтовані графеми інших кириличних абеток; варіантні й регіональні форми не вмикаються автоматично без профілю або вузького IPA.';reference.append(refIntro);
 const refSearch=document.createElement('input');refSearch.type='search';refSearch.placeholder='Шукати IPA, UFPN або артикуляцію…';refSearch.setAttribute('aria-label','Пошук у довіднику UFPN');reference.append(refSearch);
 const refTable=document.createElement('table');refTable.innerHTML='<thead><tr><th>IPA</th><th>Basic</th><th>Detailed</th><th>Extended</th><th>Опис / статус</th></tr></thead><tbody></tbody>';reference.append(refTable);
 const refBody=refTable.querySelector('tbody');
@@ -56,6 +56,8 @@ for(const feature of UFPN_MAPPING.featureDimensions){
  const li=document.createElement('li');li.textContent=feature.dimension+': '+feature.values.join(', ')+' — '+feature.status+'. '+feature.ufpn;featureList.append(li);
 }
 featureDetails.append(featureList);reference.append(featureDetails);
+const graphemeDetails=document.createElement('details');const graphemeSummary=document.createElement('summary');graphemeSummary.textContent='Розширений кириличний інвентар';graphemeDetails.append(graphemeSummary);
+const graphemeList=document.createElement('ul');for(const item of UFPN_MAPPING.graphemeInventory.adopted){const li=document.createElement('li');li.textContent=item.grapheme+' — '+item.ipa.join(', ')+' ('+item.origin+'): '+item.rationale;graphemeList.append(li)}for(const item of UFPN_MAPPING.graphemeInventory.candidates){const li=document.createElement('li');li.textContent=item.grapheme+' — не призначено: '+item.rationale;graphemeList.append(li)}graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
 render();

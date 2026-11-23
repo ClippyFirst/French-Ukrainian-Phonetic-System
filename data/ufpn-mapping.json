@@ -191,7 +191,7 @@
       "id": "glide",
       "glyph": "◌̯",
       "unicode": "U+032F COMBINING INVERTED BREVE BELOW",
-      "meaning": "UFPN: напівголосний/нескладовий статус у відповіднику /w/ (в̯); не плутати з відкритістю голосних."
+      "meaning": "IPA combining mark for non-syllabic status. Retained for genuinely non-syllabic realizations in Extended input; /w/ has its own UFPN grapheme ў and is no longer rendered as в̯."
     },
     {
       "id": "aspiration",
@@ -326,13 +326,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid unrounded",
       "descriptionUk": "передній напіввідкритий неогублений",
-      "baseGrapheme": "е",
-      "diacritics": [
-        "̆"
-      ],
-      "basic": "ӗ",
-      "detailed": "ӗ",
-      "extended": "ӗ",
+      "baseGrapheme": "э",
+      "diacritics": [],
+      "basic": "э",
+      "detailed": "э",
+      "extended": "э",
       "features": [],
       "examples": [
         "mère",
@@ -341,10 +339,12 @@
       "sources": [
         "S1",
         "S9",
-        "S12"
+        "S31",
+        "S32"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э"
     },
     {
       "id": "v_a",
@@ -620,14 +620,13 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid nasal",
       "descriptionUk": "передній носовий; можливе злиття з /œ̃/",
-      "baseGrapheme": "е",
+      "baseGrapheme": "э",
       "diacritics": [
-        "̆",
         "̃"
       ],
-      "basic": "ӗ̃",
-      "detailed": "ӗ̃",
-      "extended": "ӗ̃",
+      "basic": "э̃",
+      "detailed": "э̃",
+      "extended": "э̃",
       "features": [],
       "examples": [
         "vin",
@@ -635,10 +634,13 @@
       ],
       "sources": [
         "S1",
-        "S10"
+        "S10",
+        "S31",
+        "S32"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark"
     },
     {
       "id": "nv_open_o",
@@ -750,23 +752,24 @@
       "phonologicalStatus": "CORE",
       "articulation": "labial-velar approximant",
       "descriptionUk": "огублений губно-велярний апроксимант",
-      "baseGrapheme": "в",
-      "diacritics": [
-        "̯"
-      ],
-      "basic": "в̯",
-      "detailed": "в̯",
-      "extended": "в̯",
+      "baseGrapheme": "ў",
+      "diacritics": [],
+      "basic": "ў",
+      "detailed": "ў",
+      "extended": "ў",
       "features": [],
       "examples": [
         "oui",
         "ouest"
       ],
       "sources": [
-        "S1"
+        "S1",
+        "S31",
+        "S32"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Belarusian Cyrillic letter ў"
     },
     {
       "id": "c_p",
@@ -2249,5 +2252,64 @@
         "S30"
       ]
     }
-  ]
+  ],
+  "graphemeInventory": {
+    "policy": "UFPN is an extended Cyrillic-based practical phonetic notation, not restricted to modern Ukrainian. Graphemes may be selected from Belarusian, Russian and other Cyrillic orthographies when their established sound value improves segmental transparency. Familiarity alone is insufficient.",
+    "adopted": [
+      {
+        "grapheme": "ў",
+        "origin": "Belarusian Cyrillic",
+        "ipa": [
+          "w"
+        ],
+        "value": "labial-velar approximant /w/",
+        "decision": "ADOPTED",
+        "rationale": "Dedicated segmental grapheme distinguishes /w/ from /v/ written в.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      },
+      {
+        "grapheme": "э",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipa": [
+          "ɛ",
+          "ɛ̃"
+        ],
+        "value": "open-mid front unrounded vowel; nasalized counterpart",
+        "decision": "ADOPTED",
+        "rationale": "Established [ɛ]-type vowel value; nasalization is shown by combining tilde.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      }
+    ],
+    "candidates": [
+      {
+        "grapheme": "ы",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipaCandidate": "ɨ",
+        "decision": "NOT_ASSIGNED",
+        "rationale": "[ɨ] is a high central/unrounded vowel; French /ə/ is a variable mid-central vowel and is not equivalent.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      },
+      {
+        "grapheme": "ё",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipaCandidate": "jo; o after a palatalized consonant",
+        "decision": "NOT_ASSIGNED",
+        "rationale": "Normally iotated/contextual; not a stable monophonemic symbol for /ø/ or /œ/.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      }
+    ],
+    "inventoryStatus": "PARTIAL_RESEARCHED"
+  }
 }

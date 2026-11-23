@@ -12,6 +12,12 @@
 - UFPN levels Basic/Detailed/Extended; IPA remains canonical input.
 - Québec /t,d/ affrication and diphthongization are profile-specific; cross-word nasal place and fricative voicing assimilation are Extended/audio-gated.
 
+## Extended Cyrillic inventory update
+- `ў` adopted for /w/; /v/ remains `в`, /ɥ/ remains `й̊`, /j/ remains `й`.
+- `э` adopted for /ɛ/ and /ɛ̃/ on the basis of its established [ɛ]-type value in Russian/Belarusian orthography.
+- `ы` is not assigned to /ə/ because [ɨ] is a different vowel quality; `ё` is not assigned to /ø, œ/ because its ordinary value is iotated/contextual.
+- Machine-readable decisions and sources are in `data/ufpn-mapping.json` → `graphemeInventory`.
+
 ## Main linguistic risks
 - UFPN is a project notation, not an established standard.
 - /œ̃/ and /ɑ/ contrasts vary by speaker/region.
