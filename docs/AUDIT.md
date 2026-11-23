@@ -3,19 +3,23 @@
 ## Verified repository state (2026-11-23)
 - Starting default-branch SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
 - PR #1 merged into `main` by squash merge; merge SHA `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
+- PR #2 (Cyrillic UFPN typography) merged by squash merge; merge SHA `360ef54a08af2ff7146d2a4052c326fec6968173`.
 - Merged head: `276c0375b3843ff1aa9c85d54d052dd0ddf1089b`; 69 commits and 84 changed files.
 - Feature CI run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235) passed build, 46/46 tests and syntax checks.
 - Main CI run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970) passed `npm run build`, `npm test` and `npm run check`; 46 tests passed.
 - Main deploy run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `actions/deploy-pages@v4`; deployed SHA `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
 - Environment URL emitted by the successful deploy: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content verification remains unavailable: web fetch reported inaccessible and container DNS could not resolve the host. Previous run 45192430970 failed due artifact metadata; retrying only deploy duplicated the artifact, so a clean new run was used.
+- PR #2 CI [45195492754](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195492754) passed build, all 46 tests and syntax checks.
+- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) passed build, 46 tests, syntax checks and Pages deployment for the typography fix.
 - Local clone failed because this environment could not resolve github.com. No manual browser QA was performed.
 
 ## Website service audit
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
-- **Build/test integration: DONE_VERIFIED.** Main CI run 45192430970 passes build, 46 tests and syntax check.
+- **Build/test integration: DONE_VERIFIED.** PR CI 45195492754 and main CI 45195557498 pass build, 46 tests and syntax check.
+- **UFPN typography: PARTIAL.** PR #2 adds Noto Sans with OpenType mark/mark-to-mark positioning, larger line height and glyph-font coverage in the result, detail metadata and reference tables. Unicode IPA→UFPN mappings remain unchanged. Automated build/tests pass; browser screenshot/visual inspection is still outstanding.
 - **Public hosting: PARTIAL.** Clean deploy run 45192891355 succeeded and emitted the public Pages URL; direct HTTP response, page content and asset smoke verification remain unconfirmed because DNS/web access from this environment failed.
-- **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run.
+- **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run; visual appearance of stacked combining marks must be confirmed in browsers.
 
 ## Verified implementation inventory
 - 37 segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.

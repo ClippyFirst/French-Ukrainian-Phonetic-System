@@ -49,5 +49,7 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 
 - Feature CI run 45179583235: build passed, 46/46 tests passed, `npm run check` passed.
 - Main CI run 45192430970: build passed, 46/46 tests passed, `npm run check` passed.
-- Pages deploy у main run 45192891355 завершився успішно; прямий HTTP/content smoke test не підтверджено через DNS failure у цьому середовищі.
+- PR #2 із виправленням кириличних діакритиків злито: `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) пройшов build, 46 тестів, syntax check і Pages deploy.
+- Візуальне підтвердження рендерингу у браузері та прямий HTTP smoke test ще не виконані через DNS failure у цьому середовищі.
 - Локальний браузерний smoke test та Chromium/Firefox/WebKit accessibility QA ще не виконані.

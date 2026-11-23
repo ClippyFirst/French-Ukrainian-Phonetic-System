@@ -13,14 +13,15 @@
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
-| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Feature CI 45179583235 і main CI 45192430970: build passed, 46/46 tests passed, syntax check passed |
+| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Feature CI 45179583235, typography PR CI 45195492754 і main CI 45195557498: build passed, 46/46 tests passed, syntax check passed |
 | Q2 | Browser/mobile/accessibility | TODO | Chromium/Firefox/WebKit, mobile, keyboard і screen-reader QA не виконані |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
-| D3 | Pages deployment | PARTIAL | Clean main run 45192891355: deploy-pages успішний; environment URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/content smoke verification не виконана через DNS failure у цьому середовищі |
+| D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #2: Noto Sans + OpenType `mark`/`mkmk`, larger line height and typography applied to result/reference/details; CI passed, browser visual inspection still pending |
 
 ## OpenIPA engine integration
 
@@ -37,7 +38,7 @@
 
 ## Web service and deployment
 - Static browser app is implemented and documented in README and `docs/WEB-SERVICE.md`.
-- Main Actions run 45192430970: build, 46 tests and syntax check passed.
+- Main Actions run 45195557498: build, 46 tests, syntax check and Pages deployment passed for typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173`.
 - GitHub Pages is enabled and workflow deploys only from `main`.
-- Clean main run 45192891355 successfully deployed commit `422430fe142e8f15e55d8ef2bd1876853b2e209e` and emitted URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content verification remains unavailable because this environment could not resolve the host.
-- Public URL and deployed SHA remain unverified; the next docs commit triggers a clean run.
+- Main run 45195557498 successfully deployed typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173` and emitted URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content/browser verification remains unavailable because this environment could not resolve the host.
+- PR #2 added Noto Sans with mark-to-mark positioning for UFPN output, reference glyphs and phonetic metadata; IPA→UFPN mapping strings are unchanged.

@@ -1,7 +1,7 @@
 # Handoff — French–Ukrainian phonetic web service
 
 ## Repository state (verified 2026-11-23)
-- Default branch: `main`; merged implementation commit: `313fc0dfef85afaf413dfc4f91d93019f578ed7d`.
+- Default branch: `main`; core implementation merge: `313fc0dfef85afaf413dfc4f91d93019f578ed7d`; typography fix PR #2 merge: `360ef54a08af2ff7146d2a4052c326fec6968173`.
 - Starting `main` SHA before this implementation: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
 - Feature branch `feat/french-ipa-ufpn-engine` was merged through PR #1 (69 commits, 84 files) using squash merge; PR is closed/merged.
 - PR head merged: `276c0375b3843ff1aa9c85d54d052dd0ddf1089b`.
@@ -12,6 +12,7 @@
 - Static browser app: `index.html`, `styles.css`, `src/app.js`.
 - French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin guide.
 - Basic / Detailed / Extended UFPN, word-level parser explanations, uncertainty markers, searchable UFPN reference.
+- UFPN output and reference glyphs use Noto Sans with OpenType mark-to-mark positioning (`mark`/`mkmk`) and increased line height; Unicode mapping sequences were not changed.
 - Copy, TXT export, browser print-to-PDF, responsive layout.
 - No application backend; entered text is processed in the browser.
 - Setup and hosting instructions: `docs/WEB-SERVICE.md`.
@@ -32,15 +33,17 @@
 
 ## Verification and deployment
 - Feature-branch Actions run [45179583235](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45179583235): build, 46/46 tests and syntax checks passed.
+- Typography PR #2 was merged after PR CI [45195492754](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195492754) passed build, 46 tests and syntax checks.
 - Main push run [45192430970](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192430970): tests passed; its deploy attempt failed because of artifact metadata lookup. Retrying only that job created duplicate same-name artifacts.
 - Clean main run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `deploy-pages@v4`. GitHub Actions emitted the environment URL: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Deployment commit: `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
 - GitHub Pages is enabled (`has_pages=true`); workflow deploys only from `main`. The public deployment action is verified, but direct HTTP/content smoke verification remains unverified: web/container access from this environment could not resolve the GitHub Pages host (DNS failure / inaccessible via web fetch).
 - Node CI output: 46 passed, 0 failed. Node deprecation notices from transitive/action dependencies remain non-blocking.
+- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) on `360ef54a08af2ff7146d2a4052c326fec6968173` passed build, 46 tests, syntax checks and Pages deployment.
 - A fresh local clone and manual Chromium/Firefox/WebKit/mobile/accessibility QA could not be run in this environment.
 
 ## Remaining acceptance gates
 1. **Public hosting — PARTIAL:** Pages deploy succeeded and returned the public URL; direct HTTP/content verification remains because this environment could not resolve the host.
-2. **Browser QA — TODO:** Chromium, Firefox, WebKit, mobile viewport, keyboard and screen-reader checks.
+2. **Browser QA — TODO:** Chromium, Firefox, WebKit, mobile viewport, keyboard and screen-reader checks; includes visual confirmation of the new combining-mark typography.
 3. **Expert review — BLOCKED:** independent French phonologist and Ukrainian phonetician review IPA conventions and UFPN mappings.
 4. **Gold benchmark — BLOCKED:** independently curated/licensed IPA and UFPN references; do not report accuracy scores without them.
 5. **Linguistic coverage — PARTIAL:** POS-dependent `-ent`, h-aspiré, morphology, lexical exceptions, liaison/schwa/enchaînement and regional G2P remain incomplete.
