@@ -60,4 +60,5 @@
 - Obtain independently licensed gold IPA/UFPN data.
 - Expand morphology/context and edge-case coverage with source-backed fixtures.
 - Resolve upstream IPA notation conventions only with evidence.
-\n- PR #4 CI [45201122860](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201122860) passed; PR #5 CI [45201424564](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201424564) passed. Main deployment run [45201504905](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201504905) passed for `214c65e527b83a565371309599fa2d47251cd6d4`. The page is deployed; visual acceptance in the owner's browser remains the only typography acceptance item.
+
+- PR #4 CI [45201122860](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201122860) passed; PR #5 CI [45201424564](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201424564) passed. Main deployment run [45201504905](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45201504905) passed for `214c65e527b83a565371309599fa2d47251cd6d4`. The page is deployed; visual acceptance in the owner's browser remains the only typography acceptance item.

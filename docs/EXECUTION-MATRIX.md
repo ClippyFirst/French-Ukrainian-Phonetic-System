@@ -49,4 +49,5 @@
 - Added `src/ufpn-display.js`, CSS overlay positioning, display decomposition tests and syntax-check coverage.
 - This is a visual rendering layer only; copied/exported UFPN remains canonical combining Unicode.
 - Status remains PARTIAL until CI, deployment and owner visual acceptance pass.
-\n- PR #4 merged as `1560bbb65d6e142c9d25cb45d2307d1db5f7b65a`; PR #5 merged as `214c65e527b83a565371309599fa2d47251cd6d4`. PR CI runs 45201122860 and 45201424564 passed; main run 45201504905 passed build, tests, syntax checks and Pages deployment.
+
+- PR #4 merged as `1560bbb65d6e142c9d25cb45d2307d1db5f7b65a`; PR #5 merged as `214c65e527b83a565371309599fa2d47251cd6d4`. PR CI runs 45201122860 and 45201424564 passed; main run 45201504905 passed build, tests, syntax checks and Pages deployment.
