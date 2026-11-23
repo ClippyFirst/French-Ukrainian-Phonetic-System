@@ -96,7 +96,7 @@ try {
     throw new Error("The locally hosted Charis Regular WOFF2 was not requested");
   }
 
-  const screenshot = new URL("../artifacts/charis-7.000-ufpn.png", import.meta.url);
+  const screenshot = fileURLToPath(new URL("../artifacts/charis-7.000-ufpn.png", import.meta.url));
   await page.screenshot({ path: screenshot, fullPage: true });
   const info = await stat(screenshot);
   console.log(JSON.stringify({ ...result, screenshot: "artifacts/charis-7.000-ufpn.png", screenshotBytes: info.size, clusters: samples }, null, 2));
