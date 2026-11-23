@@ -136,14 +136,14 @@
 | ID | Task | Status | Evidence / remaining acceptance |
 |---|---|---|---|
 | UI-01 | Refine existing editorial UI, responsive layout, controls, outputs, focus states and reduced-motion behavior without changing phonetic logic | DONE_VERIFIED | PR #25 branch `design/phonetic-workspace-refinement`, commit `19157268124a46121c9c260c3abdb48a9b289ed3`; workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405) passed build, 57/57 tests, syntax checks, Charis audit and 12 browser/viewport combinations |
-| UI-02 | Automated responsive and keyboard checks | DONE_VERIFIED | Chromium, Firefox and WebKit × 1440, 1024, 768 and 390 px; checks confirm output panels render, expected 3/3/2/1 result columns, first-tab skip-link focus and no horizontal page overflow. Five screenshots uploaded as workflow artifact [14864086549](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405/artifacts/14864086549) |
-| UI-03 | Human visual review, screen-reader and physical-device accessibility review | PARTIAL | Screenshots are generated and available as an artifact but have not been manually inspected in this session. Screen-reader and real-device checks remain outstanding |
-| UI-04 | Publish the design refinement to GitHub Pages | TODO | PR #25 is open and not merged. Merge only after visual review; then require a successful main Pages deployment and fresh live-page verification |
+| UI-02 | Automated responsive and keyboard checks | DONE_VERIFIED | Chromium, Firefox and WebKit × 1440, 1024, 768 and 390 px; checks confirm output panels render, expected 3/3/2/1 result columns, first-tab skip-link focus and no horizontal page overflow. Final artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) |
+| UI-03 | Human visual review, screen-reader and physical-device accessibility review | PARTIAL | Desktop/laptop/tablet/mobile screenshots from artifact 14865776425 were manually inspected; visual refinements were applied and rechecked by CI. Screen-reader, physical-device and browser zoom/reflow checks remain outstanding |
+| UI-04 | Publish the design refinement to GitHub Pages | PARTIAL | PR #25 merged as 41f96a1f3fbb8b220931d434626a4edddc3c13c7. Main Pages workflow 45272182990 has build, 57/57 tests, syntax and Charis audit passed; Playwright browser installation is still in progress and deploy has not started. Live-page verification remains required |
 
 Scope guard: no French G2P, IPA normalization, IPA → UFPN mapping, phonetic data, confidence/provenance logic, export behavior or runtime dependencies were changed. The repository remains a research prototype; this UI work does not change linguistic validation or release-readiness status.
 
 
-Current baseline at the start of PR #25: main `81098345c69a3c58d770b95fd63949133fa872d7`; public Pages still serves `95ec26e6127465d0f3152194c07db1b3dbf089e2`. Main includes the later /œ/ articulation correction, but its deployment is not yet live because workflow `45265871092` failed at the Pages artifact-metadata step after all test checks passed.
+Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; it is superseded by merged UI commit `41f96a1f3fbb8b220931d434626a4edddc3c13c7` and follow-up documentation commits. Previous verified live commit `95ec26e6127465d0f3152194c07db1b3dbf089e2` is historical only; current live deployment must be checked after main workflow 45272182990 completes.
 
 
 ### UI refinement closeout — PR #25 (2026-11-23)
