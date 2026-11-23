@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #8 `fix/native-opentype-diacritic-shaping` removes manual spacing-glyph decomposition and CSS overlays; canonical combining sequences are rendered as one text run for native OpenType GPOS `mark`/`mkmk` shaping. Regression tests added for stacked marks and tie bars. Local tests blocked by GitHub DNS failure; hosted CI status and browser visual QA pending. Earlier overlay/scale fixes are superseded. |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #8 `fix/native-opentype-diacritic-shaping` removes manual spacing-glyph decomposition and CSS overlays; canonical combining sequences are rendered as one text run for native OpenType GPOS `mark`/`mkmk` shaping. Regression tests added for stacked marks and tie bars. PR CI 45211693977: build passed, 48/48 tests passed, syntax checks passed; deploy skipped for PR. Local clone blocked by GitHub DNS; browser visual QA pending. Earlier overlay/scale fixes are superseded. |
 
 ## OpenIPA engine integration
 
