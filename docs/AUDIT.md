@@ -200,7 +200,7 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 
 ## Current main verification and Pages artifact blocker — 2026-11-23
 
-- Current main SHA: `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`.
+- Current main HEAD: `5ec0ff1e2b456733fffad619f8d88e287a4096f6` (documentation-only on top of tested application commit `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`).
 - PR #27 merged as `18c340aad06d25940504a8a6f177228e9f5a6806`: all six pinned OpenIPA French fixture rows are covered; `garçon` now asserts raw `gaɾsõ` provenance and normalized `gaɾsɔ̃`; `descends` executable-vs-CSV divergence remains explicit. PR workflow 45277660637 passed 58/58 tests, build, syntax, font audit and browser checks.
 - PR #28 merged as `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`: the French source textarea has an accessible name, and skip-link activation transfers focus to `<main>`. PR workflow 45278479262 passed 58/58 tests and all 12 Chromium/Firefox/WebKit × viewport combinations; all combinations confirmed the accessible name and focus transfer.
 - Main workflow [45278852488](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488): test job SUCCESS — build, 58/58 tests, syntax, Charis 7/OpenType audit, browser rendering and artifact upload all passed. Browser specimen artifact: [14869235188](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14869235188).
