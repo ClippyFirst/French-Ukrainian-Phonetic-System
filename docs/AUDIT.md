@@ -1,12 +1,12 @@
 # Audit Register — Phase 2
 
 ## Verified repository state
-- Latest verified head: 9ffee2f88d53f845ec7a23dde1784fe13125581e; 22 commits ahead, 0 behind main.
-- Latest CI run 45162018628 on 9ffee2f88d53f845ec7a23dde1784fe13125581e: all 35 tests and `npm run check` passed; Pages deploy skipped on feature branch.
+- Latest verified head: 2000ab42de5b11b042141cb73edd6ea57a08379f; based on main with 0 commits behind; live ahead count is in PR #1.
+- Latest CI run 45162141059 on 2000ab42de5b11b042141cb73edd6ea57a08379f: all 35 tests and `npm run check` passed; Pages deploy skipped on feature branch.
 - main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
 - Phase 2 starting working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
-- Current CI-verified head: 9ffee2f88d53f845ec7a23dde1784fe13125581e (35 tests + syntax check; run 45162018628).
-- Draft PR #1 open; branch 22 commits ahead, 0 behind main.
+- Current CI-verified head: 2000ab42de5b11b042141cb73edd6ea57a08379f (35 tests + syntax check; run 45162141059).
+- Draft PR #1 open; based on main with 0 commits behind; consult PR #1 for live ahead count.
 - GitHub Actions run 45154509214 on implementation head: test job success; npm test (31 tests) and npm run check passed; deploy skipped on PR.
 
 ## Verified implementation inventory (current branch candidate)
