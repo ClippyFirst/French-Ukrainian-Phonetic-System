@@ -144,3 +144,10 @@ Scope guard: no French G2P, IPA normalization, IPA → UFPN mapping, phonetic da
 
 
 Current baseline at the start of PR #25: main `81098345c69a3c58d770b95fd63949133fa872d7`; public Pages still serves `95ec26e6127465d0f3152194c07db1b3dbf089e2`. Main includes the later /œ/ articulation correction, but its deployment is not yet live because workflow `45265871092` failed at the Pages artifact-metadata step after all test checks passed.
+
+
+### UI refinement closeout — PR #25 (2026-11-23)
+- PR #25 merged by squash as `41f96a1f3fbb8b220931d434626a4edddc3c13c7`; source head `3ee313c31ed8c4a005fd1daea234b1a2817a3d34`.
+- Final PR workflow [45270636340](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340) succeeded: build, 57/57 tests, syntax check, Charis 7 glyph/OpenType audit, Playwright installation, and Chromium/Firefox/WebKit rendering at 1440/1024/768/390 px (12 combinations). Artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) contains desktop/laptop/tablet/mobile screenshots and the font specimen; all four UI screenshots were manually inspected. Visual refinements addressed spellcheck-like confidence underlines and tablet heading wrap.
+- UI-01/UI-02: DONE_VERIFIED. UI-03: PARTIAL — manual screenshot review complete; screen-reader, physical-device and zoom/reflow testing remain. UI-04: MERGED; Pages publication awaits main workflow and live verification.
+- Merge did not alter French G2P, IPA normalization, IPA→UFPN mappings, phonetic data, confidence/provenance, exports or runtime dependencies. Linguistic expert review and licensed gold benchmark remain separate outstanding gates.
