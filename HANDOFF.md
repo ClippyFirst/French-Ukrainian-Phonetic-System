@@ -5,7 +5,8 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Previous branch compare: 6 commits ahead, 0 behind main.
+- Final implementation commit (CI-verified): 2e21c8fe78075d41109676fbd79d21a7276d1dd4.
+- Current branch compare at implementation head: 12 commits ahead, 0 behind main.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
 ## Implemented in this phase
@@ -14,12 +15,12 @@
 - Dedicated IPA-only adapter; unsupported IPA remains visible.
 - Unicode NFC/NFD tests.
 - Allophone, context-process, prosody and regional-profile registers; Québec /t,d/ affrication and diphthongization are evidence-backed research entries, not default metropolitan rules.
-- UI selector for UFPN level.
+- UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Previous verification
 - Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
-- Previous handoff records npm test 11/11 and npm run check passing.
-- Commit a04f7c3 passed GitHub Actions run 45152438694 (npm test + npm run check); the next extension commit remains pending CI.
+- Final implementation SHA 2e21c8fe78075d41109676fbd79d21a7276d1dd4 passed GitHub Actions run 45154509214: npm test (31 tests: 12 engine + 19 UFPN) and npm run check succeeded.
+- Deploy job was skipped because this is a PR branch; GitHub Pages settings/public deployment were not verified.
 - No browser/mobile/accessibility QA or independent phonetic review has been run.
 
 ## Linguistic findings

@@ -2,9 +2,10 @@
 
 ## Verified repository state
 - main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
-- Previous working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
-- Draft PR #1 open; branch ahead by 6, behind by 0 before Phase 2.
-- Previous GitHub Actions run 45149960488: test and check jobs success; deploy skipped on PR.
+- Phase 2 starting working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
+- CI-verified implementation head: 2e21c8fe78075d41109676fbd79d21a7276d1dd4.
+- Draft PR #1 open; branch 12 commits ahead, 0 behind main.
+- GitHub Actions run 45154509214 on implementation head: test job success; npm test (31 tests) and npm run check passed; deploy skipped on PR.
 
 ## Verified implementation inventory (current branch candidate)
 - 37 segmental entries, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
