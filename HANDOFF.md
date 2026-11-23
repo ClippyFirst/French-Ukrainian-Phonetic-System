@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest CI-verified code head: 375f329095527aecd7e741c4e75b6d8c593da153 (41 tests + syntax check passed; run 45167053528).
+- Latest CI-verified code head: 1c6322365cbef42cf33b5a79a04656bd3de8afe0 (42 tests + syntax check passed; run 45167417126).
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -15,6 +15,7 @@
 - Added clean-room `src/french-g2p.js` to replace the old generic longest-match fallback with contextual French grapheme rules; no OpenIPA code or database was copied.
 - Added an explicit exception layer for common forms where spelling rules are insufficient (e.g. `hiver`, `mer/ver/fer/cher`, `ville/mille`, `tranquille`).
 - Added source spans, IPA result, rule IDs and Ukrainian explanations for each processed grapheme, surfaced in the word-detail UI.
+- Added /w/ glide handling for `ou` before vowels and /j/ for vowel+`il` sequences; regression examples include `jouer` and `travail`.
 - Added French G2P regression tests and `docs/OPENIPA-COMPARISON.md`.
 - Current G2P fallback remains low confidence and is not yet at proven OpenIPA quality; unresolved POS-dependent `-ent`, broader lexical exceptions, schwa, liaison, h-aspiré and regional profiles are documented.
 
@@ -35,7 +36,7 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Current verification status
-- GitHub Actions run 45167053528 completed successfully on 375f329095527aecd7e741c4e75b6d8c593da153: `npm test` passed 41/41 and `npm run check` passed. Deploy was skipped on the feature branch.
+- GitHub Actions run 45167417126 completed successfully on 1c6322365cbef42cf33b5a79a04656bd3de8afe0: `npm test` passed 42/42 and `npm run check` passed. Deploy was skipped on the feature branch.
 - The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
 - Local `git clone` and test execution remain blocked by DNS resolution for github.com.
 
