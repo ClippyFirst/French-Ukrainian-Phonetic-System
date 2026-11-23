@@ -33,11 +33,11 @@ All French words now use the vendored OpenIPA parser. The former project seed le
 
 ## Verification
 
-Regression tests include five outputs matching the upstream French fixture examples (`calme`, `éclate`, `docile`, `céleste`, `garçon`) and adapter-level rule-trace checks. One source fixture discrepancy is recorded: upstream `_words.csv` expects `descends` → `d(e)sɑ̃`, while the executable `ParseFrench.ts` parser currently returns `dɛssɑ̃`. The integration test pins the executable behavior rather than silently rewriting it to match the CSV. This is a known upstream inconsistency requiring specialist review. Passing tests demonstrate integration and regression behavior, not phonetic accuracy across arbitrary French text.
+The six rows in the upstream French fixture file `src/tests/french/_words.csv` at the pinned revision are represented in `tests/openipa-french.test.js`. Four rows match the fixture's visible IPA strings; `descends` is deliberately pinned to the executable parser result `dɛssɑ̃` rather than the CSV's `d(e)sɑ̃`, and `garçon` asserts both upstream raw `gaɾsõ` provenance and adapter-normalized `gaɾsɔ̃`. The `descends` discrepancy is a known upstream inconsistency requiring specialist review. These are regression fixtures from the same upstream project, not an independent gold set. Passing tests demonstrate integration and regression behavior, not phonetic accuracy across arbitrary French text.
 
 Remaining work:
 - reconcile all upstream IPA conventions with the canonical IPA inventory without guessing;
-- expand regression coverage against the upstream French fixture suite without presenting upstream fixtures as independent gold data;
+- assess upstream's larger French/Latin test corpus for provenance and redistribution conditions before any reuse;
 - assess whether upstream's larger test corpus can be reused; do not import it until its data provenance and redistribution terms are verified;
 - add explicit POS/morphology and h-aspiré coverage only with evidence;
 - browser/mobile/accessibility QA and independent French phonetics review.

@@ -13,6 +13,12 @@ test('OpenIPA lyric-diction regression corpus preserves its flipped-r convention
   assert.equal(transcribeFrenchWord('garçon'), 'gaɾsɔ̃');
 });
 
+test('OpenIPA raw nasal-O fixture is preserved as provenance and normalized for IPA consumers', () => {
+  const result = transcribeFrenchWordDetailed('garçon');
+  assert.equal(result.sourceIpa, 'gaɾsõ');
+  assert.equal(result.ipa, 'gaɾsɔ̃');
+});
+
 test('OpenIPA rule explanations are preserved per source grapheme', () => {
   const result = transcribeFrenchWordDetailed('calme');
   assert.equal(result.ipa, 'kalmə');
