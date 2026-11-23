@@ -40,3 +40,8 @@ test('rule trace covers every source grapheme with spans and explanations',()=>{
  assert.ok(d.trace.every(x=>Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.ruleId&&x.explanationUk));
  assert.equal(d.trace.at(-1).ruleId,'silent-final-consonant');
 });
+
+test('vowel-to-glide contexts include ou and final il',()=>{
+ assert.equal(transcribeFrenchWord('jouer'),'ʒwe');
+ assert.equal(transcribeFrenchWord('travail'),'tʁavaj');
+});

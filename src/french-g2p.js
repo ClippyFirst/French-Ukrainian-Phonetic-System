@@ -5,7 +5,7 @@
 const VOWELS=new Set([..."aeiouyàâäéèêëîïôöùûüÿœ"]);
 const CONSONANTS=new Set([..."bcdfghjklmnpqrstvwxz"]);
 const NASAL=[["oin","wɛ̃"],["ain","ɛ̃"],["aim","ɛ̃"],["ein","ɛ̃"],["eim","ɛ̃"],["ien","jɛ̃"],["an","ɑ̃"],["am","ɑ̃"],["en","ɑ̃"],["em","ɑ̃"],["on","ɔ̃"],["om","ɔ̃"],["in","ɛ̃"],["im","ɛ̃"],["yn","ɛ̃"],["ym","ɛ̃"],["un","œ̃"],["um","œ̃"]];
-const VOWEL_GROUPS=[["eaux","o"],["eau","o"],["euil","œj"],["euille","œj"],["ueil","œj"],["aille","aj"],["ail","aj"],["eille","ɛj"],["eil","ɛj"],["ou","u"],["oî","wa"],["oi","wa"],["oy","waj"],["au","o"],["eu","ø"],["œu","ø"],["oeu","ø"],["œ","œ"],["ai","ɛ"],["ei","ɛ"],["ë","ɛ"],["è","ɛ"],["ê","ɛ"],["é","e"],["â","ɑ"],["à","a"],["î","i"],["ï","i"],["ô","o"],["û","y"],["ù","y"]];
+const VOWEL_GROUPS=[["eaux","o"],["eau","o"],["euil","œj"],["euille","œj"],["ueil","œj"],["aille","aj"],["ail","aj"],["eille","ɛj"],["eil","ɛj"],["ou","u"],["ay","ɛj"],["oî","wa"],["oi","wa"],["oy","waj"],["au","o"],["eu","ø"],["œu","ø"],["oeu","ø"],["œ","œ"],["ai","ɛ"],["ei","ɛ"],["ë","ɛ"],["è","ɛ"],["ê","ɛ"],["é","e"],["â","ɑ"],["à","a"],["î","i"],["ï","i"],["ô","o"],["û","y"],["ù","y"]];
 const CONSONANT_GROUPS=[["ch","ʃ"],["gn","ɲ"],["ph","f"],["th","t"],["qu","k"],["gu","g"],["ill","ij"]];
 const isVowel=c=>!!c&&VOWELS.has(c);
 const isConsonant=c=>!!c&&CONSONANTS.has(c);
@@ -28,6 +28,8 @@ const RULE_TEXT={
  "x-voiced":"x перед голосним у цьому шаблоні передається як /ɡz/.",
  "x-unvoiced":"x у базовому шаблоні передається як /ks/.",
  "u-glide":"u перед наступною голосною може утворювати /ɥ/.",
+ "ou-glide":"ou перед наступною голосною може реалізуватися як /w/.",
+ "vowel-il-glide":"Послідовність il після голосної у відповідних словах передає /j/.",
  "i-glide":"i перед наступною голосною може передавати /j/.",
  "y-glide":"y перед голосною може передавати /j/.",
  "silent-h":"h не має власного звука; h muet/h aspiré потребують окремого лексичного класу.",
@@ -60,6 +62,8 @@ export function transcribeFrenchWordDetailed(input){
   if(rest.startsWith("es")&&i===s.length-2){skip(2,"silent-final-es");continue}
   if(rest.startsWith("eaux")){push("o",4,"vowel-digraph");continue}
   if(rest.startsWith("eau")){push("o",3,"vowel-digraph");continue}
+  if(rest.startsWith("ou")&&isVowel(s[i+2]||"")){push("w",2,"ou-glide");continue}
+  if(rest.startsWith("il")&&isVowel(s[i-1]||"")){push("j",2,"vowel-il-glide");continue}
   const nasal=NASAL.find(([g])=>rest.startsWith(g)&&!isVowel(s[i+g.length]||"")&&!/[mnh]/.test(s[i+g.length]||""));
   if(nasal){push(nasal[1],nasal[0].length,"nasal-vowel");continue}
   const cg=CONSONANT_GROUPS.find(([g])=>rest.startsWith(g));
