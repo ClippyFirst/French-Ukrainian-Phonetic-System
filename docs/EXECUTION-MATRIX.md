@@ -128,4 +128,4 @@
 - U5 remains PARTIAL pending independent Ukrainian/French phonetic review and owner readability acceptance. Q2 remains PARTIAL pending keyboard/screen-reader and real-device checks. Q3 remains BLOCKED pending an independently curated/licensed gold dataset.
 
 
-| U6 | Ukrainian articulation guidance for all sound-table entries | DONE_VERIFIED | `data/ufpn-mapping.json` now contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage for every entry. CI and browser viewport verification are pending for this branch. |
+| U6 | Ukrainian articulation guidance for all sound-table entries | PARTIAL | `data/ufpn-mapping.json` now contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage for every entry. CI and browser viewport verification are pending for this branch. |
