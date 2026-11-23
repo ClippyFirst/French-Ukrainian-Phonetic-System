@@ -14,7 +14,7 @@ function collectClusters(value) {
   const clusters = [];
   let base = "";
   let marks = "";
-  for (const char of value.normalize("NFD")) {
+  for (const char of value.normalize("NFC")) {
     if (/\p{M}/u.test(char) && markCodepoints.has(char.codePointAt(0))) {
       if (base) marks += char;
     } else {
@@ -35,10 +35,11 @@ for (const section of ["phonemes", "allophoneMappings"]) {
     }
   }
 }
-const samples = [...new Set(outputs.flatMap(collectClusters))].sort();
+const adoptedGraphemes = mapping.graphemeInventory.adopted.map((item) => item.grapheme);
+const samples = [...new Set([...outputs.flatMap(collectClusters), ...adoptedGraphemes])].sort();
 
-if (samples.length !== 23) {
-  throw new Error(`Expected 23 mapped UFPN base/mark clusters, found ${samples.length}`);
+if (!adoptedGraphemes.every((value) => samples.includes(value))) {
+  throw new Error("Browser specimen is missing an adopted extended-Cyrillic grapheme");
 }
 
 await mkdir(new URL("../artifacts/", import.meta.url), { recursive: true });
@@ -71,7 +72,7 @@ for (const [name, browserType] of browserTypes) {
         document.head.append(style);
         const panel = document.createElement("section");
         panel.id = "charis-audit";
-        panel.innerHTML = "<h1>Charis 7.000 · UFPN combining-mark browser specimen</h1><p>All mapped Cyrillic base/diacritic clusters, rendered through the repository's local @font-face and browser shaping engine.</p><div class='samples'></div>";
+        panel.innerHTML = "<h1>Charis 7.000 · UFPN Cyrillic and combining-mark specimen</h1><p>All adopted Cyrillic letters and mapped base/diacritic clusters, rendered through the repository's local @font-face and browser shaping engine.</p><div class='samples'></div>";
         document.body.prepend(panel);
         const grid = panel.querySelector(".samples");
         for (const value of values) {
@@ -92,7 +93,10 @@ for (const [name, browserType] of browserTypes) {
         const resources = performance.getEntriesByType("resource")
           .filter((entry) => entry.name.includes("Charis-"))
           .map((entry) => ({ name: entry.name.split("/").pop(), transferSize: entry.transferSize }));
+        const soundTable = document.querySelector("#ukrainian-sound-reference .ukrainian-sound-table");
+        const soundTableRows = soundTable?.querySelectorAll("tbody tr").length ?? 0;
         return {
+          soundTableRows,
           fontCheck: document.fonts.check('42px "Charis"', values.join("")),
           computedFamily: getComputedStyle(grid.querySelector(".glyph")).fontFamily,
           sampleCount: grid.children.length,
@@ -102,6 +106,7 @@ for (const [name, browserType] of browserTypes) {
           horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth
         };
       }, samples);
+      if (result.soundTableRows !== 37) throw new Error(`${name}/${viewport.label}: expected 37 Ukrainian sound-reference rows, found ${result.soundTableRows}`);
       if (!result.fontCheck) throw new Error(`${name}/${viewport.label}: Charis FontFaceSet check failed`);
       if (!result.computedFamily.includes("Charis")) throw new Error(`${name}/${viewport.label}: wrong computed family`);
       if (result.sampleCount !== samples.length) throw new Error(`${name}/${viewport.label}: missing mapped clusters`);
@@ -125,4 +130,4 @@ for (const [name, browserType] of browserTypes) {
 }
 const screenshotPath = fileURLToPath(new URL("../artifacts/charis-7.000-ufpn.png", import.meta.url));
 const screenshotBytes = (await stat(screenshotPath)).size;
-console.log(JSON.stringify({ browsers: results, screenshot: "artifacts/charis-7.000-ufpn.png", screenshotBytes, clusters: samples }, null, 2));
+console.log(JSON.stringify({ browsers: results, screenshot: "artifacts/charis-7.000-ufpn.png", screenshotBytes, specimens: samples }, null, 2));

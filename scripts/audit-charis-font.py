@@ -125,7 +125,7 @@ def mapped_graphemes(data, mark_codepoints):
     for value in strings:
         base = None
         marks = []
-        for char in unicodedata.normalize("NFD", value):
+        for char in unicodedata.normalize("NFC", value):
             if unicodedata.combining(char) and ord(char) in mark_codepoints:
                 if base is not None:
                     marks.append(char)
@@ -154,6 +154,12 @@ def main():
     for record in data["diacritics"]:
         codepoint = int(record["unicode"].split()[0].removeprefix("U+"), 16)
         expected[codepoint] = record["id"]
+    # Also audit every adopted standalone Cyrillic grapheme; new mappings must
+    # not silently render as missing-glyph boxes in the shipped Charis font.
+    for record in data.get("graphemeInventory", {}).get("adopted", []):
+        for char in record["grapheme"]:
+            if not unicodedata.combining(char):
+                expected.setdefault(ord(char), f"grapheme {record['grapheme']}")
 
     missing = [f"U+{cp:04X} {name}" for cp, name in expected.items() if cp not in cmap]
     if missing:
@@ -205,10 +211,10 @@ def main():
     mark_glyphs = set(glyph_for.values())
     shaped = 0
     for base, marks in clusters:
-        # Shape NFD explicitly to exercise the real combining-mark path.
-        # Also shape NFC below because the browser renderer normalizes to NFC;
-        # some base/mark pairs compose into a single precomposed Cyrillic glyph.
-        sample = unicodedata.normalize("NFD", base + "".join(marks))
+        # Shape NFC because the browser display layer normalizes to NFC before
+        # handing the text run to HarfBuzz. A precomposed Cyrillic base such as
+        # ӧ must use its own mark-to-base anchor for a following nasal tilde.
+        sample = unicodedata.normalize("NFC", base + "".join(marks))
         buffer = hb.Buffer()
         buffer.add_str(sample)
         buffer.guess_segment_properties()
@@ -234,9 +240,8 @@ def main():
                         f"Combining mark has non-zero advance in {sample!r}: {glyph_name}"
                     )
                 shaped_marks.append((glyph_name, position.y_offset))
-        # HarfBuzz may compose an NFD base+mark pair through ccmp into a
-        # precomposed Cyrillic glyph. That is valid; .notdef and non-zero
-        # combining-mark advances are the actual failures.
+        # Re-shape the canonical NFC sample to ensure the exact browser string
+        # also remains valid after normalization.
         nfc_sample = unicodedata.normalize("NFC", sample)
         nfc_buffer = hb.Buffer()
         nfc_buffer.add_str(nfc_sample)

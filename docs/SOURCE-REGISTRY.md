@@ -26,7 +26,7 @@
 | S23 | [OpenIPA](https://github.com/hfellerhoff/openipa) | оригінальний французький parser, контекстні правила, винятки, liaison/elision hooks | AGPL-3.0; vendored code attribution and copyleft obligations apply | Інтегровано з фіксацією upstream revision 266c002d6c03c6b581b2bea74ca39bf1a92a7504 |
 | S24 | [Replica Skill](https://github.com/Jakeschincariol/replica-skill) | clean-room recon/build/test | MIT для skill, не ліцензія OpenIPA | Довідкове |
 
-Доступність сторінки не означає дозвіл на масовий імпорт. Не включати аудіо/словникові бази без перевірки ліцензії конкретного файлу/релізу. Репозиторій поки не має власної LICENSE; це рішення власника.
+Доступність сторінки не означає дозвіл на масовий імпорт. Не включати аудіо/словникові бази без перевірки ліцензії конкретного файлу/релізу.
 
 | S25 | [PHONO Québec: Affrication de /t/ et /d/](https://www.phono.quebec/rubriques/r01.html) | [t͡s]/[d͡z] before high front vowels/glides in Québec French; phonetic conditions and regional limits | educational phonetics resource; no corpus import | Довідкове |
 | S26 | [Guzzo 2022, Revisiting the Acquisition of Onset Complexity: Affrication in Québec French](https://doi.org/10.1017/S0305000921000374) | affricates in complementary distribution with coronal stops before high front vowels and glides | peer-reviewed article; data not imported | Наукове |
@@ -38,6 +38,10 @@
 | S31 | [Закон Республіки Білорусь №420-З (2008), Правілы беларускай арфаграфіі і пунктуацыі](https://uploads.philology.by/bel_grammar/bel_arfagr_punktuac_zakon.pdf) | нормативний білоруський алфавіт і розрізнення ў/у; контекстні значення е/ё/ю/я | використано для опису графем; корпус не імпортовано | Первинне нормативне джерело |
 | S32 | [Kerek & Niemi 2009, Russian orthography and learning to read](https://files.eric.ed.gov/fulltext/EJ838386.pdf) | російські голосні графеми: ы [ɨ], э [ɛ], ё як /j/+o або контекстна голосна | наукова стаття; не імпортовано | Наукове |
 | S33 | [Cambridge Handbook of the International Phonetic Association: Belarusian](https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/belarusian/12CED258A76872A8E9D381383D654130) | [w] у білоруській після голосних у коді; описує різні аналізи фонологічного статусу [w] (алофон /v/ або фонема) | академічний фонетичний опис; використано лише як доказ звукової реалізації, не імпортовано | Наукове |
+| S34 | [Kazakh phoneme inventory and orthography](https://cohenpr-xpf.github.io/XPF/conv_resources/info/kk.html) | Kazakh Cyrillic `ү` /y/, `ө` /ø/, `ғ` /ʁ/ and `ң` /ŋ/; source used only for grapheme-to-sound correspondences | descriptive reference; no corpus imported | Довідкове |
+| S35 | [Serbian Cyrillic alphabet and phonetic values](https://assets.super.so/15f83ff9-e733-47c0-b1d0-58aaebdd6b3b/files/bad91b3c-dff5-4426-8e4c-a0f6c11a08c3/Osnovi_istorije_jezika.pdf) | Serbian `њ` is one Cyrillic letter with IPA /ɲ/ | educational phonetics reference; no corpus imported | Довідкове |
+| S36 | [Mari Cyrillic phonology — University of Vienna](https://services.phaidra.univie.ac.at/api/object/o%3A1266524/download) | Hill Mari `ӹ` /ə/; direct Cyrillic grapheme correspondence | academic thesis; no corpus imported | Наукове |
+| S37 | [EURPhon: Eastern Mari phoneme inventory](https://eurphon.info/languages/html?lang_id=123) | Eastern Mari open-mid front rounded vowel /œ/; used as the phonetic basis for `ӧ` | phonological inventory cites a 1960 descriptive grammar; no corpus imported | Наукове |
 
 
 ## OpenIPA implementation provenance

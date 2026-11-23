@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory | PARTIAL | `ў` → /w/ і `э` → /ɛ/ реалізовано; `ы`, `ё` навмисно не призначені; usability review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -19,7 +19,7 @@
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
 | D3 | Pages deployment | DONE_VERIFIED | Main workflow 45217105821 успішно розгорнув `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; live site and stylesheet returned HTTP 200 via fresh public scrape; CSS confirms local Charis Regular/Bold WOFF2 and no legacy Charis SIL import |
-| W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
+| W1 | Browser web service UI | PARTIAL | Static app includes French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable technical reference, new visible Ukrainian sound correspondence table, copy, TXT/PDF export; new UI pending CI/browser verification |
 | W2 | Browser-hosted smoke/accessibility QA | PARTIAL | Live Pages page and stylesheet returned HTTP 200; deployed sample rendered. Merged PR #10 run 45233413912 passed all six Chromium/Firefox/WebKit desktop/mobile typography checks. Keyboard/screen-reader/physical-device/owner acceptance remain |
 | W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; font audit passed in run 45216293204; all six Chromium/Firefox/WebKit desktop/mobile typography checks passed in run 45233413912. Owner-side visual and accessibility acceptance remain. |
 | W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
@@ -111,3 +111,11 @@
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) passed: build, 52/52 tests, syntax check, Charis 7 audit, all six Chromium/Firefox/WebKit desktop/mobile checks, and GitHub Pages deployment.
 - Fresh live scrape confirms the default Metropolitan sample displays IPA `bɔ̃ʒuʁ` and UFPN `бо̆̃жух̬̠`; published source confirms the profile-aware adapter. Unit tests verify lyric-diction preserves `[ɾ]` and `р̌`.
 - The adapter/profile behavior is DONE_VERIFIED. Independent phonetic expert review and licensed gold benchmark remain separate PARTIAL/BLOCKED gates.
+
+
+### Expanded Cyrillic and Ukrainian sound correspondence table (2026-11-23)
+- New dedicated letters reduce combining-mark load: `ү` /y/, `ө` /ø/, `ӧ` /œ/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, `ғ` /ʁ/. Existing `ў` /w/ and `э` /ɛ/ retained. `ү̯` represents non-syllabic /ɥ/ with one modifier.
+- The browser now presents a visible, searchable table with 37 phoneme rows: UFPN letter, IPA sound, a Ukrainian word/position where the sound occurs, and an explicit exact/contextual/approximate/no-equivalent status. It does not fabricate Ukrainian examples for French nasal vowels or other absent contrasts.
+- Mapping JSON schema is 1.2.0; regression tests cover new graphemes and require Ukrainian-example status/note for every phoneme. Font audit now checks the cmap coverage of every adopted grapheme as well as diacritics.
+- Source provenance: S34 Kazakh phoneme/grapheme correspondences, S35 Serbian `њ` /ɲ/, S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/. This is an evidence-based notation proposal, not yet independently approved by a Ukrainian phonetician or user-tested.
+- Acceptance: all tests, font audit, browser checks, and Pages deploy must pass before marking DONE_VERIFIED; expert/usability review remains PARTIAL.

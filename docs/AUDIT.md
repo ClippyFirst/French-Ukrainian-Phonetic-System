@@ -114,3 +114,12 @@
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) passed build, all 52 tests, syntax, Charis 7 glyph/anchor audit, Playwright installation, six cross-browser/viewport checks and Pages deployment.
 - Fresh live Pages scrape shows default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; raw published adapter contains the profile-aware branch. Lyric-diction `[ɾ]` preservation is covered by unit tests (`бо̆̃жур̌`).
 - No claim of independent linguistic validation; specialist review and licensed gold corpus remain blocked.
+
+### Expanded Cyrillic inventory and Ukrainian sound correspondence table (2026-11-23)
+- Owner requirement: reduce diacritic density using the permitted extended Cyrillic inventory and provide a visible table of UFPN letter → sound (IPA) → Ukrainian word/position where the sound can be heard.
+- Implemented in PR #15: ү /y/, ө /ø/, ӧ /œ/, ӹ /ə/, њ /ɲ/, ң /ŋ/, ғ /ʁ/; existing ў /w/ and э /ɛ/ retained. /ɥ/ is ү̯; nasalization uses one tilde where possible. The basic /ʁ/ output no longer stacks voicing/backing marks on х.
+- The visible searchable table contains 37 segment rows and labels each Ukrainian comparison EXACT, CONTEXTUAL, APPROXIMATE, or NONE. It explicitly states when Ukrainian has no exact equivalent; e.g. it does not conflate [nʲ] with [ɲ], [x] with [ʁ], or [ɪ] with [y].
+- Mapping schema 1.2.0 adds Ukrainian example/status/note fields for all 37 phonemes. Tests require those fields. Charis audit now checks every adopted extended-Cyrillic glyph and the canonical NFC base/mark combinations; browser specimen includes all adopted letters and asserts the 37-row table is present at desktop/mobile viewports.
+- Source registry adds S34–S37 for Kazakh, Serbian, Hill Mari and Eastern Mari grapheme/sound correspondences. These are source-backed grapheme choices, but the combined UFPN convention is still an experimental project decision, not an independently standardized Ukrainian system.
+- Latest observed CI on PR #15: build, 54 tests, syntax check and Charis glyph/anchor audit passed; Playwright engine installation is still in progress. Browser rendering and merge/deploy are not yet verified. PR remains open.
+- Remaining acceptance: finish Playwright browser checks; verify deployed table; obtain Ukrainian/French phonetic expert review and user-side readability feedback. The lack of an exact Ukrainian counterpart for several French sounds is an explicit documented limitation, not a reason to invent a misleading Ukrainian word.

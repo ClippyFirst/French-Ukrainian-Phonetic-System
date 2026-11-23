@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "notation": "UFPN",
   "title": "Ukrainian French Phonetic Notation",
   "status": "EXPERIMENTAL_RESEARCH_SPECIFICATION",
@@ -15,7 +15,8 @@
     "Each custom diacritic has one documented UFPN meaning.",
     "Detailed/Extended distinguish phonological categories from observed phonetic realizations.",
     "Allophone/prosody marks require evidence; spelling/punctuation alone are insufficient.",
-    "Never invent speaker-specific realizations."
+    "Never invent speaker-specific realizations.",
+    "Prefer a single extended-Cyrillic grapheme when an established Cyrillic letter has the required IPA value; use combining marks only for features not covered by a stable letter."
   ],
   "levels": {
     "basic": {
@@ -290,7 +291,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "ліс — наголошене і [i]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий звук у звичайній українській вимові."
     },
     {
       "id": "v_e",
@@ -300,12 +304,10 @@
       "articulation": "front close-mid unrounded",
       "descriptionUk": "передній напівзакритий неогублений",
       "baseGrapheme": "е",
-      "diacritics": [
-        "́"
-      ],
-      "basic": "е́",
-      "detailed": "е́",
-      "extended": "е́",
+      "diacritics": [],
+      "basic": "е",
+      "detailed": "е",
+      "extended": "е",
       "features": [],
       "examples": [
         "été",
@@ -317,7 +319,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "нести́ — перше е може звучати як [e] у гармонізованій ненаголошеній позиції",
+      "ukrainianExampleStatus": "CONTEXTUAL",
+      "ukrainianExampleNote": "Це позиційний алофон, а не окрема українська фонема /e/."
     },
     {
       "id": "v_eps",
@@ -344,7 +349,10 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э"
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э",
+      "ukrainianExample": "день — е [ɛ]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Звичайне українське е має відкритішу якість [ɛ]."
     },
     {
       "id": "v_a",
@@ -369,7 +377,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "сад — а [ɑ]-типової якості",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "Українське а близьке, але його точна якість залежить від наголосу й мовця."
     },
     {
       "id": "v_alpha",
@@ -395,7 +406,10 @@
         "S12"
       ],
       "confidence": "variable",
-      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL",
+      "ukrainianExample": "сад — наголошене а [ɑ]",
+      "ukrainianExampleStatus": "CONTEXTUAL",
+      "ukrainianExampleNote": "Задня реалізація українського а може наближатися до [ɑ]; окремої фонемної опозиції /a–ɑ/ немає."
     },
     {
       "id": "v_y",
@@ -404,13 +418,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front close rounded",
       "descriptionUk": "передній високий огублений",
-      "baseGrapheme": "і",
-      "diacritics": [
-        "̊"
-      ],
-      "basic": "і̊",
-      "detailed": "і̊",
-      "extended": "і̊",
+      "baseGrapheme": "ү",
+      "diacritics": [],
+      "basic": "ү",
+      "detailed": "ү",
+      "extended": "ү",
       "features": [],
       "examples": [
         "lune",
@@ -422,7 +434,11 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "Найближче: и у слові «син» [ɪ]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "Точного українського відповідника [y] немає: французький звук передній і огублений, українське [ɪ] неогублене.",
+      "graphemeOrigin": "Kazakh Cyrillic Ү; established /y/"
     },
     {
       "id": "v_oe_close",
@@ -431,14 +447,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front close-mid rounded",
       "descriptionUk": "передній напівзакритий огублений",
-      "baseGrapheme": "е",
-      "diacritics": [
-        "̊",
-        "́"
-      ],
-      "basic": "е̊́",
-      "detailed": "е̊́",
-      "extended": "е̊́",
+      "baseGrapheme": "ө",
+      "diacritics": [],
+      "basic": "ө",
+      "detailed": "ө",
+      "extended": "ө",
       "features": [],
       "examples": [
         "deux",
@@ -450,7 +463,11 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "Точного відповідника [ø] у нормативній українській вимові немає.",
+      "graphemeOrigin": "Kazakh Cyrillic Ө; established /ø/"
     },
     {
       "id": "v_oe_open",
@@ -459,14 +476,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid rounded",
       "descriptionUk": "передній напіввідкритий огублений",
-      "baseGrapheme": "е",
-      "diacritics": [
-        "̊",
-        "̆"
-      ],
-      "basic": "е̊̆",
-      "detailed": "е̊̆",
-      "extended": "е̊̆",
+      "baseGrapheme": "ӧ",
+      "diacritics": [],
+      "basic": "ӧ",
+      "detailed": "ӧ",
+      "extended": "ӧ",
       "features": [],
       "examples": [
         "peur",
@@ -478,7 +492,11 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "Точного відповідника [œ] у нормативній українській вимові немає.",
+      "graphemeOrigin": "Mari Cyrillic Ӧ; established /œ/"
     },
     {
       "id": "v_u",
@@ -503,7 +521,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "лук — у [u]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий високий задній огублений голосний."
     },
     {
       "id": "v_o",
@@ -513,12 +534,10 @@
       "articulation": "back close-mid rounded",
       "descriptionUk": "задній напівзакритий огублений",
       "baseGrapheme": "о",
-      "diacritics": [
-        "́"
-      ],
-      "basic": "о́",
-      "detailed": "о́",
-      "extended": "о́",
+      "diacritics": [],
+      "basic": "о",
+      "detailed": "о",
+      "extended": "о",
       "features": [],
       "examples": [
         "beau",
@@ -530,7 +549,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "зозу́ля — перше о може наближатися до [o] перед наголошеним у",
+      "ukrainianExampleStatus": "CONTEXTUAL",
+      "ukrainianExampleNote": "[o] — позиційна реалізація українського /ɔ/, а не окрема фонема."
     },
     {
       "id": "v_open_o",
@@ -557,7 +579,10 @@
         "S12"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "сон — о [ɔ]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий задній відкрито-середній огублений голосний."
     },
     {
       "id": "v_schwa",
@@ -566,13 +591,11 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "central mid variable",
       "descriptionUk": "центральний середній редукований, варіативний",
-      "baseGrapheme": "е",
-      "diacritics": [
-        "̇"
-      ],
-      "basic": "е̇",
-      "detailed": "е̇",
-      "extended": "е̇",
+      "baseGrapheme": "ӹ",
+      "diacritics": [],
+      "basic": "ӹ",
+      "detailed": "ӹ",
+      "extended": "ӹ",
       "features": [],
       "examples": [
         "petit",
@@ -584,7 +607,10 @@
         "S12"
       ],
       "confidence": "variable",
-      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "Стабільного українського відповідника [ə] немає; редуковані голосні не слід автоматично прирівнювати до schwa."
     },
     {
       "id": "nv_alpha",
@@ -595,12 +621,11 @@
       "descriptionUk": "задній відкритий носовий; якість варіює",
       "baseGrapheme": "а",
       "diacritics": [
-        "̠",
         "̃"
       ],
-      "basic": "а̠̃",
-      "detailed": "а̠̃",
-      "extended": "а̠̃",
+      "basic": "а̃",
+      "detailed": "а̃",
+      "extended": "а̃",
       "features": [],
       "examples": [
         "temps",
@@ -611,7 +636,10 @@
         "S10"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɑ̃]."
     },
     {
       "id": "nv_eps",
@@ -640,7 +668,10 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark"
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɛ̃]."
     },
     {
       "id": "nv_open_o",
@@ -667,7 +698,10 @@
         "S10"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɔ̃]."
     },
     {
       "id": "nv_oe",
@@ -676,15 +710,13 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "front open-mid rounded nasal",
       "descriptionUk": "передній огублений носовий; часто злитий з /ɛ̃/",
-      "baseGrapheme": "е",
+      "baseGrapheme": "ӧ",
       "diacritics": [
-        "̊",
-        "̆",
         "̃"
       ],
-      "basic": "е̊̆̃",
-      "detailed": "е̊̆̃",
-      "extended": "е̊̆̃",
+      "basic": "ӧ̃",
+      "detailed": "ӧ̃",
+      "extended": "ӧ̃",
       "features": [],
       "examples": [
         "brun",
@@ -695,7 +727,10 @@
         "S10"
       ],
       "confidence": "variable",
-      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [œ̃]."
     },
     {
       "id": "g_j",
@@ -718,7 +753,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "йод — й [j]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий піднебінний апроксимант."
     },
     {
       "id": "g_h",
@@ -727,13 +765,13 @@
       "phonologicalStatus": "CORE",
       "articulation": "labial-palatal approximant",
       "descriptionUk": "огублений піднебінний апроксимант",
-      "baseGrapheme": "й",
+      "baseGrapheme": "ү",
       "diacritics": [
-        "̊"
+        "̯"
       ],
-      "basic": "й̊",
-      "detailed": "й̊",
-      "extended": "й̊",
+      "basic": "ү̯",
+      "detailed": "ү̯",
+      "extended": "ү̯",
       "features": [],
       "examples": [
         "huit",
@@ -743,7 +781,11 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "Найближче: й у слові «йод» [j]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "Українське [j] не має французького одночасного огублення, характерного для [ɥ].",
+      "graphemeOrigin": "UFPN composed grapheme ү + non-syllabic mark"
     },
     {
       "id": "g_w",
@@ -769,7 +811,10 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "graphemeOrigin": "Belarusian Cyrillic letter ў"
+      "graphemeOrigin": "Belarusian Cyrillic letter ў",
+      "ukrainianExample": "вовк — друга в перед к часто реалізується як [w]",
+      "ukrainianExampleStatus": "CONTEXTUAL",
+      "ukrainianExampleNote": "Це позиційний нескладовий алофон українського /в/, а не окрема фонема."
     },
     {
       "id": "c_p",
@@ -792,7 +837,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "парк — п [p]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий глухий губний проривний."
     },
     {
       "id": "c_b",
@@ -815,7 +863,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "бік — б [b]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий дзвінкий губний проривний."
     },
     {
       "id": "c_t",
@@ -838,7 +889,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "так — т [t̪]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Український і французький /t/ — передній зубний/дентально-альвеолярний звук."
     },
     {
       "id": "c_d",
@@ -861,7 +915,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "дар — д [d̪]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Український і французький /d/ — передній зубний/дентально-альвеолярний звук."
     },
     {
       "id": "c_k",
@@ -884,7 +941,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "кава — к [k]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий глухий велярний проривний."
     },
     {
       "id": "c_g",
@@ -907,7 +967,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "ґанок — ґ [ɡ]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий дзвінкий велярний проривний."
     },
     {
       "id": "c_f",
@@ -930,7 +993,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "факт — ф [f]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий глухий губно-зубний щілинний."
     },
     {
       "id": "c_v",
@@ -953,7 +1019,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "вода — в [ʋ~v]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "В українській /в/ часто реалізується як апроксимант [ʋ], тоді як французьке /v/ зазвичай фрикативне; це близький, але не гарантовано тотожний звук."
     },
     {
       "id": "c_s",
@@ -976,7 +1045,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "сало — с [s]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий глухий альвеолярний щілинний."
     },
     {
       "id": "c_z",
@@ -999,7 +1071,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "зуб — з [z]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий дзвінкий альвеолярний щілинний."
     },
     {
       "id": "c_sh",
@@ -1022,7 +1097,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "шапка — ш [ʃ]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий глухий постальвеолярний щілинний."
     },
     {
       "id": "c_zh",
@@ -1045,7 +1123,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "жук — ж [ʒ]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий дзвінкий постальвеолярний щілинний."
     },
     {
       "id": "c_m",
@@ -1068,7 +1149,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "мак — м [m]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий губний носовий."
     },
     {
       "id": "c_n",
@@ -1091,7 +1175,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "на — н [n̪]",
+      "ukrainianExampleStatus": "EXACT",
+      "ukrainianExampleNote": "Той самий передній носовий."
     },
     {
       "id": "c_ny",
@@ -1100,11 +1187,11 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "palatal nasal",
       "descriptionUk": "піднебінний носовий; можливі [nj] або [n]",
-      "baseGrapheme": "нь",
+      "baseGrapheme": "њ",
       "diacritics": [],
-      "basic": "нь",
-      "detailed": "нь",
-      "extended": "нь",
+      "basic": "њ",
+      "detailed": "њ",
+      "extended": "њ",
       "features": [],
       "examples": [
         "agneau",
@@ -1114,7 +1201,11 @@
         "S1"
       ],
       "confidence": "variable",
-      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL",
+      "ukrainianExample": "Найближче: нь у слові «кінь» [nʲ]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "Українське [nʲ] — пом'якшений зубний [n], а не окремий піднебінний [ɲ].",
+      "graphemeOrigin": "Serbian Cyrillic Њ; established /ɲ/"
     },
     {
       "id": "c_ng",
@@ -1123,11 +1214,11 @@
       "phonologicalStatus": "PERIPHERAL",
       "articulation": "velar nasal",
       "descriptionUk": "велярний носовий, периферійний у запозиченнях",
-      "baseGrapheme": "нґ",
+      "baseGrapheme": "ң",
       "diacritics": [],
-      "basic": "нґ",
-      "detailed": "нґ",
-      "extended": "нґ",
+      "basic": "ң",
+      "detailed": "ң",
+      "extended": "ң",
       "features": [],
       "examples": [
         "camping",
@@ -1137,7 +1228,11 @@
         "S1"
       ],
       "confidence": "variable",
-      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "Окремої фонеми [ŋ] у нормативній українській немає.",
+      "graphemeOrigin": "Kazakh Cyrillic Ң; established /ŋ/"
     },
     {
       "id": "c_l",
@@ -1160,7 +1255,10 @@
         "S1"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "лак — л [ɫ]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "Українське тверде [ɫ] темніше/веляризованіше за французьке світле [l]; точний збіг залежить від мовця."
     },
     {
       "id": "c_r",
@@ -1169,14 +1267,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "uvular rhotic variable manner/voicing",
       "descriptionUk": "увулярний ротичний; фрикативна/апроксимантна/тремтлива варіативність",
-      "baseGrapheme": "х",
-      "diacritics": [
-        "̬",
-        "̠"
-      ],
-      "basic": "х̬̠",
-      "detailed": "х̬̠",
-      "extended": "х̬̠",
+      "baseGrapheme": "ғ",
+      "diacritics": [],
+      "basic": "ғ",
+      "detailed": "ғ",
+      "extended": "ғ",
       "features": [],
       "examples": [
         "rue",
@@ -1187,7 +1282,11 @@
         "S20"
       ],
       "confidence": "medium",
-      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "ukrainianExample": "—",
+      "ukrainianExampleStatus": "NONE",
+      "ukrainianExampleNote": "Точного відповідника увулярному [ʁ] у нормативній українській немає; українське х [x] глухе й артикуляційно інше.",
+      "graphemeOrigin": "Kazakh Cyrillic Ғ; established /ʁ/"
     }
   ],
   "allophones": [
@@ -1730,9 +1829,9 @@
     {
       "id": "r-uvular-approximant",
       "ipa": "ʁ̞",
-      "basic": "х̬̠",
-      "detailed": "х̬̠",
-      "extended": "х̬̠̞",
+      "basic": "ғ",
+      "detailed": "ғ",
+      "extended": "ғ̞",
       "phoneme": "ʁ",
       "descriptionUk": "послаблена апроксимантна реалізація увулярного ротичного",
       "sources": [
@@ -1758,9 +1857,9 @@
     {
       "id": "r-voiced-velar-fricative",
       "ipa": "ɣ",
-      "basic": "х̬",
-      "detailed": "х̬",
-      "extended": "х̬",
+      "basic": "ғ",
+      "detailed": "ғ",
+      "extended": "ғ",
       "phoneme": "ʁ",
       "descriptionUk": "дзвінка велярна фрикативна реалізація/варіант",
       "sources": [
@@ -1771,9 +1870,9 @@
     {
       "id": "r-uvular-trill",
       "ipa": "ʀ",
-      "basic": "х̬̠",
-      "detailed": "х̬̠",
-      "extended": "х̬̠",
+      "basic": "ғ",
+      "detailed": "ғ",
+      "extended": "ғ",
       "phoneme": "ʁ",
       "descriptionUk": "увулярний тремтливий алофон; спосіб творення збережено в provenance, бо окремого графічного знака ще не затверджено",
       "sources": [
@@ -2283,6 +2382,97 @@
         "sources": [
           "S31",
           "S32"
+        ]
+      },
+      {
+        "grapheme": "ү",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "y"
+        ],
+        "value": "close front rounded vowel",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ү has the established close front rounded value /y/, a direct segmental match for French /y/.",
+        "sources": [
+          "S34"
+        ]
+      },
+      {
+        "grapheme": "ӧ",
+        "origin": "Eastern Mari Cyrillic",
+        "ipa": [
+          "œ"
+        ],
+        "value": "open-mid front rounded vowel",
+        "decision": "ADOPTED",
+        "rationale": "The Eastern Mari vowel inventory includes the open-mid front rounded /œ/; its Cyrillic grapheme ӧ is reused for French /œ/.",
+        "sources": [
+          "S37"
+        ]
+      },
+      {
+        "grapheme": "њ",
+        "origin": "Serbian Cyrillic",
+        "ipa": [
+          "ɲ"
+        ],
+        "value": "palatal nasal",
+        "decision": "ADOPTED",
+        "rationale": "Serbian Њ is a single alphabetic letter for /ɲ/, unlike Ukrainian нь which is /nʲ/.",
+        "sources": [
+          "S35"
+        ]
+      },
+      {
+        "grapheme": "ң",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "ŋ"
+        ],
+        "value": "velar nasal",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ң represents the velar nasal /ŋ/ as a single letter.",
+        "sources": [
+          "S34"
+        ]
+      },
+      {
+        "grapheme": "ғ",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "ʁ"
+        ],
+        "value": "voiced uvular fricative",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ғ has the established voiced uvular fricative /ʁ/ value; this avoids the former stacked voicing/backing marks on х.",
+        "sources": [
+          "S34"
+        ]
+      },
+      {
+        "grapheme": "ӹ",
+        "origin": "Hill Mari Cyrillic",
+        "ipa": [
+          "ə"
+        ],
+        "value": "reduced central vowel",
+        "decision": "ADOPTED",
+        "rationale": "Hill Mari Ӹ is documented with the reduced central vowel /ə/, a direct match for French schwa.",
+        "sources": [
+          "S36"
+        ]
+      },
+      {
+        "grapheme": "ө",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "ø"
+        ],
+        "value": "close-mid front rounded vowel",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ө has the established close-mid front rounded value /ø/, a direct segmental match for French /ø/.",
+        "sources": [
+          "S34"
         ]
       }
     ],
