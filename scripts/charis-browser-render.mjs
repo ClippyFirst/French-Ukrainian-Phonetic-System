@@ -93,7 +93,10 @@ for (const [name, browserType] of browserTypes) {
         const resources = performance.getEntriesByType("resource")
           .filter((entry) => entry.name.includes("Charis-"))
           .map((entry) => ({ name: entry.name.split("/").pop(), transferSize: entry.transferSize }));
+        const soundTable = document.querySelector("#ukrainian-sound-reference .ukrainian-sound-table");
+        const soundTableRows = soundTable?.querySelectorAll("tbody tr").length ?? 0;
         return {
+          soundTableRows,
           fontCheck: document.fonts.check('42px "Charis"', values.join("")),
           computedFamily: getComputedStyle(grid.querySelector(".glyph")).fontFamily,
           sampleCount: grid.children.length,
@@ -103,6 +106,7 @@ for (const [name, browserType] of browserTypes) {
           horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth
         };
       }, samples);
+      if (result.soundTableRows !== 37) throw new Error(`${name}/${viewport.label}: expected 37 Ukrainian sound-reference rows, found ${result.soundTableRows}`);
       if (!result.fontCheck) throw new Error(`${name}/${viewport.label}: Charis FontFaceSet check failed`);
       if (!result.computedFamily.includes("Charis")) throw new Error(`${name}/${viewport.label}: wrong computed family`);
       if (result.sampleCount !== samples.length) throw new Error(`${name}/${viewport.label}: missing mapped clusters`);
