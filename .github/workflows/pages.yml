@@ -30,11 +30,11 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check fonttools brotli uharfbuzz
           python scripts/audit-charis-font.py
-      - name: Install Playwright Chromium
+      - name: Install Playwright browser engines
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
-          npx playwright install --with-deps chromium
-      - name: Render UFPN combining marks in Chromium
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Render UFPN combining marks in Chromium, Firefox and WebKit
         run: |
           python -m http.server 4173 --bind 127.0.0.1 >/tmp/charis-http.log 2>&1 &
           server_pid=$!

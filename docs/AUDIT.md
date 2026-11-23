@@ -54,8 +54,8 @@
 - `õ` and other upstream notation conventions need independent review.
 
 ## Remaining acceptance blockers
-- Verify the emitted public Pages URL over HTTP, inspect app assets and run a browser smoke test; the deployment action and deployed SHA are already confirmed.
-- Run browser/mobile/accessibility QA.
+- Public Pages verification is now DONE_VERIFIED: main run 45217105821 passed deploy for `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; fresh live scrapes returned HTTP 200 for the app and stylesheet, and confirmed the deployed local Charis 7 Regular/Bold WOFF2 declarations.
+- Complete Firefox/WebKit desktop/mobile checks (PR #10 in progress), then keyboard, screen-reader and real-device accessibility QA; obtain owner visual confirmation.
 - Obtain independent French and Ukrainian phonetic review.
 - Obtain independently licensed gold IPA/UFPN data.
 - Expand morphology/context and edge-case coverage with source-backed fixtures.
@@ -93,3 +93,10 @@
 - `scripts/audit-charis-font.py` uses fontTools and HarfBuzz to inspect all 36 UFPN inventory codepoints, mark-to-base pairs for mapped graphemes, mark-to-mark pairs for stacked marks, and shaping output/advance widths. The regular Pages workflow runs this audit. Run 45216293204 passed: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters and 46 HarfBuzz shaping samples passed; the active Cyrillic GPOS feature set includes `mark` and `mkmk`.
 - The one-time import workflow was deleted after the font files were committed. No IPA→UFPN mapping, normalization, clipboard/export, or renderer behavior was changed.
 - The Chromium browser test in run 45216293204 also passed: the local Charis Regular WOFF2 was loaded (312,790 bytes), the browser confirmed `Charis` in `document.fonts`, and all 23 mapped clusters rendered. Screenshot artifact 14839625822 was downloaded and visually inspected; marks appear attached in the specimen. Firefox/WebKit/mobile and owner-side visual confirmation remain outstanding.
+
+
+### Public deployment verification and expanded browser matrix (2026-11-23)
+- GitHub Actions main run [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) completed successfully for `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; both `test` and `deploy` jobs passed.
+- Fresh live scrape of the Pages app returned HTTP 200 and rendered the current Ukrainian interface/sample. Fresh stylesheet scrape also returned HTTP 200 and confirmed local Charis 7 Regular/Bold WOFF2 declarations and absence of the old Charis SIL Google Fonts import.
+- PR #10 (`test/cross-browser-charis-typography`) extends browser rendering to Chromium, Firefox and WebKit at 1440px desktop and 390px mobile viewports. It is intentionally not merged until all six browser/viewport checks pass.
+- Remaining: browser PR CI, keyboard/screen-reader and real-device testing, and owner-side visual acceptance. Linguistic expert review and independently licensed gold benchmark remain separate blockers.

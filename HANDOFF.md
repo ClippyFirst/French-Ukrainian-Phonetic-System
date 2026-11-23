@@ -12,7 +12,7 @@
 - Static browser app: `index.html`, `styles.css`, `src/app.js`.
 - French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin guide.
 - Basic / Detailed / Extended UFPN, word-level parser explanations, uncertainty markers, searchable UFPN reference.
-- UFPN base glyphs use Charis SIL. A follow-up display layer now decomposes combining sequences into base letters and spacing modifier glyphs explicitly positioned above/below them, avoiding dependence on font mark anchors. Canonical adapter strings and clipboard/export Unicode remain unchanged. Browser visual verification remains pending.
+- UFPN output is rendered as one NFC-normalized text run using native OpenType mark/mkmk shaping and self-hosted SIL Charis 7.000 Regular/Bold WOFF2. Font files and OFL-1.1 license are vendored. Canonical adapter strings and clipboard/export Unicode remain unchanged.
 - Copy, TXT export, browser print-to-PDF, responsive layout.
 - No application backend; entered text is processed in the browser.
 - Setup and hosting instructions: `docs/WEB-SERVICE.md`.
@@ -40,7 +40,8 @@
 - Node CI output: 46 passed, 0 failed. Node deprecation notices from transitive/action dependencies remain non-blocking.
 - Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) on `360ef54a08af2ff7146d2a4052c326fec6968173` passed build, 46 tests, syntax checks and Pages deployment.
 - PR #3 CI run [45197892356](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45197892356) passed build, 46 tests and syntax checks; PR #3 merged as `01919e72d3ff1c46b5709b4a96f550db488e6498`. A production Pages deployment for this merge is not yet verified. A follow-up correction replaces Noto Sans with Charis SIL because the first visual attempt did not resolve detached Cyrillic diacritics; this correction is pending PR CI and deployment.
-- A fresh local clone and manual Chromium/Firefox/WebKit/mobile/accessibility QA could not be run in this environment.
+- Main run 45217105821 passed build, 48 tests, syntax checks, Charis font audit, Chromium browser specimen and Pages deployment for `9bc73498cd6e5f1190d508884d48af3a58ce89a2`. Fresh live app and CSS scrapes returned HTTP 200; the deployed stylesheet confirms local Charis 7 WOFF2 and no legacy Charis SIL Google Fonts import.
+- PR #10 extends Playwright coverage to Chromium, Firefox and WebKit at desktop and mobile widths; the six browser/viewport checks passed in run 45233413912.
 
 ## Remaining acceptance gates
 1. **Public hosting — PARTIAL:** Pages deploy succeeded and returned the public URL; direct HTTP/content verification remains because this environment could not resolve the host.
@@ -92,4 +93,11 @@
 - `scripts/audit-charis-font.py` checks all 36 UFPN diacritic/prosodic inventory codepoints, mapped mark-to-base/mark-to-mark anchors, and HarfBuzz shaping. CI run 45216293204 passed: 36/36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz shaping samples, and active Cyrillic `mark`/`mkmk` anchors.
 - The one-time download-and-commit workflow was removed after its successful run. Normal Pages CI now owns repeatable font validation.
 - Previous note stating that Charis 7 was not vendored is superseded by this section.
-- Readiness: font vendoring and the font/anchor audit are DONE_VERIFIED. Chromium render test passed with `document.fonts.check=true`, computed family `Charis, serif`, and all 23 clusters rendered from the local 312,790-byte Regular WOFF2. Screenshot artifact 14839625822 (run 45216293204) was visually inspected; marks appear attached in the specimen. Firefox/WebKit/mobile and owner-side visual confirmation remain PARTIAL.
+- Readiness: font vendoring and the font/anchor audit are DONE_VERIFIED. Chromium render test passed with `document.fonts.check=true`, computed family `Charis, serif`, and all 23 clusters rendered from the local 312,790-byte Regular WOFF2. Screenshot artifact 14839625822 (run 45216293204) was visually inspected; marks appear attached in the specimen. Firefox/WebKit desktop/mobile automated checks passed in run 45233413912; keyboard/screen-reader, physical-device and owner-side visual confirmation remain PARTIAL.
+
+
+## Live deployment and browser verification follow-up (2026-11-23)
+- Current deployed main SHA: `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; main Actions run [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) passed test and deploy.
+- Public app and stylesheet both returned HTTP 200. The app rendered its current sample; deployed CSS references `./assets/fonts/Charis-Regular.woff2` and `Charis-Bold.woff2`, and no longer imports Charis SIL from Google Fonts.
+- PR #10 adds Chromium/Firefox/WebKit × desktop/mobile coverage for all 23 UFPN base/mark clusters. Do not merge its six browser/viewport checks passed in run 45233413912.
+- The browser tests are automated typography checks, not a substitute for owner visual acceptance, keyboard/screen-reader review or testing on physical mobile devices.

@@ -14,17 +14,17 @@
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
 | Q1 | Build, unit and syntax tests | DONE_VERIFIED | Feature CI 45179583235, typography PR CI 45195492754 і main CI 45195557498: build passed, 46/46 tests passed, syntax check passed |
-| Q2 | Browser/mobile/accessibility | TODO | Chromium/Firefox/WebKit, mobile, keyboard і screen-reader QA не виконані |
+| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in PR #10 run 45233413912; keyboard, screen-reader and real-device QA remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
-| D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
+| D3 | Pages deployment | DONE_VERIFIED | Main workflow 45217105821 успішно розгорнув `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; live site and stylesheet returned HTTP 200 via fresh public scrape; CSS confirms local Charis Regular/Bold WOFF2 and no legacy Charis SIL import |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
-| W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
+| W2 | Browser-hosted smoke/accessibility QA | PARTIAL | Live Pages page and stylesheet returned HTTP 200; deployed sample rendered. Chromium passed all 23 clusters in run 45217105821; PR #10 run 45233413912 passed Firefox/WebKit and mobile viewports. Keyboard/screen-reader/owner acceptance remain |
 | W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; CI pending. Browser visual acceptance still required. |
 | W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
 | W5 | Inspect Charis 7 glyph and anchor coverage | DONE_VERIFIED | CI passed: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz samples; active Cyrillic `mark`/`mkmk` and required anchor pairs verified in run 45216293204. |
-| W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. Firefox/WebKit/mobile and owner acceptance remain. |
+| W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. All six Chromium/Firefox/WebKit desktop/mobile checks passed in run 45233413912; keyboard/screen-reader, real-device and owner acceptance remain. |
 
 ## OpenIPA engine integration
 
@@ -41,9 +41,9 @@
 
 ## Web service and deployment
 - Static browser app is implemented and documented in README and `docs/WEB-SERVICE.md`.
-- Main Actions run 45195557498: build, 46 tests, syntax check and Pages deployment passed for typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- Main Actions run 45217105821: build, 48 tests, syntax check, Charis font audit, Chromium specimen and Pages deployment passed for commit `9bc73498cd6e5f1190d508884d48af3a58ce89a2`.
 - GitHub Pages is enabled and workflow deploys only from `main`.
-- Main run 45195557498 successfully deployed typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173` and emitted URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content/browser verification remains unavailable because this environment could not resolve the host.
+- Main run 45217105821 successfully deployed commit `9bc73498cd6e5f1190d508884d48af3a58ce89a2`. A fresh live scrape confirmed HTTP 200 for the public app and stylesheet, the current Ukrainian UI and the self-hosted Charis Regular/Bold WOFF2 declarations; no legacy Charis SIL Google Fonts import remains.
 - PR #2 added Noto Sans but did not resolve detached marks. Follow-up branch uses Charis SIL, specifically designed for language/phonetic text and combining marks; IPA→UFPN mapping strings are unchanged. Browser confirmation remains required.
 
 
@@ -68,7 +68,7 @@
 - Root cause verified by source inspection: manual DOM decomposition and spacing-glyph overlays bypass font-native mark attachment.
 - Implementation on PR #8 branch: `src/ufpn-display.js` now assigns the complete NFC-normalized UFPN string to one text node; overlay CSS removed; `mark`/`mkmk` features remain enabled.
 - Tests added for stacked combining marks and affricate tie bars. No phonetic mappings or canonical output changed.
-- Status W3 remains PARTIAL until hosted CI and browser screenshots/visual acceptance are verified. Local clone/test execution was blocked by DNS failure resolving github.com; official SIL Charis 7 package was not vendored.
+- Status W3 remains PARTIAL pending Firefox/WebKit and owner-side visual acceptance. The official Charis 7 package is vendored; hosted font/anchor audit and Chromium desktop/mobile rendering are automated.
 
 
 ### Official Charis 7.000 font migration (2026-11-23)
@@ -78,3 +78,9 @@
 - `scripts/audit-charis-font.py` checks all 36 mapping inventory codepoints, actual mark-to-base pairs used in mapped outputs, mark-to-mark pairs used by stacked combinations, and HarfBuzz output/zero-advance behavior. CI passed in run 45216293204: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters and 46 HarfBuzz shaping samples passed.
 - The import-only workflow was deleted after the font files were committed; the normal Pages workflow now runs the font audit on PR and main.
 - W5 is DONE_VERIFIED. Chromium browser rendering passed for all 23 clusters and the generated screenshot was visually inspected; W6 remains PARTIAL until Firefox/WebKit/mobile and owner-side visual acceptance. The screenshot is retained as workflow artifact 14839625822 (run 45216293204).
+
+
+### Live deployment and cross-browser follow-up (2026-11-23)
+- Main `9bc73498cd6e5f1190d508884d48af3a58ce89a2` is deployed; workflow [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) passed both test and deploy jobs.
+- Public app and `styles.css` independently returned HTTP 200 on a fresh live scrape. The app rendered its current sample; CSS contains local Charis Regular/Bold WOFF2 declarations and no Charis SIL Google Fonts import.
+- PR #10 adds Playwright coverage for Chromium, Firefox and WebKit at desktop and mobile viewport sizes; run 45233413912 passed all six browser/viewport checks; keyboard, screen-reader, real-device and owner visual acceptance remain. Keyboard, screen-reader, real-device and owner visual acceptance are separate outstanding gates.
