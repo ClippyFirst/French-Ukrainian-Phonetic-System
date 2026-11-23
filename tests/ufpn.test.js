@@ -27,7 +27,7 @@ test('all mapping records have three levels and source provenance',()=>{
 });
 
 test('documented rhotic allophones have explicit practical mappings',()=>{
- assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ ғ ғ̞ р̌ р р̞ х');
+ assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ ғ̞ р̌ р р̞ х');
 });
 
 test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й ү̯ ў'));
@@ -119,3 +119,5 @@ test('every phoneme has a Ukrainian sound example or an explicit no-equivalent s
   assert.ok(['EXACT','CONTEXTUAL','APPROXIMATE','NONE'].includes(p.ukrainianExampleStatus),p.id+' status enum');
  }
 });
+
+test('voiced velar and uvular fricatives remain distinct',()=>{assert.equal(renderUfpn('ɣ ʁ').text,'х̬ ғ')});
