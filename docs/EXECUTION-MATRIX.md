@@ -151,3 +151,10 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Final PR workflow [45270636340](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340) succeeded: build, 57/57 tests, syntax check, Charis 7 glyph/OpenType audit, Playwright installation, and Chromium/Firefox/WebKit rendering at 1440/1024/768/390 px (12 combinations). Artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) contains desktop/laptop/tablet/mobile screenshots and the font specimen; all four UI screenshots were manually inspected. Visual refinements addressed spellcheck-like confidence underlines and tablet heading wrap.
 - UI-01/UI-02: DONE_VERIFIED. UI-03: PARTIAL — manual screenshot review complete; screen-reader, physical-device and zoom/reflow testing remain. UI-04: MERGED; Pages publication awaits main workflow and live verification.
 - Merge did not alter French G2P, IPA normalization, IPA→UFPN mappings, phonetic data, confidence/provenance, exports or runtime dependencies. Linguistic expert review and licensed gold benchmark remain separate outstanding gates.
+
+
+### Authoritative Pages CI status — run 45272944761 (2026-11-23)
+- Current main SHA: `0503cfe0b0450b88a2a4b9bedff5ee594323668d`; workflow [45272944761](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45272944761) is the active run for this exact SHA.
+- Build, `npm test`, syntax check, and Charis 7 glyph/OpenType audit have passed. Playwright browser-engine installation is still in progress; Chromium/Firefox/WebKit rendering, artifact upload, and Pages deployment have not started.
+- Earlier run 45272182990 and other superseded documentation-push runs were cancelled by concurrency. Do not use their status as the current deployment gate.
+- UI-04 remains PARTIAL until this run's test job and Pages deploy both succeed and the live site is checked. No new main commit was made while this workflow was active.

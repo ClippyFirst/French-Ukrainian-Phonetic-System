@@ -216,3 +216,10 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - UI improvements merged; no phonetic engine/data behavior changed. Screen-reader, real-device and zoom/reflow checks remain PARTIAL.
 - Next: verify the main-branch Pages workflow triggered by the merge, then fetch the live site and confirm the new UI is deployed. Previous Pages deploy failure was artifact metadata retrieval; do not assume fixed until a fresh main deploy succeeds.
 - Linguistic expert review and independently curated/licensed gold benchmark remain blockers for linguistic release validation.
+
+
+## Authoritative continuation update — 2026-11-23
+- Current main: `0503cfe0b0450b88a2a4b9bedff5ee594323668d`.
+- Current Pages workflow: [run 45272944761](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45272944761). Build, `npm test` (57/57), `npm run check`, and Charis 7 glyph/OpenType audit passed.
+- The active job is still installing Playwright browser engines. Chromium/Firefox/WebKit rendering, screenshot artifact upload and Pages deploy are pending. The earlier run 45272182990 was cancelled/superseded; do not treat it as the current workflow.
+- No additional main push was made while run 45272944761 was active, to avoid cancelling the deployment gate. Pages deployment and live-site smoke checks remain unverified.
