@@ -41,9 +41,12 @@
 | S34 | [Kazakh phoneme inventory and orthography](https://cohenpr-xpf.github.io/XPF/conv_resources/info/kk.html) | Kazakh Cyrillic `ү` /y/, `ө` /ø/, `ғ` /ʁ/ and `ң` /ŋ/; source used only for grapheme-to-sound correspondences | descriptive reference; no corpus imported | Довідкове |
 | S35 | [Serbian Cyrillic alphabet and phonetic values](https://assets.super.so/15f83ff9-e733-47c0-b1d0-58aaebdd6b3b/files/bad91b3c-dff5-4426-8e4c-a0f6c11a08c3/Osnovi_istorije_jezika.pdf) | Serbian `њ` is one Cyrillic letter with IPA /ɲ/ | educational phonetics reference; no corpus imported | Довідкове |
 | S36 | [Mari Cyrillic phonology — University of Vienna](https://services.phaidra.univie.ac.at/api/object/o%3A1266524/download) | Hill Mari `ӹ` /ə/; direct Cyrillic grapheme correspondence | academic thesis; no corpus imported | Наукове |
-| S37 | [EURPhon: Eastern Mari phoneme inventory](https://eurphon.info/languages/html?lang_id=123) | Eastern Mari open-mid front rounded vowel /œ/; used as the phonetic basis for `ӧ` | phonological inventory cites a 1960 descriptive grammar; no corpus imported | Наукове |
+| S37 | [EURPhon: Eastern Mari phoneme inventory](https://eurphon.info/languages/html?lang_id=123) | Confirms that /œ/ occurs in the Eastern Mari phoneme inventory; **does not establish a Mari grapheme `ӧ` → /œ/ correspondence** | cited phonological inventory; used only as evidence for the segment's existence, not for the UFPN glyph assignment | Наукове |
 
 
 ## OpenIPA implementation provenance
 
 OpenIPA French source files are vendored under `vendor/openipa/` from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`. The upstream license is reproduced as `LICENSE`; attribution and network-source obligations are documented in `THIRD_PARTY_NOTICES.md`. A small number of upstream French regression fixture examples are mirrored in tests; no full OpenIPA word corpus or external pronunciation database was imported.
+
+
+**Important scope correction for S37:** the cited EURPhon page supports the existence of the phoneme /œ/ in Eastern Mari, not the spelling of that phoneme with `ӧ`. The reviewed Mari orthography references associate `ӧ` with a different vowel quality (reported as /ø/ or [ɵ], depending on variety/source). Therefore `ӧ` = French /œ/ is explicitly a UFPN-specific grapheme assignment, not a direct Mari letter–sound borrowing. No Mari orthographic or corpus data are imported into UFPN.
