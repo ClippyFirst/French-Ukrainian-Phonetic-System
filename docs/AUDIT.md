@@ -200,7 +200,7 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 
 ## Current main verification and Pages deployment closeout — 2026-11-23
 
-- Current main HEAD: `8321b5aec3b881d688582ab72948f9d12313eaed` (documentation-only closeout on top of the verified application/workflow commit `bba1a66fdb31241e889fe16fe25b2371bb3641fc`).
+- Verified application/workflow commit: `bba1a66fdb31241e889fe16fe25b2371bb3641fc`; subsequent closeout commits are documentation-only and do not alter the deployed application.
 - PR #27 merged as `18c340aad06d25940504a8a6f177228e9f5a6806`: all six pinned OpenIPA French fixture rows are covered; `garçon` asserts raw `gaɾsõ` provenance and normalized `gaɾsɔ̃`; the `descends` executable-vs-CSV divergence remains explicit. PR CI 45277660637 passed 58/58 tests and browser checks.
 - PR #28 merged as `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`: the French source textarea has an accessible name, and skip-link activation transfers focus to `<main>`. PR CI 45278479262 passed 58/58 tests and all 12 Chromium/Firefox/WebKit × viewport combinations.
 - PR #29 reconciled the matrix, audit and handoff with the observed evidence.
