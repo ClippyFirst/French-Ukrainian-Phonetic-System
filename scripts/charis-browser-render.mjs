@@ -14,7 +14,7 @@ function collectClusters(value) {
   const clusters = [];
   let base = "";
   let marks = "";
-  for (const char of value.normalize("NFD")) {
+  for (const char of value.normalize("NFC")) {
     if (/\p{M}/u.test(char) && markCodepoints.has(char.codePointAt(0))) {
       if (base) marks += char;
     } else {
