@@ -167,3 +167,6 @@
 - PR #19 CI `45263336209` passed build, tests, syntax, font audit and all six Chromium/Firefox/WebKit desktop/mobile checks; browser assertions confirmed the «Як вимовити» column and 37 guided rows.
 - Main workflow `45264431136` passed build, tests, syntax and Charis 7 audit; Playwright browser installation/check and Pages deploy were still in progress at last check.
 - Live GitHub Pages returned HTTP 200 but still served the previous four-column table. Do not mark D3/W1 deployed until a fresh scrape shows «Як вимовити» and all 37 rows.
+
+
+- /œ/ pronunciation-guide refinement: the correct cue is [ɛ] with the same front open-mid tongue position plus lip rounding; do not lower the tongue further. A dedicated regression guards the instruction.
