@@ -197,16 +197,16 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 6. Uploaded artifact: [browser specimen and four responsive workbench screenshots](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45268570405/artifacts/14864086549).
 
 ### Remaining
-- Human visual inspection of the generated screenshots and manual accessibility checks (screen reader, zoom/reflow and real devices) remain PARTIAL.
-- PR #25 is intentionally left open for review; it has not been merged or deployed. The public site still serves the current main branch.
+- Human visual inspection of desktop/laptop/tablet/mobile screenshots is complete (artifact 14865776425). Screen-reader, zoom/reflow and physical-device checks remain PARTIAL.
+- PR #25 has been merged as `41f96a1f3fbb8b220931d434626a4edddc3c13c7`. Public deployment remains unverified; main workflow 45272182990 is pending at Playwright browser installation.
 - Main workflow `45265871092` had a successful test job but the Pages deploy step failed while fetching the `github-pages` artifact metadata. This is recorded as an external Actions/Pages API blocker; retry deployment after PR merge rather than changing app code speculatively.
-- Next acceptance: inspect the five uploaded screenshots, approve/adjust the visual result, merge PR #25, then verify the new main commit's Pages deployment and scrape the live page at desktop and mobile widths.
+- Next acceptance: wait for workflow 45272182990 to complete, verify Pages deployment and inspect the live site at desktop and mobile widths.
 
 
 ### Existing live-site baseline
-- Main before this design branch: `81098345c69a3c58d770b95fd63949133fa872d7`.
+- Main before this design branch: `81098345c69a3c58d770b95fd63949133fa872d7`; PR #25 merged as `41f96a1f3fbb8b220931d434626a4edddc3c13c7`.
 - Last verified live Pages commit: `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The current main /œ/ articulation wording correction is therefore not yet reflected on the public site.
-- Main workflow `45265871092` passed build, 57 tests, syntax, font audit and browser rendering; deployment failed only when `actions/deploy-pages@v4` could not retrieve the uploaded `github-pages` artifact metadata. Retry the Pages deployment after the external Actions/Pages API issue clears.
+- Historical main workflow `45265871092` passed tests but failed at Pages artifact metadata retrieval. The current post-merge main workflow is `45272182990`; its build, 57/57 tests, syntax and font audit have passed, while browser installation and deployment remain pending.
 
 
 ## 2026-11-23 — PR #25 merged / UI handoff
