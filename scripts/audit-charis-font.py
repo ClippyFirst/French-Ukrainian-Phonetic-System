@@ -172,7 +172,15 @@ def main():
         buffer.guess_segment_properties()
         hb.shape(hb_font, buffer, {"mark": 1, "mkmk": 1})
         if any(info.codepoint == 0 for info in buffer.glyph_infos):
-            raise SystemExit(f"HarfBuzz produced .notdef for {sample!r}")
+            nominal = [
+                (f"U+{ord(char):04X}", cmap.get(ord(char)), hb_font.get_nominal_glyph(ord(char)))
+                for char in sample
+            ]
+            raise SystemExit(
+                f"HarfBuzz produced .notdef for {sample!r}; "
+                f"face_upem={hb_face.upem}, font_glyphs={hb_face.glyph_count}, "
+                f"nominal={nominal}, shaped={[info.codepoint for info in buffer.glyph_infos]}"
+            )
         shaped_marks = []
         for info, position in zip(buffer.glyph_infos, buffer.glyph_positions):
             glyph_name = font.getGlyphName(info.codepoint)
