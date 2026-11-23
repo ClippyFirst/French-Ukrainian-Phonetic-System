@@ -198,5 +198,13 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 - PR changed presentation/documentation only; the French phonetic pipeline and datasets were preserved. Main Pages deployment and live verification are tracked separately in HANDOFF.md.
 
 
-## Current main Pages workflow — run 45272944761 (2026-11-23)
-The authoritative workflow for main SHA `0503cfe0b0450b88a2a4b9bedff5ee594323668d` is [run 45272944761](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45272944761). Build, 57/57 unit tests, syntax check and Charis 7 glyph/OpenType audit passed. The Playwright browser-engine installation step remains in progress; cross-browser rendering, artifact upload and Pages deploy are pending. Earlier run 45272182990 was superseded/cancelled by concurrency. Therefore Pages publication and live-site verification remain PARTIAL, not DONE_VERIFIED.
+## Current main verification and Pages artifact blocker — 2026-11-23
+
+- Current main SHA: `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`.
+- PR #27 merged as `18c340aad06d25940504a8a6f177228e9f5a6806`: all six pinned OpenIPA French fixture rows are covered; `garçon` now asserts raw `gaɾsõ` provenance and normalized `gaɾsɔ̃`; `descends` executable-vs-CSV divergence remains explicit. PR workflow 45277660637 passed 58/58 tests, build, syntax, font audit and browser checks.
+- PR #28 merged as `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`: the French source textarea has an accessible name, and skip-link activation transfers focus to `<main>`. PR workflow 45278479262 passed 58/58 tests and all 12 Chromium/Firefox/WebKit × viewport combinations; all combinations confirmed the accessible name and focus transfer.
+- Main workflow [45278852488](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488): test job SUCCESS — build, 58/58 tests, syntax, Charis 7/OpenType audit, browser rendering and artifact upload all passed. Browser specimen artifact: [14869235188](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14869235188).
+- Pages artifact upload succeeded as artifact [14867792849](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867792849), but `actions/deploy-pages@v4` failed to resolve its metadata (reported one artifact but no matching `github-pages`). A deploy-only retry uploaded a second artifact [14867374732](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867374732) and failed because two `github-pages` artifacts now existed for that run. Do not retry the deploy job again on this run.
+- Required next step: a fresh main workflow run with a single `github-pages` artifact, then verify deployment and re-scrape the live Pages site. Last verified live baseline remains commit `95ec26e6127465d0f3152194c07db1b3dbf089e2`; current main is not yet confirmed deployed.
+- Linguistic expert review and independently curated/licensed gold benchmark remain separate blockers. Screen-reader, zoom/reflow, physical-device and owner visual acceptance remain PARTIAL.
+
