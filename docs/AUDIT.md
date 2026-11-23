@@ -104,6 +104,6 @@
 
 ### OpenIPA legacy-symbol normalization (2026-11-23)
 - Verified in vendored source: `IPA.NASAL_O` is `õ`; `IPA.FLIPPED_R` is `ɾ`; `parseR` supplies `ɾ` for ordinary French `r` throughout the parser. This conflicted with the project's canonical broad Metropolitan IPA inventory (`ɔ̃`, `ʁ`) and caused `⟦õ⟧` plus regional tap `р̌` in ordinary output.
-- Adapter now normalizes OpenIPA-only legacy output `õ` → `ɔ̃` and `ɾ` → `ʁ`, while retaining raw values in `sourceIpa` and trace. Directly supplied IPA `[ɾ]` still maps to the documented regional tap `р̌`.
+- Adapter normalizes OpenIPA `õ` → `ɔ̃` and applies profile-aware rhotic handling: `metropolitan-fr` maps the upstream lyric-diction tap `ɾ` to broad `/ʁ/`, while `lyric-diction-fr` preserves `[ɾ]` as intentional tap `р̌`. Raw values remain in `sourceIpa` and trace.
 - Regression cases: `bonjour`, `garçon`, `mer`; end-to-end `bonjour` expected UFPN `бо̆̃жух̬̠` with no unsupported IPA.
 - Feature branch: `fix/openipa-canonical-ipa-adapter`. CI/deployment result to be added after verification. Linguistic expert review remains an independent outstanding gate.

@@ -13,10 +13,14 @@ const parserOptions = (options = {}) => ({
 });
 
 // Normalize OpenIPA's internal symbols at the adapter boundary; preserve exact raw values in sourceIpa.
-const normalizeOpenIpa = (value) => String(value ?? '')
-  .replaceAll('ε', 'ɛ')
-  .replaceAll('õ', 'ɔ̃')
-  .replaceAll('ɾ', 'ʁ');
+const normalizeOpenIpa = (value, options = {}) => {
+  const normalized = String(value ?? '')
+    .replaceAll('ε', 'ɛ')
+    .replaceAll('õ', 'ɔ̃');
+  // OpenIPA intentionally uses a flipped /ɾ/ for lyric diction; only the
+  // Metropolitan profile adapts that source convention to broad /ʁ/.
+  return options.profile === 'metropolitan-fr' ? normalized.replaceAll('ɾ', 'ʁ') : normalized;
+};
 
 export function transcribeFrenchText(text, options = {}) {
   return parseFrench(String(text ?? '').normalize('NFC'), parserOptions(options));
@@ -50,7 +54,7 @@ export function transcribeFrenchTextDetailed(input, options = {}) {
           end,
           boundary,
           grapheme: text.slice(start, end),
-          ipa: normalizeOpenIpa(phoneme.ipa),
+          ipa: normalizeOpenIpa(phoneme.ipa, options),
           sourceIpa: phoneme.ipa,
           ruleId: 'openipa-rule',
           rule: phoneme.rule,

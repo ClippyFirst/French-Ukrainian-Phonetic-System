@@ -22,7 +22,7 @@
 - Browser ESM bundle built from vendored TypeScript using pinned esbuild 0.25.0.
 - French G2P is routed through the upstream full-text parser; rule descriptions, source IPA and source spans are preserved.
 - IPA is the only input to the UFPN adapter. Unsupported IPA remains visible.
-- Explicit adapter normalization: OpenIPA legacy `ε` → IPA `ɛ`, `õ` → `ɔ̃`, and parser-default `ɾ` → `ʁ`; raw upstream notation remains in `sourceIpa`/trace. Direct external IPA `[ɾ]` still maps to the documented regional tap `р̌`. This adapter correction is covered by regressions but is not independent phonetic expert validation.
+- Explicit adapter normalization: OpenIPA legacy `ε` → IPA `ɛ` and `õ` → `ɔ̃`; the rhotic is profile-aware: `metropolitan-fr` maps OpenIPA's lyric-diction tap `ɾ` to broad `/ʁ/`, while `lyric-diction-fr` preserves `[ɾ]` → `р̌`. Raw upstream notation remains in `sourceIpa`/trace. This adapter correction is covered by regressions but is not independent phonetic expert validation.
 - `lyric-diction-fr` uses upstream text-level liaison/elision hooks; `metropolitan-fr` uses the base parser.
 - Repository-wide AGPL-3.0 and upstream attribution/network-source notices are included; AGPL-3.0 was explicitly approved by the owner on 2026-11-23.
 
@@ -105,6 +105,13 @@
 ## OpenIPA adapter correction — 2026-11-23
 - Feature branch: `fix/openipa-canonical-ipa-adapter`, based on `78478b8e40335fd9988dce7aaec273a332bdd305`.
 - Root cause: vendored OpenIPA defines `NASAL_O='õ'` and `FLIPPED_R='ɾ'`; `parseR` uses the latter as its default French `r` output. The project IPA inventory instead encodes broad Metropolitan French `/ɔ̃/` and `/ʁ/`. Without normalization, the UI exposed `⟦õ⟧` and incorrectly rendered ordinary `r` as regional `р̌`.
-- The adapter converts OpenIPA output `õ→ɔ̃`, `ɾ→ʁ`, and `ε→ɛ`; raw upstream strings remain in `sourceIpa` and trace. The separate direct IPA→UFPN mapping for a genuinely supplied regional `[ɾ]` remains unchanged.
+- The adapter converts OpenIPA output `õ→ɔ̃` and `ε→ɛ`; for `metropolitan-fr`, it maps the upstream lyric-diction `ɾ` convention to broad `/ʁ/`, while `lyric-diction-fr` preserves the intended `[ɾ]` tap. Raw upstream strings remain in `sourceIpa` and trace. The direct IPA→UFPN mapping `[ɾ]` → `р̌` remains unchanged.
 - Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бо̆̃жух̬̠` without unsupported IPA. CI and deployment are pending.
 - This resolves the known OpenIPA symbol mismatch, not general French pronunciation accuracy; independent specialist review and a licensed gold benchmark remain blocked.
+
+
+## Profile-aware OpenIPA rhotic correction — 2026-11-23
+- Primary source: OpenIPA's official site describes the tool as intended for Lyric Diction and explicitly documents flipped French `r` as `[ɾ]` (https://www.openipa.org/).
+- The previous unconditional `ɾ→ʁ` adapter rule was too broad: it erased a deliberate lyric-diction pronunciation. The adapter is now profile-aware: Metropolitan uses broad `/ʁ/`; lyric diction preserves `[ɾ]` and UFPN `р̌`.
+- `õ→ɔ̃` and `ε→ɛ` broad-IPA normalizations remain; original upstream IPA is preserved in provenance. Tests cover both profiles.
+- This corrects the profile semantics; do not treat either output as independently expert-validated pronunciation for every speaker.
