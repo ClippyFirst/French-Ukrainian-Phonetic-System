@@ -503,8 +503,9 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Точного відповідника [œ] у нормативній українській вимові немає.",
-      "graphemeOrigin": "Mari Cyrillic Ӧ; established /œ/",
-      "pronunciationGuideUk": "Поставте язик як для [ɛ], трохи нижче, і округліть губи."
+      "graphemeOrigin": "UFPN project-specific assignment using the extended Cyrillic glyph ӧ; not a verified Mari ӧ → /œ/ correspondence",
+      "pronunciationGuideUk": "Поставте язик як для [ɛ], трохи нижче, і округліть губи.",
+      "graphemeOriginNote": "Eastern Mari phoneme inventory supports the existence of /œ/ but does not establish ӧ as its grapheme. Mari orthographic ӧ is reported with a different vowel value in the reviewed sources. UFPN reserves ӧ for French /œ/ to distinguish it from ө /ø/; this is a notation-design choice pending expert review."
     },
     {
       "id": "v_u",

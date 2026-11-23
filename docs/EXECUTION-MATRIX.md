@@ -117,7 +117,7 @@
 - New dedicated letters reduce combining-mark load: `ү` /y/, `ө` /ø/, `ӧ` /œ/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, `ғ` /ʁ/. Existing `ў` /w/ and `э` /ɛ/ retained. `ү̯` represents non-syllabic /ɥ/ with one modifier.
 - The browser now presents a visible, searchable table with 37 phoneme rows: UFPN letter, IPA sound, a Ukrainian word/position where the sound occurs, and an explicit exact/contextual/approximate/no-equivalent status. It does not fabricate Ukrainian examples for French nasal vowels or other absent contrasts.
 - Mapping JSON schema is 1.2.0; regression tests cover new graphemes and require Ukrainian-example status/note for every phoneme. Font audit now checks the cmap coverage of every adopted grapheme as well as diacritics.
-- Source provenance: S34 Kazakh phoneme/grapheme correspondences, S35 Serbian `њ` /ɲ/, S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/. This is an evidence-based notation proposal, not yet independently approved by a Ukrainian phonetician or user-tested.
+- Source provenance: S34 Kazakh phoneme/grapheme correspondences, S35 Serbian `њ` /ɲ/, S36 Hill Mari `ӹ` /ə/; S37 confirms Eastern Mari /œ/ exists but does not support `ӧ` as its grapheme. UFPN `ӧ` /œ/ is a project-specific assignment. This is an evidence-informed notation proposal, not yet independently approved by a Ukrainian phonetician or user-tested.
 - Acceptance: all tests, font audit, browser checks, and Pages deploy must pass before marking DONE_VERIFIED; expert/usability review remains PARTIAL.
 
 
@@ -128,4 +128,4 @@
 - U5 remains PARTIAL pending independent Ukrainian/French phonetic review and owner readability acceptance. Q2 remains PARTIAL pending keyboard/screen-reader and real-device checks. Q3 remains BLOCKED pending an independently curated/licensed gold dataset.
 
 
-| U6 | Ukrainian articulation guidance for all sound-table entries | PARTIAL | `data/ufpn-mapping.json` now contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage for every entry. CI and browser viewport verification are pending for this branch. |
+| U6 | Ukrainian articulation guidance for all sound-table entries | DONE_VERIFIED | `data/ufpn-mapping.json` contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage. PR #19 workflow `45263336209` passed the six-browser rendering checks (Chromium, Firefox, WebKit × desktop/mobile) after fixing the test helper. Final `main` deployment is tracked separately under D3. |

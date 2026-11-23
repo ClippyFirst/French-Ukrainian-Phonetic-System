@@ -127,10 +127,10 @@
 ## Expanded Cyrillic inventory and Ukrainian sound table — 2026-11-23
 
 - Feature branch: `feat/extended-cyrillic-and-ukrainian-sound-table`, based on `main` `682767c361715e116628eec4cff29f5c47c70688`.
-- Owner requested fewer diacritics and a mandatory explanatory table of UFPN letter → sound → Ukrainian word. The implementation adds single-letter mappings `ү` /y/, `ө` /ø/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, and `ғ` /ʁ/; `ӧ` is /œ/, and `/ɥ/` is `ү̯`. Existing `ў` /w/ and `э` /ɛ/ remain.
+- Owner requested fewer diacritics and a mandatory explanatory table of UFPN letter → sound → Ukrainian word. The implementation adds single-letter mappings `ү` /y/, `ө` /ø/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, and `ғ` /ʁ/; `ӧ` is the UFPN project-specific sign for /œ/ (not a verified Mari letter–sound borrowing), and `/ɥ/` is `ү̯`. Existing `ў` /w/ and `э` /ɛ/ remain.
 - New visible searchable web table lists all 37 segments and marks each Ukrainian comparison as exact, contextual allophone, approximate only, or no exact equivalent. It explicitly avoids false examples for French nasal vowels, /ɥ/, /ɲ/, /ŋ/ and /ʁ/.
 - Machine-readable mapping schema 1.2.0 now includes Ukrainian example/status/note fields. Tests require complete example metadata. Charis font audit checks all adopted extended-Cyrillic glyphs.
-- Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/.
+- Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Hill Mari `ӹ` /ə/; S37 confirms Eastern Mari /œ/ exists but does not establish a Mari `ӧ` grapheme for it. UFPN `ӧ` /œ/ is a project-specific assignment.
 - PR #15 and PR #16 are merged. PR #15 table deployment and live verification are complete; W1 is DONE_VERIFIED. U5 remains PARTIAL for independent linguistic and readability review. The latest PR #16 follow-up is in main; its redeployment workflow is still in progress.
 
 
@@ -149,3 +149,14 @@
 - Branch `feat/ufpn-pronunciation-guides` adds `pronunciationGuideUk` to all 37 phoneme records and renders it in a dedicated **«Як вимовити»** column in the searchable 37-row Ukrainian sound table.
 - Guides give concrete articulatory instructions in Ukrainian (tongue, lips, jaw, voicing, airflow and nasal resonance). They distinguish exact/approximate/no Ukrainian equivalents instead of substituting a misleading familiar sound.
 - Added a unit test for complete 37/37 guide coverage. PR CI, browser checks, merge and Pages deployment remain pending until verified.
+
+
+## Provenance correction: `ӧ` /œ/ (2026-11-23)
+- S37 EURPhon supports the existence of /œ/ in the Eastern Mari inventory, but does not establish the letter `ӧ` as its grapheme. Reviewed Mari references assign `ӧ` a different vowel value.
+- The output mapping `ӧ` → /œ/ is retained as an explicit UFPN design convention to distinguish it from `ө` → /ø/ without adding diacritics. It must not be described as a direct Mari grapheme borrowing.
+- The correction is recorded in the mapping metadata, source registry and IPA mapping notes; runtime output is unchanged.
+
+## Verification update after PR #18/#19
+- PR #18 merged pronunciation guides for all 37 segments; PR #19 fixed the browser harness and merged.
+- PR #19 workflow `45263336209`: build, tests, syntax, Charis font audit and all six browser viewport checks passed.
+- Final main push workflow `45263533099`: build, tests, syntax and font audit passed; Playwright installation/browser checks and Pages deployment were still running at last inspection.
