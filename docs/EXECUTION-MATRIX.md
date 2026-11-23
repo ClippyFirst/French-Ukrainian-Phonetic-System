@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
