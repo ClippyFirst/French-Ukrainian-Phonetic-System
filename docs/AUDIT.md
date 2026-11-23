@@ -151,3 +151,6 @@
 - Main workflow `45264431136`: build, unit tests, syntax and Charis 7 audit passed. Playwright browser installation was still in progress at last check; no final main browser/deploy pass is claimed.
 - PR #19 workflow `45263336209` passed the six browser checks, validating the five-column table and 37/37 articulation guides.
 - Fresh live Pages scrape returned HTTP 200 but still showed the prior four-column table, without «Як вимовити». D3 and W1 therefore remain PARTIAL until the main deployment completes and the live page is re-scraped.
+
+
+- Articulation-guide review: corrected the /œ/ instruction to keep the same open-mid tongue height as [ɛ] and add lip rounding only. A regression now guards this articulatory distinction.
