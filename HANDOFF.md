@@ -63,3 +63,12 @@
 ## Diacritic spacing refinement
 - Owner feedback: marks moved too high and had excessive gap to the base letter.
 - Follow-up changes only CSS geometry (`styles.css`): remove top padding from each grapheme wrapper, move above marks closer, and tighten stacked-mark spacing. No mapping or Unicode sequence changes. Awaiting CI/deployment and owner visual check.
+
+
+## Research-backed diacritic size correction
+- Owner reported that diacritic glyphs remained oversized after the spacing correction.
+- Reviewed Google Fonts' diacritics design guidance (https://googlefonts.github.io/gf-guide/diacritics.html) and Microsoft's OpenType GPOS documentation (https://learn.microsoft.com/en-us/typography/opentype/spec/gpos). The guidance emphasizes coherent proportions, conventional mark forms, optical attachment, and compact stacked marks; GPOS mark-to-base/mark-to-mark anchors are the native font-level mechanism.
+- Code inspection identified a concrete mismatch: marks were bold Manrope at `.62em`, while base letters were Charis SIL. At 22px output that is about 13.6px.
+- Branch `fix/typographic-diacritic-scale` changes marks to regular Charis SIL at `.42em` (about 9.2px at 22px). This is a measured proportional adjustment, not a ratio mandated by the sources.
+- No changes to canonical combining Unicode, phonetic mappings, clipboard or export.
+- Pending: CI, Pages deployment, and owner visual acceptance. No browser screenshot was available, so visual resolution is not claimed.

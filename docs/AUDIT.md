@@ -66,3 +66,12 @@
 ### Compact mark spacing follow-up
 - Owner reported that the first explicit-positioning pass placed marks too high with excessive whitespace between marks and bases.
 - Follow-up branch `fix/compact-ufpn-diacritic-spacing` removes the `.34em` top padding and reduces above/below offsets and stacking intervals. This is a geometry-only CSS adjustment; canonical Unicode and phonetic mappings remain untouched. Visual acceptance still requires owner confirmation.
+
+
+### Diacritic scale correction — research-backed follow-up
+- Owner reported that the rendered diacritic glyphs remained much too large after the spacing correction.
+- Reviewed Google Fonts' specialist diacritics guidance: marks should preserve conventional shape/proportion, remain visually coherent with the base typeface, and be optically close enough to read as one grapheme; stacked marks should be compact and not too high/heavy. OpenType GPOS documentation confirms that mark-to-base and mark-to-mark anchors are the font-native mechanism for this. References: https://googlefonts.github.io/gf-guide/diacritics.html and https://learn.microsoft.com/en-us/typography/opentype/spec/gpos
+- Code inspection found the explicit overlay marks were still rendered in the unrelated Manrope sans face, bold, at `.62em`, while the base letters use Charis SIL. At the 22px output size this is approximately 13.6px, a conspicuously large modifier glyph.
+- Branch `fix/typographic-diacritic-scale` changes only the display CSS: mark glyphs now use the same Charis SIL phonetic family, regular weight, and `.42em` (approximately 9.2px at 22px). This is a proportional reduction based on the observed computed size, not a claim that Google Fonts specifies a universal numeric ratio.
+- Canonical combining Unicode, IPA→UFPN mappings, clipboard/export, and phonetic logic are unchanged.
+- Status: PARTIAL pending CI, deployment, and owner visual acceptance. Browser screenshot QA remains unavailable in this environment.

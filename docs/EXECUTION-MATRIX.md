@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Font-only attempts failed owner visual acceptance. Branch `fix/deterministic-cyrillic-diacritic-layout` adds explicit CSS placement of spacing modifier glyphs over/under bases; adapter strings remain combining Unicode. PR #4/#5 CI and main Pages deploy 45201504905 passed; owner browser visual acceptance pending |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Explicit overlay retained; new branch `fix/typographic-diacritic-scale` switches mark glyphs from bold Manrope `.62em` to regular Charis SIL `.42em` (about 13.6px → 9.2px at 22px output). Based on Google Fonts diacritic design guidance; canonical Unicode/mappings unchanged. CI, deployment and owner visual acceptance pending |
 
 ## OpenIPA engine integration
 
@@ -52,3 +52,10 @@
 
 - PR #4 merged as `1560bbb65d6e142c9d25cb45d2307d1db5f7b65a`; PR #5 merged as `214c65e527b83a565371309599fa2d47251cd6d4`. PR CI runs 45201122860 and 45201424564 passed; main run 45201504905 passed build, tests, syntax checks and Pages deployment.
 - Typography spacing refinement: branch `fix/compact-ufpn-diacritic-spacing` removes excess top padding and tightens mark offsets after owner feedback; visual acceptance remains pending.
+
+
+### Diacritic scale correction (2026-11-23)
+- Research: Google Fonts diacritics guidance recommends coherent mark proportions, conventional shapes, optical attachment to the base, and compact, balanced stacked marks: https://googlefonts.github.io/gf-guide/diacritics.html . OpenType GPOS describes mark-to-base and mark-to-mark attachment: https://learn.microsoft.com/en-us/typography/opentype/spec/gpos .
+- Inspection: the overlay marks used bold Manrope at `.62em` while the base used Charis SIL. At 22px output this rendered marks at approximately 13.6px.
+- Branch `fix/typographic-diacritic-scale`: same phonetic typeface as the base, regular weight, `.42em` (approximately 9.2px at 22px). No universal ratio is prescribed by the cited guidance; the value is an explicit proportional correction to the measured implementation.
+- Status PARTIAL until CI, Pages deployment and owner visual acceptance. Browser visual QA remains outstanding.
