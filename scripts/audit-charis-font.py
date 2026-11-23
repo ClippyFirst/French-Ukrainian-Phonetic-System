@@ -67,16 +67,16 @@ def mark_mark_pairs(font: TTFont):
         new_marks = table.Mark1Coverage.glyphs
         previous_marks = table.Mark2Coverage.glyphs
         for new_index, new_name in enumerate(new_marks):
-            new_anchors = table.Mark1Array.MarkRecord[new_index].MarkAnchor
+            new_record = table.Mark1Array.MarkRecord[new_index]
             for previous_index, previous_name in enumerate(previous_marks):
                 previous_anchors = table.Mark2Array.Mark2Record[previous_index].Mark2Anchor
-                for cls, new_anchor in enumerate(new_anchors):
-                    if (
-                        new_anchor is not None
-                        and cls < len(previous_anchors)
-                        and previous_anchors[cls] is not None
-                    ):
-                        pairs.add((previous_name, new_name))
+                cls = new_record.Class
+                if (
+                    new_record.MarkAnchor is not None
+                    and cls < len(previous_anchors)
+                    and previous_anchors[cls] is not None
+                ):
+                    pairs.add((previous_name, new_name))
     return pairs
 
 
