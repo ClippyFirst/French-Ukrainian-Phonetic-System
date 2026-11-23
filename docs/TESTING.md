@@ -17,7 +17,7 @@
 - aspiration, unreleased stops, syllabicity, voice quality, release modifiers;
 - provenance/evidence metadata.
 
-Поточний набір: 12 engine tests + 19 UFPN adapter/specification tests (разом 31). Це перевірки адаптера та структури даних, не gold pronunciation benchmark і не доказ вимови прикладів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
+Поточний набір: 12 engine tests + 23 UFPN adapter/specification tests (разом 35). Це перевірки адаптера та структури даних, не gold pronunciation benchmark і не доказ вимови прикладів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
 
 
 The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `э`, nasal /ɛ̃/ → `э̃`, and explicit non-assignment rationale for `ы` and `ё`.
