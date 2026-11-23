@@ -1857,9 +1857,9 @@
     {
       "id": "r-voiced-velar-fricative",
       "ipa": "ɣ",
-      "basic": "ғ",
-      "detailed": "ғ",
-      "extended": "ғ",
+      "basic": "х̬",
+      "detailed": "х̬",
+      "extended": "х̬",
       "phoneme": "ʁ",
       "descriptionUk": "дзвінка велярна фрикативна реалізація/варіант",
       "sources": [
