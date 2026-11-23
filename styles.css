@@ -58,9 +58,11 @@
   position:absolute;
   left:50%;
   z-index:1;
-  font-family:var(--sans);
-  font-size:.62em;
-  font-weight:600;
+  /* Keep mark glyphs in the same phonetic typeface as the base letter.
+     At 22px output size, .42em yields about 9.2px marks (vs 13.6px before). */
+  font-family:var(--phonetic);
+  font-size:.42em;
+  font-weight:400;
   line-height:1;
   white-space:nowrap;
   pointer-events:none;
