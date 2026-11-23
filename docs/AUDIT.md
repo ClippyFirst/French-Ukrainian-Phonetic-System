@@ -144,3 +144,6 @@
 - Corrected an overstatement in S37: EURPhon confirms Eastern Mari /œ/ in the phoneme inventory, but does not establish a Mari grapheme `ӧ` for /œ/.
 - The UFPN mapping now labels `ӧ` = /œ/ as a project-specific assignment, chosen to distinguish it from `ө` = /ø/ without adding diacritics. It is not represented as a direct Mari grapheme-to-sound borrowing.
 - `data/ufpn-mapping.json`, `docs/SOURCE-REGISTRY.md`, and `docs/IPA-MAPPING.md` now carry this scope qualification. The runtime output is intentionally unchanged; this is a provenance correction, not a phoneme remapping.
+
+
+- Articulation-guide review: corrected the /œ/ instruction to keep the same open-mid tongue height as [ɛ] and add lip rounding only. A regression now guards this articulatory distinction.
