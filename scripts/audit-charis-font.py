@@ -234,11 +234,9 @@ def main():
                         f"Combining mark has non-zero advance in {sample!r}: {glyph_name}"
                     )
                 shaped_marks.append((glyph_name, position.y_offset))
-        if len(shaped_marks) != len(marks):
-            raise SystemExit(
-                f"Expected {len(marks)} combining marks in NFD {sample!r}, "
-                f"HarfBuzz returned {len(shaped_marks)}"
-            )
+        # HarfBuzz may compose an NFD base+mark pair through ccmp into a
+        # precomposed Cyrillic glyph. That is valid; .notdef and non-zero
+        # combining-mark advances are the actual failures.
         nfc_sample = unicodedata.normalize("NFC", sample)
         nfc_buffer = hb.Buffer()
         nfc_buffer.add_str(nfc_sample)
