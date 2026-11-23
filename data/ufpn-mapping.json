@@ -22,7 +22,7 @@
       "purpose": "Readable practical learning notation",
       "rules": [
         "Ukrainian base graphemes plus UFPN vowel-quality/rounding/nasal markers",
-        "Preserve segmental distinctions present in broad IPA",
+        "Preserve phonemic contrasts represented in broad IPA; do not promise to encode every predictable allophone",
         "Omit syllable boundaries, stress, length and gradient allophones",
         "Do not merge /œ̃/ with /ɛ̃/ unless selected profile explicitly does so"
       ]
@@ -30,11 +30,11 @@
     "detailed": {
       "purpose": "Segment-accurate teaching notation",
       "rules": [
-        "All Basic distinctions",
+        "All Basic phonemic distinctions",
         "Syllable boundary ·",
         "Retain ː and ˑ only when present in IPA",
         "Retain ‿ only when supplied by analysis",
-        "Retain narrow modifiers already present in input"
+        "Keep discrete profile/lexical allophone mappings when they affect the chosen broad representation; gradient coarticulation is Extended-only"
       ]
     },
     "extended": {

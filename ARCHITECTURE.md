@@ -6,7 +6,7 @@ French orthography → tokenization / lexical lookup / conservative G2P → cont
 
 ## UFPN boundary
 
-- data/ufpn-mapping.json — канонічна машинозчитувана специфікація: phoneme records, diacritics, allophones, contextual processes, prosody, regional profiles.
+- data/ufpn-mapping.json — канонічна машинозчитувана специфікація: phoneme records, diacritics, allophones, contextual processes, prosody, regional profiles and 13 phonetic feature dimensions.
 - src/ufpn.js — чистий IPA → UFPN adapter з режимами Basic/Detailed/Extended.
 - src/engine.js — наявний французький прототип, який повертає IPA; його словникова база та G2P fallback залишаються неповними.
 - src/app.js — live UI; перемикач UFPN level перераховує лише адаптер, не запускає незалежний French→Ukrainian шлях.
