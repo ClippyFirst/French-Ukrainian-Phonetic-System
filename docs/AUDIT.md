@@ -131,3 +131,9 @@
 - PR #16 is merged; main SHA is `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`.
 - `ғ` is retained for voiced uvular /ʁ/; `х̬` is retained for voiced velar [ɣ]. A regression test prevents these places of articulation from collapsing.
 - The live Pages scrape after PR #15 confirms the expanded Cyrillic inventory and 37-row table. PR #16's subtitle/allophone correction is in main but awaiting its main Pages redeployment workflow 45260260821.
+
+
+## Ukrainian pronunciation-guide column (2026-11-23)
+- Added a Ukrainian-language articulation instruction to each of the 37 segmental mapping records. Instructions describe concrete tongue/lip/jaw placement, voicing, airflow and nasal resonance as applicable; they do not invent Ukrainian lexical equivalents where none exist.
+- The searchable browser reference table now has a fifth column, **«Як вимовити»**, between IPA and Ukrainian example. Search also indexes the new guidance text.
+- Added a regression asserting all 37 entries contain a non-empty guide. Automated CI and six-browser viewport verification are pending on branch `feat/ufpn-pronunciation-guides`; no deployment or browser pass is claimed yet.

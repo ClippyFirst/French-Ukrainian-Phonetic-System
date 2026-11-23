@@ -143,3 +143,9 @@
 - Current main workflow 45260260821: build, 55 tests, syntax and font audit passed; Playwright browser installation is still in progress. PR #16's final Pages redeployment therefore remains pending. The earlier PR #15 table deployment is live.
 - Implemented: expanded Cyrillic letters ү /y/, ө /ø/, ӧ /œ/, ӹ /ə/, њ /ɲ/, ң /ŋ/, ғ /ʁ/; `х̬` remains for velar [ɣ]. Basic diacritic use is reduced to the distinctions that still need marks. The live table maps all 37 segments to Ukrainian examples or explicitly states there is no exact Ukrainian equivalent.
 - Remaining: U5 linguistic specialist/readability review PARTIAL; Q2 keyboard/screen-reader/physical-device QA PARTIAL; Q3 independent licensed gold IPA/UFPN benchmark BLOCKED. Project remains an experimental research prototype, not an academically validated or release-ready standard.
+
+
+## Ukrainian articulation guide addition (2026-11-23)
+- Branch `feat/ufpn-pronunciation-guides` adds `pronunciationGuideUk` to all 37 phoneme records and renders it in a dedicated **«Як вимовити»** column in the searchable 37-row Ukrainian sound table.
+- Guides give concrete articulatory instructions in Ukrainian (tongue, lips, jaw, voicing, airflow and nasal resonance). They distinguish exact/approximate/no Ukrainian equivalents instead of substituting a misleading familiar sound.
+- Added a unit test for complete 37/37 guide coverage. PR CI, browser checks, merge and Pages deployment remain pending until verified.

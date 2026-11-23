@@ -95,6 +95,8 @@ for (const [name, browserType] of browserTypes) {
           .map((entry) => ({ name: entry.name.split("/").pop(), transferSize: entry.transferSize }));
         const soundTable = document.querySelector("#ukrainian-sound-reference .ukrainian-sound-table");
         const soundTableRows = soundTable?.querySelectorAll("tbody tr").length ?? 0;
+        const soundTableHeaders = [...(soundTable?.querySelectorAll("thead th") ?? [])].map((cell) => cell.textContent.trim());
+        const guidedRows = soundTable?.querySelectorAll("tbody tr").length ? [...soundTable.querySelectorAll("tbody tr")].filter((row) => row.children[2]?.textContent.trim().length >= 25).length : 0;
         return {
           soundTableRows,
           fontCheck: document.fonts.check('42px "Charis"', values.join("")),
@@ -107,6 +109,8 @@ for (const [name, browserType] of browserTypes) {
         };
       }, samples);
       if (result.soundTableRows !== 37) throw new Error(`${name}/${viewport.label}: expected 37 Ukrainian sound-reference rows, found ${result.soundTableRows}`);
+      if (!result.soundTableHeaders.includes("Як вимовити")) throw new Error(`${name}/${viewport.label}: pronunciation-guide column is missing`);
+      if (result.guidedRows !== 37) throw new Error(`${name}/${viewport.label}: expected 37 guided rows, found ${result.guidedRows}`);
       if (!result.fontCheck) throw new Error(`${name}/${viewport.label}: Charis FontFaceSet check failed`);
       if (!result.computedFamily.includes("Charis")) throw new Error(`${name}/${viewport.label}: wrong computed family`);
       if (result.sampleCount !== samples.length) throw new Error(`${name}/${viewport.label}: missing mapped clusters`);

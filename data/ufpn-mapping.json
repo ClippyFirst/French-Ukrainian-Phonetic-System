@@ -294,7 +294,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "ліс — наголошене і [i]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий звук у звичайній українській вимові."
+      "ukrainianExampleNote": "Той самий звук у звичайній українській вимові.",
+      "pronunciationGuideUk": "Підніміть передню частину язика високо до піднебіння; губи розтягнуті, не округлюйте."
     },
     {
       "id": "v_e",
@@ -322,7 +323,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "нести́ — перше е може звучати як [e] у гармонізованій ненаголошеній позиції",
       "ukrainianExampleStatus": "CONTEXTUAL",
-      "ukrainianExampleNote": "Це позиційний алофон, а не окрема українська фонема /e/."
+      "ukrainianExampleNote": "Це позиційний алофон, а не окрема українська фонема /e/.",
+      "pronunciationGuideUk": "Тримайте язик спереду на середній висоті; губи нейтральні, щелепа трохи відкрита."
     },
     {
       "id": "v_eps",
@@ -352,7 +354,8 @@
       "graphemeOrigin": "Russian/Belarusian Cyrillic letter э",
       "ukrainianExample": "день — е [ɛ]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Звичайне українське е має відкритішу якість [ɛ]."
+      "ukrainianExampleNote": "Звичайне українське е має відкритішу якість [ɛ].",
+      "pronunciationGuideUk": "Як для [e], але опустіть щелепу й язик трохи нижче; губи не округлюйте."
     },
     {
       "id": "v_a",
@@ -380,7 +383,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "сад — а [ɑ]-типової якості",
       "ukrainianExampleStatus": "APPROXIMATE",
-      "ukrainianExampleNote": "Українське а близьке, але його точна якість залежить від наголосу й мовця."
+      "ukrainianExampleNote": "Українське а близьке, але його точна якість залежить від наголосу й мовця.",
+      "pronunciationGuideUk": "Відкрийте рот широко; язик низько, губи нейтральні."
     },
     {
       "id": "v_alpha",
@@ -409,7 +413,8 @@
       "evidenceStatus": "VARIANT_OR_PERIPHERAL",
       "ukrainianExample": "сад — наголошене а [ɑ]",
       "ukrainianExampleStatus": "CONTEXTUAL",
-      "ukrainianExampleNote": "Задня реалізація українського а може наближатися до [ɑ]; окремої фонемної опозиції /a–ɑ/ немає."
+      "ukrainianExampleNote": "Задня реалізація українського а може наближатися до [ɑ]; окремої фонемної опозиції /a–ɑ/ немає.",
+      "pronunciationGuideUk": "Відкрийте рот широко, але відтягніть язик далі назад; губи нейтральні."
     },
     {
       "id": "v_y",
@@ -438,7 +443,8 @@
       "ukrainianExample": "Найближче: и у слові «син» [ɪ]",
       "ukrainianExampleStatus": "APPROXIMATE",
       "ukrainianExampleNote": "Точного українського відповідника [y] немає: французький звук передній і огублений, українське [ɪ] неогублене.",
-      "graphemeOrigin": "Kazakh Cyrillic Ү; established /y/"
+      "graphemeOrigin": "Kazakh Cyrillic Ү; established /y/",
+      "pronunciationGuideUk": "Поставте язик як для [і], але округліть губи; не вимовляйте після нього окреме [у]."
     },
     {
       "id": "v_oe_close",
@@ -467,7 +473,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Точного відповідника [ø] у нормативній українській вимові немає.",
-      "graphemeOrigin": "Kazakh Cyrillic Ө; established /ø/"
+      "graphemeOrigin": "Kazakh Cyrillic Ө; established /ø/",
+      "pronunciationGuideUk": "Поставте язик як для [е], зберігаючи переднє положення, і округліть губи."
     },
     {
       "id": "v_oe_open",
@@ -496,7 +503,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Точного відповідника [œ] у нормативній українській вимові немає.",
-      "graphemeOrigin": "Mari Cyrillic Ӧ; established /œ/"
+      "graphemeOrigin": "Mari Cyrillic Ӧ; established /œ/",
+      "pronunciationGuideUk": "Поставте язик як для [ɛ], трохи нижче, і округліть губи."
     },
     {
       "id": "v_u",
@@ -524,7 +532,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "лук — у [u]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий високий задній огублений голосний."
+      "ukrainianExampleNote": "Той самий високий задній огублений голосний.",
+      "pronunciationGuideUk": "Підніміть задню частину язика високо; губи округлі й витягнуті."
     },
     {
       "id": "v_o",
@@ -552,7 +561,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "зозу́ля — перше о може наближатися до [o] перед наголошеним у",
       "ukrainianExampleStatus": "CONTEXTUAL",
-      "ukrainianExampleNote": "[o] — позиційна реалізація українського /ɔ/, а не окрема фонема."
+      "ukrainianExampleNote": "[o] — позиційна реалізація українського /ɔ/, а не окрема фонема.",
+      "pronunciationGuideUk": "Підніміть задню частину язика на середню висоту; губи округлі."
     },
     {
       "id": "v_open_o",
@@ -582,7 +592,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "сон — о [ɔ]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий задній відкрито-середній огублений голосний."
+      "ukrainianExampleNote": "Той самий задній відкрито-середній огублений голосний.",
+      "pronunciationGuideUk": "Як для [о], але трохи опустіть щелепу; губи залишаються округленими."
     },
     {
       "id": "v_schwa",
@@ -610,7 +621,8 @@
       "evidenceStatus": "VARIANT_OR_PERIPHERAL",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
-      "ukrainianExampleNote": "Стабільного українського відповідника [ə] немає; редуковані голосні не слід автоматично прирівнювати до schwa."
+      "ukrainianExampleNote": "Стабільного українського відповідника [ə] немає; редуковані голосні не слід автоматично прирівнювати до schwa.",
+      "pronunciationGuideUk": "Розслабте язик у центрі рота й вимовте короткий нейтральний голосний; не наближайте його автоматично до [и]."
     },
     {
       "id": "nv_alpha",
@@ -639,7 +651,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
-      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɑ̃]."
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɑ̃].",
+      "pronunciationGuideUk": "Збережіть низьке заднє положення язика й округлення губ; опустіть м’яке піднебіння, щоб повітря виходило також через ніс."
     },
     {
       "id": "nv_eps",
@@ -671,7 +684,8 @@
       "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
-      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɛ̃]."
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɛ̃].",
+      "pronunciationGuideUk": "Збережіть переднє напіввідкрите положення язика без округлення губ; повітря спрямовуйте також через ніс."
     },
     {
       "id": "nv_open_o",
@@ -701,7 +715,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
-      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɔ̃]."
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɔ̃].",
+      "pronunciationGuideUk": "Збережіть заднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс."
     },
     {
       "id": "nv_oe",
@@ -730,7 +745,8 @@
       "evidenceStatus": "VARIANT_OR_PERIPHERAL",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
-      "ukrainianExampleNote": "В українській немає фонемних носових голосних [œ̃]."
+      "ukrainianExampleNote": "В українській немає фонемних носових голосних [œ̃].",
+      "pronunciationGuideUk": "Збережіть переднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс."
     },
     {
       "id": "g_j",
@@ -756,7 +772,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "йод — й [j]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий піднебінний апроксимант."
+      "ukrainianExampleNote": "Той самий піднебінний апроксимант.",
+      "pronunciationGuideUk": "Підніміть середню частину язика до твердого піднебіння; залиште вузький прохід без тертя й плавно переходьте до голосного."
     },
     {
       "id": "g_h",
@@ -785,7 +802,8 @@
       "ukrainianExample": "Найближче: й у слові «йод» [j]",
       "ukrainianExampleStatus": "APPROXIMATE",
       "ukrainianExampleNote": "Українське [j] не має французького одночасного огублення, характерного для [ɥ].",
-      "graphemeOrigin": "UFPN composed grapheme ү + non-syllabic mark"
+      "graphemeOrigin": "UFPN composed grapheme ү + non-syllabic mark",
+      "pronunciationGuideUk": "Як для [j], але одночасно округліть губи; не додавайте окремого [у]."
     },
     {
       "id": "g_w",
@@ -814,7 +832,8 @@
       "graphemeOrigin": "Belarusian Cyrillic letter ў",
       "ukrainianExample": "вовк — друга в перед к часто реалізується як [w]",
       "ukrainianExampleStatus": "CONTEXTUAL",
-      "ukrainianExampleNote": "Це позиційний нескладовий алофон українського /в/, а не окрема фонема."
+      "ukrainianExampleNote": "Це позиційний нескладовий алофон українського /в/, а не окрема фонема.",
+      "pronunciationGuideUk": "Округліть губи й підніміть задню частину язика; плавно переходьте до наступного голосного без окремого складу."
     },
     {
       "id": "c_p",
@@ -840,7 +859,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "парк — п [p]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий глухий губний проривний."
+      "ukrainianExampleNote": "Той самий глухий губний проривний.",
+      "pronunciationGuideUk": "Зімкніть обидві губи, на мить затримайте повітря й розімкніть їх; голосові складки не вібрують."
     },
     {
       "id": "c_b",
@@ -866,7 +886,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "бік — б [b]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий дзвінкий губний проривний."
+      "ukrainianExampleNote": "Той самий дзвінкий губний проривний.",
+      "pronunciationGuideUk": "Як для [p], але ввімкніть голос: під час зімкнення має відчуватися вібрація в горлі."
     },
     {
       "id": "c_t",
@@ -892,7 +913,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "так — т [t̪]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Український і французький /t/ — передній зубний/дентально-альвеолярний звук."
+      "ukrainianExampleNote": "Український і французький /t/ — передній зубний/дентально-альвеолярний звук.",
+      "pronunciationGuideUk": "Кінчик язика торкається верхніх зубів або ділянки просто за ними; створіть зімкнення й коротко відпустіть його без голосу."
     },
     {
       "id": "c_d",
@@ -918,7 +940,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "дар — д [d̪]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Український і французький /d/ — передній зубний/дентально-альвеолярний звук."
+      "ukrainianExampleNote": "Український і французький /d/ — передній зубний/дентально-альвеолярний звук.",
+      "pronunciationGuideUk": "Як для [t], але з голосовою вібрацією від початку зімкнення."
     },
     {
       "id": "c_k",
@@ -944,7 +967,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "кава — к [k]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий глухий велярний проривний."
+      "ukrainianExampleNote": "Той самий глухий велярний проривний.",
+      "pronunciationGuideUk": "Підніміть задню частину язика до м’якого піднебіння, зімкніть прохід і відпустіть його без голосу."
     },
     {
       "id": "c_g",
@@ -970,7 +994,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "ґанок — ґ [ɡ]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий дзвінкий велярний проривний."
+      "ukrainianExampleNote": "Той самий дзвінкий велярний проривний.",
+      "pronunciationGuideUk": "Як для [k], але з голосовою вібрацією під час зімкнення."
     },
     {
       "id": "c_f",
@@ -996,7 +1021,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "факт — ф [f]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий глухий губно-зубний щілинний."
+      "ukrainianExampleNote": "Той самий глухий губно-зубний щілинний.",
+      "pronunciationGuideUk": "Поставте нижню губу біля верхніх різців і пропускайте крізь щілину повітря без голосової вібрації."
     },
     {
       "id": "c_v",
@@ -1022,7 +1048,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "вода — в [ʋ~v]",
       "ukrainianExampleStatus": "APPROXIMATE",
-      "ukrainianExampleNote": "В українській /в/ часто реалізується як апроксимант [ʋ], тоді як французьке /v/ зазвичай фрикативне; це близький, але не гарантовано тотожний звук."
+      "ukrainianExampleNote": "В українській /в/ часто реалізується як апроксимант [ʋ], тоді як французьке /v/ зазвичай фрикативне; це близький, але не гарантовано тотожний звук.",
+      "pronunciationGuideUk": "Як для [f], але ввімкніть голосову вібрацію; нижня губа лишається біля верхніх різців."
     },
     {
       "id": "c_s",
@@ -1048,7 +1075,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "сало — с [s]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий глухий альвеолярний щілинний."
+      "ukrainianExampleNote": "Той самий глухий альвеолярний щілинний.",
+      "pronunciationGuideUk": "Зблизьте передню частину язика з альвеолами за верхніми зубами; пропускайте повітря вузькою щілиною без голосу."
     },
     {
       "id": "c_z",
@@ -1074,7 +1102,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "зуб — з [z]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий дзвінкий альвеолярний щілинний."
+      "ukrainianExampleNote": "Той самий дзвінкий альвеолярний щілинний.",
+      "pronunciationGuideUk": "Як для [s], але ввімкніть голосову вібрацію."
     },
     {
       "id": "c_sh",
@@ -1100,7 +1129,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "шапка — ш [ʃ]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий глухий постальвеолярний щілинний."
+      "ukrainianExampleNote": "Той самий глухий постальвеолярний щілинний.",
+      "pronunciationGuideUk": "Підніміть передню частину язика трохи далі назад, до ділянки за альвеолами; пропускайте повітря без голосу."
     },
     {
       "id": "c_zh",
@@ -1126,7 +1156,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "жук — ж [ʒ]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий дзвінкий постальвеолярний щілинний."
+      "ukrainianExampleNote": "Той самий дзвінкий постальвеолярний щілинний.",
+      "pronunciationGuideUk": "Як для [ʃ], але ввімкніть голосову вібрацію."
     },
     {
       "id": "c_m",
@@ -1152,7 +1183,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "мак — м [m]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий губний носовий."
+      "ukrainianExampleNote": "Той самий губний носовий.",
+      "pronunciationGuideUk": "Зімкніть губи й пропускайте повітря через ніс; голосові складки вібрують."
     },
     {
       "id": "c_n",
@@ -1178,7 +1210,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "на — н [n̪]",
       "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "Той самий передній носовий."
+      "ukrainianExampleNote": "Той самий передній носовий.",
+      "pronunciationGuideUk": "Кінчик язика торкається ділянки за верхніми зубами; повітря проходить через ніс."
     },
     {
       "id": "c_ny",
@@ -1205,7 +1238,8 @@
       "ukrainianExample": "Найближче: нь у слові «кінь» [nʲ]",
       "ukrainianExampleStatus": "APPROXIMATE",
       "ukrainianExampleNote": "Українське [nʲ] — пом'якшений зубний [n], а не окремий піднебінний [ɲ].",
-      "graphemeOrigin": "Serbian Cyrillic Њ; established /ɲ/"
+      "graphemeOrigin": "Serbian Cyrillic Њ; established /ɲ/",
+      "pronunciationGuideUk": "Підніміть середню частину язика до твердого піднебіння й пропускайте повітря через ніс; не розбивайте звук на [н]+[й]."
     },
     {
       "id": "c_ng",
@@ -1232,7 +1266,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Окремої фонеми [ŋ] у нормативній українській немає.",
-      "graphemeOrigin": "Kazakh Cyrillic Ң; established /ŋ/"
+      "graphemeOrigin": "Kazakh Cyrillic Ң; established /ŋ/",
+      "pronunciationGuideUk": "Підніміть задню частину язика до м’якого піднебіння й пропускайте повітря через ніс; не додавайте після нього [ґ]."
     },
     {
       "id": "c_l",
@@ -1258,7 +1293,8 @@
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
       "ukrainianExample": "лак — л [ɫ]",
       "ukrainianExampleStatus": "APPROXIMATE",
-      "ukrainianExampleNote": "Українське тверде [ɫ] темніше/веляризованіше за французьке світле [l]; точний збіг залежить від мовця."
+      "ukrainianExampleNote": "Українське тверде [ɫ] темніше/веляризованіше за французьке світле [l]; точний збіг залежить від мовця.",
+      "pronunciationGuideUk": "Торкніться альвеол кінчиком язика, а повітря випускайте вздовж одного або обох боків язика."
     },
     {
       "id": "c_r",
@@ -1286,7 +1322,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Точного відповідника увулярному [ʁ] у нормативній українській немає; українське х [x] глухе й артикуляційно інше.",
-      "graphemeOrigin": "Kazakh Cyrillic Ғ; established /ʁ/"
+      "graphemeOrigin": "Kazakh Cyrillic Ғ; established /ʁ/",
+      "pronunciationGuideUk": "Звузьте прохід у задній частині рота біля язичка й увімкніть голос; не замінюйте його українським глухим [х]."
     }
   ],
   "allophones": [

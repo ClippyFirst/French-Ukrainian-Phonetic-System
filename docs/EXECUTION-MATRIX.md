@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a dedicated Ukrainian articulation guide (`pronunciationGuideUk`) for each segment; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -126,3 +126,6 @@
 - PR #16 merged as `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`; PR workflow 45259870325 passed build, 55 tests, syntax, 45-codepoint Charis audit, six browser/viewport checks and all six 37-row table assertions. It preserves `х̬` for velar [ɣ] separately from `ғ` for uvular /ʁ/ and updates the UI subtitle.
 - Current main is `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`. Main workflow 45260260821 has build, 55 tests, syntax and font audit passed; Playwright install is still in progress, so deployment of this final follow-up is not yet verified. The PR #15 table deployment remains live.
 - U5 remains PARTIAL pending independent Ukrainian/French phonetic review and owner readability acceptance. Q2 remains PARTIAL pending keyboard/screen-reader and real-device checks. Q3 remains BLOCKED pending an independently curated/licensed gold dataset.
+
+
+| U6 | Ukrainian articulation guidance for all sound-table entries | PARTIAL | `data/ufpn-mapping.json` now contains a non-empty Ukrainian pronunciation guide for all 37 segments; `src/app.js` renders it as a dedicated searchable table column; `tests/ufpn.test.js` checks coverage for every entry. CI and browser viewport verification are pending for this branch. |

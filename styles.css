@@ -49,8 +49,10 @@
 .ufpn-reference .ukrainian-sound-table td:first-child,
 .ufpn-reference .ukrainian-sound-table td:nth-child(2){font-family:var(--phonetic);font-size:16px;white-space:nowrap}
 .ufpn-reference .ukrainian-sound-table td:nth-child(3),
-.ufpn-reference .ukrainian-sound-table td:nth-child(4){font-family:var(--sans);font-size:11px;line-height:1.65;white-space:normal}
-.ufpn-reference .ukrainian-sound-table td:nth-child(4){font-weight:700;min-width:145px}
+.ufpn-reference .ukrainian-sound-table td:nth-child(4),
+.ufpn-reference .ukrainian-sound-table td:nth-child(5){font-family:var(--sans);font-size:11px;line-height:1.65;white-space:normal}
+.ufpn-reference .ukrainian-sound-table td:nth-child(3){min-width:230px}
+.ufpn-reference .ukrainian-sound-table td:nth-child(5){font-weight:700;min-width:145px}
 .ufpn-technical{margin-top:20px}
 .ufpn-technical>summary{cursor:pointer;color:var(--green);font-weight:800;padding:10px 0}
 .ipa-mapping-table td:nth-child(-n+4){font-family:var(--phonetic);font-size:14px;white-space:nowrap}
