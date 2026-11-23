@@ -84,3 +84,12 @@
 - Research: Google Fonts diacritics guidance (https://googlefonts.github.io/gf-guide/diacritics.html); Microsoft OpenType GPOS mark-to-base/mark-to-mark specification (https://learn.microsoft.com/en-us/typography/opentype/spec/gpos); SIL Charis 7 release notes document updated diacritic/anchor support (https://software.sil.org/charis/release-7-000/).
 - Verification: PR CI run [45211693977](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45211693977) passed build, all 48 tests and syntax checks. The deploy job was correctly skipped for the PR. Local clone remains blocked by DNS failure. Browser screenshots/Chromium–Firefox–WebKit and mobile QA remain unverified; do not mark visual acceptance DONE until these are checked.
 - Font distribution: repository still imports the existing Google Fonts Charis SIL family. The official SIL Charis 7.000 webfont package was not obtained in this environment, so this change does not claim that the repository now vendors the current SIL release.
+
+
+### Official Charis 7.000 font migration (2026-11-23)
+- Root cause follow-up: native OpenType shaping was already restored in PR #8, but the repository still loaded the legacy Google Fonts family `Charis SIL`. This left the actual font build/version and its anchor tables outside repository control.
+- Official SIL Charis 7.000 archive was downloaded in GitHub Actions run [45213736031](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45213736031); the published SHA-256 digest was verified before extraction.
+- Regular and Bold WOFF2 files were committed under `assets/fonts/`; the included SIL OFL-1.1 text is `licenses/Charis-OFL.txt`. CSS now declares local `@font-face` rules and index.html preloads the Regular face. The Charis SIL Google Fonts import was removed; unrelated UI families remain external.
+- `scripts/audit-charis-font.py` uses fontTools and HarfBuzz to inspect all 36 UFPN inventory codepoints, mark-to-base pairs for mapped graphemes, mark-to-mark pairs for stacked marks, and shaping output/advance widths. The regular Pages workflow runs this audit; final CI result pending.
+- The one-time import workflow was deleted after the font files were committed. No IPA→UFPN mapping, normalization, clipboard/export, or renderer behavior was changed.
+- Status remains PARTIAL pending the font audit result and actual Chromium/Firefox/WebKit/mobile visual confirmation. Do not claim the owner's detached-mark issue is resolved until that final visual check.
