@@ -28,6 +28,8 @@ test('final consonant heuristic',()=>{
  assert.equal(transcribeFrenchWord('petit'),'pəti');
  assert.equal(transcribeFrenchWord('avec'),'avɛk');
  assert.equal(transcribeFrenchWord('hiver'),'ivɛʁ');
+ assert.equal(transcribeFrenchWord('mer'),'mɛʁ');
+ assert.equal(transcribeFrenchWord('ville'),'vil');
 });
 
 import {transcribeFrenchWordDetailed} from '../src/french-g2p.js';

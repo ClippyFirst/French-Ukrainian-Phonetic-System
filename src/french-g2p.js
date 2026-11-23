@@ -44,7 +44,7 @@ const RULE_TEXT={
 export function transcribeFrenchWordDetailed(input){
  const s=String(input??"").toLocaleLowerCase("fr").normalize("NFC").replace(/[’']/g,"");
  if(!s)return {ipa:"",trace:[]};
- const exceptions={oui:"wi",nuit:"nɥi"};
+ const exceptions={oui:"wi",nuit:"nɥi",hiver:"ivɛʁ",mer:"mɛʁ",mers:"mɛʁ",ver:"vɛʁ",vers:"vɛʁ",fer:"fɛʁ",fers:"fɛʁ",cher:"ʃɛʁ",chers:"ʃɛʁ",fier:"fjɛʁ",hier:"jɛʁ",enfer:"ɑ̃fɛʁ",ville:"vil",mille:"mil",tranquille:"tʁɑ̃kil"};
  if(exceptions[s])return {ipa:exceptions[s],trace:[{start:0,end:s.length,grapheme:s,ipa:exceptions[s],ruleId:"lexical-exception",explanationUk:RULE_TEXT["lexical-exception"]}]};
  let out="",i=0;const trace=[];
  const record=(start,n,ipa,ruleId)=>trace.push({start,end:start+n,grapheme:s.slice(start,start+n),ipa,ruleId,explanationUk:RULE_TEXT[ruleId]||"Контекстне графемно-фонемне правило."});
