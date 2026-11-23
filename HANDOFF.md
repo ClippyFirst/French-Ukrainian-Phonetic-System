@@ -82,3 +82,14 @@
 - Research references: https://googlefonts.github.io/gf-guide/diacritics.html ; https://learn.microsoft.com/en-us/typography/opentype/spec/gpos ; https://software.sil.org/charis/release-7-000/
 - Verification: PR CI run [45211693977](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45211693977) passed build, 48/48 tests and syntax checks; PR deploy job skipped. Local clone remains blocked by DNS failure. No browser runtime/screenshot QA is available; visual acceptance remains PARTIAL.
 - Font caveat: current Google Fonts Charis SIL import remains; official SIL Charis 7.000 WOFF2 was not downloaded or vendored. Do not claim the current SIL package is installed.
+
+
+## Official SIL Charis 7.000 migration — 2026-11-23
+- Feature branch: `fix/vendor-charis-7-diacritics`; based on main `b9fbca4fde027fc57213a205a3c5acf157b7c8f1`.
+- Official release archive downloaded in GitHub Actions run [45213736031](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45213736031); SHA-256 `e3237b1303c5d31af8f59b1d1914886c5e873b77c71390e4742fb3bc1c187666` verified.
+- Vendored files: `assets/fonts/Charis-Regular.woff2`, `assets/fonts/Charis-Bold.woff2`; exact SIL OFL-1.1 text at `licenses/Charis-OFL.txt`. Font copyright and source details in `THIRD_PARTY_NOTICES.md`.
+- `styles.css` now self-hosts Charis 7.000 via `@font-face`; `index.html` preloads Regular. Charis SIL was removed from the Google Fonts import. Other UI fonts remain external.
+- `scripts/audit-charis-font.py` checks all 36 UFPN diacritic/prosodic inventory codepoints, mapped mark-to-base/mark-to-mark anchors, and HarfBuzz shaping. CI runs this audit; result pending.
+- The one-time download-and-commit workflow was removed after its successful run. Normal Pages CI now owns repeatable font validation.
+- Previous note stating that Charis 7 was not vendored is superseded by this section.
+- Readiness: font vendoring is DONE_VERIFIED; font anchor audit and actual browser/owner visual acceptance remain PARTIAL/TODO. No claim that visual acceptance has passed.
