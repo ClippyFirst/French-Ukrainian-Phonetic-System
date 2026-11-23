@@ -81,21 +81,29 @@ test('extended Cyrillic inventory is internally consistent and source-backed',()
  assert.equal(UFPN_MAPPING.phonemes.find(x=>x.ipa==='v').basic,'в');
 });
 
-import {getUfpnDisplayClusters} from '../src/ufpn-display.js';
-test('UFPN display renderer separates combining marks from Cyrillic bases',()=>{
- const clusters=getUfpnDisplayClusters('е̊̆̃ а̠̃ х̬̠');
- assert.deepEqual(clusters.map(x=>x.base),['е',' ','а',' ','х']);
- assert.deepEqual(clusters.map(x=>x.marks.map(m=>m.position)),[
-  ['above','above','above'],[],['below','above'],[],['below','below']
- ]);
-});
-test('UFPN display renderer uses explicit spacing glyphs for detached-mark-free layout',()=>{
- const clusters=getUfpnDisplayClusters('і̊ е́ о̆ э̃');
- assert.deepEqual(clusters.filter(x=>x.marks.length).map(x=>x.marks[0].glyph),['˚','ˊ','˘','˜']);
+
+import {renderUfpnDisplay} from '../src/ufpn-display.js';
+
+test('UFPN display passes canonical combining sequences to native text shaping intact',()=>{
+ const value='е̊̆̃ а̠̃ х̬̠';
+ const container={replaceChildren(){},append(){},set textContent(v){this.rendered=v}};
+ const previousDocument=globalThis.document;
+ globalThis.document={
+  createTextNode:text=>({textContent:text}),
+  createElement:()=>({style:{setProperty(){}},append(){},set textContent(value){this.value=value}})
+ };
+ try{
+  renderUfpnDisplay(container,value);
+  assert.equal(container.rendered,value.normalize('NFC'));
+ }finally{
+  if(previousDocument===undefined)delete globalThis.document;
+  else globalThis.document=previousDocument;
+ }
 });
 
-test('UFPN display renderer preserves affricate tie bars instead of treating them as vowel marks',()=>{
- const clusters=getUfpnDisplayClusters('т͡с д͜з');
- assert.equal(clusters.map(x=>x.base).join(''),'т͡с д͜з');
- assert.equal(clusters.some(x=>x.marks.some(m=>m.glyph==='͡'||m.glyph==='͜')),false);
+test('UFPN display keeps affricate tie bars in the same native text run',()=>{
+ const value='т͡с д͜з';
+ const container={replaceChildren(){},append(){},set textContent(v){this.rendered=v}};
+ renderUfpnDisplay(container,value);
+ assert.equal(container.rendered,value.normalize('NFC'));
 });
