@@ -13,8 +13,8 @@
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
-| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45217105821: build passed, 48/48 tests, syntax check, Charis audit, Chromium specimen and Pages deployment passed; post-merge run 45236413859 is the current verification |
-| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in merged PR #10 run 45233413912; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
+| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45252517029 on `e10368e`: build, 52/52 tests, syntax check, Charis audit, six Chromium/Firefox/WebKit desktop/mobile typography checks and Pages deployment all passed |
+| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in main run 45252517029; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
@@ -104,3 +104,10 @@
 - Adapter behavior is profile-aware: `metropolitan-fr` converts OpenIPA's lyric-diction `[ɾ]` convention to broad `/ʁ/`; `lyric-diction-fr` preserves `[ɾ]` → UFPN `р̌`. The raw upstream value remains in `sourceIpa` and trace. `õ` → `ɔ̃` and `ε` → `ɛ` remain explicit broad-IPA normalizations.
 - Regressions cover `bonjour` in both profiles, `garçon`, and `mer`; lyric-profile output is intentionally `бо̆̃жур̌`, while default Metropolitan output is `бо̆̃жух̬̠`.
 - Independent expert review remains pending.
+
+
+### Profile-aware OpenIPA correction — final main verification (2026-11-23)
+- PR #13 merged as `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5`.
+- Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) passed: build, 52/52 tests, syntax check, Charis 7 audit, all six Chromium/Firefox/WebKit desktop/mobile checks, and GitHub Pages deployment.
+- Fresh live scrape confirms the default Metropolitan sample displays IPA `bɔ̃ʒuʁ` and UFPN `бо̆̃жух̬̠`; published source confirms the profile-aware adapter. Unit tests verify lyric-diction preserves `[ɾ]` and `р̌`.
+- The adapter/profile behavior is DONE_VERIFIED. Independent phonetic expert review and licensed gold benchmark remain separate PARTIAL/BLOCKED gates.
