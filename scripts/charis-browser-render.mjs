@@ -67,7 +67,7 @@ for (const [name, browserType] of browserTypes) {
           skipLinkFirst: document.body.firstElementChild === skip,
           outputPanels: ["#ipa-output", "#ufpn-output", "#romanized-output"]
             .every((selector) => document.querySelector(selector)?.textContent.trim().length > 0),
-          resultColumns: getComputedStyle(results).gridTemplateColumns.trim().split(/\\s+/).length,
+          resultColumns: getComputedStyle(results).gridTemplateColumns.trim().split(/\s+/).length,
           horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
           sourcePresent: Boolean(document.querySelector("#source")?.value)
         };
