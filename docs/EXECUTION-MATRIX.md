@@ -13,7 +13,7 @@
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
-| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45217105821: build passed, 48/48 tests, syntax check, Charis audit, Chromium specimen and Pages deployment passed; post-merge run 45236413859 is the current verification |
+| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45249803941 on `b6e66d9`: build, 50/50 tests, syntax check, Charis audit, six Chromium/Firefox/WebKit desktop/mobile typography checks and Pages deployment all passed |
 | Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in merged PR #10 run 45233413912; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
@@ -96,4 +96,11 @@
 - Source inspection verified `IPA.NASAL_O = 'õ'`, `IPA.FLIPPED_R = 'ɾ'`, and `parseR` supplies `ɾ` as the default French `r` output. The project's broad French inventory instead uses `/ɔ̃/` and `/ʁ/`; the direct IPA mapping for a genuinely supplied regional `[ɾ]` remains the distinct tap `р̌`.
 - `src/french-g2p.js` now normalizes only the vendored OpenIPA output at the adapter boundary: `õ` → `ɔ̃`, `ɾ` → `ʁ`, and `ε` → `ɛ`. Exact raw OpenIPA values remain available in `sourceIpa` and per-rule trace; no French-grapheme→UFPN shortcut was introduced.
 - Added regressions for `bonjour`, `garçon`, and `mer`, including the end-to-end `bonjour` UFPN output `бо̆̃жух̬̠` and an empty unsupported-symbol list.
-- Status: implementation committed to a feature branch; CI and Pages deployment are pending. This is an adapter normalization based on the vendored parser's own enum and default `parseR` implementation, not independent expert validation of every French speaker or dialect.
+- Status: DONE_VERIFIED for the adapter normalization and deployed regression behavior (PR #11; main commit `b6e66d9`; workflow 45249803941). This is an adapter normalization based on the vendored parser's own enum and default `parseR` implementation, not independent expert validation of every French speaker or dialect.
+
+
+### OpenIPA adapter verification and live deployment (2026-11-23)
+- PR #11 merged as `b6e66d9cf8920672163a57fa8b326eb71f221efc`.
+- Main workflow [45249803941](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45249803941) passed build, all 50 tests, syntax check, Charis glyph/anchor audit, Playwright browser installation, Chromium/Firefox/WebKit rendering and Pages deployment.
+- Fresh live scrape of the Pages application confirms the deployed default sample has IPA `bɔ̃ʒuʁ` and UFPN `бо̆̃жух̬̠`; a fresh raw-source scrape confirms `õ→ɔ̃` and `ɾ→ʁ` in the published adapter.
+- Adapter regression is DONE_VERIFIED. Independent specialist review, complete linguistic coverage and a licensed gold benchmark remain separate PARTIAL/BLOCKED gates.

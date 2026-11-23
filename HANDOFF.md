@@ -106,5 +106,12 @@
 - Feature branch: `fix/openipa-canonical-ipa-adapter`, based on `78478b8e40335fd9988dce7aaec273a332bdd305`.
 - Root cause: vendored OpenIPA defines `NASAL_O='õ'` and `FLIPPED_R='ɾ'`; `parseR` uses the latter as its default French `r` output. The project IPA inventory instead encodes broad Metropolitan French `/ɔ̃/` and `/ʁ/`. Without normalization, the UI exposed `⟦õ⟧` and incorrectly rendered ordinary `r` as regional `р̌`.
 - The adapter converts OpenIPA output `õ→ɔ̃`, `ɾ→ʁ`, and `ε→ɛ`; raw upstream strings remain in `sourceIpa` and trace. The separate direct IPA→UFPN mapping for a genuinely supplied regional `[ɾ]` remains unchanged.
-- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бо̆̃жух̬̠` without unsupported IPA. CI and deployment are pending.
+- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` renders `бо̆̃жух̬̠` without unsupported IPA. PR #11 merged as `b6e66d9cf8920672163a57fa8b326eb71f221efc`; main workflow 45249803941 passed build, 50 tests, syntax, font audit, all six browser/viewport checks and Pages deployment. Fresh live scrape confirms the published default sample shows `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`.
 - This resolves the known OpenIPA symbol mismatch, not general French pronunciation accuracy; independent specialist review and a licensed gold benchmark remain blocked.
+
+
+## Current verified deployment — OpenIPA adapter fix (2026-11-23)
+- Current main commit: `b6e66d9cf8920672163a57fa8b326eb71f221efc` (PR #11).
+- Main workflow [45249803941](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45249803941): build passed; 50/50 tests passed; syntax check and Charis 7 audit passed; Chromium, Firefox and WebKit desktop/mobile checks passed; GitHub Pages deployment passed.
+- Live page: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms the deployed sample IPA `bɔ̃ʒuʁ` and UFPN `бо̆̃жух̬̠`; fresh published-source scrape confirms the adapter normalization code.
+- Remaining separate blockers: independent French/Ukrainian phonetic specialist review, licensed gold benchmark, broader G2P coverage, and keyboard/screen-reader/physical-device/owner acceptance.
