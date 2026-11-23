@@ -160,3 +160,10 @@
 - PR #18 merged pronunciation guides for all 37 segments; PR #19 fixed the browser harness and merged.
 - PR #19 workflow `45263336209`: build, tests, syntax, Charis font audit and all six browser viewport checks passed.
 - Final main push workflow `45263533099`: build, tests, syntax and font audit passed; Playwright installation/browser checks and Pages deployment were still running at last inspection.
+
+
+## Latest release/deployment checkpoint (2026-11-23)
+- `main` is `f078ba880e34361db1863922f2eb2febe502a86f`; PR #18, #19 and #20 are merged.
+- PR #19 CI `45263336209` passed build, tests, syntax, font audit and all six Chromium/Firefox/WebKit desktop/mobile checks; browser assertions confirmed the «Як вимовити» column and 37 guided rows.
+- Main workflow `45264431136` passed build, tests, syntax and Charis 7 audit; Playwright browser installation/check and Pages deploy were still in progress at last check.
+- Live GitHub Pages returned HTTP 200 but still served the previous four-column table. Do not mark D3/W1 deployed until a fresh scrape shows «Як вимовити» and all 37 rows.
