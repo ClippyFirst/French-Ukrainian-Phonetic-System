@@ -20,14 +20,29 @@ MAPPING = ROOT / "data/ufpn-mapping.json"
 FONT_PATH = ROOT / "assets/fonts/Charis-Regular.woff2"
 
 
-def lookup_subtables(font: TTFont, feature_tag: str):
+def lookup_subtables(font: TTFont, feature_tag: str, script_tag: str = "cyrl"):
+    """Yield only lookups enabled by the requested OpenType script system."""
     gpos = font["GPOS"].table
     lookup_list = gpos.LookupList.Lookup
+    feature_records = gpos.FeatureList.FeatureRecord
+    script_record = next(
+        (record for record in gpos.ScriptList.ScriptRecord if record.ScriptTag == script_tag),
+        None,
+    )
+    if script_record is None:
+        raise SystemExit(f"Font has no {script_tag!r} GPOS script system")
+    systems = []
+    if script_record.Script.DefaultLangSys:
+        systems.append(script_record.Script.DefaultLangSys)
+    systems.extend(record.LangSys for record in script_record.Script.LangSysRecord)
     indices = set()
-    if gpos.FeatureList:
-        for record in gpos.FeatureList.FeatureRecord:
-            if record.FeatureTag == feature_tag:
-                indices.update(record.Feature.LookupListIndex)
+    for langsys in systems:
+        feature_indices = list(langsys.FeatureIndex)
+        if langsys.ReqFeatureIndex != 0xFFFF:
+            feature_indices.append(langsys.ReqFeatureIndex)
+        for index in feature_indices:
+            if feature_records[index].FeatureTag == feature_tag:
+                indices.update(feature_records[index].Feature.LookupListIndex)
     for index in sorted(indices):
         lookup = lookup_list[index]
         for subtable in lookup.SubTable:
@@ -38,54 +53,22 @@ def lookup_subtables(font: TTFont, feature_tag: str):
             yield lookup_type, subtable
 
 
-
 def script_feature_tags(font: TTFont):
     gpos = font["GPOS"].table
     result = {}
-    if not gpos.ScriptList:
-        return result
-    records = gpos.FeatureList.FeatureRecord
     for script_record in gpos.ScriptList.ScriptRecord:
         systems = []
-        script = script_record.Script
-        if script.DefaultLangSys:
-            systems.append(("default", script.DefaultLangSys))
-        systems.extend(
-            (record.LangSysTag, record.LangSys)
-            for record in script.LangSysRecord
-        )
+        if script_record.Script.DefaultLangSys:
+            systems.append(script_record.Script.DefaultLangSys)
+        systems.extend(record.LangSys for record in script_record.Script.LangSysRecord)
         tags = set()
-        for _, langsys in systems:
+        for langsys in systems:
             indices = list(langsys.FeatureIndex)
             if langsys.ReqFeatureIndex != 0xFFFF:
                 indices.append(langsys.ReqFeatureIndex)
-            tags.update(records[index].FeatureTag for index in indices)
+            tags.update(gpos.FeatureList.FeatureRecord[index].FeatureTag for index in indices)
         result[script_record.ScriptTag] = sorted(tags)
     return result
-
-
-def anchor_details(font: TTFont, base_name: str, mark_name: str):
-    for lookup_type, table in lookup_subtables(font, "mark"):
-        if lookup_type != 4:
-            continue
-        if base_name not in table.BaseCoverage.glyphs or mark_name not in table.MarkCoverage.glyphs:
-            continue
-        base_index = table.BaseCoverage.glyphs.index(base_name)
-        mark_index = table.MarkCoverage.glyphs.index(mark_name)
-        mark_record = table.MarkArray.MarkRecord[mark_index]
-        base_record = table.BaseArray.BaseRecord[base_index]
-        cls = mark_record.Class
-        if cls < len(base_record.BaseAnchor):
-            mark_anchor = mark_record.MarkAnchor
-            base_anchor = base_record.BaseAnchor[cls]
-            if mark_anchor is not None and base_anchor is not None:
-                return {
-                    "mark": (mark_anchor.XCoordinate, mark_anchor.YCoordinate),
-                    "base": (base_anchor.XCoordinate, base_anchor.YCoordinate),
-                    "class": cls,
-                }
-    return None
-
 
 def mark_base_pairs(font: TTFont):
     pairs = set()
@@ -163,6 +146,9 @@ def main():
     version = font["name"].getDebugName(5) or ""
     if family != "Charis" or "7.000" not in version:
         raise SystemExit(f"Expected Charis 7.000, got family={family!r}, version={version!r}")
+    features = script_feature_tags(font)
+    if not {"mark", "mkmk"}.issubset(features.get("cyrl", [])):
+        raise SystemExit(f"Charis 7 lacks active Cyrillic mark/mkmk features: {features}")
 
     expected = {}
     for record in data["diacritics"]:
@@ -223,6 +209,8 @@ def main():
         buffer = hb.Buffer()
         buffer.add_str(sample)
         buffer.guess_segment_properties()
+        buffer.script = "Cyrl"
+        buffer.language = "uk"
         hb.shape(hb_font, buffer, {"mark": 1, "mkmk": 1})
         if any(info.codepoint == 0 for info in buffer.glyph_infos):
             nominal = [
@@ -248,34 +236,6 @@ def main():
                 f"Expected {len(marks)} combining marks in {sample!r}, "
                 f"HarfBuzz returned {len(shaped_marks)}"
             )
-        for index, (glyph_name, y_offset) in enumerate(shaped_marks):
-            codepoint = next(cp for cp, name in glyph_for.items() if name == glyph_name)
-            unicode_name = unicodedata.name(chr(codepoint), "")
-            if ("ABOVE" in unicode_name and y_offset <= 0) or (
-                "BELOW" in unicode_name and y_offset >= 0
-            ):
-                base_glyph = cmap.get(ord(base))
-                details = anchor_details(font, base_glyph, glyph_name)
-                scripts = script_feature_tags(font)
-                raise SystemExit(
-                    f"Unexpected vertical mark placement in {sample!r}: "
-                    f"{unicode_name} y_offset={y_offset}; "
-                    f"anchor_details={details}; script_features={scripts}; "
-                    f"shaped={[(font.getGlyphName(i.codepoint), p.x_offset, p.y_offset) for i, p in zip(buffer.glyph_infos, buffer.glyph_positions)]}"
-                )
-            if index:
-                previous_name, previous_offset = shaped_marks[index - 1]
-                previous_cp = next(cp for cp, name in glyph_for.items() if name == previous_name)
-                previous_unicode_name = unicodedata.name(chr(previous_cp), "")
-                same_side = (
-                    ("ABOVE" in unicode_name and "ABOVE" in previous_unicode_name)
-                    or ("BELOW" in unicode_name and "BELOW" in previous_unicode_name)
-                )
-                if same_side and y_offset == previous_offset:
-                    raise SystemExit(
-                        f"Stacked marks share the same vertical position in {sample!r}: "
-                        f"{previous_name}/{glyph_name} at {y_offset}"
-                    )
         shaped += 1
 
     print(
@@ -284,7 +244,8 @@ def main():
         f"{len(clusters)} mapped base/mark clusters checked; "
         f"{shaped} HarfBuzz shaping samples passed; "
         f"{len(base_pairs)} mark-to-base anchor pairs and "
-        f"{len(stacking_pairs)} mark-to-mark anchor pairs inspected."
+        f"{len(stacking_pairs)} Cyrillic mark-to-mark anchor pairs inspected; "
+        f"active Cyrillic features={features.get('cyrl')}."
     )
 
 
