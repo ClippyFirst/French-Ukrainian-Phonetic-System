@@ -64,3 +64,19 @@ test('IPA mapping schema declares all registries used by the adapter',()=>{
  assert.ok(Array.isArray(UFPN_MAPPING.processes));
  assert.ok(Array.isArray(UFPN_MAPPING.profiles));
 });
+
+test('extended Cyrillic inventory is internally consistent and source-backed',()=>{
+ const inventory=UFPN_MAPPING.graphemeInventory,adopted=inventory.adopted;
+ assert.equal(new Set(adopted.map(x=>x.grapheme)).size,adopted.length,'adopted graphemes must be unique');
+ for(const item of adopted){
+  assert.ok(item.sources.length,item.grapheme+' needs provenance');
+  for(const ipa of item.ipa){
+   const record=UFPN_MAPPING.phonemes.find(x=>x.ipa===ipa);
+   assert.ok(record,'missing IPA record for '+ipa);
+   assert.equal(record.baseGrapheme,item.grapheme,'base grapheme mismatch for '+ipa);
+  }
+ }
+ for(const item of inventory.candidates){assert.ok(item.sources.length,item.grapheme+' candidate needs provenance');assert.equal(item.decision,'NOT_ASSIGNED')}
+ assert.equal(UFPN_MAPPING.phonemes.find(x=>x.ipa==='w').basic,'ў');
+ assert.equal(UFPN_MAPPING.phonemes.find(x=>x.ipa==='v').basic,'в');
+});
