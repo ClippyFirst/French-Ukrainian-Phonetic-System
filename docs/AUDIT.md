@@ -17,7 +17,7 @@
 - **Implementation: DONE_VERIFIED.** Static browser app exists in `index.html`, `styles.css`, `src/app.js`; French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin output, Basic/Detailed/Extended levels, word-level explanations, uncertainty markers, searchable UFPN reference, copy, TXT export and browser print-to-PDF.
 - **Runtime/privacy:** no application backend; entered text is processed in the browser. External static assets include Google Fonts.
 - **Build/test integration: DONE_VERIFIED.** PR CI 45195492754 and main CI 45195557498 pass build, 46 tests and syntax check.
-- **UFPN typography: PARTIAL.** PR #2 adds Noto Sans with OpenType mark/mark-to-mark positioning, larger line height and glyph-font coverage in the result, detail metadata and reference tables. Unicode IPA→UFPN mappings remain unchanged. Automated build/tests pass; browser screenshot/visual inspection is still outstanding.
+- **UFPN typography: PARTIAL.** PR #2's Noto Sans change did not resolve the detached-mark appearance reported by the owner. Follow-up branch `fix/charis-cyrillic-diacritic-anchors` replaces it with Charis SIL, a language/phonetic font with Cyrillic coverage and OpenType combining-mark anchors; Unicode IPA→UFPN mappings remain unchanged. Pending CI, deployment and browser visual confirmation.
 - **Public hosting: PARTIAL.** Clean deploy run 45192891355 succeeded and emitted the public Pages URL; direct HTTP response, page content and asset smoke verification remain unconfirmed because DNS/web access from this environment failed.
 - **Browser QA: TODO.** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks have not been run; visual appearance of stacked combining marks must be confirmed in browsers.
 

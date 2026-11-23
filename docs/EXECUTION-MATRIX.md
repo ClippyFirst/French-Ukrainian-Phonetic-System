@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #2: Noto Sans + OpenType `mark`/`mkmk`, larger line height and typography applied to result/reference/details; CI passed, browser visual inspection still pending |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #2 Noto Sans fix was insufficient (owner reports marks detached from letters); follow-up branch replaces it with Charis SIL with Cyrillic/phonetic coverage and OpenType anchors; CI/deploy/browser verification pending |
 
 ## OpenIPA engine integration
 
@@ -41,4 +41,4 @@
 - Main Actions run 45195557498: build, 46 tests, syntax check and Pages deployment passed for typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173`.
 - GitHub Pages is enabled and workflow deploys only from `main`.
 - Main run 45195557498 successfully deployed typography fix commit `360ef54a08af2ff7146d2a4052c326fec6968173` and emitted URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Direct HTTP/content/browser verification remains unavailable because this environment could not resolve the host.
-- PR #2 added Noto Sans with mark-to-mark positioning for UFPN output, reference glyphs and phonetic metadata; IPA→UFPN mapping strings are unchanged.
+- PR #2 added Noto Sans but did not resolve detached marks. Follow-up branch uses Charis SIL, specifically designed for language/phonetic text and combining marks; IPA→UFPN mapping strings are unchanged. Browser confirmation remains required.
