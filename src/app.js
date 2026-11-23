@@ -31,16 +31,16 @@ const reference=document.createElement('section');reference.id='ukrainian-sound-
 const refTitle=document.createElement('h2');refTitle.textContent='Буква — звук — українське слово';reference.append(refTitle);
 const refIntro=document.createElement('p');refIntro.textContent='У таблиці показано, чи можна почути цей самий звук у нормативній українській вимові. «Контекстний» означає позиційний алофон; «наближений» — схожий, але не тотожний звук. Якщо точного відповідника немає, ми так і пишемо — без вигаданих прикладів.';reference.append(refIntro);
 const refSearch=document.createElement('input');refSearch.type='search';refSearch.placeholder='Шукати літеру, IPA або українське слово…';refSearch.setAttribute('aria-label','Пошук у таблиці українських звукових відповідників');reference.append(refSearch);
-const ukrTable=document.createElement('table');ukrTable.className='ukrainian-sound-table';ukrTable.innerHTML='<thead><tr><th>Літера UFPN</th><th>Звук (IPA)</th><th>Де почути в українській</th><th>Відповідність</th></tr></thead><tbody></tbody>';reference.append(ukrTable);
+const ukrTable=document.createElement('table');ukrTable.className='ukrainian-sound-table';ukrTable.innerHTML='<thead><tr><th>Літера UFPN</th><th>Звук (IPA)</th><th>Як вимовити</th><th>Де почути в українській</th><th>Відповідність</th></tr></thead><tbody></tbody>';reference.append(ukrTable);
 const ukrBody=ukrTable.querySelector('tbody');
 const statusLabels={EXACT:'Точний звук',CONTEXTUAL:'У певній позиції',APPROXIMATE:'Лише наближення',NONE:'Немає точного відповідника'};
 function renderReference(query=''){
  ukrBody.replaceChildren();
  for(const item of UFPN_MAPPING.phonemes){
-  const haystack=[item.basic,item.ipa,item.ukrainianExample,item.ukrainianExampleNote,item.ukrainianExampleStatus].join(' ').toLocaleLowerCase();
+  const haystack=[item.basic,item.ipa,item.pronunciationGuideUk,item.ukrainianExample,item.ukrainianExampleNote,item.ukrainianExampleStatus].join(' ').toLocaleLowerCase();
   if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
   const tr=document.createElement('tr');
-  const values=[item.basic,item.ipa,item.ukrainianExample+(item.ukrainianExampleNote?' — '+item.ukrainianExampleNote:''),statusLabels[item.ukrainianExampleStatus]||item.ukrainianExampleStatus];
+  const values=[item.basic,item.ipa,item.pronunciationGuideUk||'Інструкція ще не додана.',item.ukrainianExample+(item.ukrainianExampleNote?' — '+item.ukrainianExampleNote:''),statusLabels[item.ukrainianExampleStatus]||item.ukrainianExampleStatus];
   for(const [index,value] of values.entries()){const td=document.createElement('td');td.textContent=value;if(index===3)td.dataset.status=item.ukrainianExampleStatus;tr.append(td)}
   ukrBody.append(tr);
  }
