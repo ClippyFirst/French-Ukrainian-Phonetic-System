@@ -1,24 +1,31 @@
 # Handoff — 2026-11-23
 
-## Гілка й коміт
-Робоча гілка: `feat/french-ipa-ufpn-engine`, створена від `main` / `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`. Кінцевий SHA буде записано після віддаленого коміту.
+## Branch and commits
+- Branch: `feat/french-ipa-ufpn-engine`, based on `main`.
+- Starting SHA: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
+- Main implementation commit: `1dba48d49007777d06310e4441d5aa019064058c`.
+- PR-check workflow follow-up: `cdf4c09b726035fc8fb308b248bdae5532779575`.
+- Execution-matrix update: `ad87c97093b5a5bc36c11b769d225b34d317312a`.
+- Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
 
-## Реалізовано
-Статичний вебінтерфейс; IPA-first pipeline; експериментальна UFPN mapping table; не-standard Latin guide; seed-лексикон; low-confidence fallback; обмежені liaison/elision; provenance/explanations; copy/TXT/print-to-PDF; Node tests; GitHub Pages workflow; дослідницька документація.
+## Implemented
+Static web app; IPA-first pipeline; experimental UFPN mapping; non-standard Latin guide; provisional seed lexicon; low-confidence fallback; narrow liaison/elision; word-level provenance/explanations; copy/TXT/print-to-PDF; Node tests; GitHub Pages workflow; research, source, audit and handoff docs.
 
-## Перевірки
+## Verification
 - `npm test` — PASS, 11/11.
-- `npm run check` — PASS, node syntax checks для engine/app.
-- `git clone ...` — BLOCKED: середовище не розв'язує github.com через DNS; віддалені зміни здійснюються GitHub connector API.
-- Browser/mobile/accessibility, production Pages deployment, expert phonology review, benchmark — не запускалися.
+- `npm run check` — PASS, syntax checks for engine/app.
+- Static HTML/JS ID references — PASS, no missing literal IDs.
+- GitHub branch compare — 2 commits ahead of main at workflow update; no divergence at that check.
+- Browser/mobile/accessibility, live Pages deploy, expert phonology review and linguistic benchmark — NOT RUN.
+- `git clone` — BLOCKED by DNS/network; GitHub connector APIs used for remote inspection and writes.
 
-## Блокери
-1. Незалежна перевірка IPA seed-записів французьким фонетистом.
-2. Перевірка UFPN українським фонетистом і user study.
-3. Ліцензований gold corpus.
-4. Повна POS/context-модель, liaison, schwa, числа, власні назви.
-5. Browser QA та реальний Pages run.
-6. Вибір ліцензії власником.
+## Remaining blockers
+1. Independent IPA review by a French phonologist.
+2. UFPN review by a Ukrainian phonetician and usability testing.
+3. Licensed, source-backed gold corpus.
+4. Full POS/context engine, liaison, schwa, numbers, names and abbreviations.
+5. Browser/mobile/accessibility QA and live Pages validation.
+6. Repository license selection by the owner.
 
-## Готовність
-**Частковий прототип / research scaffold.** Не release-ready й не авторитетний конвертер довільних текстів.
+## Readiness
+**Partial prototype / research scaffold.** Not release-ready and not an authoritative arbitrary-text pronunciation service.
