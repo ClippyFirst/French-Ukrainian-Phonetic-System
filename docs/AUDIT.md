@@ -188,3 +188,11 @@
 
 
 Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa872d7`, while the live Pages deployment remains `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The /œ/ guide refinement is in main but is not yet on the public site. Workflow `45265871092` passed its test job and failed only at the Pages artifact metadata fetch; treat this as an external deployment blocker, not an application test failure.
+
+
+## PR #25 UI refinement closeout (2026-11-23)
+- PR #25 merged squash as `41f96a1f3fbb8b220931d434626a4edddc3c13c7` from head `3ee313c31ed8c4a005fd1daea234b1a2817a3d34`.
+- Workflow [45270636340](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340) completed successfully: build, 57/57 unit tests, syntax, Charis 7/OpenType audit, and 12 Playwright browser/viewport combinations (Chromium/Firefox/WebKit × 1440/1024/768/390 px).
+- Screenshot artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) manually inspected at desktop, laptop, tablet and mobile sizes. Two issues found in earlier review were corrected: confidence marks no longer resemble browser spellcheck waves, and tablet section headings take a full row above controls.
+- Remaining manual accessibility work: screen-reader testing, physical-device testing and browser zoom/reflow. No claim is made that these passed.
+- PR changed presentation/documentation only; the French phonetic pipeline and datasets were preserved. Main Pages deployment and live verification are tracked separately in HANDOFF.md.
