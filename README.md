@@ -22,7 +22,8 @@ python3 -m http.server 8000
 - Mapping містить 37 сегментних одиниць, 15 allophone mappings, 36 діакритичних/просодичних маркерів і 18 вимірів фонетичних характеристик.
 - Невідомі IPA символи не губляться: позначаються й потрапляють у список unsupported.
 - Регіональні Québec affrication/diphthongization та cross-word assimilation описані окремо й не застосовуються до Metropolitan French за замовчуванням.
-- Попередній seed-лексикон, low-confidence fallback, вузькі liaison/elision шаблони.
+- Seed-лексикон і контекстний clean-room French G2P fallback для поширених графемних правил; кожне fallback-слово має низьку впевненість та трасу правил із фрагментами, IPA й українськими поясненнями.
+- Вузькі liaison/elision шаблони; POS-залежна морфологія, повний schwa/enchaînement, h aspiré та винятки ще не завершені.
 - Послівні пояснення, provenance, copy, TXT і browser print-to-PDF.
 - Пошуковий довідник UFPN з таблицями фонем/алофонів і 18 фонетичними вимірами.
 
@@ -30,7 +31,7 @@ python3 -m http.server 8000
 Немає повної морфології/POS, дизамбіґуації омографів, повної liaison/schwa/enchaînement моделі, числівників, власних назв, регіональних G2P профілів, аудіо й експертно верифікованого benchmark. Невідомі форми можуть бути неправильними. UFPN експериментальна й потребує незалежної перевірки.
 
 ## Документація
-[Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
+[OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
 
 ## Ліцензія
 Ліцензію репозиторію поки не обрано. OpenIPA не копіювався; див. Source Registry.

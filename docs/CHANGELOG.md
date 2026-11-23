@@ -20,3 +20,10 @@
 - Added machine-readable adopted/candidate grapheme register; explicitly rejected arbitrary assignments of `ы` to /ə/ and `ё` to /ø, œ/.
 
 - Verified cross-registry Cyrillic inventory integrity (unique adopted graphemes, IPA/base-grapheme consistency and candidate provenance); GitHub Actions run 45161676953 passed 35 tests and syntax checks.
+
+
+## 0.4.0 — Context-sensitive French G2P (work in progress)
+- Replaced the generic longest-match spelling fallback with a clean-room context-sensitive French grapheme pass for common digraphs, vowel groups, nasal spellings, glides, contextual consonants, suffixes and silent endings.
+- Added source-span rule traces with rule identifiers and Ukrainian explanations to word details.
+- Added focused French G2P tests and OpenIPA scope/reuse comparison.
+- This remains a low-confidence fallback; CI for the current head and independent pronunciation evaluation are pending.

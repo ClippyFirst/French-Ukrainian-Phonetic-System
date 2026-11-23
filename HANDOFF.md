@@ -1,16 +1,23 @@
-# Handoff — UFPN Phase 2 / Extended Cyrillic update
+# Handoff — French G2P parity continuation / UFPN Phase 2
 
 ## Repository
 - Default branch: main.
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest verified branch commit: 2000ab42de5b11b042141cb73edd6ea57a08379f.
+- Previous verified baseline: e9f1c952b31d0bb91155b6663ddee61c1778942f (35 tests + syntax check passed). Current unverified working head: e693b15717b71f3bf30be12cd434e346b1d8d60c.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
-## Latest continuation: extended Cyrillic inventory
+## Latest continuation: OpenIPA-oriented French G2P implementation
+- Inspected OpenIPA's public French parser, contextual letter rules, exception registry, per-grapheme explanation path, French regression tests and README. OpenIPA is lyric-diction oriented, uses rule-driven transcription and acknowledges incomplete exceptions/POS-dependent rules.
+- Added clean-room `src/french-g2p.js` to replace the old generic longest-match fallback with contextual French grapheme rules; no OpenIPA code or database was copied.
+- Added source spans, IPA result, rule IDs and Ukrainian explanations for each processed grapheme, surfaced in the word-detail UI.
+- Added French G2P regression tests and `docs/OPENIPA-COMPARISON.md`.
+- Current G2P fallback remains low confidence and is not yet at proven OpenIPA quality; unresolved POS-dependent `-ent`, lexical exceptions, schwa, liaison, h-aspiré and regional profiles are documented.
+
+## Previous continuation: extended Cyrillic inventory
 
 Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375bac5d caught one stale expected string for the nasal /ɛ̃/ test. The expectation was corrected; the subsequent CI run 45161219147 passed all tests and syntax checks on b82ee50aa77a899204fb86a03ede97e0f12b01bd.
 - Adopted Belarusian `ў` for IPA /w/, preserving /v/ → `в`, /ɥ/ → `й̊`, /j/ → `й`.
@@ -25,6 +32,10 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - Unicode NFC/NFD tests.
 - Allophone, context-process, prosody and regional-profile registers; Québec /t,d/ affrication and diphthongization are evidence-backed research entries, not default metropolitan rules.
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
+
+## Current verification status
+- Current head e693b15717b71f3bf30be12cd434e346b1d8d60c; CI run 45166534429 was pending with no jobs returned at last check. Local `git clone` and test execution blocked by DNS resolution for github.com. Do not claim current tests passed.
+- A previous attempted run on 54a878ce failed on escaped quotes in the new module; source was corrected in follow-up commits, but current CI evidence is still outstanding.
 
 ## Previous verification
 - Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
@@ -50,4 +61,4 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 6. Owner's repository license decision.
 
 ## Readiness
-Partial research prototype. UFPN specification and adapter can be iterated, but arbitrary French text is not yet reliably transcribed and no scientific accuracy score is claimed.
+Partial research prototype. New G2P fallback and explanations improve practical behavior but do not establish parity or accuracy without a completed CI run and independently checked lexical benchmark. UFPN specification and adapter can be iterated, but arbitrary French text is not yet reliably transcribed and no scientific accuracy score is claimed.

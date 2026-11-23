@@ -12,8 +12,8 @@
 | F1 | Allophone registry | PARTIAL | evidence-backed cases documented; not every possible speaker realization |
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |
-| E1 | French G2P and syntax | PARTIAL | prior seed fallback/narrow liaison; no full morphology/POS/context |
-| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions 45162018628 on 9ffee2f: npm test (35 tests: 12 engine + 23 UFPN) + npm run check passed; Pages deploy skipped on PR branch |
+| E1 | French G2P and syntax | PARTIAL | Added clean-room context-sensitive grapheme rules, suffix/nasal/glide/consonant handling and per-grapheme rule trace with source spans; still lacks reviewed lexical exceptions, POS/morphology, h-aspiré classes, productive liaison/schwa/enchaînement and gold evaluation |
+| Q1 | Unit tests | PARTIAL | Prior 35-test suite passed (run 45162238932); expanded suite now includes French G2P and trace tests (target 41 total), but CI for latest head e693b157 is pending/not yet reporting jobs; local clone blocked by DNS |
 | Q2 | Browser/mobile/accessibility | BLOCKED | no browser automation available in current runtime; prior Chromium timeout |
 | Q3 | Linguistic benchmark | BLOCKED | independent gold IPA/UFPN set = 0; expert reviewers unavailable |
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |

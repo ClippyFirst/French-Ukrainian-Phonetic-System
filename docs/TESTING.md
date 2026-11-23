@@ -1,6 +1,6 @@
 # Тестування UFPN
 
-Запуск: npm test. UFPN-тести: tests/ufpn.test.js.
+Запуск: `npm test`; syntax check: `npm run check`. French G2P tests: `tests/french-g2p.test.js`; UFPN tests: `tests/ufpn.test.js`.
 
 Покриття:
 - 37 одиниць референсного інвентарю та 15 allophone mappings;
@@ -17,7 +17,7 @@
 - aspiration, unreleased stops, syllabicity, voice quality, release modifiers;
 - provenance/evidence metadata.
 
-Поточний набір: 12 engine tests + 23 UFPN adapter/specification tests (разом 35). Це перевірки адаптера та структури даних, не gold pronunciation benchmark і не доказ вимови прикладів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
+Поточний набір: 12 engine tests + 23 UFPN adapter/specification tests + 6 French G2P/rule-trace tests (разом 41; CI confirmation for current head pending). Це перевірки адаптера, структури даних і окремих очікуваних правил; не gold pronunciation benchmark і не доказ вимови довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані. Поточний G2P fallback потребує незалежної перевірки; його low-confidence output не слід трактувати як словникову транскрипцію.
 
 
 The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `э`, nasal /ɛ̃/ → `э̃`, and explicit non-assignment rationale for `ы` and `ё`.
