@@ -234,7 +234,7 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 ## Authoritative current handoff — Pages deployment verified (2026-11-23)
 
-- Current main HEAD: `bba1a66fdb31241e889fe16fe25b2371bb3641fc`.
+- Verified application/workflow commit: `bba1a66fdb31241e889fe16fe25b2371bb3641fc`; subsequent closeout commits are documentation-only and do not alter the deployed application.
 - PR #27 merged the six-row OpenIPA fixture regression coverage and raw IPA provenance assertion. PR CI 45277660637 passed 58/58 tests and browser checks.
 - PR #28 merged accessible source naming and functional skip-link focus transfer. PR CI 45278479262 passed 58/58 tests and all 12 Chromium/Firefox/WebKit × viewport checks.
 - PR #29 reconciled matrix/audit/handoff evidence.
