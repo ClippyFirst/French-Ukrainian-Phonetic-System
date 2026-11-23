@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Last CI-verified branch head before this handoff refresh: d2190a9864ac868b90d5c25e29414af89dddde64 (documentation-only follow-up); last code change: 1c6322365cbef42cf33b5a79a04656bd3de8afe0. Branch is 38 commits ahead and 0 behind main. CI passed 42 tests + syntax check (push run 45167872404; PR run 45167882606). This final handoff-only commit follows that verified state.
+- Last CI-verified branch head before this metadata refresh: 6262733f4b93489c01ca5e597e608b815ca17d2c; last code change: 1c6322365cbef42cf33b5a79a04656bd3de8afe0. Branch is 0 behind main; see PR #1 for the live ahead count. CI passed 42 tests + syntax check (push run 45168038041; PR run 45168051416). This final handoff-only commit follows that verified state.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -36,7 +36,7 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Current verification status
-- GitHub Actions run 45167686845 completed successfully on final branch HEAD 3f02af40ee84b13fa3388e1a5f13db8cf345610c: `npm test` passed 42/42 and `npm run check` passed. PR run 45167695775 also passed. Deploy was skipped on the feature branch.
+- GitHub Actions run 45168038041 completed successfully on branch head 6262733f4b93489c01ca5e597e608b815ca17d2c: `npm test` passed 42/42 and `npm run check` passed. PR run 45168051416 also passed. Deploy was skipped on the feature branch.
 - The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
 - Local `git clone` and test execution remain blocked by DNS resolution for github.com.
 

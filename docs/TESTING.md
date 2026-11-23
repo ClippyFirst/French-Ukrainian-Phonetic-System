@@ -17,7 +17,7 @@
 - aspiration, unreleased stops, syllabicity, voice quality, release modifiers;
 - provenance/evidence metadata.
 
-Поточний набір: 12 engine tests + 23 UFPN adapter/specification tests + 7 French G2P/rule-trace tests (разом 42; GitHub Actions run 45167417126 passed all 42 tests and `npm run check` on code head 1c63223). Це перевірки адаптера, структури даних і окремих очікуваних правил; не gold pronunciation benchmark і не доказ вимови довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані. Поточний G2P fallback потребує незалежної перевірки; його low-confidence output не слід трактувати як словникову транскрипцію.
+Поточний набір: 12 engine tests + 23 UFPN adapter/specification tests + 7 French G2P/rule-trace tests (разом 42; GitHub Actions run 45168038041 passed all 42 tests and `npm run check` on branch head 6262733). Це перевірки адаптера, структури даних і окремих очікуваних правил; не gold pronunciation benchmark і не доказ вимови довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані. Поточний G2P fallback потребує незалежної перевірки; його low-confidence output не слід трактувати як словникову транскрипцію.
 
 
 The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `э`, nasal /ɛ̃/ → `э̃`, and explicit non-assignment rationale for `ы` and `ё`.
