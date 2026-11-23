@@ -42,3 +42,37 @@
 @media(max-width:560px){
   .results article.ukr .output{font-size:21px;line-height:2.2}
 }
+
+
+/* UFPN uses spacing modifier glyphs placed by the UI, not font mark anchors.
+   This keeps Cyrillic diacritics attached even when a browser lacks mkmk data. */
+.ufpn-cluster{
+  display:inline-block;
+  position:relative;
+  white-space:nowrap;
+  padding:.34em .025em .24em;
+  vertical-align:baseline;
+}
+.ufpn-cluster-base{display:inline-block;position:relative;z-index:0}
+.ufpn-display-mark{
+  position:absolute;
+  left:50%;
+  z-index:1;
+  font-family:var(--sans);
+  font-size:.62em;
+  font-weight:600;
+  line-height:1;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.ufpn-display-mark.above{
+  top:calc(-.08em - var(--mark-index)*.48em);
+  transform:translateX(-50%);
+}
+.ufpn-display-mark.below{
+  bottom:calc(-.03em - var(--mark-index)*.38em);
+  transform:translateX(-50%);
+}
+.ufpn-display-mark.flip{transform:translateX(-50%) rotate(180deg)}
+.results article.ukr .output .word-token{overflow:visible}
+.ufpn-reference td .ufpn-cluster{font-family:var(--phonetic)}
