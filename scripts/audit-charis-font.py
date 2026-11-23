@@ -137,17 +137,19 @@ def main():
         if base_glyph is None:
             missing_base.append(f"{base!r} U+{ord(base):04X}")
             continue
-        first_glyph = glyph_for[ord(marks[0])]
-        if (base_glyph, first_glyph) not in base_pairs:
-            missing_base.append(
-                f"{base} + U+{ord(marks[0]):04X} ({base_glyph}/{first_glyph})"
-            )
-        for previous, current in zip(marks, marks[1:]):
-            pair = (glyph_for[ord(previous)], glyph_for[ord(current)])
-            if pair not in stacking_pairs:
-                missing_stack.append(
-                    f"U+{ord(previous):04X} + U+{ord(current):04X}"
+        for mark_index, mark in enumerate(marks):
+            mark_glyph = glyph_for[ord(mark)]
+            if (base_glyph, mark_glyph) not in base_pairs and mark_index == 0:
+                missing_base.append(
+                    f"{base} + U+{ord(mark):04X} ({base_glyph}/{mark_glyph})"
                 )
+            if mark_index:
+                previous = marks[mark_index - 1]
+                pair = (glyph_for[ord(previous)], mark_glyph)
+                if pair not in stacking_pairs and (base_glyph, mark_glyph) not in base_pairs:
+                    missing_stack.append(
+                        f"U+{ord(previous):04X} + U+{ord(mark):04X}"
+                    )
 
     if missing_base or missing_stack:
         if missing_base:
@@ -169,12 +171,43 @@ def main():
         hb.shape(hb_font, buffer, {"mark": 1, "mkmk": 1})
         if any(info.codepoint == 0 for info in buffer.glyph_infos):
             raise SystemExit(f"HarfBuzz produced .notdef for {sample!r}")
+        shaped_marks = []
         for info, position in zip(buffer.glyph_infos, buffer.glyph_positions):
             glyph_name = font.getGlyphName(info.codepoint)
-            if glyph_name in mark_glyphs and (position.x_advance or position.y_advance):
+            if glyph_name in mark_glyphs:
+                if position.x_advance or position.y_advance:
+                    raise SystemExit(
+                        f"Combining mark has non-zero advance in {sample!r}: {glyph_name}"
+                    )
+                shaped_marks.append((glyph_name, position.y_offset))
+        if len(shaped_marks) != len(marks):
+            raise SystemExit(
+                f"Expected {len(marks)} combining marks in {sample!r}, "
+                f"HarfBuzz returned {len(shaped_marks)}"
+            )
+        for index, (glyph_name, y_offset) in enumerate(shaped_marks):
+            codepoint = next(cp for cp, name in glyph_for.items() if name == glyph_name)
+            unicode_name = unicodedata.name(chr(codepoint), "")
+            if ("ABOVE" in unicode_name and y_offset <= 0) or (
+                "BELOW" in unicode_name and y_offset >= 0
+            ):
                 raise SystemExit(
-                    f"Combining mark has non-zero advance in {sample!r}: {glyph_name}"
+                    f"Unexpected vertical mark placement in {sample!r}: "
+                    f"{unicode_name} y_offset={y_offset}"
                 )
+            if index:
+                previous_name, previous_offset = shaped_marks[index - 1]
+                previous_cp = next(cp for cp, name in glyph_for.items() if name == previous_name)
+                previous_unicode_name = unicodedata.name(chr(previous_cp), "")
+                same_side = (
+                    ("ABOVE" in unicode_name and "ABOVE" in previous_unicode_name)
+                    or ("BELOW" in unicode_name and "BELOW" in previous_unicode_name)
+                )
+                if same_side and y_offset == previous_offset:
+                    raise SystemExit(
+                        f"Stacked marks share the same vertical position in {sample!r}: "
+                        f"{previous_name}/{glyph_name} at {y_offset}"
+                    )
         shaped += 1
 
     print(
