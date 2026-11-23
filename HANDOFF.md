@@ -201,3 +201,9 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - PR #25 is intentionally left open for review; it has not been merged or deployed. The public site still serves the current main branch.
 - Main workflow `45265871092` had a successful test job but the Pages deploy step failed while fetching the `github-pages` artifact metadata. This is recorded as an external Actions/Pages API blocker; retry deployment after PR merge rather than changing app code speculatively.
 - Next acceptance: inspect the five uploaded screenshots, approve/adjust the visual result, merge PR #25, then verify the new main commit's Pages deployment and scrape the live page at desktop and mobile widths.
+
+
+### Existing live-site baseline
+- Main before this design branch: `81098345c69a3c58d770b95fd63949133fa872d7`.
+- Last verified live Pages commit: `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The current main /œ/ articulation wording correction is therefore not yet reflected on the public site.
+- Main workflow `45265871092` passed build, 57 tests, syntax, font audit and browser rendering; deployment failed only when `actions/deploy-pages@v4` could not retrieve the uploaded `github-pages` artifact metadata. Retry the Pages deployment after the external Actions/Pages API issue clears.
