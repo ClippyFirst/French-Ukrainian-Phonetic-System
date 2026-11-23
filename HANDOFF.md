@@ -232,11 +232,14 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 
 
-## Pages deployment retry-resilience follow-up — 2026-11-23
+## Authoritative current handoff — Pages deployment verified (2026-11-23)
 
-- Current main HEAD before this workflow branch: `5ec0ff1e2b456733fffad619f8d88e287a4096f6` (documentation-only on top of tested application code `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`).
-- Main workflow [45278852488](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488) passed all 58 tests and all browser checks, but Pages deploy failed at artifact metadata lookup. The first `github-pages` artifact is [14867792849](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867792849). A deploy-only rerun uploaded duplicate [14867374732](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867374732), after which deploy-pages rejected the duplicate name. Do not rerun the old job again.
-- Main run [45279727256](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45279727256) completed the 58-test/browser job successfully but failed at Pages metadata lookup. Artifact [14869875513](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45279727256/artifacts/14869875513) finalized at 22:31:41.615Z; deploy-pages queried at 22:31:42.089Z and did not yet see `github-pages`.
-- Branch `ci/isolate-pages-artifact-from-deploy` (PR #30 pending) splits Pages artifact creation and deployment into separate jobs. The separate job boundary should allow the artifact index to propagate; a deploy-only retry will also no longer re-upload the Pages artifact. PR CI and a fresh main deployment are required before calling this fix verified.
-- Fresh live scrape: HTTP 200, but it still serves the prior deployment (main target has no `tabindex="-1"` on `main`, and the source textarea has no `aria-labelledby`). The latest accessible UI is therefore not yet confirmed live.
-- Continue with PR #30 CI, merge if green, then verify the new main run's test job, unique Pages artifact, deploy job and live page. Do not rerun deploy on a run that already contains duplicate `github-pages` artifacts.
+- Current main HEAD: `bba1a66fdb31241e889fe16fe25b2371bb3641fc`.
+- PR #27 merged the six-row OpenIPA fixture regression coverage and raw IPA provenance assertion. PR CI 45277660637 passed 58/58 tests and browser checks.
+- PR #28 merged accessible source naming and functional skip-link focus transfer. PR CI 45278479262 passed 58/58 tests and all 12 Chromium/Firefox/WebKit × viewport checks.
+- PR #29 reconciled matrix/audit/handoff evidence.
+- PR #30 merged the Pages artifact/deploy job split, so a deploy-only retry no longer uploads a duplicate artifact.
+- Main workflow [45281476706](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45281476706): SUCCESS. Test job (58/58, build, syntax, font audit, all browser checks), `pages-artifact` and `deploy` all passed.
+- Exactly one Pages artifact [14870605812](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45281476706/artifacts/14870605812) and browser specimen [14870611063](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45281476706/artifacts/14870611063) were uploaded.
+- Fresh live scrape 01a20a90-e14f-7024-b6d9-0f5af46dd418 returned HTTP 200 and verified the focusable `main`, labelled French input, 37 table rows and all five expected headers.
+- Remaining blockers are not deployment-related: manual screen-reader/zoom/reflow/physical-device/owner visual QA PARTIAL; independent French/Ukrainian phonetic review BLOCKED; independently curated/licensed gold benchmark BLOCKED. The project is a working research prototype, not a validated phonetic standard.
