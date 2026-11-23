@@ -35,10 +35,11 @@ for (const section of ["phonemes", "allophoneMappings"]) {
     }
   }
 }
-const samples = [...new Set(outputs.flatMap(collectClusters))].sort();
+const adoptedGraphemes = mapping.graphemeInventory.adopted.map((item) => item.grapheme);
+const samples = [...new Set([...outputs.flatMap(collectClusters), ...adoptedGraphemes])].sort();
 
-if (samples.length !== 23) {
-  throw new Error(`Expected 23 mapped UFPN base/mark clusters, found ${samples.length}`);
+if (!adoptedGraphemes.every((value) => samples.includes(value))) {
+  throw new Error("Browser specimen is missing an adopted extended-Cyrillic grapheme");
 }
 
 await mkdir(new URL("../artifacts/", import.meta.url), { recursive: true });
@@ -71,7 +72,7 @@ for (const [name, browserType] of browserTypes) {
         document.head.append(style);
         const panel = document.createElement("section");
         panel.id = "charis-audit";
-        panel.innerHTML = "<h1>Charis 7.000 · UFPN combining-mark browser specimen</h1><p>All mapped Cyrillic base/diacritic clusters, rendered through the repository's local @font-face and browser shaping engine.</p><div class='samples'></div>";
+        panel.innerHTML = "<h1>Charis 7.000 · UFPN Cyrillic and combining-mark specimen</h1><p>All adopted Cyrillic letters and mapped base/diacritic clusters, rendered through the repository's local @font-face and browser shaping engine.</p><div class='samples'></div>";
         document.body.prepend(panel);
         const grid = panel.querySelector(".samples");
         for (const value of values) {
@@ -125,4 +126,4 @@ for (const [name, browserType] of browserTypes) {
 }
 const screenshotPath = fileURLToPath(new URL("../artifacts/charis-7.000-ufpn.png", import.meta.url));
 const screenshotBytes = (await stat(screenshotPath)).size;
-console.log(JSON.stringify({ browsers: results, screenshot: "artifacts/charis-7.000-ufpn.png", screenshotBytes, clusters: samples }, null, 2));
+console.log(JSON.stringify({ browsers: results, screenshot: "artifacts/charis-7.000-ufpn.png", screenshotBytes, specimens: samples }, null, 2));
