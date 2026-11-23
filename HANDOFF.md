@@ -218,8 +218,15 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Linguistic expert review and independently curated/licensed gold benchmark remain blockers for linguistic release validation.
 
 
-## Authoritative continuation update — 2026-11-23
-- Current main: `0503cfe0b0450b88a2a4b9bedff5ee594323668d`.
-- Current Pages workflow: [run 45272944761](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45272944761). Build, `npm test` (57/57), `npm run check`, and Charis 7 glyph/OpenType audit passed.
-- The active job is still installing Playwright browser engines. Chromium/Firefox/WebKit rendering, screenshot artifact upload and Pages deploy are pending. The earlier run 45272182990 was cancelled/superseded; do not treat it as the current workflow.
-- No additional main push was made while run 45272944761 was active, to avoid cancelling the deployment gate. Pages deployment and live-site smoke checks remain unverified.
+## Authoritative continuation handoff — 2026-11-23
+
+- Starting main for this continuation: `0503cfe0b0450b88a2a4b9bedff5ee594323668d`.
+- Current main: `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`.
+- PR #26 merged docs reconciliation; PR #27 merged the six-row OpenIPA fixture coverage/provenance assertions; PR #28 merged accessible source naming and functional skip-link focus.
+- PR #27 CI [45277660637](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45277660637): 58/58 tests, build, syntax, font audit and all browser checks passed.
+- PR #28 CI [45278479262](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278479262): 58/58 tests, build, syntax, font audit and all 12 Chromium/Firefox/WebKit × viewport checks passed. Each combination verified the source textarea's accessible name and skip-link focus transfer to `main`.
+- Main workflow [45278852488](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488): test job SUCCESS — build, 58/58 tests, syntax, Charis 7 audit, browser render and artifact upload passed. Specimen artifact [14869235188](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14869235188).
+- Pages deployment FAILED twice due GitHub artifact metadata behavior. First `github-pages` artifact [14867792849](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867792849) uploaded successfully, but deploy-pages could not resolve its metadata. Re-running only the deploy job created a duplicate artifact [14867374732](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867374732); deploy-pages then rejected the run because multiple artifacts named `github-pages` existed. Do not retry this job again.
+- A fresh main workflow run is required to publish with one unique Pages artifact. After it succeeds, verify the live site and check the 37-row, five-column table plus current accessibility changes. Last verified live baseline is commit `95ec26e6127465d0f3152194c07db1b3dbf089e2`; current main is not yet confirmed deployed.
+- Remaining gates: manual screen-reader/zoom/reflow/physical-device/owner visual QA PARTIAL; independent French/Ukrainian phonetic review BLOCKED; independently curated and licensed gold IPA/UFPN benchmark BLOCKED. The project remains a research prototype, not an academically validated phonetic standard.
+
