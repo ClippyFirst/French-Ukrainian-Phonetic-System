@@ -120,7 +120,7 @@
 - Implemented in PR #15: ү /y/, ө /ø/, ӧ /œ/, ӹ /ə/, њ /ɲ/, ң /ŋ/, ғ /ʁ/; existing ў /w/ and э /ɛ/ retained. /ɥ/ is ү̯; nasalization uses one tilde where possible. The basic /ʁ/ output no longer stacks voicing/backing marks on х.
 - The visible searchable table contains 37 segment rows and labels each Ukrainian comparison EXACT, CONTEXTUAL, APPROXIMATE, or NONE. It explicitly states when Ukrainian has no exact equivalent; e.g. it does not conflate [nʲ] with [ɲ], [x] with [ʁ], or [ɪ] with [y].
 - Mapping schema 1.2.0 adds Ukrainian example/status/note fields for all 37 phonemes. Tests require those fields. Charis audit now checks every adopted extended-Cyrillic glyph and the canonical NFC base/mark combinations; browser specimen includes all adopted letters and asserts the 37-row table is present at desktop/mobile viewports.
-- Source registry adds S34–S37 for Kazakh, Serbian, Hill Mari and Eastern Mari grapheme/sound correspondences. These are source-backed grapheme choices, but the combined UFPN convention is still an experimental project decision, not an independently standardized Ukrainian system.
+- Source registry adds S34–S37 for Kazakh, Serbian, Hill Mari and Eastern Mari evidence. S34–S36 support the cited grapheme/sound correspondences. S37 supports only the existence of Eastern Mari /œ/, not a Mari `ӧ` → /œ/ spelling. UFPN's `ӧ` = /œ/ is a project-specific assignment; the combined notation remains experimental and is not an independently standardized Ukrainian system.
 - PR #15 merged as `b914629a5cbc70dc417a8fe535e1a57300f73dba`; main workflow 45259255626 passed build, 54 tests, syntax, font audit, all six browser/viewport checks and Pages deployment. Live scrape confirms the 37-row table.
 - PR #16 merged as `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`; PR workflow 45259870325 passed build, 55 tests, syntax, 45-codepoint Charis audit and all six browser/viewport checks, including the 37-row table at each viewport. It preserves the distinction between velar [ɣ] (х̬) and uvular /ʁ/ (ғ).
 - Current main workflow 45260260821 has build, 55 tests, syntax and font audit passed; Playwright installation is still running, so redeployment of the small PR #16 follow-up remains pending. The PR #15 table deployment is already live.
@@ -134,6 +134,13 @@
 
 
 ## Ukrainian pronunciation-guide column (2026-11-23)
-- Added a Ukrainian-language articulation instruction to each of the 37 segmental mapping records. Instructions describe concrete tongue/lip/jaw placement, voicing, airflow and nasal resonance as applicable; they do not invent Ukrainian lexical equivalents where none exist.
-- The searchable browser reference table now has a fifth column, **«Як вимовити»**, between IPA and Ukrainian example. Search also indexes the new guidance text.
-- Added a regression asserting all 37 entries contain a non-empty guide. Automated CI and six-browser viewport verification are pending on branch `feat/ufpn-pronunciation-guides`; no deployment or browser pass is claimed yet.
+- Added a Ukrainian-language articulation instruction to each of the 37 segmental mapping records. Instructions describe tongue/lip/jaw placement, voicing, airflow and nasal resonance as applicable; they do not invent Ukrainian lexical equivalents where none exist.
+- The searchable browser reference table has a fifth column, **«Як вимовити»**, between IPA and Ukrainian example. Search also indexes the new guidance text.
+- Regression coverage checks all 37 entries. PR #19 fixed the browser test harness to return the table-header and guided-row measurements. The corrected six-browser viewport test passed in PR #19 workflow `45263336209`; build, unit tests, syntax and font audit also passed.
+- The merged `main` push workflow `45263533099` has passed build, tests, syntax and font audit; Playwright browser installation was still in progress at the time this audit note was updated. Live Pages deployment remains unverified until that workflow completes.
+
+
+## Correction: Eastern Mari evidence and UFPN `ӧ` (2026-11-23)
+- Corrected an overstatement in S37: EURPhon confirms Eastern Mari /œ/ in the phoneme inventory, but does not establish a Mari grapheme `ӧ` for /œ/.
+- The UFPN mapping now labels `ӧ` = /œ/ as a project-specific assignment, chosen to distinguish it from `ө` = /ø/ without adding diacritics. It is not represented as a direct Mari grapheme-to-sound borrowing.
+- `data/ufpn-mapping.json`, `docs/SOURCE-REGISTRY.md`, and `docs/IPA-MAPPING.md` now carry this scope qualification. The runtime output is intentionally unchanged; this is a provenance correction, not a phoneme remapping.
