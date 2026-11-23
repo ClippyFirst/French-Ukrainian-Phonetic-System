@@ -14,17 +14,17 @@
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
 | Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45217105821: build passed, 48/48 tests, syntax check, Charis audit, Chromium specimen and Pages deployment passed; post-merge run 45236413859 is the current verification |
-| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in PR #10 run 45233413912; keyboard, screen-reader and real-device QA remain outstanding |
+| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in merged PR #10 run 45233413912; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
 | D3 | Pages deployment | DONE_VERIFIED | Main workflow 45217105821 успішно розгорнув `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; live site and stylesheet returned HTTP 200 via fresh public scrape; CSS confirms local Charis Regular/Bold WOFF2 and no legacy Charis SIL import |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
-| W2 | Browser-hosted smoke/accessibility QA | PARTIAL | Live Pages page and stylesheet returned HTTP 200; deployed sample rendered. Chromium passed all 23 clusters in run 45217105821; PR #10 run 45233413912 passed Firefox/WebKit and mobile viewports. Keyboard/screen-reader/owner acceptance remain |
+| W2 | Browser-hosted smoke/accessibility QA | PARTIAL | Live Pages page and stylesheet returned HTTP 200; deployed sample rendered. Merged PR #10 run 45233413912 passed all six Chromium/Firefox/WebKit desktop/mobile typography checks. Keyboard/screen-reader/physical-device/owner acceptance remain |
 | W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; font audit passed in run 45216293204; all six Chromium/Firefox/WebKit desktop/mobile typography checks passed in run 45233413912. Owner-side visual and accessibility acceptance remain. |
 | W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
 | W5 | Inspect Charis 7 glyph and anchor coverage | DONE_VERIFIED | CI passed: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz samples; active Cyrillic `mark`/`mkmk` and required anchor pairs verified in run 45216293204. |
-| W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. All six Chromium/Firefox/WebKit desktop/mobile checks passed in run 45233413912; keyboard/screen-reader, real-device and owner acceptance remain. |
+| W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. Merged PR #10 run 45233413912 passed all six Chromium/Firefox/WebKit desktop/mobile checks; keyboard/screen-reader, real-device and owner acceptance remain. |
 
 ## OpenIPA engine integration
 
@@ -84,3 +84,9 @@
 - Main `9bc73498cd6e5f1190d508884d48af3a58ce89a2` is deployed; workflow [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) passed both test and deploy jobs.
 - Public app and `styles.css` independently returned HTTP 200 on a fresh live scrape. The app rendered its current sample; CSS contains local Charis Regular/Bold WOFF2 declarations and no Charis SIL Google Fonts import.
 - PR #10 adds Playwright coverage for Chromium, Firefox and WebKit at desktop and mobile viewport sizes; run 45233413912 passed all six browser/viewport checks; keyboard, screen-reader, real-device and owner visual acceptance remain. Keyboard, screen-reader, real-device and owner visual acceptance are separate outstanding gates.
+
+
+### Post-merge verification status (2026-11-23)
+- PR #10 merged at `87ae7c3566e373633ad53b945ef811951d3f4ea0`; its run 45233413912 passed all six cross-browser/viewport typography checks.
+- Latest post-merge main workflow is tracked in `docs/AUDIT.md` and `HANDOFF.md`; do not treat superseded/cancelled run 45236413859 as a failure. Build, 48 tests, syntax and font audit had passed in run 45236513836 before its browser installation stage.
+- Browser QA is technically verified; accessibility, physical-device and owner visual acceptance remain partial. Linguistic expert review and licensed gold benchmark remain blocked.
