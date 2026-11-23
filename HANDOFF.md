@@ -12,7 +12,7 @@
 - Static browser app: `index.html`, `styles.css`, `src/app.js`.
 - French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin guide.
 - Basic / Detailed / Extended UFPN, word-level parser explanations, uncertainty markers, searchable UFPN reference.
-- UFPN output and reference glyphs use Noto Sans with OpenType mark-to-mark positioning (`mark`/`mkmk`) and increased line height; Unicode mapping sequences were not changed.
+- UFPN output and reference glyphs now use Charis SIL, a linguistics-oriented font with Cyrillic coverage and OpenType combining-mark anchors (`mark`/`mkmk`); Unicode mapping sequences were not changed. Browser visual verification remains pending.
 - Copy, TXT export, browser print-to-PDF, responsive layout.
 - No application backend; entered text is processed in the browser.
 - Setup and hosting instructions: `docs/WEB-SERVICE.md`.
@@ -38,7 +38,7 @@
 - Clean main run [45192891355](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45192891355) completed successfully, including `deploy-pages@v4`. GitHub Actions emitted the environment URL: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Deployment commit: `422430fe142e8f15e55d8ef2bd1876853b2e209e`.
 - GitHub Pages is enabled (`has_pages=true`); workflow deploys only from `main`. The public deployment action is verified, but direct HTTP/content smoke verification remains unverified: web/container access from this environment could not resolve the GitHub Pages host (DNS failure / inaccessible via web fetch).
 - Node CI output: 46 passed, 0 failed. Node deprecation notices from transitive/action dependencies remain non-blocking.
-- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) on `360ef54a08af2ff7146d2a4052c326fec6968173` passed build, 46 tests, syntax checks and Pages deployment.
+- Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) on `360ef54a08af2ff7146d2a4052c326fec6968173` passed build, 46 tests, syntax checks and Pages deployment. A follow-up correction replaces Noto Sans with Charis SIL because the first visual attempt did not resolve detached Cyrillic diacritics; this correction is pending PR CI and deployment.
 - A fresh local clone and manual Chromium/Firefox/WebKit/mobile/accessibility QA could not be run in this environment.
 
 ## Remaining acceptance gates
