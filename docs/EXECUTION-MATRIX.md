@@ -12,12 +12,12 @@
 | F1 | Allophone registry | PARTIAL | evidence-backed cases documented; not every possible speaker realization |
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |
-| E1 | French G2P and syntax | PARTIAL | Added clean-room context-sensitive grapheme rules, suffix/nasal/glide/consonant handling and per-grapheme rule trace with source spans; still lacks reviewed lexical exceptions, POS/morphology, h-aspiré classes, productive liaison/schwa/enchaînement and gold evaluation |
-| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions run 45168613204 on code head 594cb0b: npm test passed 44/44 (13 engine + 23 UFPN + 8 French G2P/trace); npm run check passed; PR run 45168622148 also passed; Pages deploy skipped on PR/feature branch. Local clone remains DNS-blocked, but hosted CI is authoritative |
+| E1 | French G2P and syntax | PARTIAL | Original OpenIPA parser is now executed for fallback words and lyric-profile text-level liaison/elision; seed lexicon remains unverified, and POS/morphology, h-aspiré classes, broad lexical coverage and gold evaluation remain incomplete |
+| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions run 45174088150 on code head 2b81ebb: build passed; npm test passed 47/47 (15 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration); npm run check passed. Pages deploy skipped on feature branch. Local clone remains DNS-blocked, hosted CI is authoritative |
 | Q2 | Browser/mobile/accessibility | BLOCKED | no browser automation available in current runtime; prior Chromium timeout |
 | Q3 | Linguistic benchmark | BLOCKED | independent gold IPA/UFPN set = 0; expert reviewers unavailable |
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |
-| D2 | Repository LICENSE | DEFERRED | owner decision required |
+| D2 | Repository LICENSE | DONE_VERIFIED | Owner approved AGPL-3.0; LICENSE and THIRD_PARTY_NOTICES.md added |
 | D3 | Pages deployment | PARTIAL | previous head CI test job succeeded; Pages deploy skipped on PR branch; Pages settings not verified |
 
 
@@ -25,10 +25,11 @@
 
 | Task | Status | Evidence / acceptance |
 |---|---|---|
-| Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_PENDING_CI | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; build and CI must pass |
-| Build upstream TypeScript into browser ESM bundle | DONE_PENDING_CI | `npm run build` via pinned esbuild 0.25.0; bundle is generated as `src/openipa-french.js` |
-| Route fallback G2P through upstream parser and preserve rule traces | DONE_PENDING_CI | `src/french-g2p.js`; `src/engine.js`; regression tests in `tests/openipa-french.test.js` |
+| Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; CI run 45174088150 passed build, 47 tests and syntax check |
+| Build upstream TypeScript into browser ESM bundle | DONE_VERIFIED | `npm run build` via pinned esbuild 0.25.0; CI run 45174088150 passed |
+| Route fallback G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`; `src/engine.js`; upstream fixture and trace tests; CI run 45174088150 passed 47/47 |
 | Align upstream IPA notation to canonical IPA | PARTIAL | `ε` → `ɛ` explicit notation normalization; `õ` and other conventions remain visible pending phonetic review |
-| Adopt AGPL-3.0 and upstream attribution | DONE_PENDING_CI | `LICENSE`, `THIRD_PARTY_NOTICES.md`, README; verify CI |
+| Adopt AGPL-3.0 and upstream attribution | DONE_VERIFIED | `LICENSE`, `THIRD_PARTY_NOTICES.md`, README; owner approved AGPL-3.0 |
 | Verify full seed lexicon against upstream and external dictionaries | TODO | Compare every seed entry; only independently verified entries may receive high confidence |
 | Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |
+| Use OpenIPA text-level liaison/elision hooks in lyric profile | DONE_VERIFIED | `src/engine.js` calls full-text adapter; `tests/engine.test.js` covers `les amis` liaison and `calme ami` elision; CI run 45174088150 passed 47/47 and syntax check |

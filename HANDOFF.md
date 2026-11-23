@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Last CI-verified branch head before this metadata refresh: 6262733f4b93489c01ca5e597e608b815ca17d2c; last code change: 594cb0be465a6dff6fc5427f9873f4c1b3e0c0f8. Branch is 0 behind main; see PR #1 for the live ahead count. CI passed 44 tests + syntax check (push run 45168613204; PR run 45168622148). This final handoff-only commit follows that verified state.
+- Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a`; branch was 48 ahead and 0 behind `main` at that point. CI run `45174088150` passed build, 47/47 tests and syntax check; Pages deploy skipped on the feature branch.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -38,7 +38,7 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Current verification status
-- GitHub Actions run 45168613204 completed successfully on code head 594cb0be465a6dff6fc5427f9873f4c1b3e0c0f8: `npm test` passed 44/44 and `npm run check` passed. PR run 45168622148 also passed. Deploy was skipped on the feature branch.
+- Latest GitHub Actions run 45174088150 passed build, 47/47 tests and syntax checks on code head 2b81ebb90b256ec2e74c22066bacb634ac59b64a. Deploy was skipped on the feature branch.
 - The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
 - Local `git clone` and test execution remain blocked by DNS resolution for github.com.
 

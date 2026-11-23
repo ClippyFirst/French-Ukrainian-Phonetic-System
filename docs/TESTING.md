@@ -17,7 +17,7 @@
 - aspiration, unreleased stops, syllabicity, voice quality, release modifiers;
 - provenance/evidence metadata.
 
-Після інтеграції OpenIPA набір включає upstream fixture tests, rule-trace/source-provenance tests, engine tests та UFPN adapter/specification tests. Hosted CI на новому commit має підтвердити фактичну кількість і проходження; попередні 44 тести на старому clean-room fallback не є доказом нового стану. Ці перевірки демонструють інтеграцію, а не gold pronunciation benchmark і не доводять вимову довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
+Поточний набір: 15 engine tests + 23 UFPN adapter/specification tests + 4 French G2P adapter tests + 5 OpenIPA parser/integration tests = 47. GitHub Actions run 45174088150 passed all 47 tests and `npm run check` on code head 2b81ebb. Ці перевірки демонструють інтеграцію, а не gold pronunciation benchmark і не доводять вимову довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
 
 
 The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `э`, nasal /ɛ̃/ → `э̃`, and explicit non-assignment rationale for `ы` and `ё`.
@@ -31,3 +31,6 @@ The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Deta
 
 
 Known upstream inconsistency: OpenIPA's legacy `src/tests/french/_words.csv` expects `descends` → `d(e)sɑ̃`, but the vendored executable `ParseFrench.ts` currently emits `dɛssɑ̃`. The regression test records the executable output and does not conceal the discrepancy. This is not a claim that the upstream suite passes unchanged.
+
+
+Text-level integration tests verify that the OpenIPA lyric profile applies its liaison and elision hooks across word boundaries (`les amis`, `calme ami`). The default Metropolitan-labelled profile deliberately runs without automatic liaison/elision; it still uses OpenIPA's underlying French letter rules.

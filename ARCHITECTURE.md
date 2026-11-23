@@ -2,14 +2,24 @@
 
 Поточний pipeline:
 
-French orthography → tokenization / lexical lookup / conservative G2P → contextual rules → canonical IPA → IPA tokenizer → UFPN adapter / Latin guide adapter → aligned UI output.
+French orthography → tokenization / reviewed-seed lookup / OpenIPA French parser → source rule trace + source IPA → narrow notation normalization → canonical IPA → IPA tokenizer → UFPN adapter / Latin guide adapter → aligned UI output.
+
+## French G2P boundary
+
+- `vendor/openipa/src/transcription/french/ParseFrench.ts` — оригінальний text-level parser із правилами літер, винятками та опційними liaison/elision.
+- `vendor/openipa/src/transcription/french/parse-letters/` — контекстні парсери окремих літер і графем.
+- `vendor/openipa/src/transcription/french/FrenchRules.ts` та `FrenchExceptions.ts` — оригінальні пояснення правил і лексичні винятки.
+- `src/french-g2p.js` — thin adapter, який зберігає upstream rule descriptions, source spans і raw source IPA. Greek epsilon `ε` нормалізується до IPA `ɛ`; інші upstream conventions не вгадуються.
+- `scripts/build-openipa.mjs` — компілює vendored TypeScript у browser ESM bundle `src/openipa-french.js` за допомогою esbuild 0.25.0.
+- `src/engine.js` — зберігає проєктний seed lexicon як override, а невідомі записи передає OpenIPA parser; text-level lyric profile використовує upstream liaison/elision hooks.
+- Seed lexicon має пріоритет над OpenIPA і ще не верифікований повністю; це відоме джерело потенційної розбіжності.
 
 ## UFPN boundary
 
-- data/ufpn-mapping.json — канонічна машинозчитувана специфікація: phoneme records, diacritics, allophones, contextual processes, prosody, regional profiles and 18 phonetic feature dimensions and the extended Cyrillic `graphemeInventory`.
-- src/ufpn.js — чистий IPA → UFPN adapter з режимами Basic/Detailed/Extended.
-- src/engine.js — наявний французький прототип, який повертає IPA; його словникова база та G2P fallback залишаються неповними.
-- src/app.js — live UI; перемикач UFPN level перераховує лише адаптер, не запускає незалежний French→Ukrainian шлях.
+- `data/ufpn-mapping.json` — канонічна машинозчитувана специфікація: phoneme records, diacritics, allophones, contextual processes, prosody, regional profiles and 18 phonetic feature dimensions and the extended Cyrillic `graphemeInventory`.
+- `src/ufpn.js` — чистий IPA → UFPN adapter з режимами Basic/Detailed/Extended.
+- IPA — єдиний інтерфейс між французьким рушієм і UFPN; французький G2P не генерує українські графеми напряму.
+- Невідомі IPA символи зберігаються як `⟦…⟧` і потрапляють у unsupported.
 
 ## Дані та provenance
 
@@ -17,8 +27,9 @@ French orthography → tokenization / lexical lookup / conservative G2P → cont
 
 ## Важливі межі
 
-- Фонологічна транскрипція та вузька фонетична реалізація — різні рівні.
-- Unknown IPA зберігається як ⟦…⟧ і потрапляє в unsupported.
+- OpenIPA орієнтований на lyric diction; це не доказ повної якості сучасної спонтанної вимови.
+- Проєктний seed lexicon ще не звірено систематично з OpenIPA та незалежними словниками.
+- Upstream `õ` поки не має узгодженого alias у canonical IPA inventory й залишається видимим unsupported.
+- POS-залежне `-ent`, повна морфологія, h-aspiré, регіональні G2P моделі та інші upstream TODO залишаються обмеженнями.
 - Prosody/allophone marks не виводяться з орфографії чи пунктуації.
-- Регіональні профілі, крім metropolitan seed, поки описові, не виконувані.
-- French G2P engine не є повною довільнотекстовою моделлю.
+- Browser/mobile/accessibility QA та незалежна фонетична перевірка ще не виконані.

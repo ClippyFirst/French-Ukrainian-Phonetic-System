@@ -28,3 +28,12 @@
 - Added a dedicated lyric-diction profile with final-schwa handling to align the supported use case with OpenIPA; the default spoken-French profile remains separate.
 - Added focused French G2P tests and OpenIPA scope/reuse comparison.
 - This remains a low-confidence fallback; GitHub Actions run 45168613204 passed all 44 tests and syntax checks. Independent pronunciation evaluation remains pending.
+
+
+## 0.5.0 — Direct OpenIPA integration (2026-11-23)
+- Vendored OpenIPA's original French parser, per-letter parsers, contextual functions, exceptions and supporting constants under AGPL-3.0.
+- Added the repository AGPL-3.0 license, third-party attribution and AGPL section 13 network-source notice.
+- Added pinned esbuild bundling for the browser and integrated the upstream text-level liaison/elision options into the lyric-diction profile.
+- Preserved original rule descriptions, source spans and raw upstream IPA; normalized only Greek epsilon `ε` to standard IPA `ɛ`.
+- Added upstream fixture regressions, source trace tests, full-text liaison/elision integration tests and a documented discrepancy in the upstream `descends` fixture.
+- Hosted CI run 45172865213 passed build, all 44 tests and syntax checks for the initial direct parser integration. Text-level liaison/elision expansion is being revalidated on the latest commit.
