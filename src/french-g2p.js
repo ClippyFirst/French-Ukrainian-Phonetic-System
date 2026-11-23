@@ -43,7 +43,7 @@ export function transcribeFrenchWord(input) {
   if(rest.startsWith("es")&&i===s.length-2){i+=2;continue}
   if(rest.startsWith("eaux")){push("o",4);continue}
   if(rest.startsWith("eau")){push("o",3);continue}
-  const nasal=NASAL.find(([g])=>rest.startsWith(g)&&!isVowel(s[i+g.length]||"")&&(s[i+g.length]||"")!=="h");
+  const nasal=NASAL.find(([g])=>rest.startsWith(g)&&!isVowel(s[i+g.length]||"")&&!/[mnh]/.test(s[i+g.length]||""));
   if(nasal){push(nasal[1],nasal[0].length);continue}
   const cg=CONSONANT_GROUPS.find(([g])=>rest.startsWith(g));
   if(cg){
@@ -70,7 +70,7 @@ export function transcribeFrenchWord(input) {
   if(c==="h"){i++;continue}
   if(c==="e"){
    if(i===s.length-1){i++;continue}
-   if(isConsonant(next)&&isConsonant(after)){push("ɛ",1);continue}
+   if(isConsonant(next)&&(isConsonant(after)||i+1===s.length-1)){push("ɛ",1);continue}
    push("ə",1);continue;
   }
   if(c==="a"){push("a",1);continue}
