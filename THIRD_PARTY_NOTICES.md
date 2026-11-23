@@ -15,10 +15,16 @@ The vendored TypeScript source is retained with its original module structure an
 The remainder of this project is also distributed under AGPL-3.0. If you modify and run this program as a network service, comply with AGPL-3.0 section 13, including offering the Corresponding Source to users interacting with the modified version over a network. This notice is informational and does not replace the license text.
 
 
-## Charis SIL webfont
+## Charis 7 webfonts
 
-The browser UI loads **Charis SIL** through Google Fonts for UFPN glyphs. Charis SIL is developed by SIL International and is distributed under the SIL Open Font License 1.1 (OFL-1.1). The font is loaded as an external web asset and is not vendored in this repository.
+The UFPN display uses the official **Charis 7.000** Regular and Bold WOFF2 webfonts from SIL Global, self-hosted in `assets/fonts/`. The original release archive was downloaded from SIL's official GitHub release and verified before extraction:
 
-- Official project and character/diacritic support: https://software.sil.org/charis/
-- Official download and license information: https://software.sil.org/charis/download/
-- Google Fonts CSS family: `Charis SIL`
+- Upstream release: https://github.com/silnrsi/font-charis/releases/tag/v7.000
+- Official download page: https://software.sil.org/charis/download/
+- Release archive: `Charis-7.000.zip`
+- SHA-256: `e3237b1303c5d31af8f59b1d1914886c5e873b77c71390e4742fb3bc1c187666`
+- Included license: [licenses/Charis-OFL.txt](licenses/Charis-OFL.txt)
+- Copyright: SIL Global, 1997–2025
+- License: SIL Open Font License 1.1 (OFL-1.1)
+
+The font family was renamed from Charis SIL to Charis in version 7.000. Only the Regular (400) and Bold (700) webfonts are distributed here; other UI typefaces remain loaded separately. The font files are unmodified.
