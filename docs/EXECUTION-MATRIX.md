@@ -2,7 +2,7 @@
 
 | ID | Завдання | Статус | Доказ / blocker |
 |---|---|---|---|
-| R1 | Default branch, PR, branch, commits | DONE_VERIFIED | main `b7c74e2`; working branch `feat/french-ipa-ufpn-engine`; PR #1 open/Draft; head before this docs refresh `eb92e2e`; 65 ahead / 0 behind |
+| R1 | Default branch, PR, branch, commits | DONE_VERIFIED | main `b7c74e2`; working branch `feat/french-ipa-ufpn-engine`; PR #1 open/Draft; last verified implementation SHA `eb92e2e`; later commits update docs only; branch was 68 ahead / 0 behind before final documentation sync |
 | R2 | Research audit of French phonetic variation | PARTIAL | Source registry extended; complete literature synthesis and specialist review remain |
 | U1 | UFPN three-level specification | PARTIAL | Basic/Detailed/Extended implemented; independent expert validation pending |
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; not a complete narrow-phonetic inventory |

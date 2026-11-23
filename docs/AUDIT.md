@@ -4,7 +4,7 @@
 - Default branch `main`: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
 - Working branch: `feat/french-ipa-ufpn-engine`; before this audit refresh the head was `eb92e2ecddded35a823725400539732ed0789d70).
 - PR #1 remains open, Draft, targets `main`, and is not merged.
-- Branch comparison before documentation refresh: 65 commits ahead, 0 behind.
+- Branch comparison before this documentation refresh: 68 commits ahead, 0 behind.
 - Current-head Actions run [45178726418](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45178726418) succeeded: `npm run build`, `npm test` (46/46), and `npm run check` passed. Deploy job skipped on feature branch.
 - Pages probe [45177924718](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45177924718): build/tests/check passed; `actions/configure-pages@v5` returned HTTP 404 because Pages is not configured. Latest recorded repository state is `has_pages=false`.
 - Workflow deploy remains restricted to `main`; no repository settings or PR merge were changed.

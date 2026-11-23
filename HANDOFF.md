@@ -3,9 +3,9 @@
 ## Repository state (verified 2026-11-23)
 - Default branch `main`: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
 - Working branch: `feat/french-ipa-ufpn-engine`.
-- Current head before this handoff update: `eb92e2ecddded35a823725400539732ed0789d70`.
+- Last verified implementation SHA: `eb92e2ecddded35a823725400539732ed0789d70`; subsequent commits in this continuation update only the handoff, audit and execution matrix.
 - PR #1: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1 — open, Draft, targets `main`, not merged.
-- Branch comparison: 65 commits ahead, 0 behind `main`.
+- Branch comparison at the last live comparison (before this documentation refresh): 68 commits ahead, 0 behind `main`.
 - Git clone from this environment failed because DNS could not resolve github.com; repository reads and writes were performed through the GitHub connector.
 
 ## Web service
