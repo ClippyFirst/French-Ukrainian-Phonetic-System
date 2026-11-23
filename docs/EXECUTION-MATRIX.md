@@ -21,7 +21,7 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Explicit overlay retained; new branch `fix/typographic-diacritic-scale` switches mark glyphs from bold Manrope `.62em` to regular Charis SIL `.42em` (about 13.6px → 9.2px at 22px output). Based on Google Fonts diacritic design guidance; canonical Unicode/mappings unchanged. PR CI 45210184497 and main Pages deployment 45210252551 passed; owner visual acceptance pending |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #8 `fix/native-opentype-diacritic-shaping` removes manual spacing-glyph decomposition and CSS overlays; canonical combining sequences are rendered as one text run for native OpenType GPOS `mark`/`mkmk` shaping. Regression tests added for stacked marks and tie bars. Local tests blocked by GitHub DNS failure; hosted CI status and browser visual QA pending. Earlier overlay/scale fixes are superseded. |
 
 ## OpenIPA engine integration
 
@@ -59,3 +59,10 @@
 - Inspection: the overlay marks used bold Manrope at `.62em` while the base used Charis SIL. At 22px output this rendered marks at approximately 13.6px.
 - Branch `fix/typographic-diacritic-scale`: same phonetic typeface as the base, regular weight, `.42em` (approximately 9.2px at 22px). No universal ratio is prescribed by the cited guidance; the value is an explicit proportional correction to the measured implementation.
 - Status PARTIAL until CI, Pages deployment and owner visual acceptance. Browser visual QA remains outstanding.
+
+
+### Native OpenType shaping correction (2026-11-23)
+- Root cause verified by source inspection: manual DOM decomposition and spacing-glyph overlays bypass font-native mark attachment.
+- Implementation on PR #8 branch: `src/ufpn-display.js` now assigns the complete NFC-normalized UFPN string to one text node; overlay CSS removed; `mark`/`mkmk` features remain enabled.
+- Tests added for stacked combining marks and affricate tie bars. No phonetic mappings or canonical output changed.
+- Status W3 remains PARTIAL until hosted CI and browser screenshots/visual acceptance are verified. Local clone/test execution was blocked by DNS failure resolving github.com; official SIL Charis 7 package was not vendored.
