@@ -13,7 +13,7 @@
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
-| Q1 | Build, unit and syntax tests | DONE_VERIFIED | PR #19 CI 45263336209: build, unit tests (including 37/37 articulation-guide coverage), syntax, Charis 7 audit and all six Chromium/Firefox/WebKit desktop/mobile checks passed. Final main commit `f078ba880e34361db1863922f2eb2febe502a86f` CI 45264431136: build, tests, syntax and font audit passed; browser installation/check and deploy are still pending. |
+| Q1 | Build, unit and syntax tests | DONE_VERIFIED | PR #23 CI 45265088534: build, unit tests (including the dedicated /œ/ articulation regression), syntax, Charis 7 audit and all six Chromium/Firefox/WebKit desktop/mobile checks passed. Current main `2606e437bc9003ebd546afd65b2f28ac2612fc65` workflow 45265379491 has passed build, tests, syntax and font audit; browser installation/rendering and final Pages deployment are pending. |
 | Q2 | Browser/mobile/accessibility | PARTIAL | PR #16 CI 45259870325 passed all six Chromium/Firefox/WebKit desktop/mobile checks and verifies 37 sound-table rows at every viewport; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
