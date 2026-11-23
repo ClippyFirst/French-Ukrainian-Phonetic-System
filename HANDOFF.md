@@ -127,8 +127,8 @@
 ## Expanded Cyrillic inventory and Ukrainian sound table — 2026-11-23
 
 - Feature branch: `feat/extended-cyrillic-and-ukrainian-sound-table`, based on `main` `682767c361715e116628eec4cff29f5c47c70688`.
-- Owner requested fewer diacritics and a mandatory explanatory table of UFPN letter → sound → Ukrainian word. The implementation adds single-letter mappings `ү` /y/, `ӧ` /ø/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, and `ғ` /ʁ/; `/œ/` is `ӧ̆`, and `/ɥ/` is `ү̯`. Existing `ў` /w/ and `э` /ɛ/ remain.
+- Owner requested fewer diacritics and a mandatory explanatory table of UFPN letter → sound → Ukrainian word. The implementation adds single-letter mappings `ү` /y/, `ө` /ø/, `ӹ` /ə/, `њ` /ɲ/, `ң` /ŋ/, and `ғ` /ʁ/; `ӧ` is /œ/, and `/ɥ/` is `ү̯`. Existing `ў` /w/ and `э` /ɛ/ remain.
 - New visible searchable web table lists all 37 segments and marks each Ukrainian comparison as exact, contextual allophone, approximate only, or no exact equivalent. It explicitly avoids false examples for French nasal vowels, /ɥ/, /ɲ/, /ŋ/ and /ʁ/.
 - Machine-readable mapping schema 1.2.0 now includes Ukrainian example/status/note fields. Tests require complete example metadata. Charis font audit checks all adopted extended-Cyrillic glyphs.
-- Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Mari `ӧ` /ø/ and Hill Mari `ӹ` /ə/.
+- Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/.
 - Verification and merge status will be appended only after actual CI and browser/deployment results; until then U5/W1 remain PARTIAL.
