@@ -7,7 +7,7 @@
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
 - Latest verified implementation commit: b82ee50aa77a899204fb86a03ede97e0f12b01bd.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
-- Current branch compare: 14 commits ahead, 0 behind main.
+- Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
 ## Latest continuation: extended Cyrillic inventory

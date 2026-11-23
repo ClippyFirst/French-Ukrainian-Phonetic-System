@@ -1,7 +1,7 @@
 # Audit Register — Phase 2
 
 ## Verified repository state
-- Latest implementation head: b82ee50aa77a899204fb86a03ede97e0f12b01bd; 14 commits ahead, 0 behind main.
+- Latest implementation head: b82ee50aa77a899204fb86a03ede97e0f12b01bd; 0 commits behind main; live ahead count is shown in PR #1.
 - Latest CI run 45161219147: all 34 tests and `npm run check` passed; Pages deploy skipped on feature branch.
 - main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
 - Phase 2 starting working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
