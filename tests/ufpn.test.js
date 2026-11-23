@@ -93,3 +93,9 @@ test('UFPN display renderer uses explicit spacing glyphs for detached-mark-free 
  const clusters=getUfpnDisplayClusters('і̊ е́ о̆ э̃');
  assert.deepEqual(clusters.filter(x=>x.marks.length).map(x=>x.marks[0].glyph),['˚','ˊ','˘','˜']);
 });
+
+test('UFPN display renderer preserves affricate tie bars instead of treating them as vowel marks',()=>{
+ const clusters=getUfpnDisplayClusters('т͡с д͜з');
+ assert.equal(clusters.map(x=>x.base).join(''),'т͡с д͜з');
+ assert.equal(clusters.some(x=>x.marks.some(m=>m.glyph==='͡'||m.glyph==='͜')),false);
+});
