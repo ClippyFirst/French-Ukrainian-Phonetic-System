@@ -29,3 +29,12 @@ test('final consonant heuristic',()=>{
  assert.equal(transcribeFrenchWord('avec'),'avɛk');
  assert.equal(transcribeFrenchWord('hiver'),'ivɛʁ');
 });
+
+import {transcribeFrenchWordDetailed} from '../src/french-g2p.js';
+test('rule trace covers every source grapheme with spans and explanations',()=>{
+ const d=transcribeFrenchWordDetailed('chat');
+ assert.equal(d.ipa,'ʃa');
+ assert.equal(d.trace.map(x=>x.grapheme).join(''),'chat');
+ assert.ok(d.trace.every(x=>Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.ruleId&&x.explanationUk));
+ assert.equal(d.trace.at(-1).ruleId,'silent-final-consonant');
+});
