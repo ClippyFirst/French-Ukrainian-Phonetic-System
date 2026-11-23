@@ -2,7 +2,7 @@
 
 ## Verified repository state
 - Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a` on `feat/french-ipa-ufpn-engine`; branch was 48 commits ahead and 0 behind `main` at this code commit.
-- GitHub Actions run `45174088150` passed `npm run build`, `npm test` (47/47: 15 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration) and `npm run check`. Pages deploy skipped because this is not `main`.
+- GitHub Actions run `45174869729` on code head `59fb7b1a28a6f5525e67dd51db03a77130e934e1` passed `npm run build`, `npm test` (47/47: 15 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration) and `npm run check`. Pages deploy skipped because this is not `main`.
 - CI concurrency was corrected: push and PR runs now use distinct concurrency groups so they no longer cancel each other. Earlier failed runs exposed and helped fix source escaping, final consonant ordering, nasal cancellation, and lexical exceptions.
 - Local clone/test attempt failed before checkout: `Could not resolve host: github.com`; hosted CI is the verification evidence.
 - main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
@@ -43,3 +43,5 @@
 - complete morphology/context engine;
 - browser/mobile/accessibility QA;
 - Pages deployment and browser/mobile/accessibility QA.
+
+- Latest trace-span correction localizes OpenIPA source spans to each output word; regression assertions verify the spans remain within the word (CI run 45174869729).

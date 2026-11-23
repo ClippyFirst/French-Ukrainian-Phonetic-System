@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest CI-verified code head: `2b81ebb90b256ec2e74c22066bacb634ac59b64a`; latest docs/handoff commit before this update: `f4a0bf9fb86be3e93e0cd3ccf2a8b0de497c00b4`. At the code commit the branch was 48 ahead and 0 behind `main`; after the docs commit it was 49 ahead. CI run `45174088150` passed build, 47/47 tests and syntax check; the docs-only commit run `45174547238` also passed build, 47/47 tests and syntax check. Pages deploy skipped on the feature branch.
+- Latest CI-verified code head: `59fb7b1a28a6f5525e67dd51db03a77130e934e1`; latest docs/handoff commit before this update: `70c497fc0efd7ff9c1d801176c25a14d36eba927`. At the code commit the branch was 51 ahead and 0 behind `main`. CI run `45174869729` passed build, 47/47 tests and syntax check; prior docs-only run `45174731857` also passed build, 47/47 tests and syntax check. Pages deploy skipped on the feature branch.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -16,11 +16,11 @@
 - Vendored the original OpenIPA French TypeScript parser, per-letter modules, exception/rule dictionaries and minimal helper/constants from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
 - Added repository `LICENSE` (AGPL-3.0) and `THIRD_PARTY_NOTICES.md` with attribution and AGPL section 13 network-service requirements.
 - Added a pinned esbuild browser bundle step and wired it into CI tests and Pages deployment.
-- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, source spans and raw source IPA are retained. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
+- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, word-local source spans and raw source IPA are retained. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
 - The project's existing seed lexicon still takes precedence over OpenIPA for known entries. Its records remain unverified and need systematic reconciliation.
 - Regression tests mirror a small set of OpenIPA's own published French test fixtures and exercise full-text liaison/elision. They are integration tests, not independent gold data or accuracy evidence.
 - The `lyric-diction-fr` profile now runs OpenIPA's text-level liaison/elision hooks. The `metropolitan-fr` profile runs base parser rules without automatic cross-word liaison/elision.
-- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). After text-level liaison/elision was wired into the app, CI run `45174088150` passed build, 47/47 tests and syntax check on code commit `2b81ebb90b256ec2e74c22066bacb634ac59b64a`. The latest docs-only commit `f4a0bf9fb86be3e93e0cd3ccf2a8b0de497c00b4` also passed CI run `45174547238` (47/47 + syntax check).
+- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). After text-level liaison/elision was wired into the app, CI run `45174869729` passed build, 47/47 tests and syntax check on code commit `59fb7b1a28a6f5525e67dd51db03a77130e934e1`, including assertions that source spans are localized to the word. The preceding docs-only commit `70c497fc0efd7ff9c1d801176c25a14d36eba927` also passed CI run `45174731857` (47/47 + syntax check).
 
 ## Previous continuation: extended Cyrillic inventory
 

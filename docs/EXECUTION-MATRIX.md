@@ -13,7 +13,7 @@
 | F2 | Prosody layer | PARTIAL | optional annotation markers; no audio prosody engine |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization documented; no full regional G2P model exists |
 | E1 | French G2P and syntax | PARTIAL | Original OpenIPA parser is now executed for fallback words and lyric-profile text-level liaison/elision; seed lexicon remains unverified, and POS/morphology, h-aspiré classes, broad lexical coverage and gold evaluation remain incomplete |
-| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions run 45174088150 on code head 2b81ebb: build passed; npm test passed 47/47 (15 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration); npm run check passed. Pages deploy skipped on feature branch. Local clone remains DNS-blocked, hosted CI is authoritative |
+| Q1 | Unit tests | DONE_VERIFIED | GitHub Actions run 45174088150 on code head 59fb7b1: build passed; npm test passed 47/47 (15 engine + 23 UFPN + 4 French G2P adapter + 5 OpenIPA integration); npm run check passed. Pages deploy skipped on feature branch. Local clone remains DNS-blocked, hosted CI is authoritative |
 | Q2 | Browser/mobile/accessibility | BLOCKED | no browser automation available in current runtime; prior Chromium timeout |
 | Q3 | Linguistic benchmark | BLOCKED | independent gold IPA/UFPN set = 0; expert reviewers unavailable |
 | D1 | Source registry | DONE_VERIFIED | docs/SOURCE-REGISTRY.md updated with academic sources/reuse limits |
@@ -25,7 +25,7 @@
 
 | Task | Status | Evidence / acceptance |
 |---|---|---|
-| Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; CI run 45174088150 passed build, 47 tests and syntax check |
+| Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source preserved under `vendor/openipa/`; upstream revision recorded in THIRD_PARTY_NOTICES.md; CI run 45174869729 passed build, 47 tests and syntax check |
 | Build upstream TypeScript into browser ESM bundle | DONE_VERIFIED | `npm run build` via pinned esbuild 0.25.0; CI run 45174088150 passed |
 | Route fallback G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`; `src/engine.js`; upstream fixture and trace tests; CI run 45174088150 passed 47/47 |
 | Align upstream IPA notation to canonical IPA | PARTIAL | `ε` → `ɛ` explicit notation normalization; `õ` and other conventions remain visible pending phonetic review |
