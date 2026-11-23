@@ -1023,9 +1023,9 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "ukrainianExample": "вода — в [v]",
-      "ukrainianExampleStatus": "EXACT",
-      "ukrainianExampleNote": "У вимові з губно-зубною фрикацією це той самий дзвінкий щілинний."
+      "ukrainianExample": "вода — в [ʋ~v]",
+      "ukrainianExampleStatus": "APPROXIMATE",
+      "ukrainianExampleNote": "В українській /в/ часто реалізується як апроксимант [ʋ], тоді як французьке /v/ зазвичай фрикативне; це близький, але не гарантовано тотожний звук."
     },
     {
       "id": "c_s",
