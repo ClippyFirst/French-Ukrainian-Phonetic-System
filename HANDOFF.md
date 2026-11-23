@@ -89,7 +89,7 @@
 - Official release archive downloaded in GitHub Actions run [45213736031](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45213736031); SHA-256 `e3237b1303c5d31af8f59b1d1914886c5e873b77c71390e4742fb3bc1c187666` verified.
 - Vendored files: `assets/fonts/Charis-Regular.woff2`, `assets/fonts/Charis-Bold.woff2`; exact SIL OFL-1.1 text at `licenses/Charis-OFL.txt`. Font copyright and source details in `THIRD_PARTY_NOTICES.md`.
 - `styles.css` now self-hosts Charis 7.000 via `@font-face`; `index.html` preloads Regular. Charis SIL was removed from the Google Fonts import. Other UI fonts remain external.
-- `scripts/audit-charis-font.py` checks all 36 UFPN diacritic/prosodic inventory codepoints, mapped mark-to-base/mark-to-mark anchors, and HarfBuzz shaping. CI runs this audit; result pending.
+- `scripts/audit-charis-font.py` checks all 36 UFPN diacritic/prosodic inventory codepoints, mapped mark-to-base/mark-to-mark anchors, and HarfBuzz shaping. CI run 45216293204 passed: 36/36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz shaping samples, and active Cyrillic `mark`/`mkmk` anchors.
 - The one-time download-and-commit workflow was removed after its successful run. Normal Pages CI now owns repeatable font validation.
 - Previous note stating that Charis 7 was not vendored is superseded by this section.
-- Readiness: font vendoring is DONE_VERIFIED; font anchor audit and actual browser/owner visual acceptance remain PARTIAL/TODO. No claim that visual acceptance has passed.
+- Readiness: font vendoring and the font/anchor audit are DONE_VERIFIED. Chromium render test passed with `document.fonts.check=true`, computed family `Charis, serif`, and all 23 clusters rendered from the local 312,790-byte Regular WOFF2. Screenshot artifact 14839625822 (run 45216293204) was visually inspected; marks appear attached in the specimen. Firefox/WebKit/mobile and owner-side visual confirmation remain PARTIAL.
