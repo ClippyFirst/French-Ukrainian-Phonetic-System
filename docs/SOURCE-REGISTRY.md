@@ -40,7 +40,8 @@
 | S33 | [Cambridge Handbook of the International Phonetic Association: Belarusian](https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/belarusian/12CED258A76872A8E9D381383D654130) | [w] у білоруській після голосних у коді; описує різні аналізи фонологічного статусу [w] (алофон /v/ або фонема) | академічний фонетичний опис; використано лише як доказ звукової реалізації, не імпортовано | Наукове |
 | S34 | [Kazakh phoneme inventory and orthography](https://cohenpr-xpf.github.io/XPF/conv_resources/info/kk.html) | Kazakh Cyrillic `ү` /y/, `ғ` /ʁ/ and `ң` /ŋ/; source used only for grapheme-to-sound correspondences | descriptive reference; no corpus imported | Довідкове |
 | S35 | [Serbian Cyrillic alphabet and phonetic values](https://assets.super.so/15f83ff9-e733-47c0-b1d0-58aaebdd6b3b/files/bad91b3c-dff5-4426-8e4c-a0f6c11a08c3/Osnovi_istorije_jezika.pdf) | Serbian `њ` is one Cyrillic letter with IPA /ɲ/ | educational phonetics reference; no corpus imported | Довідкове |
-| S36 | [Mari Cyrillic phonology — University of Vienna](https://services.phaidra.univie.ac.at/api/object/o%3A1266524/download) | Mari `ӧ` /ø/ and Hill Mari `ӹ` /ə/; direct Cyrillic grapheme correspondences | academic thesis; no corpus imported | Наукове |
+| S36 | [Mari Cyrillic phonology — University of Vienna](https://services.phaidra.univie.ac.at/api/object/o%3A1266524/download) | Hill Mari `ӹ` /ə/; direct Cyrillic grapheme correspondence | academic thesis; no corpus imported | Наукове |
+| S37 | [EURPhon: Eastern Mari phoneme inventory](https://eurphon.info/languages/html?lang_id=123) | Eastern Mari open-mid front rounded vowel /œ/; used as the phonetic basis for `ӧ` | phonological inventory cites a 1960 descriptive grammar; no corpus imported | Наукове |
 
 
 ## OpenIPA implementation provenance
