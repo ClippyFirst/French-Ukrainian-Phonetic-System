@@ -29,7 +29,7 @@ OpenIPA's IPA enum uses Greek epsilon `ε` as a project symbol for the open-mid 
 
 OpenIPA is primarily oriented toward vocal/lyric diction. Its parser includes substantial contextual letter rules and lexical exceptions, plus optional liaison and elision analysis. It does not establish complete modern conversational French coverage. Upstream comments and tests themselves document incomplete POS-dependent `-ent` handling and additional rules still to implement.
 
-The project seed lexicon still has precedence for words already present in it; those entries are separately marked as project seed data and have not all been independently verified. Unlisted words use the OpenIPA parser. This precedence must be reconsidered after an independently checked comparison corpus exists.
+All French words now use the vendored OpenIPA parser. The former project seed lexicon no longer overrides its output. This removes a source of silent divergence and makes the upstream parser the single French pronunciation source; the UFPN adapter receives the parser's IPA output.
 
 ## Verification
 
@@ -37,7 +37,7 @@ Regression tests include five outputs matching the upstream French fixture examp
 
 Remaining work:
 - reconcile all upstream IPA conventions with the canonical IPA inventory without guessing;
-- compare the project's existing seed lexicon against OpenIPA and authoritative dictionaries;
-- port upstream's original larger French word corpus where redistribution terms permit;
+- expand regression coverage against the upstream French fixture suite without presenting upstream fixtures as independent gold data;
+- assess whether upstream's larger test corpus can be reused; do not import it until its data provenance and redistribution terms are verified;
 - add explicit POS/morphology and h-aspiré coverage only with evidence;
 - browser/mobile/accessibility QA and independent French phonetics review.

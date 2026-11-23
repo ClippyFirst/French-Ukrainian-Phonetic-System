@@ -23,7 +23,7 @@ python3 -m http.server 8000
 - Mapping містить 37 сегментних одиниць, 15 allophone mappings, 36 діакритичних/просодичних маркерів і 18 вимірів фонетичних характеристик.
 - Невідомі IPA символи не губляться: позначаються й потрапляють у список unsupported.
 - Регіональні Québec affrication/diphthongization та cross-word assimilation описані окремо й не застосовуються до Metropolitan French за замовчуванням.
-- Французький G2P використовує оригінальний rule-based parser OpenIPA (AGPL-3.0), з його letter rules, lexical exceptions, liaison/elision options та rule explanations. Вихід OpenIPA надходить безпосередньо до IPA → UFPN адаптера; наш seed-лексикон поки має пріоритет для наявних записів.
+- Французький G2P використовує оригінальний rule-based parser OpenIPA (AGPL-3.0), з його letter rules, lexical exceptions, liaison/elision options та rule explanations. Усі французькі слова проходять через оригінальний OpenIPA parser без проєктних словникових override; його IPA надходить безпосередньо до IPA → UFPN адаптера.
 - OpenIPA первісно орієнтований на вокальну/ліричну дикцію; його schwa, liaison та elision правила не слід трактувати як повну модель спонтанного Metropolitan French. POS-залежна морфологія та повний контекстний аналіз залишаються обмеженнями upstream рушія.
 - Послівні пояснення, provenance, copy, TXT і browser print-to-PDF.
 - Пошуковий довідник UFPN з таблицями фонем/алофонів і 18 фонетичними вимірами.

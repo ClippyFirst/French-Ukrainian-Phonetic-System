@@ -5,7 +5,7 @@
 - Working branch: feat/french-ipa-ufpn-engine (continued; contains previous phase and Draft PR #1).
 - Phase 2 base SHA: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
 - Draft PR: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1
-- Latest CI-verified code head: `59fb7b1a28a6f5525e67dd51db03a77130e934e1`; latest docs/handoff commit before this update: `70c497fc0efd7ff9c1d801176c25a14d36eba927`. At the code commit the branch was 51 ahead and 0 behind `main`. CI run `45174869729` passed build, 47/47 tests and syntax check; prior docs-only run `45174731857` also passed build, 47/47 tests and syntax check. Pages deploy skipped on the feature branch.
+- Latest CI-verified code head: `3d0d756ec031ff80148436c3484d080705074ec2`; branch was 52 ahead and 0 behind `main`. CI run `45175694114` passed build, 46/46 tests and syntax check. Pages deploy skipped on the feature branch.
 - Extended Cyrillic inventory commit: 029d55b9be36e336a880ce799cdd1dc7375bac5d (followed by correction commit above).
 - Branch remains based directly on `main` with no behind commits; consult PR #1 for the live ahead/behind count.
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
@@ -16,11 +16,11 @@
 - Vendored the original OpenIPA French TypeScript parser, per-letter modules, exception/rule dictionaries and minimal helper/constants from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
 - Added repository `LICENSE` (AGPL-3.0) and `THIRD_PARTY_NOTICES.md` with attribution and AGPL section 13 network-service requirements.
 - Added a pinned esbuild browser bundle step and wired it into CI tests and Pages deployment.
-- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, word-local source spans and raw source IPA are retained. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
-- The project's existing seed lexicon still takes precedence over OpenIPA for known entries. Its records remain unverified and need systematic reconciliation.
+- Replaced the clean-room G2P fallback with an adapter to the original OpenIPA parser. Per-grapheme rule descriptions, word-local source spans and raw source IPA are retained. No project IPA override is applied. Greek epsilon `ε` is explicitly normalized to standard IPA `ɛ`; `õ` remains unchanged pending phonetic review.
+- The project's old seed lexicon and manual liaison/final-schwa postprocessors have been removed from runtime. All French words now use OpenIPA directly, eliminating local pronunciation overrides.
 - Regression tests mirror a small set of OpenIPA's own published French test fixtures and exercise full-text liaison/elision. They are integration tests, not independent gold data or accuracy evidence.
 - The `lyric-diction-fr` profile now runs OpenIPA's text-level liaison/elision hooks. The `metropolitan-fr` profile runs base parser rules without automatic cross-word liaison/elision.
-- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). After text-level liaison/elision was wired into the app, CI run `45174869729` passed build, 47/47 tests and syntax check on code commit `59fb7b1a28a6f5525e67dd51db03a77130e934e1`, including assertions that source spans are localized to the word. The preceding docs-only commit `70c497fc0efd7ff9c1d801176c25a14d36eba927` also passed CI run `45174731857` (47/47 + syntax check).
+- The initial direct parser integration passed CI run `45172865213` (build, 44/44 tests, syntax check). Text-level liaison/elision and word-local spans passed CI run `45174869729` (47/47). The latest single-source alignment commit `3d0d756ec031ff80148436c3484d080705074ec2` passed CI run `45175694114` (build, 46/46 tests, syntax check).
 
 ## Previous continuation: extended Cyrillic inventory
 
@@ -39,7 +39,7 @@ Verification note: an intermediate CI run on 029d55b9be36e336a880ce799cdd1dc7375
 - UI selector for UFPN level, searchable segment/allophone mapping reference and 18-feature inventory panel.
 
 ## Current verification status
-- Latest GitHub Actions run 45174088150 passed build, 47/47 tests and syntax checks on code head 2b81ebb90b256ec2e74c22066bacb634ac59b64a. Deploy was skipped on the feature branch.
+- Latest GitHub Actions run 45175694114 passed build, 46/46 tests and syntax checks on code head 3d0d756ec031ff80148436c3484d080705074ec2. Deploy was skipped on the feature branch.
 - The workflow concurrency group now distinguishes PR and push runs. Earlier failures were fixed and rerun successfully; do not treat those failed intermediate runs as current status.
 - Local `git clone` and test execution remain blocked by DNS resolution for github.com.
 

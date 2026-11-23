@@ -2,7 +2,7 @@
 
 Поточний pipeline:
 
-French orthography → tokenization / reviewed-seed lookup / OpenIPA French parser → source rule trace + source IPA → narrow notation normalization → canonical IPA → IPA tokenizer → UFPN adapter / Latin guide adapter → aligned UI output.
+French orthography → tokenization / OpenIPA French parser → source rule trace + source IPA → narrow notation normalization → canonical IPA → IPA tokenizer → UFPN adapter / Latin guide adapter → aligned UI output.
 
 ## French G2P boundary
 
@@ -11,8 +11,7 @@ French orthography → tokenization / reviewed-seed lookup / OpenIPA French pars
 - `vendor/openipa/src/transcription/french/FrenchRules.ts` та `FrenchExceptions.ts` — оригінальні пояснення правил і лексичні винятки.
 - `src/french-g2p.js` — thin adapter, який зберігає upstream rule descriptions, source spans і raw source IPA. Greek epsilon `ε` нормалізується до IPA `ɛ`; інші upstream conventions не вгадуються.
 - `scripts/build-openipa.mjs` — компілює vendored TypeScript у browser ESM bundle `src/openipa-french.js` за допомогою esbuild 0.25.0.
-- `src/engine.js` — зберігає проєктний seed lexicon як override, а невідомі записи передає OpenIPA parser; text-level lyric profile використовує upstream liaison/elision hooks.
-- Seed lexicon має пріоритет над OpenIPA і ще не верифікований повністю; це відоме джерело потенційної розбіжності.
+- `src/engine.js` — передає весь французький текст оригінальному OpenIPA parser; його word-level trace розподіляється за словами без локальних IPA override; lyric profile використовує upstream liaison/elision hooks.
 
 ## UFPN boundary
 
@@ -28,7 +27,7 @@ French orthography → tokenization / reviewed-seed lookup / OpenIPA French pars
 ## Важливі межі
 
 - OpenIPA орієнтований на lyric diction; це не доказ повної якості сучасної спонтанної вимови.
-- Проєктний seed lexicon ще не звірено систематично з OpenIPA та незалежними словниками.
+- Проєктні словникові override вимкнено, щоб не змінювати результат OpenIPA; сам upstream parser має задокументовані межі покриття.
 - Upstream `õ` поки не має узгодженого alias у canonical IPA inventory й залишається видимим unsupported.
 - POS-залежне `-ent`, повна морфологія, h-aspiré, регіональні G2P моделі та інші upstream TODO залишаються обмеженнями.
 - Prosody/allophone marks не виводяться з орфографії чи пунктуації.

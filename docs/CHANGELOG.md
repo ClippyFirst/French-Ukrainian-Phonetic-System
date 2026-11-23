@@ -37,3 +37,11 @@
 - Preserved original rule descriptions, source spans and raw upstream IPA; normalized only Greek epsilon `ε` to standard IPA `ɛ`.
 - Added upstream fixture regressions, source trace tests, full-text liaison/elision integration tests and a documented discrepancy in the upstream `descends` fixture.
 - Hosted CI run 45172865213 passed build, all 44 tests and syntax checks for the initial direct parser integration. Text-level liaison/elision expansion is being revalidated on the latest commit.
+
+
+## 0.5.1 — OpenIPA single-source alignment (2026-11-23)
+- Removed the project's unverified French IPA seed lexicon from the runtime path.
+- Removed hand-written liaison postprocessing and lyric-profile final-schwa injection; all French word output now comes from the vendored OpenIPA parser, including its text-level liaison/elision options.
+- Kept the IPA → UFPN boundary unchanged; unsupported IPA remains visible rather than silently substituted.
+- Replaced tests that asserted project overrides with delegation/parity checks against the upstream parser.
+- CI run 45175694114 passed browser bundle build, 46/46 tests and syntax checks.
