@@ -205,7 +205,10 @@ def main():
     mark_glyphs = set(glyph_for.values())
     shaped = 0
     for base, marks in clusters:
-        sample = unicodedata.normalize("NFC", base + "".join(marks))
+        # Shape NFD explicitly to exercise the real combining-mark path.
+        # Also shape NFC below because the browser renderer normalizes to NFC;
+        # some base/mark pairs compose into a single precomposed Cyrillic glyph.
+        sample = unicodedata.normalize("NFD", base + "".join(marks))
         buffer = hb.Buffer()
         buffer.add_str(sample)
         buffer.guess_segment_properties()
@@ -233,10 +236,19 @@ def main():
                 shaped_marks.append((glyph_name, position.y_offset))
         if len(shaped_marks) != len(marks):
             raise SystemExit(
-                f"Expected {len(marks)} combining marks in {sample!r}, "
+                f"Expected {len(marks)} combining marks in NFD {sample!r}, "
                 f"HarfBuzz returned {len(shaped_marks)}"
             )
-        shaped += 1
+        nfc_sample = unicodedata.normalize("NFC", sample)
+        nfc_buffer = hb.Buffer()
+        nfc_buffer.add_str(nfc_sample)
+        nfc_buffer.guess_segment_properties()
+        nfc_buffer.script = "Cyrl"
+        nfc_buffer.language = "uk"
+        hb.shape(hb_font, nfc_buffer, {"mark": 1, "mkmk": 1})
+        if any(info.codepoint == 0 for info in nfc_buffer.glyph_infos):
+            raise SystemExit(f"HarfBuzz produced .notdef for NFC {nfc_sample!r}")
+        shaped += 2
 
     print(
         f"PASS: Charis 7.000 ({version}); all {len(expected)} UFPN inventory "
