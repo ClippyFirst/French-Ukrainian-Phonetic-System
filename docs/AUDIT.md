@@ -96,7 +96,8 @@
 
 
 ### Public deployment verification and expanded browser matrix (2026-11-23)
-- GitHub Actions main run [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) completed successfully for `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; both `test` and `deploy` jobs passed.
-- Fresh live scrape of the Pages app returned HTTP 200 and rendered the current Ukrainian interface/sample. Fresh stylesheet scrape also returned HTTP 200 and confirmed local Charis 7 Regular/Bold WOFF2 declarations and absence of the old Charis SIL Google Fonts import.
-- PR #10 (`test/cross-browser-charis-typography`) extends browser rendering to Chromium, Firefox and WebKit at 1440px desktop and 390px mobile viewports. It is intentionally not merged until all six browser/viewport checks pass.
-- Remaining: browser PR CI, keyboard/screen-reader and real-device testing, and owner-side visual acceptance. Linguistic expert review and independently licensed gold benchmark remain separate blockers.
+- Main run [45217105821](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45217105821) deployed commit `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; test and deploy passed.
+- Public Pages app and stylesheet returned HTTP 200; app rendered the current Ukrainian interface/sample and CSS loaded local Charis 7 Regular/Bold WOFF2 without the legacy Charis SIL Google Fonts import.
+- PR #10 was merged after its run [45233413912](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45233413912) passed all six Chromium/Firefox/WebKit × desktop/mobile typography checks across all 23 UFPN clusters.
+- Post-merge main run [45236513836](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236513836) is the current verification. Build, 48 tests, syntax check and Charis glyph/anchor audit passed; browser-engine installation is still running. The preceding run [45236413859](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236413859) was cancelled by the newer main commit before browser tests, so it is not evidence of a failed test.
+- Remaining: finish post-merge CI; owner-side visual acceptance, keyboard/screen-reader and physical-device QA; linguistic expert review and independently licensed gold benchmark.
