@@ -49,8 +49,10 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 
 - Feature CI run 45179583235: build passed, 46/46 tests passed, `npm run check` passed.
 - Main CI run 45192430970: build passed, 46/46 tests passed, `npm run check` passed.
-- PR #2 із виправленням кириличних діакритиків злито: `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- PR #2 із початковою спробою виправити кириличні діакритики злито: `360ef54a08af2ff7146d2a4052c326fec6968173`.
+- Noto Sans не усунув відрив діакритиків; PR #3 замінив його на Charis SIL і злито в `main`: `01919e72d3ff1c46b5709b4a96f550db488e6498`.
+- PR CI [45197892356](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45197892356): build, 46 тестів і syntax check пройшли. Production Pages deployment нового merge commit ще не підтверджений.
 - Main run [45195557498](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45195557498) пройшов build, 46 тестів, syntax check і Pages deploy.
-- Попереднє Noto Sans оформлення не усунуло відрив діакритиків від кириличних базових літер. У follow-up використано Charis SIL із підтримкою кирилиці та OpenType-якорями; CI/деплой і візуальне підтвердження цього виправлення очікуються.
+- Попереднє Noto Sans оформлення не усунуло відрив діакритиків від кириличних базових літер. Злито follow-up із Charis SIL, що має підтримку кирилиці та OpenType-якорі; PR CI пройшов. Деплой production і візуальне підтвердження ще очікуються.
 - Прямий HTTP smoke test і браузерна візуальна перевірка не виконані через недоступність Pages із цього середовища.
 - Локальний браузерний smoke test та Chromium/Firefox/WebKit accessibility QA ще не виконані.
