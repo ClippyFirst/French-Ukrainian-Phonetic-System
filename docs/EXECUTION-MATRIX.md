@@ -23,8 +23,8 @@
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
 | W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; CI pending. Browser visual acceptance still required. |
 | W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
-| W5 | Inspect Charis 7 glyph and anchor coverage | PARTIAL | `scripts/audit-charis-font.py` added; hosted fontTools/HarfBuzz CI result pending. |
-| W6 | Browser visual QA for stacked UFPN marks | TODO | Confirm in Chromium, Firefox, WebKit and mobile; owner visual acceptance remains the final typography gate. |
+| W5 | Inspect Charis 7 glyph and anchor coverage | DONE_VERIFIED | CI passed: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz samples; active Cyrillic `mark`/`mkmk` and required anchor pairs verified in run 45216293204. |
+| W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. Firefox/WebKit/mobile and owner acceptance remain. |
 
 ## OpenIPA engine integration
 
@@ -75,6 +75,6 @@
 - Feature branch: `fix/vendor-charis-7-diacritics`, based on main `b9fbca4fde027fc57213a205a3c5acf157b7c8f1`.
 - Official SIL Charis 7.000 ZIP downloaded by GitHub Actions and SHA-256 verified against the published release asset digest (`e3237b1303c5d31af8f59b1d1914886c5e873b77c71390e4742fb3bc1c187666`).
 - Vendored only Regular and Bold WOFF2 files (about 629 KB combined) plus the exact SIL OFL-1.1 license text. Local `@font-face` declarations and a preload replace the Charis SIL Google Fonts dependency for UFPN; the other UI fonts remain external.
-- `scripts/audit-charis-font.py` checks all 36 mapping inventory codepoints, actual mark-to-base pairs used in mapped outputs, mark-to-mark pairs used by stacked combinations, and HarfBuzz output/zero-advance behavior. CI result is pending.
+- `scripts/audit-charis-font.py` checks all 36 mapping inventory codepoints, actual mark-to-base pairs used in mapped outputs, mark-to-mark pairs used by stacked combinations, and HarfBuzz output/zero-advance behavior. CI passed in run 45216293204: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters and 46 HarfBuzz shaping samples passed.
 - The import-only workflow was deleted after the font files were committed; the normal Pages workflow now runs the font audit on PR and main.
-- W3/W6 remain PARTIAL/TODO until hosted font audit and actual browser screenshots/owner visual acceptance pass. No claim that the visual issue is fixed yet.
+- W5 is DONE_VERIFIED. Chromium browser rendering passed for all 23 clusters and the generated screenshot was visually inspected; W6 remains PARTIAL until Firefox/WebKit/mobile and owner-side visual acceptance. The screenshot is retained as workflow artifact 14839625822 (run 45216293204).
