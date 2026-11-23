@@ -121,5 +121,13 @@
 - The visible searchable table contains 37 segment rows and labels each Ukrainian comparison EXACT, CONTEXTUAL, APPROXIMATE, or NONE. It explicitly states when Ukrainian has no exact equivalent; e.g. it does not conflate [nʲ] with [ɲ], [x] with [ʁ], or [ɪ] with [y].
 - Mapping schema 1.2.0 adds Ukrainian example/status/note fields for all 37 phonemes. Tests require those fields. Charis audit now checks every adopted extended-Cyrillic glyph and the canonical NFC base/mark combinations; browser specimen includes all adopted letters and asserts the 37-row table is present at desktop/mobile viewports.
 - Source registry adds S34–S37 for Kazakh, Serbian, Hill Mari and Eastern Mari grapheme/sound correspondences. These are source-backed grapheme choices, but the combined UFPN convention is still an experimental project decision, not an independently standardized Ukrainian system.
-- Latest observed CI on PR #15: build, 54 tests, syntax check and Charis glyph/anchor audit passed; Playwright engine installation is still in progress. Browser rendering and merge/deploy are not yet verified. PR remains open.
+- PR #15 merged as `b914629a5cbc70dc417a8fe535e1a57300f73dba`; main workflow 45259255626 passed build, 54 tests, syntax, font audit, all six browser/viewport checks and Pages deployment. Live scrape confirms the 37-row table.
+- PR #16 merged as `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`; PR workflow 45259870325 passed build, 55 tests, syntax, 45-codepoint Charis audit and all six browser/viewport checks, including the 37-row table at each viewport. It preserves the distinction between velar [ɣ] (х̬) and uvular /ʁ/ (ғ).
+- Current main workflow 45260260821 has build, 55 tests, syntax and font audit passed; Playwright installation is still running, so redeployment of the small PR #16 follow-up remains pending. The PR #15 table deployment is already live.
 - Remaining acceptance: finish Playwright browser checks; verify deployed table; obtain Ukrainian/French phonetic expert review and user-side readability feedback. The lack of an exact Ukrainian counterpart for several French sounds is an explicit documented limitation, not a reason to invent a misleading Ukrainian word.
+
+
+### Follow-up verification: velar/uvular distinction and live table
+- PR #16 is merged; main SHA is `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`.
+- `ғ` is retained for voiced uvular /ʁ/; `х̬` is retained for voiced velar [ɣ]. A regression test prevents these places of articulation from collapsing.
+- The live Pages scrape after PR #15 confirms the expanded Cyrillic inventory and 37-row table. PR #16's subtitle/allophone correction is in main but awaiting its main Pages redeployment workflow 45260260821.

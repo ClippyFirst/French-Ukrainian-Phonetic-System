@@ -131,4 +131,15 @@
 - New visible searchable web table lists all 37 segments and marks each Ukrainian comparison as exact, contextual allophone, approximate only, or no exact equivalent. It explicitly avoids false examples for French nasal vowels, /ɥ/, /ɲ/, /ŋ/ and /ʁ/.
 - Machine-readable mapping schema 1.2.0 now includes Ukrainian example/status/note fields. Tests require complete example metadata. Charis font audit checks all adopted extended-Cyrillic glyphs.
 - Sources added: S34 Kazakh phoneme/grapheme correspondences; S35 Serbian `њ` /ɲ/; S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/.
-- Verification and merge status will be appended only after actual CI and browser/deployment results; until then U5/W1 remain PARTIAL.
+- PR #15 and PR #16 are merged. PR #15 table deployment and live verification are complete; W1 is DONE_VERIFIED. U5 remains PARTIAL for independent linguistic and readability review. The latest PR #16 follow-up is in main; its redeployment workflow is still in progress.
+
+
+## Final continuation handoff — 2026-11-23
+
+- Starting main: `682767c361715e116628eec4cff29f5c47c70688`.
+- PR #15 `Use expanded Cyrillic letters and add Ukrainian sound correspondence table` merged as `b914629a5cbc70dc417a8fe535e1a57300f73dba`.
+- PR #16 `Preserve velar versus uvular fricative distinction` merged as final main `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`.
+- Main workflow 45259255626 deployed PR #15; live scrape confirms the visible/searchable table with all 37 segment rows. PR #16 CI 45259870325 passed 55/55 tests, build, syntax, Charis 7 audit (45 codepoints; 19 marks; 14 mapped clusters; 28 HarfBuzz shaping samples) and all six Chromium/Firefox/WebKit desktop/mobile checks, with 37 table rows verified in every viewport.
+- Current main workflow 45260260821: build, 55 tests, syntax and font audit passed; Playwright browser installation is still in progress. PR #16's final Pages redeployment therefore remains pending. The earlier PR #15 table deployment is live.
+- Implemented: expanded Cyrillic letters ү /y/, ө /ø/, ӧ /œ/, ӹ /ə/, њ /ɲ/, ң /ŋ/, ғ /ʁ/; `х̬` remains for velar [ɣ]. Basic diacritic use is reduced to the distinctions that still need marks. The live table maps all 37 segments to Ukrainian examples or explicitly states there is no exact Ukrainian equivalent.
+- Remaining: U5 linguistic specialist/readability review PARTIAL; Q2 keyboard/screen-reader/physical-device QA PARTIAL; Q3 independent licensed gold IPA/UFPN benchmark BLOCKED. Project remains an experimental research prototype, not an academically validated or release-ready standard.

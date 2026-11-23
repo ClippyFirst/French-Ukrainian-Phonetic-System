@@ -13,17 +13,17 @@
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
 | E1 | French G2P and syntax | PARTIAL | Оригінальний OpenIPA parser обробляє французький текст; POS/morphology, h-aspiré, lexical coverage та незалежна gold evaluation неповні |
-| Q1 | Build, unit and syntax tests | DONE_VERIFIED | Main CI 45252517029 on `e10368e`: build, 52/52 tests, syntax check, Charis audit, six Chromium/Firefox/WebKit desktop/mobile typography checks and Pages deployment all passed |
-| Q2 | Browser/mobile/accessibility | PARTIAL | All six Chromium/Firefox/WebKit desktop/mobile typography checks passed in main run 45252517029; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
+| Q1 | Build, unit and syntax tests | DONE_VERIFIED | PR #16 CI 45259870325: build, 55/55 tests, syntax, Charis 7 audit and all six Chromium/Firefox/WebKit desktop/mobile checks passed; main CI 45260260821 build/tests/syntax also passed, browser install still in progress |
+| Q2 | Browser/mobile/accessibility | PARTIAL | PR #16 CI 45259870325 passed all six Chromium/Firefox/WebKit desktop/mobile checks and verifies 37 sound-table rows at every viewport; keyboard, screen-reader, physical-device and owner visual acceptance remain outstanding |
 | Q3 | Linguistic benchmark | BLOCKED | Немає незалежно curated/licensed gold IPA/UFPN dataset; expert reviewers недоступні |
 | D1 | Source registry | DONE_VERIFIED | `docs/SOURCE-REGISTRY.md` містить джерела, provenance та reuse limits |
 | D2 | Repository LICENSE | DONE_VERIFIED | AGPL-3.0 та third-party notices; власник явно погодив ліцензію 2026-11-23 |
-| D3 | Pages deployment | DONE_VERIFIED | Main workflow 45217105821 успішно розгорнув `9bc73498cd6e5f1190d508884d48af3a58ce89a2`; live site and stylesheet returned HTTP 200 via fresh public scrape; CSS confirms local Charis Regular/Bold WOFF2 and no legacy Charis SIL import |
-| W1 | Browser web service UI | PARTIAL | Static app includes French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable technical reference, new visible Ukrainian sound correspondence table, copy, TXT/PDF export; new UI pending CI/browser verification |
+| D3 | Pages deployment | PARTIAL | Main workflow 45259255626 successfully deployed PR #15 commit `b914629a5cbc70dc417a8fe535e1a57300f73dba`; fresh live scrape confirms the 37-row Ukrainian sound table. Follow-up main commit `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925` is merged but its Pages redeployment is pending main workflow 45260260821 (Playwright install step) |
+| W1 | Browser web service UI | DONE_VERIFIED | PR #15 deployed; live app has a visible searchable 37-row table with columns UFPN letter, IPA sound, Ukrainian word/position, match quality. PR #16 UI wording and velar/uvular correction are merged in main; latest redeployment pending |
 | W2 | Browser-hosted smoke/accessibility QA | PARTIAL | Live Pages page and stylesheet returned HTTP 200; deployed sample rendered. Merged PR #10 run 45233413912 passed all six Chromium/Firefox/WebKit desktop/mobile typography checks. Keyboard/screen-reader/physical-device/owner acceptance remain |
 | W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; font audit passed in run 45216293204; all six Chromium/Firefox/WebKit desktop/mobile typography checks passed in run 45233413912. Owner-side visual and accessibility acceptance remain. |
 | W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
-| W5 | Inspect Charis 7 glyph and anchor coverage | DONE_VERIFIED | CI passed: all 36 inventory codepoints, 19 combining marks, 23 mapped clusters, 46 HarfBuzz samples; active Cyrillic `mark`/`mkmk` and required anchor pairs verified in run 45216293204. |
+| W5 | Inspect Charis 7 glyph and anchor coverage | DONE_VERIFIED | CI passed: all 45 UFPN inventory codepoints, 19 combining marks, 14 mapped clusters, 28 HarfBuzz shaping samples; active Cyrillic `mark`/`mkmk` and required anchor pairs verified in PR #16 run 45259870325. |
 | W6 | Browser visual QA for stacked UFPN marks | PARTIAL | Chromium loaded local Charis Regular (312,790 bytes), confirmed `document.fonts.check`, and rendered all 23 clusters; screenshot artifact 14839625822 visually inspected. Merged PR #10 run 45233413912 passed all six Chromium/Firefox/WebKit desktop/mobile checks; keyboard/screen-reader, real-device and owner acceptance remain. |
 
 ## OpenIPA engine integration
@@ -119,3 +119,10 @@
 - Mapping JSON schema is 1.2.0; regression tests cover new graphemes and require Ukrainian-example status/note for every phoneme. Font audit now checks the cmap coverage of every adopted grapheme as well as diacritics.
 - Source provenance: S34 Kazakh phoneme/grapheme correspondences, S35 Serbian `њ` /ɲ/, S36 Hill Mari `ӹ` /ə/; S37 Eastern Mari /œ/. This is an evidence-based notation proposal, not yet independently approved by a Ukrainian phonetician or user-tested.
 - Acceptance: all tests, font audit, browser checks, and Pages deploy must pass before marking DONE_VERIFIED; expert/usability review remains PARTIAL.
+
+
+### Final expanded-Cyrillic status (2026-11-23)
+- PR #15 merged as `b914629a5cbc70dc417a8fe535e1a57300f73dba`; main workflow 45259255626 passed build, 54 tests, syntax, font audit, six browser/viewport checks and Pages deployment. Fresh live scrape confirms the 37-row table.
+- PR #16 merged as `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`; PR workflow 45259870325 passed build, 55 tests, syntax, 45-codepoint Charis audit, six browser/viewport checks and all six 37-row table assertions. It preserves `х̬` for velar [ɣ] separately from `ғ` for uvular /ʁ/ and updates the UI subtitle.
+- Current main is `eac00a1bea2a85dc7ed03a68fbf43f6b9e2f6925`. Main workflow 45260260821 has build, 55 tests, syntax and font audit passed; Playwright install is still in progress, so deployment of this final follow-up is not yet verified. The PR #15 table deployment remains live.
+- U5 remains PARTIAL pending independent Ukrainian/French phonetic review and owner readability acceptance. Q2 remains PARTIAL pending keyboard/screen-reader and real-device checks. Q3 remains BLOCKED pending an independently curated/licensed gold dataset.
