@@ -5,13 +5,13 @@ test('reference inventory contains 37 entries',()=>assert.equal(UFPN_MAPPING.pho
 test('Basic preserves front rounded vowel contrasts',()=>assert.equal(renderUfpn('i y ø œ').text,'і ү ө ӧ'));
 test('nasal vowels retain quality, rounding and nasalization',()=>assert.equal(renderUfpn('ɑ̃ ɛ̃ ɔ̃ œ̃').text,'а̃ э̃ о̆̃ ӧ̃'));
 test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal(renderUfpn('ʁ').text,'ғ'));
-test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'нь нґ'));
+test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'њ ң'));
 test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бо̆̃·жуːғ'));
 test('Basic suppresses prosodic annotation while Extended preserves it',()=>{
  assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пе̇ті');
  assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпе̇·ті↗');
 });
-test('Extended preserves narrow phonetic modifiers',()=>assert.equal(renderUfpn('ʁ̞ tʲ kʷ','extended').text,'х̬̠̞ тʲ кʷ'));
+test('Extended preserves narrow phonetic modifiers',()=>assert.equal(renderUfpn('ʁ̞ tʲ kʷ','extended').text,'ғ̞ тʲ кʷ'));
 test('unknown IPA remains visible and is reported',()=>{
  const r=renderUfpn('ʔ'); assert.equal(r.text,'⟦ʔ⟧'); assert.deepEqual(r.unsupported,['ʔ']);
 });
