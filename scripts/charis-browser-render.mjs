@@ -99,6 +99,8 @@ for (const [name, browserType] of browserTypes) {
         const guidedRows = soundTable?.querySelectorAll("tbody tr").length ? [...soundTable.querySelectorAll("tbody tr")].filter((row) => row.children[2]?.textContent.trim().length >= 25).length : 0;
         return {
           soundTableRows,
+          soundTableHeaders,
+          guidedRows,
           fontCheck: document.fonts.check('42px "Charis"', values.join("")),
           computedFamily: getComputedStyle(grid.querySelector(".glyph")).fontFamily,
           sampleCount: grid.children.length,
