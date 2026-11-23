@@ -179,6 +179,12 @@
       "glyph": "↘",
       "unicode": "U+2198",
       "meaning": "Низхідний контур лише з аудіоанотації."
+    },
+    {
+      "id": "tap",
+      "glyph": "◌̌",
+      "unicode": "U+030C COMBINING CARON",
+      "meaning": "UFPN: короткий альвеолярний одноударний ротичний у регіональному allophone mapping (р̌); не змішувати з відкритістю голосних."
     }
   ],
   "phonemes": [
@@ -1550,6 +1556,116 @@
       "features": [
         "regional lexical, vowel and schwa patterns require evidence-backed profile"
       ]
+    }
+  ],
+  "allophoneMappings": [
+    {
+      "id": "r-uvular-approximant",
+      "ipa": "ʁ̞",
+      "basic": "х̬̠",
+      "detailed": "х̬̠",
+      "extended": "х̬̠̞",
+      "phoneme": "ʁ",
+      "descriptionUk": "послаблена апроксимантна реалізація увулярного ротичного",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-uvular-voiceless-fricative",
+      "ipa": "χ",
+      "basic": "х̠",
+      "detailed": "х̠",
+      "extended": "х̠",
+      "phoneme": "ʁ",
+      "descriptionUk": "глуха увулярна фрикативна реалізація",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-voiced-velar-fricative",
+      "ipa": "ɣ",
+      "basic": "х̬",
+      "detailed": "х̬",
+      "extended": "х̬",
+      "phoneme": "ʁ",
+      "descriptionUk": "дзвінка велярна фрикативна реалізація/варіант",
+      "sources": [
+        "S18"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-uvular-trill",
+      "ipa": "ʀ",
+      "basic": "х̬̠",
+      "detailed": "х̬̠",
+      "extended": "х̬̠",
+      "phoneme": "ʁ",
+      "descriptionUk": "увулярний тремтливий алофон; спосіб творення збережено в provenance, бо окремого графічного знака ще не затверджено",
+      "sources": [
+        "S18",
+        "S19",
+        "S20"
+      ],
+      "evidenceStatus": "PARTIAL_MANNER_NOT_ENCODED"
+    },
+    {
+      "id": "r-alveolar-tap",
+      "ipa": "ɾ",
+      "basic": "р̌",
+      "detailed": "р̌",
+      "extended": "р̌",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний одноударний ротичний, регіональний/соціофонетичний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-alveolar-trill",
+      "ipa": "r",
+      "basic": "р",
+      "detailed": "р",
+      "extended": "р",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний тремтливий ротичний, регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-alveolar-approximant",
+      "ipa": "ɹ",
+      "basic": "р̞",
+      "detailed": "р̞",
+      "extended": "р̞",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний апроксимантний ротичний, регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-velar-voiceless-fricative",
+      "ipa": "x",
+      "basic": "х",
+      "detailed": "х",
+      "extended": "х",
+      "phoneme": "ʁ",
+      "descriptionUk": "глухий велярний фрикативний регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
     }
   ]
 }

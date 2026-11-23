@@ -25,3 +25,7 @@ test('tokenizer preserves prosodic controls and combining marks',()=>{
 test('all mapping records have three levels and source provenance',()=>{
  for(const p of UFPN_MAPPING.phonemes){assert.ok(p.basic&&p.detailed&&p.extended,p.id);assert.ok(p.sources.length,p.id);assert.ok(p.evidenceStatus,p.id);}
 });
+
+test('documented rhotic allophones have explicit practical mappings',()=>{
+ assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ х̬̠̞ р̌ р р̞ х');
+});

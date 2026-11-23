@@ -14,7 +14,8 @@
     "allophones",
     "processes",
     "prosody",
-    "profiles"
+    "profiles",
+    "allophoneMappings"
   ],
   "properties": {
     "schemaVersion": {
@@ -113,7 +114,24 @@
           "features"
         ]
       }
+    },
+    "allophoneMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "ipa",
+          "basic",
+          "detailed",
+          "extended",
+          "phoneme",
+          "descriptionUk",
+          "sources",
+          "evidenceStatus"
+        ]
+      }
     }
   },
   "additionalProperties": true
-}\n
+}

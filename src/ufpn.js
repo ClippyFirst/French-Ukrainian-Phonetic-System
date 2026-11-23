@@ -1,7 +1,9 @@
 import mapping from '../data/ufpn-mapping.json' with { type: 'json' };
 
 const entries = mapping.phonemes;
-const BY_IPA = new Map(entries.map(item => [item.ipa, item]));
+const allophones = mapping.allophoneMappings ?? [];
+const mappedSegments = [...entries, ...allophones];
+const BY_IPA = new Map(mappedSegments.map(item => [item.ipa, item]));
 BY_IPA.set('g', BY_IPA.get('ɡ'));
 const IPA_KEYS = [...BY_IPA.keys()].sort((a,b)=>b.length-a.length);
 const IPA_MODIFIERS = /[\u0300-\u036f\u1dc0-\u1dff]/u;
@@ -11,7 +13,7 @@ const PASS_THROUGH = new Set(['ˈ','ˌ','ː','ˑ','‿','‖','↗','↘','→']
 const LEVELS = new Set(['basic','detailed','extended']);
 
 export const UFPN_MAPPING = mapping;
-export const UFPN_INVENTORY = Object.fromEntries(entries.map(item => [item.ipa, item.basic]));
+export const UFPN_INVENTORY = Object.fromEntries(mappedSegments.map(item => [item.ipa, item.basic]));
 
 export function tokenizeIpa(ipa) {
   const input = String(ipa ?? '').normalize('NFC');
