@@ -35,7 +35,7 @@
 | Route French G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`, `src/engine.js`; integration tests included |
 | Align upstream IPA notation to canonical IPA | PARTIAL | Adapter normalizes OpenIPA `õ` → `ɔ̃`; maps `ɾ` → `ʁ` only for `metropolitan-fr`, and preserves `ɾ` for `lyric-diction-fr`. Raw upstream form remains in `sourceIpa`. Regression coverage for both profiles; independent phonetic review still pending. Other upstream notation/edge cases remain to audit |
 | Adopt AGPL-3.0 and upstream attribution | DONE_VERIFIED | LICENSE, THIRD_PARTY_NOTICES.md, README; owner approval explicit |
-| Expand upstream fixture and edge-case coverage | TODO | Port additional upstream tests; distinguish regression fixtures from independent gold data |
+| Expand upstream fixture and edge-case coverage | PARTIAL | All six rows in the vendored OpenIPA revision's `src/tests/french/_words.csv` are now represented in `tests/openipa-french.test.js`; `descends` executable-vs-CSV divergence is explicitly pinned, and `garçon` asserts raw `gaɾsõ` provenance plus normalized `gaɾsɔ̃`. PR CI pending. These are upstream regression fixtures, not independent gold data; upstream's broader corpus reuse remains unassessed. |
 | Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |
 | Use OpenIPA text-level liaison/elision hooks in lyric profile | DONE_VERIFIED | Full-text adapter; tests cover `les amis` liaison and `calme ami` elision |
 
