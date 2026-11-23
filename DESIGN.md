@@ -5,7 +5,7 @@ An editorial phonetics workbench: calm, precise, readable, and recognisably Ukra
 
 ## Visual foundations
 - Preserve the warm paper background, forest-green action colour, and editorial serif/sans pairing already used by the service.
-- Use the self-hosted Charis font for IPA/UFPN and other phonetic strings; use the UI sans face for controls and explanatory prose.
+- Use the self-hosted Charis font for UFPN, extended Cyrillic and combining-mark clusters; preserve the established editorial serif for IPA and Latin guide unless a dedicated font audit justifies a change. Use the UI sans face for controls and explanatory prose.
 - Keep the page mostly neutral. Green marks the primary action and meaningful UFPN emphasis; coral is reserved for uncertainty or warnings.
 - Prefer clear whitespace, aligned edges, readable text, and a small number of coherent surfaces over decorative gradients, glass effects, or nested cards.
 - Keep phonetic outputs visually distinct: IPA is the source-facing reference, UFPN is the primary Ukrainian reading aid, and Latin guide remains explicitly secondary.
