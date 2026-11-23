@@ -1,5 +1,5 @@
 import {transcribe,describeSegment} from './engine.js';
-import {renderUfpn} from './ufpn.js';
+import {renderUfpn,UFPN_MAPPING} from './ufpn.js';
 const $=id=>document.getElementById(id),source=$('source');let result;
 const levelLabel=document.createElement('label');levelLabel.textContent='Деталізація UFPN';
 const levelSelect=document.createElement('select');levelSelect.id='ufpn-level';
@@ -25,4 +25,37 @@ document.querySelectorAll('.output').forEach(p=>p.addEventListener('click',e=>{c
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(result?.[b.dataset.copy]||'')));
 $('copy-all').addEventListener('click',()=>copy(['French: '+result.text,'IPA: '+result.ipa,'UFPN ('+levelSelect.value+'): '+result.ufpn,'Latin guide: '+result.romanized].join('\n')));
 $('export-txt').addEventListener('click',()=>{const blob=new Blob([['French: '+result.text,'IPA: '+result.ipa,'UFPN ('+levelSelect.value+'): '+result.ufpn,'Latin guide: '+result.romanized,'Позначені форми потребують перевірки.'].join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='french-ukrainian-phonetics.txt';a.click();URL.revokeObjectURL(url)});
-$('export-pdf').addEventListener('click',()=>window.print());$('show-explanations').addEventListener('change',e=>$('explain-panel').hidden=!e.target.checked);render();
+$('export-pdf').addEventListener('click',()=>window.print());$('show-explanations').addEventListener('change',e=>$('explain-panel').hidden=!e.target.checked);
+const reference=document.createElement('details');reference.className='ufpn-reference';
+const refSummary=document.createElement('summary');refSummary.textContent='Довідник UFPN · фонеми, алофони та фонетичні виміри';reference.append(refSummary);
+const refIntro=document.createElement('p');refIntro.textContent='Пошуковий довідник українських відповідників. Варіантні й регіональні форми не вмикаються автоматично без відповідного профілю або вузького IPA.';reference.append(refIntro);
+const refSearch=document.createElement('input');refSearch.type='search';refSearch.placeholder='Шукати IPA, UFPN або артикуляцію…';refSearch.setAttribute('aria-label','Пошук у довіднику UFPN');reference.append(refSearch);
+const refTable=document.createElement('table');refTable.innerHTML='<thead><tr><th>IPA</th><th>Basic</th><th>Detailed</th><th>Extended</th><th>Опис / статус</th></tr></thead><tbody></tbody>';reference.append(refTable);
+const refBody=refTable.querySelector('tbody');
+const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
+function renderReference(query=''){
+ refBody.replaceChildren();
+ for(const item of referenceRows){
+  const description=item.descriptionUk||item.description||'';
+  const status=item.phonologicalStatus||item.evidenceStatus||'';
+  const haystack=[item.ipa,item.basic,item.detailed,item.extended,description,status,(item.sources||[]).join(' ')].join(' ').toLocaleLowerCase();
+  if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
+  const tr=document.createElement('tr');
+  for(const value of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status]){
+   const td=document.createElement('td');td.textContent=value;tr.append(td);
+  }
+  refBody.append(tr);
+ }
+}
+refSearch.addEventListener('input',()=>renderReference(refSearch.value.trim()));
+renderReference();
+const featureDetails=document.createElement('details');featureDetails.className='ufpn-features';
+const featureSummary=document.createElement('summary');featureSummary.textContent='Повний перелік фонетичних вимірів';featureDetails.append(featureSummary);
+const featureList=document.createElement('ul');
+for(const feature of UFPN_MAPPING.featureDimensions){
+ const li=document.createElement('li');li.textContent=feature.dimension+': '+feature.values.join(', ')+' — '+feature.status+'. '+feature.ufpn;featureList.append(li);
+}
+featureDetails.append(featureList);reference.append(featureDetails);
+document.querySelector('.workspace').after(reference);
+
+render();

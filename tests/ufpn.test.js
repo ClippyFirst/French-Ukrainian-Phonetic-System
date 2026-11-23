@@ -20,7 +20,7 @@ test('NFC and NFD produce stable normalized output',()=>{
  assert.equal(renderUfpn(s).text,renderUfpn(s).text.normalize('NFC'));
 });
 test('tokenizer preserves prosodic controls and combining marks',()=>{
- assert.deepEqual(tokenizeIpa('ˈt͡sɛː‿a'),['ˈ','t͡','s','ɛ','ː','‿','a']);
+ assert.deepEqual(tokenizeIpa('ˈt͡sɛː‿a'),['ˈ','t͡s','ɛ','ː','‿','a']);
 });
 test('all mapping records have three levels and source provenance',()=>{
  for(const p of UFPN_MAPPING.phonemes){assert.ok(p.basic&&p.detailed&&p.extended,p.id);assert.ok(p.sources.length,p.id);assert.ok(p.evidenceStatus,p.id);}
@@ -28,4 +28,19 @@ test('all mapping records have three levels and source provenance',()=>{
 
 test('documented rhotic allophones have explicit practical mappings',()=>{
  assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ х̬̠̞ р̌ р р̞ х');
+});
+
+test('glide /w/ uses a dedicated non-syllabic marker, not the open-mid vowel breve',()=>assert.equal(renderUfpn('j ɥ w').text,'й й̊ в̯'));
+test('Québec coronal affricates preserve the tie bar in every UFPN level',()=>{
+ assert.equal(renderUfpn('t͡s d͡z','basic').text,'т͡с д͡з');
+ assert.equal(renderUfpn('t͜s d͜z','extended').text,'т͜с д͜з');
+});
+
+test('Extended preserves gradient place assimilation and fricative voicing changes',()=>{
+ assert.equal(renderUfpn('n͡ŋ s̬ z̥','extended').text,'н͡нґ с̬ з̥');
+ assert.equal(renderUfpn('n͡ŋ s̬ z̥','basic').text,'н с з');
+});
+test('feature dimension registry classifies phonetic coverage and evidence',()=>{
+ assert.ok(UFPN_MAPPING.featureDimensions.length>=12);
+ for(const feature of UFPN_MAPPING.featureDimensions){assert.ok(feature.status,feature.id);assert.ok(feature.ufpn,feature.id);assert.ok(feature.sources.length,feature.id)}
 });

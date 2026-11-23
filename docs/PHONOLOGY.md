@@ -52,3 +52,12 @@
 | наголос/інтонація | ˈ ˌ ‖ ↗ ↘ | Лише просодична анотація |
 | палаталізація/лабіалізація | ◌ʲ / ◌ʷ | Extended з доказом |
 | регіональна реалізація | окремий profile ID | Не змішувати профілі |
+
+## Québec-specific segmental processes
+
+- /t/ and /d/ may be realized as [t͡s] and [d͡z] before high front vowels /i, y/ and corresponding glides. This is a regional allophonic process, not part of the Metropolitan default. [S25,S26]
+- Stressed and lengthened Québec vowels may diphthongize; coda type, vowel category, speaker, region and style condition the outcome. The process is not a single deterministic mapping. [S27]
+
+## Асиміляція приголосних
+
+Французька має контекстну регресивну асиміляцію дзвінкості/оглушення /s,z/ у послідовностях фрикативний+проривний на межі слів; реалізація може бути частковою або повною та залежати від темпу/когезії. [S30] У послідовностях /n/+велярний проривний описано градієнтне перекриття коронального й велярного жестів, а не обов'язкову категоричну заміну /n/ на [ŋ]. [S29]

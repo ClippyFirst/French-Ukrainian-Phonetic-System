@@ -15,7 +15,8 @@
     "processes",
     "prosody",
     "profiles",
-    "allophoneMappings"
+    "allophoneMappings",
+    "featureDimensions"
   ],
   "properties": {
     "schemaVersion": {
@@ -129,6 +130,20 @@
           "descriptionUk",
           "sources",
           "evidenceStatus"
+        ]
+      }
+    },
+    "featureDimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "dimension",
+          "values",
+          "ufpn",
+          "status",
+          "sources"
         ]
       }
     }

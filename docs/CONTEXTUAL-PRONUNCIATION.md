@@ -39,3 +39,13 @@
 - resyllabification змінює складову організацію без обов'язкового додавання сегмента.
 
 Ці процеси повинні мати різні rule IDs, output spans та provenance.
+
+## Québec profile: affrication and diphthongization
+
+The regional profile now records two evidence-backed but not yet executable processes: coronal-stop affrication [t͡s]/[d͡z] before high front vowels/glides, and lengthening/diphthongization of selected stressed vowels. Neither is applied to Metropolitan French. The latter must remain an annotated sequence/phonetic realization, not a guessed fixed diphthong. [S25–S27]
+
+## Асиміляція місця та дзвінкості
+
+- Не робити /n/→/ŋ/ безумовним правилом: для /n/+велярний stop описано проміжні реалізації [n n͡ŋ] із градієнтним перекриттям жестів. [S29]
+- /s/ може озвончуватися, а /z/ оглушуватися регресивно перед проривними через межу слів; ступінь зміни залежить від темпу й просодичної когезії. [S30]
+- Basic/Detailed зберігають фонологічний сегмент; Extended відображає с̬, з̥ або н͡нґ лише за наявності narrow IPA/аудіодоказу.

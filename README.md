@@ -18,8 +18,9 @@ python3 -m http.server 8000
 - Синхронізовані IPA, UFPN та Latin guide.
 - IPA — єдиний вхід для UFPN adapter.
 - UFPN має Basic / Detailed / Extended режими.
-- Mapping містить 37 сегментних одиниць, діакритики, алофонічні та просодичні реєстри.
+- Mapping містить 37 сегментних одиниць, 15 allophone mappings, 24 діакритичні/просодичні маркери й 13 вимірів фонетичних характеристик.
 - Невідомі IPA символи не губляться: позначаються й потрапляють у список unsupported.
+- Регіональні Québec affrication/diphthongization та cross-word assimilation описані окремо й не застосовуються до Metropolitan French за замовчуванням.
 - Попередній seed-лексикон, low-confidence fallback, вузькі liaison/elision шаблони.
 - Послівні пояснення, provenance, copy, TXT і browser print-to-PDF.
 

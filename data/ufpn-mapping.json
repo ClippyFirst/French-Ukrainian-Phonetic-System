@@ -70,7 +70,7 @@
       "id": "backing",
       "glyph": "◌̠",
       "unicode": "U+0320",
-      "meaning": "UFPN: задніша/відсунута артикуляція; практичний маркер, не точна IPA-мітка місця."
+      "meaning": "UFPN: задніша/увулярна артикуляція; входить до базових знаків /ɑ/ та /ʁ/. Це практичний маркер, не вузьке вимірювання місця творення."
     },
     {
       "id": "nasal",
@@ -88,7 +88,7 @@
       "id": "voicing",
       "glyph": "◌̬",
       "unicode": "U+032C",
-      "meaning": "Extended: дзвінкість, якщо підтверджена вузьким IPA."
+      "meaning": "UFPN: дзвінкість; входить до базового знака /ʁ/ (х̬̠), а в Extended застосовується до інших сегментів лише за вузьким IPA."
     },
     {
       "id": "devoicing",
@@ -185,6 +185,12 @@
       "glyph": "◌̌",
       "unicode": "U+030C COMBINING CARON",
       "meaning": "UFPN: короткий альвеолярний одноударний ротичний у регіональному allophone mapping (р̌); не змішувати з відкритістю голосних."
+    },
+    {
+      "id": "glide",
+      "glyph": "◌̯",
+      "unicode": "U+032F COMBINING INVERTED BREVE BELOW",
+      "meaning": "UFPN: напівголосний/нескладовий статус у відповіднику /w/ (в̯); не плутати з відкритістю голосних."
     }
   ],
   "phonemes": [
@@ -673,11 +679,11 @@
       "descriptionUk": "огублений губно-велярний апроксимант",
       "baseGrapheme": "в",
       "diacritics": [
-        "̆"
+        "̯"
       ],
-      "basic": "в̆",
-      "detailed": "в̆",
-      "extended": "в̆",
+      "basic": "в̯",
+      "detailed": "в̯",
+      "extended": "в̯",
       "features": [],
       "examples": [
         "oui",
@@ -1341,6 +1347,48 @@
       "sources": [
         "S1"
       ]
+    },
+    {
+      "id": "quebec-coronal-affrication",
+      "phoneme": "t d",
+      "realizations": [
+        "t͡s",
+        "d͡z"
+      ],
+      "scope": "Québec French before high front vowels /i y/ and corresponding glides; profile-specific",
+      "decision": "Map only when Québec profile or a supplied narrow IPA confirms affrication; do not apply to Metropolitan French.",
+      "sources": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "nasal-place-assimilation",
+      "phoneme": "n",
+      "realizations": [
+        "n",
+        "n͡ŋ"
+      ],
+      "scope": "French cross-word /n/+velar-stop sequences; gradient and speaker-dependent",
+      "decision": "Do not replace /n/ categorically with /ŋ/; Extended may render overlapping gesture only when narrow IPA/audio supports it.",
+      "sources": [
+        "S29"
+      ]
+    },
+    {
+      "id": "fricative-voicing-assimilation",
+      "phoneme": "s z",
+      "realizations": [
+        "s",
+        "s̬",
+        "z",
+        "z̥"
+      ],
+      "scope": "French fricative + stop sequences across word boundaries; regressive and tempo/cohesion-sensitive",
+      "decision": "Keep underlying segment in Basic/Detailed; Extended preserves observed voicing/devoicing diacritic.",
+      "sources": [
+        "S30"
+      ]
     }
   ],
   "processes": [
@@ -1445,6 +1493,49 @@
         "audio or prosodic annotation"
       ],
       "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "quebec-assibilation",
+      "name": "Québec French coronal-stop affrication/assibilation",
+      "requirements": [
+        "quebec-fr profile",
+        "/t/ or /d/ before high front vowel or corresponding glide",
+        "lexical/speaker/style context"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "quebec-diphthongization",
+      "name": "Québec French vowel lengthening and diphthongization",
+      "requirements": [
+        "quebec-fr profile",
+        "stressed/phrase-final vowel",
+        "lengthening coda or documented lexical exception",
+        "speaker/style"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "place-assimilation",
+      "name": "Gradient place assimilation",
+      "requirements": [
+        "adjacent nasal + velar stop",
+        "word boundary/cohesion",
+        "speaker and tempo",
+        "narrow IPA or articulatory evidence"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "fricative-voicing-assimilation",
+      "name": "Regressive voicing/devoicing assimilation of /s,z/",
+      "requirements": [
+        "fricative + stop sequence",
+        "word-boundary cohesion",
+        "speech rate",
+        "audio/narrow IPA"
+      ],
+      "status": "RESEARCH_ONLY"
     }
   ],
   "prosody": [
@@ -1532,11 +1623,13 @@
     {
       "id": "quebec-fr",
       "name": "Québec French",
-      "status": "UNSUPPORTED",
-      "coverage": "Architecture placeholder only.",
+      "status": "PARTIAL_RESEARCH_ONLY",
+      "coverage": "Affrication and vowel lengthening/diphthongization documented; full executable regional G2P profile not implemented.",
       "features": [
         "regional rhotic allophones",
-        "vowel length/quality and affrication require dedicated coverage"
+        "vowel length/quality and affrication require dedicated coverage",
+        "coronal /t,d/ affrication before high front vowels and glides",
+        "stressed long vowels may diphthongize; coda and speaker/style condition the pattern"
       ]
     },
     {
@@ -1666,6 +1759,341 @@
         "S20"
       ],
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-t-affricate-above",
+      "ipa": "t͡s",
+      "basic": "т͡с",
+      "detailed": "т͡с",
+      "extended": "т͡с",
+      "phoneme": "t",
+      "descriptionUk": "глухий альвеолярний африкатний алофон /t/ у квебекській французькій",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-d-affricate-above",
+      "ipa": "d͡z",
+      "basic": "д͡з",
+      "detailed": "д͡з",
+      "extended": "д͡з",
+      "phoneme": "d",
+      "descriptionUk": "дзвінкий альвеолярний африкатний алофон /d/ у квебекській французькій",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-t-affricate-below",
+      "ipa": "t͜s",
+      "basic": "т͜с",
+      "detailed": "т͜с",
+      "extended": "т͜с",
+      "phoneme": "t",
+      "descriptionUk": "глухий альвеолярний африкатний алофон /t/; варіант tie-bar placement",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-d-affricate-below",
+      "ipa": "d͜z",
+      "basic": "д͜з",
+      "detailed": "д͜з",
+      "extended": "д͜з",
+      "phoneme": "d",
+      "descriptionUk": "дзвінкий альвеолярний африкатний алофон /d/; варіант tie-bar placement",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "gradient-nasal-velar-overlap",
+      "ipa": "n͡ŋ",
+      "basic": "н",
+      "detailed": "н",
+      "extended": "н͡нґ",
+      "phoneme": "n",
+      "descriptionUk": "градієнтне перекриття коронального та велярного жестів у /n/+велярний приголосний; не категоричне /n/→/ŋ/",
+      "sources": [
+        "S29"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "regressive-voicing-s",
+      "ipa": "s̬",
+      "basic": "с",
+      "detailed": "с",
+      "extended": "с̬",
+      "phoneme": "s",
+      "descriptionUk": "частково або повністю озвончений /s/ у регресивній асиміляції",
+      "sources": [
+        "S30"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "regressive-devoicing-z",
+      "ipa": "z̥",
+      "basic": "з",
+      "detailed": "з",
+      "extended": "з̥",
+      "phoneme": "z",
+      "descriptionUk": "частково або повністю оглушений /z/ у регресивній асиміляції",
+      "sources": [
+        "S30"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    }
+  ],
+  "featureDimensions": [
+    {
+      "id": "vowel-height",
+      "dimension": "Vowel height/aperture",
+      "values": [
+        "close",
+        "close-mid",
+        "open-mid",
+        "open"
+      ],
+      "ufpn": "Basic/Detailed quality marks",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S9"
+      ]
+    },
+    {
+      "id": "vowel-place",
+      "dimension": "Vowel frontness/backness/centrality",
+      "values": [
+        "front",
+        "central",
+        "back",
+        "advanced",
+        "retracted"
+      ],
+      "ufpn": "base mapping plus Extended modifiers",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S9",
+        "S12"
+      ]
+    },
+    {
+      "id": "rounding",
+      "dimension": "Lip rounding",
+      "values": [
+        "rounded",
+        "unrounded",
+        "more-rounded",
+        "less-rounded"
+      ],
+      "ufpn": "UFPN ring above for front rounded vowels; fine gradience Extended only",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S1"
+      ]
+    },
+    {
+      "id": "nasality",
+      "dimension": "Vowel/consonant nasality",
+      "values": [
+        "phonemic nasal vowel",
+        "gradient progressive/regressive nasalization",
+        "nasal consonant"
+      ],
+      "ufpn": "tilde for phonemic nasal vowels; Extended only for observed coarticulation",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S8",
+        "S29"
+      ]
+    },
+    {
+      "id": "duration",
+      "dimension": "Segmental duration",
+      "values": [
+        "short",
+        "half-long",
+        "long",
+        "phrase-final lengthening"
+      ],
+      "ufpn": "ˑ/ː in Detailed/Extended only when supplied",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S21",
+        "S27"
+      ]
+    },
+    {
+      "id": "diphthongization",
+      "dimension": "Vowel trajectory",
+      "values": [
+        "monophthong",
+        "diphthong",
+        "triphthong",
+        "centralizing",
+        "closing"
+      ],
+      "ufpn": "sequence plus tie-bar/transition in Extended; profile/audio required",
+      "status": "RESEARCH_ONLY",
+      "sources": [
+        "S27"
+      ]
+    },
+    {
+      "id": "consonant-place",
+      "dimension": "Consonant place of articulation",
+      "values": [
+        "bilabial",
+        "labiodental",
+        "dental",
+        "alveolar",
+        "postalveolar",
+        "palatal",
+        "velar",
+        "uvular",
+        "glottal"
+      ],
+      "ufpn": "base grapheme and explicit place metadata; not every place has a unique Ukrainian letter",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S1",
+        "S18"
+      ]
+    },
+    {
+      "id": "consonant-manner",
+      "dimension": "Consonant manner",
+      "values": [
+        "stop",
+        "fricative",
+        "approximant",
+        "tap",
+        "trill",
+        "nasal",
+        "lateral",
+        "affricate"
+      ],
+      "ufpn": "segment mappings, allophone mappings and tie-bar composites",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S18",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "phonation",
+      "dimension": "Voicing and phonation",
+      "values": [
+        "voiced",
+        "voiceless",
+        "partial voicing",
+        "partial devoicing",
+        "breathy",
+        "creaky"
+      ],
+      "ufpn": "◌̬/◌̥ in Extended; breathy/creaky are metadata until French evidence is supplied",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S18",
+        "S30"
+      ]
+    },
+    {
+      "id": "secondary-articulation",
+      "dimension": "Secondary articulation",
+      "values": [
+        "palatalized",
+        "labialized",
+        "velarized",
+        "pharyngealized",
+        "retracted",
+        "advanced"
+      ],
+      "ufpn": "standard IPA modifiers in Extended",
+      "status": "EXTENDED_ONLY",
+      "sources": [
+        "S17",
+        "S18"
+      ]
+    },
+    {
+      "id": "phonological-processes",
+      "dimension": "Segmental processes",
+      "values": [
+        "assimilation",
+        "coarticulation",
+        "deletion",
+        "epenthesis",
+        "elision",
+        "liaison",
+        "enchaînement",
+        "resyllabification",
+        "affrication",
+        "lenition"
+      ],
+      "ufpn": "rule metadata, alternatives, provenance and selected Extended annotations",
+      "status": "PARTIAL_RESEARCH_REGISTRY",
+      "sources": [
+        "S5",
+        "S14",
+        "S15",
+        "S25",
+        "S29",
+        "S30"
+      ]
+    },
+    {
+      "id": "prosody",
+      "dimension": "Prosody and voice dynamics",
+      "values": [
+        "prominence",
+        "rhythmic grouping",
+        "pitch contour",
+        "boundary tones",
+        "tempo",
+        "intensity",
+        "voice quality"
+      ],
+      "ufpn": "ˈ ˌ ‖ ↗ ↘ plus metadata; audio required",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S7",
+        "S22"
+      ]
+    },
+    {
+      "id": "variation",
+      "dimension": "Sociophonetic variation",
+      "values": [
+        "regional",
+        "social",
+        "age",
+        "register",
+        "style",
+        "speaker-specific"
+      ],
+      "ufpn": "profile IDs and alternatives; never collapse into default",
+      "status": "PROFILE_METADATA",
+      "sources": [
+        "S10",
+        "S17",
+        "S20",
+        "S25",
+        "S27"
+      ]
     }
   ]
 }

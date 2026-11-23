@@ -27,3 +27,10 @@
 | S24 | [Replica Skill](https://github.com/Jakeschincariol/replica-skill) | clean-room recon/build/test | MIT для skill, не ліцензія OpenIPA | Довідкове |
 
 Доступність сторінки не означає дозвіл на масовий імпорт. Не включати аудіо/словникові бази без перевірки ліцензії конкретного файлу/релізу. Репозиторій поки не має власної LICENSE; це рішення власника.
+
+| S25 | [PHONO Québec: Affrication de /t/ et /d/](https://www.phono.quebec/rubriques/r01.html) | [t͡s]/[d͡z] before high front vowels/glides in Québec French; phonetic conditions and regional limits | educational phonetics resource; no corpus import | Довідкове |
+| S26 | [Guzzo 2022, Revisiting the Acquisition of Onset Complexity: Affrication in Québec French](https://doi.org/10.1017/S0305000921000374) | affricates in complementary distribution with coronal stops before high front vowels and glides | peer-reviewed article; data not imported | Наукове |
+| S27 | [A descriptive account of the Quebec French diphthong fête](https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/descriptive-account-of-the-quebec-french-diphthong-fete/104BCBD53E1F672E517AF466CFE5B584) | stress/length/coda-conditioned diphthongization and variation | JIPA article; no audio/data imported | Наукове |
+
+| S29 | [Gradient assimilation in French cross-word /n/+velar stop sequences](https://doi.org/10.1017/S0025100317000573) | gradient coronal–velar gestural overlap; no categorical [ŋ] replacement in studied tokens | JIPA article; no data imported | Наукове |
+| S30 | [Abdelli-Beruh 2012, Voicing and devoicing assimilation of French /s/ and /z/](https://doi.org/10.1007/s10936-011-9187-x) | regressive voicing/devoicing across word boundaries; partial/complete and tempo effects | peer-reviewed article; no audio/data imported | Наукове |

@@ -9,17 +9,17 @@
 - Git clone blocked by DNS; GitHub connector used for remote reads/writes.
 
 ## Implemented in this phase
-- Data-driven UFPN specification with 37 segmental entries.
+- Data-driven UFPN specification with 37 phonemic/segmental entries, 15 allophone mappings, 24 diacritic/prosodic markers, 13 phonetic feature dimensions, 19 allophone phenomena, 13 context processes and 7 profile records.
 - Basic, Detailed and Extended output levels.
 - Dedicated IPA-only adapter; unsupported IPA remains visible.
 - Unicode NFC/NFD tests.
-- Allophone, context-process, prosody and regional-profile registers.
+- Allophone, context-process, prosody and regional-profile registers; Québec /t,d/ affrication and diphthongization are evidence-backed research entries, not default metropolitan rules.
 - UI selector for UFPN level.
 
 ## Previous verification
 - Previous head 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0: GitHub Actions run 45149960488 completed successfully; test and syntax-check jobs succeeded; Pages deploy skipped because this was a PR branch.
 - Previous handoff records npm test 11/11 and npm run check passing.
-- Phase 2 CI must be checked after commit.
+- Commit a04f7c3 passed GitHub Actions run 45152438694 (npm test + npm run check); the next extension commit remains pending CI.
 - No browser/mobile/accessibility QA or independent phonetic review has been run.
 
 ## Linguistic findings
