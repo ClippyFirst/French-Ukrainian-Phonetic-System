@@ -69,7 +69,12 @@ for (const [name, browserType] of browserTypes) {
             .every((selector) => document.querySelector(selector)?.textContent.trim().length > 0),
           resultColumns: getComputedStyle(results).gridTemplateColumns.trim().split(/\s+/).length,
           horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
-          sourcePresent: Boolean(document.querySelector("#source")?.value)
+          sourcePresent: Boolean(document.querySelector("#source")?.value),
+          sourceAccessibleName: (() => {
+            const source = document.querySelector("#source");
+            const labelId = source?.getAttribute("aria-labelledby");
+            return Boolean(labelId && document.getElementById(labelId)?.textContent.trim());
+          })()
         };
       });
       if (name === "chromium") {
@@ -78,10 +83,13 @@ for (const [name, browserType] of browserTypes) {
       }
       await page.keyboard.press("Tab");
       ui.skipLinkReceivesKeyboardFocus = await page.evaluate(() => document.activeElement?.classList.contains("skip-link"));
-      if (!ui.skipLinkFirst || !ui.skipLinkReceivesKeyboardFocus) {
+      await page.keyboard.press("Enter");
+      ui.skipLinkMovesFocusToMain = await page.evaluate(() => document.activeElement?.id === "top");
+      if (!ui.skipLinkFirst || !ui.skipLinkReceivesKeyboardFocus || !ui.skipLinkMovesFocusToMain) {
         throw new Error(`${name}/${viewport.label}: skip link is not the first keyboard stop`);
       }
       if (!ui.outputPanels || !ui.sourcePresent) throw new Error(`${name}/${viewport.label}: workbench content did not render`);
+      if (!ui.sourceAccessibleName) throw new Error(`${name}/${viewport.label}: source textarea has no accessible name`);
       if (ui.resultColumns !== viewport.columns) {
         throw new Error(`${name}/${viewport.label}: expected ${viewport.columns} result columns, found ${ui.resultColumns}`);
       }
