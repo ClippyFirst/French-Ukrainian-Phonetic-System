@@ -21,7 +21,7 @@
     "basic": {
       "purpose": "Readable practical learning notation",
       "rules": [
-        "Ukrainian base graphemes plus UFPN vowel-quality/rounding/nasal markers",
+        "Base graphemes from the extended Cyrillic UFPN inventory plus UFPN vowel-quality/rounding/nasal markers",
         "Preserve phonemic contrasts represented in broad IPA; do not promise to encode every predictable allophone",
         "Omit syllable boundaries, stress, length and gradient allophones",
         "Do not merge /œ̃/ with /ɛ̃/ unless selected profile explicitly does so"
@@ -41,7 +41,7 @@
       "purpose": "Narrow phonetic and prosodic annotation",
       "rules": [
         "All Detailed distinctions",
-        "Pass through standardized IPA modifiers on Ukrainian graphemes",
+        "Pass through standardized IPA modifiers on UFPN graphemes",
         "Preserve ˈ/ˌ, ‖ and ↗/↘ only when supplied by audio annotation",
         "Unknown symbols remain visibly bracketed",
         "Preserve aspiration/release, syllabicity, voice-quality and secondary-articulation modifiers only when supplied by narrow IPA/audio; these are not default French rules."
