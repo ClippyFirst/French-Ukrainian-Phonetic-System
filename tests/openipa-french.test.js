@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { transcribeFrenchWord, transcribeFrenchWordDetailed, transcribeFrenchText } from '../src/french-g2p.js';
+import { transcribeFrenchWord, transcribeFrenchWordDetailed, transcribeFrenchText, transcribeFrenchTextDetailed } from '../src/french-g2p.js';
 
 test('OpenIPA upstream French regression corpus', () => {
   assert.equal(transcribeFrenchWord('calme'), 'kalmə');
@@ -37,4 +37,11 @@ test('text-level parser returns OpenIPA word and line structure', () => {
 
 test('NFC normalization is applied before parsing', () => {
   assert.equal(transcribeFrenchWord('e\u0301clate'), transcribeFrenchWord('éclate'));
+});
+
+test('OpenIPA text-level elision marks final schwa before a vowel as absent', () => {
+  const result = transcribeFrenchTextDetailed('calme ami', { elision: true });
+  const finalE = result.trace.find((item) => item.grapheme === 'e' && item.start === 4);
+  assert.ok(finalE);
+  assert.equal(finalE.ipa, '');
 });
