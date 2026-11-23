@@ -1,0 +1,9 @@
+{
+  "name": "french-ukrainian-phonetic-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A research-led French IPA to Ukrainian phonetic notation workbench.",
+  "scripts": {"test":"node --test", "check":"node --check src/engine.js && node --check src/app.js"},
+  "engines": {"node": ">=20"}
+}
