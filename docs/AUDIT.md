@@ -144,3 +144,10 @@
 - Corrected an overstatement in S37: EURPhon confirms Eastern Mari /œ/ in the phoneme inventory, but does not establish a Mari grapheme `ӧ` for /œ/.
 - The UFPN mapping now labels `ӧ` = /œ/ as a project-specific assignment, chosen to distinguish it from `ө` = /ø/ without adding diacritics. It is not represented as a direct Mari grapheme-to-sound borrowing.
 - `data/ufpn-mapping.json`, `docs/SOURCE-REGISTRY.md`, and `docs/IPA-MAPPING.md` now carry this scope qualification. The runtime output is intentionally unchanged; this is a provenance correction, not a phoneme remapping.
+
+
+## Main deployment status after pronunciation-guide and provenance merges (2026-11-23)
+- Main commit: `f078ba880e34361db1863922f2eb2febe502a86f` (PR #18 articulation guides, PR #19 browser harness correction, PR #20 Mari provenance correction).
+- Main workflow `45264431136`: build, unit tests, syntax and Charis 7 audit passed. Playwright browser installation was still in progress at last check; no final main browser/deploy pass is claimed.
+- PR #19 workflow `45263336209` passed the six browser checks, validating the five-column table and 37/37 articulation guides.
+- Fresh live Pages scrape returned HTTP 200 but still showed the prior four-column table, without «Як вимовити». D3 and W1 therefore remain PARTIAL until the main deployment completes and the live page is re-scraped.
