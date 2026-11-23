@@ -210,3 +210,13 @@ footer a:hover{color:var(--green);text-decoration:underline}
   .ufpn-reference{overflow-x:auto}
   .ufpn-reference .ukrainian-sound-table{min-width:850px}
 }
+
+/* Keep low-confidence cues legible without resembling browser spellcheck marks. */
+.low-confidence{
+  text-decoration-style:dotted;
+  text-decoration-color:#b49b8c;
+  text-decoration-thickness:1px;
+}
+@media(max-width:900px){
+  .bar>div:first-child{flex:1 1 100%}
+}
