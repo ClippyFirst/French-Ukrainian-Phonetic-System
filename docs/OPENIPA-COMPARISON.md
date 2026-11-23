@@ -23,7 +23,7 @@ The source is retained under `vendor/openipa/` with its upstream module layout. 
 
 ## IPA notation boundary
 
-OpenIPA's IPA enum uses Greek epsilon `ε` as a project symbol for the open-mid front vowel. The adapter normalizes that specific symbol to standard IPA `ɛ` before the UFPN adapter and retains the original in `sourceIpa`/per-rule `sourceIpa` fields. Other upstream conventions such as `õ` are not silently guessed into another IPA symbol; if unsupported by UFPN, they remain visible and must be explicitly reconciled.
+OpenIPA's IPA enum uses Greek epsilon `ε` as a project symbol for the open-mid front vowel; the adapter explicitly normalizes it to standard IPA `ɛ`. It also explicitly normalizes OpenIPA's `õ` nasal-O symbol to broad IPA `ɔ̃` before the UFPN adapter. Both original upstream symbols remain available in `sourceIpa` and per-rule trace provenance. French rhotic `ɾ` is adapted by profile: broad Metropolitan output uses `ʁ`, while lyric diction preserves the tap `ɾ`. These are explicit, tested adapter rules, not a generic grapheme-to-UFPN shortcut; other upstream conventions still require case-by-case evidence.
 
 ## Scope and known limitations
 
@@ -38,6 +38,5 @@ The six rows in the upstream French fixture file `src/tests/french/_words.csv` a
 Remaining work:
 - reconcile all upstream IPA conventions with the canonical IPA inventory without guessing;
 - assess upstream's larger French/Latin test corpus for provenance and redistribution conditions before any reuse;
-- assess whether upstream's larger test corpus can be reused; do not import it until its data provenance and redistribution terms are verified;
 - add explicit POS/morphology and h-aspiré coverage only with evidence;
 - browser/mobile/accessibility QA and independent French phonetics review.
