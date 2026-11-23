@@ -2,11 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderUfpn,UFPN_MAPPING,tokenizeIpa} from '../src/ufpn.js';
 test('reference inventory contains 37 entries',()=>assert.equal(UFPN_MAPPING.phonemes.length,37));
-test('Basic preserves front rounded vowel contrasts',()=>assert.equal(renderUfpn('i y ø œ').text,'і і̊ е̊́ е̊̆'));
-test('nasal vowels retain quality, rounding and nasalization',()=>assert.equal(renderUfpn('ɑ̃ ɛ̃ ɔ̃ œ̃').text,'а̠̃ э̃ о̆̃ е̊̆̃'));
-test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal(renderUfpn('ʁ').text,'х̬̠'));
+test('Basic preserves front rounded vowel contrasts',()=>assert.equal(renderUfpn('i y ø œ').text,'і ү ө ӧ'));
+test('nasal vowels retain quality, rounding and nasalization',()=>assert.equal(renderUfpn('ɑ̃ ɛ̃ ɔ̃ œ̃').text,'а̃ э̃ о̆̃ ӧ̃'));
+test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal(renderUfpn('ʁ').text,'ғ'));
 test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'нь нґ'));
-test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бо̆̃·жуːх̬̠'));
+test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бо̆̃·жуːғ'));
 test('Basic suppresses prosodic annotation while Extended preserves it',()=>{
  assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пе̇ті');
  assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпе̇·ті↗');
@@ -27,13 +27,13 @@ test('all mapping records have three levels and source provenance',()=>{
 });
 
 test('documented rhotic allophones have explicit practical mappings',()=>{
- assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ х̬̠̞ р̌ р р̞ х');
+ assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ ғ ғ̞ р̌ р р̞ х');
 });
 
-test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й й̊ ў'));
+test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й ү̯ ў'));
 test('/w/ and /v/ remain distinct in every level',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('w v',level).text,'ў в')});
 test('/ɛ/ uses э and nasal /ɛ̃/ preserves its nasal marker',()=>assert.equal(renderUfpn('ɛ ɛ̃').text,'э э̃'));
-test('extended Cyrillic inventory records adopted graphemes and rejected candidates',()=>{const g=UFPN_MAPPING.graphemeInventory;assert.ok(g.adopted.some(x=>x.grapheme==='ў'&&x.ipa.includes('w')));assert.ok(g.adopted.some(x=>x.grapheme==='э'&&x.ipa.includes('ɛ')));assert.ok(g.candidates.some(x=>x.grapheme==='ы'&&x.decision==='NOT_ASSIGNED'));assert.ok(g.candidates.some(x=>x.grapheme==='ё'&&x.decision==='NOT_ASSIGNED'))});
+test('extended Cyrillic inventory records adopted graphemes and rejected candidates',()=>{const g=UFPN_MAPPING.graphemeInventory;assert.ok(g.adopted.some(x=>x.grapheme==='ў'&&x.ipa.includes('w')));assert.ok(g.adopted.some(x=>x.grapheme==='э'&&x.ipa.includes('ɛ')));assert.ok(g.adopted.some(x=>x.grapheme==='ү'&&x.ipa.includes('y')));assert.ok(g.adopted.some(x=>x.grapheme==='ө'&&x.ipa.includes('ø')));assert.ok(g.adopted.some(x=>x.grapheme==='ӧ'&&x.ipa.includes('œ')));assert.ok(g.adopted.some(x=>x.grapheme==='њ'&&x.ipa.includes('ɲ')));assert.ok(g.adopted.some(x=>x.grapheme==='ң'&&x.ipa.includes('ŋ')));assert.ok(g.adopted.some(x=>x.grapheme==='ғ'&&x.ipa.includes('ʁ')));assert.ok(g.candidates.some(x=>x.grapheme==='ы'&&x.decision==='NOT_ASSIGNED'));assert.ok(g.candidates.some(x=>x.grapheme==='ё'&&x.decision==='NOT_ASSIGNED'))});
 test('Québec coronal affricates preserve the tie bar in every UFPN level',()=>{
  assert.equal(renderUfpn('t͡s d͡z','basic').text,'т͡с д͡з');
  assert.equal(renderUfpn('t͜s d͜z','extended').text,'т͜с д͜з');
@@ -59,7 +59,7 @@ test('Extended preserves optional aspiration, release, syllabicity and voice-qua
 });
 
 test('IPA mapping schema declares all registries used by the adapter',()=>{
- assert.equal(UFPN_MAPPING.schemaVersion,'1.1.0');
+ assert.equal(UFPN_MAPPING.schemaVersion,'1.2.0');
  assert.ok(Array.isArray(UFPN_MAPPING.allophones));
  assert.ok(Array.isArray(UFPN_MAPPING.processes));
  assert.ok(Array.isArray(UFPN_MAPPING.profiles));
@@ -106,4 +106,16 @@ test('UFPN display keeps affricate tie bars in the same native text run',()=>{
  const container={replaceChildren(){},append(){},set textContent(v){this.rendered=v}};
  renderUfpnDisplay(container,value);
  assert.equal(container.rendered,value.normalize('NFC'));
+});
+
+test('Basic uses dedicated extended Cyrillic letters instead of stacked quality marks where exact graphemes exist',()=>{
+ assert.equal(renderUfpn('y ø œ ɲ ŋ ʁ').text,'ү ө ӧ њ ң ғ');
+});
+test('every phoneme has a Ukrainian sound example or an explicit no-equivalent statement',()=>{
+ for(const p of UFPN_MAPPING.phonemes){
+  assert.ok(p.ukrainianExampleStatus,p.id+' status');
+  assert.ok(p.ukrainianExample,p.id+' example or dash');
+  assert.ok(p.ukrainianExampleNote,p.id+' explanation');
+  assert.ok(['EXACT','CONTEXTUAL','APPROXIMATE','NONE'].includes(p.ukrainianExampleStatus),p.id+' status enum');
+ }
 });
