@@ -58,3 +58,8 @@
 - Font-only changes did not resolve detached Cyrillic marks.
 - Branch `fix/deterministic-cyrillic-diacritic-layout` adds explicit visual mark placement in `src/ufpn-display.js` and `styles.css`; tests cover decomposition of stacked marks.
 - PR #4 and PR #5 are merged; main run 45201504905 passed build, tests, syntax checks and Pages deployment for `214c65e527b83a565371309599fa2d47251cd6d4`. This has not yet been visually accepted by the owner. Do not call the issue resolved until the deployed page is checked.
+
+
+## Diacritic spacing refinement
+- Owner feedback: marks moved too high and had excessive gap to the base letter.
+- Follow-up changes only CSS geometry (`styles.css`): remove top padding from each grapheme wrapper, move above marks closer, and tighten stacked-mark spacing. No mapping or Unicode sequence changes. Awaiting CI/deployment and owner visual check.
