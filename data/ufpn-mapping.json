@@ -1,0 +1,2315 @@
+{
+  "schemaVersion": "1.1.0",
+  "notation": "UFPN",
+  "title": "Ukrainian French Phonetic Notation",
+  "status": "EXPERIMENTAL_RESEARCH_SPECIFICATION",
+  "unicode": {
+    "normalization": "NFC",
+    "graphemeAware": true,
+    "doNotSplitCombiningSequences": true,
+    "unknownIpaPolicy": "preserve as ⟦IPA⟧ and report unsupported"
+  },
+  "designPrinciples": [
+    "IPA is the canonical phonetic input; UFPN never reads French graphemes.",
+    "Basic preserves phonemic contrasts in broad IPA; predictable allophones and gradient coarticulation may be omitted unless profile-relevant.",
+    "Each custom diacritic has one documented UFPN meaning.",
+    "Detailed/Extended distinguish phonological categories from observed phonetic realizations.",
+    "Allophone/prosody marks require evidence; spelling/punctuation alone are insufficient.",
+    "Never invent speaker-specific realizations."
+  ],
+  "levels": {
+    "basic": {
+      "purpose": "Readable practical learning notation",
+      "rules": [
+        "Ukrainian base graphemes plus UFPN vowel-quality/rounding/nasal markers",
+        "Preserve phonemic contrasts represented in broad IPA; do not promise to encode every predictable allophone",
+        "Omit syllable boundaries, stress, length and gradient allophones",
+        "Do not merge /œ̃/ with /ɛ̃/ unless selected profile explicitly does so"
+      ]
+    },
+    "detailed": {
+      "purpose": "Segment-accurate teaching notation",
+      "rules": [
+        "All Basic phonemic distinctions",
+        "Syllable boundary ·",
+        "Retain ː and ˑ only when present in IPA",
+        "Retain ‿ only when supplied by analysis",
+        "Keep discrete profile/lexical allophone mappings when they affect the chosen broad representation; gradient coarticulation is Extended-only"
+      ]
+    },
+    "extended": {
+      "purpose": "Narrow phonetic and prosodic annotation",
+      "rules": [
+        "All Detailed distinctions",
+        "Pass through standardized IPA modifiers on Ukrainian graphemes",
+        "Preserve ˈ/ˌ, ‖ and ↗/↘ only when supplied by audio annotation",
+        "Unknown symbols remain visibly bracketed",
+        "Preserve aspiration/release, syllabicity, voice-quality and secondary-articulation modifiers only when supplied by narrow IPA/audio; these are not default French rules."
+      ]
+    }
+  },
+  "diacritics": [
+    {
+      "id": "rounding",
+      "glyph": "◌̊",
+      "unicode": "U+030A",
+      "meaning": "UFPN: огублення переднього голосного/апроксиманта; лише в оголошених mapping-записах."
+    },
+    {
+      "id": "close-mid",
+      "glyph": "◌́",
+      "unicode": "U+0301",
+      "meaning": "UFPN: напівзакрита якість середнього голосного."
+    },
+    {
+      "id": "open-mid",
+      "glyph": "◌̆",
+      "unicode": "U+0306",
+      "meaning": "UFPN: напіввідкрита якість середнього голосного."
+    },
+    {
+      "id": "backing",
+      "glyph": "◌̠",
+      "unicode": "U+0320",
+      "meaning": "UFPN: задніша/увулярна артикуляція; входить до базових знаків /ɑ/ та /ʁ/. Це практичний маркер, не вузьке вимірювання місця творення."
+    },
+    {
+      "id": "nasal",
+      "glyph": "◌̃",
+      "unicode": "U+0303",
+      "meaning": "Носовість цілого голосного сегмента; не ставити автоматично для коартикуляції."
+    },
+    {
+      "id": "schwa",
+      "glyph": "◌̇",
+      "unicode": "U+0307",
+      "meaning": "Центральний редукований голосний /ə/."
+    },
+    {
+      "id": "voicing",
+      "glyph": "◌̬",
+      "unicode": "U+032C",
+      "meaning": "UFPN: дзвінкість; входить до базового знака /ʁ/ (х̬̠), а в Extended застосовується до інших сегментів лише за вузьким IPA."
+    },
+    {
+      "id": "devoicing",
+      "glyph": "◌̥",
+      "unicode": "U+0325",
+      "meaning": "Extended: оглушення, якщо підтверджене."
+    },
+    {
+      "id": "advanced",
+      "glyph": "◌̟",
+      "unicode": "U+031F",
+      "meaning": "Extended: висунута артикуляція."
+    },
+    {
+      "id": "palatalized",
+      "glyph": "◌ʲ",
+      "unicode": "U+02B2",
+      "meaning": "Extended: палаталізація."
+    },
+    {
+      "id": "labialized",
+      "glyph": "◌ʷ",
+      "unicode": "U+02B7",
+      "meaning": "Extended: додаткове огублення приголосного."
+    },
+    {
+      "id": "lowered",
+      "glyph": "◌̞",
+      "unicode": "U+031E",
+      "meaning": "Extended: послаблена/нижча артикуляція."
+    },
+    {
+      "id": "raised",
+      "glyph": "◌̝",
+      "unicode": "U+031D",
+      "meaning": "Extended: підвищена артикуляція/посилена фрикація."
+    },
+    {
+      "id": "length",
+      "glyph": "ː",
+      "unicode": "U+02D0",
+      "meaning": "Фонетична довгота; не виводиться з орфографії."
+    },
+    {
+      "id": "half-length",
+      "glyph": "ˑ",
+      "unicode": "U+02D1",
+      "meaning": "Напівдовгота у вузькій транскрипції."
+    },
+    {
+      "id": "primary-prominence",
+      "glyph": "ˈ",
+      "unicode": "U+02C8",
+      "meaning": "Первинна фразова виділеність; не лексичний наголос."
+    },
+    {
+      "id": "secondary-prominence",
+      "glyph": "ˌ",
+      "unicode": "U+02CC",
+      "meaning": "Вторинна фразова виділеність."
+    },
+    {
+      "id": "syllable-boundary",
+      "glyph": "·",
+      "unicode": "U+00B7",
+      "meaning": "Межа складу."
+    },
+    {
+      "id": "linking",
+      "glyph": "‿",
+      "unicode": "U+203F",
+      "meaning": "Зв'язування на межі слів; liaison/enchaînement розрізняються provenance."
+    },
+    {
+      "id": "phrase-boundary",
+      "glyph": "‖",
+      "unicode": "U+2016",
+      "meaning": "Межа ритмічної/інтонаційної групи."
+    },
+    {
+      "id": "intonation-rise",
+      "glyph": "↗",
+      "unicode": "U+2197",
+      "meaning": "Висхідний контур лише з аудіоанотації."
+    },
+    {
+      "id": "intonation-fall",
+      "glyph": "↘",
+      "unicode": "U+2198",
+      "meaning": "Низхідний контур лише з аудіоанотації."
+    },
+    {
+      "id": "tap",
+      "glyph": "◌̌",
+      "unicode": "U+030C COMBINING CARON",
+      "meaning": "UFPN: короткий альвеолярний одноударний ротичний у регіональному allophone mapping (р̌); не змішувати з відкритістю голосних."
+    },
+    {
+      "id": "glide",
+      "glyph": "◌̯",
+      "unicode": "U+032F COMBINING INVERTED BREVE BELOW",
+      "meaning": "IPA combining mark for non-syllabic status. Retained for genuinely non-syllabic realizations in Extended input; /w/ has its own UFPN grapheme ў and is no longer rendered as в̯."
+    },
+    {
+      "id": "aspiration",
+      "glyph": "ʰ",
+      "unicode": "U+02B0 MODIFIER LETTER SMALL H",
+      "meaning": "Extended: придих після приголосного; не є типовою контрастною ознакою французьких глухих проривних, не додавати без вузького IPA."
+    },
+    {
+      "id": "unreleased",
+      "glyph": "◌̚",
+      "unicode": "U+031A COMBINING LEFT ANGLE ABOVE",
+      "meaning": "Extended: відсутній чутний вибух/нерелізований зімкнений; лише за аудіодоказом."
+    },
+    {
+      "id": "syllabic",
+      "glyph": "◌̩",
+      "unicode": "U+0329 COMBINING VERTICAL LINE BELOW",
+      "meaning": "Extended: складотворчий приголосний; не припускати для звичайної французької форми."
+    },
+    {
+      "id": "breathy-voice",
+      "glyph": "◌̤",
+      "unicode": "U+0324 COMBINING DIAERESIS BELOW",
+      "meaning": "Extended: придихова фонація голосного/сонорного; потребує аудіоакустичного підтвердження."
+    },
+    {
+      "id": "creaky-voice",
+      "glyph": "◌̰",
+      "unicode": "U+0330 COMBINING TILDE BELOW",
+      "meaning": "Extended: скрипуча фонація; потребує аудіоакустичного підтвердження."
+    },
+    {
+      "id": "more-rounded",
+      "glyph": "◌̹",
+      "unicode": "U+0339 COMBINING RIGHT HALF RING BELOW",
+      "meaning": "Extended: додаткове огублення; не плутати з базовим округленням передніх голосних."
+    },
+    {
+      "id": "less-rounded",
+      "glyph": "◌̜",
+      "unicode": "U+031C COMBINING LEFT HALF RING BELOW",
+      "meaning": "Extended: послаблене огублення."
+    },
+    {
+      "id": "velarized",
+      "glyph": "ˠ",
+      "unicode": "U+02E0 MODIFIER LETTER SMALL GAMMA",
+      "meaning": "Extended: веляризована вторинна артикуляція."
+    },
+    {
+      "id": "pharyngealized",
+      "glyph": "ˤ",
+      "unicode": "U+02E4 MODIFIER LETTER SMALL REVERSED GLOTTAL STOP",
+      "meaning": "Extended: фарингалізована вторинна артикуляція; не вважати типовою для стандартної французької."
+    },
+    {
+      "id": "rhoticized",
+      "glyph": "˞",
+      "unicode": "U+02DE MODIFIER LETTER RHOTIC HOOK",
+      "meaning": "Extended: ротичність голосного/сегмента, якщо вона наявна у вузькому IPA."
+    },
+    {
+      "id": "nasal-release",
+      "glyph": "ⁿ",
+      "unicode": "U+207F SUPERSCRIPT LATIN SMALL LETTER N",
+      "meaning": "Extended: носовий випуск зімкненого приголосного."
+    },
+    {
+      "id": "lateral-release",
+      "glyph": "ˡ",
+      "unicode": "U+02E1 MODIFIER LETTER SMALL L",
+      "meaning": "Extended: боковий випуск зімкненого приголосного."
+    }
+  ],
+  "phonemes": [
+    {
+      "id": "v_i",
+      "ipa": "i",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front close unrounded",
+      "descriptionUk": "передній високий неогублений",
+      "baseGrapheme": "і",
+      "diacritics": [],
+      "basic": "і",
+      "detailed": "і",
+      "extended": "і",
+      "features": [],
+      "examples": [
+        "vite",
+        "si"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_e",
+      "ipa": "e",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front close-mid unrounded",
+      "descriptionUk": "передній напівзакритий неогублений",
+      "baseGrapheme": "е",
+      "diacritics": [
+        "́"
+      ],
+      "basic": "е́",
+      "detailed": "е́",
+      "extended": "е́",
+      "features": [],
+      "examples": [
+        "été",
+        "parler"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_eps",
+      "ipa": "ɛ",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front open-mid unrounded",
+      "descriptionUk": "передній напіввідкритий неогублений",
+      "baseGrapheme": "э",
+      "diacritics": [],
+      "basic": "э",
+      "detailed": "э",
+      "extended": "э",
+      "features": [],
+      "examples": [
+        "mère",
+        "fête"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S31",
+        "S32"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э"
+    },
+    {
+      "id": "v_a",
+      "ipa": "a",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "open unrounded",
+      "descriptionUk": "відкритий неогублений; передність варіює",
+      "baseGrapheme": "а",
+      "diacritics": [],
+      "basic": "а",
+      "detailed": "а",
+      "extended": "а",
+      "features": [],
+      "examples": [
+        "patte",
+        "chat"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_alpha",
+      "ipa": "ɑ",
+      "category": "vowel",
+      "phonologicalStatus": "MARGINAL",
+      "articulation": "back open unrounded",
+      "descriptionUk": "задній відкритий; контраст /a–ɑ/ часто нейтралізований",
+      "baseGrapheme": "а",
+      "diacritics": [
+        "̠"
+      ],
+      "basic": "а̠",
+      "detailed": "а̠",
+      "extended": "а̠",
+      "features": [],
+      "examples": [
+        "pâte"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "variable",
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+    },
+    {
+      "id": "v_y",
+      "ipa": "y",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front close rounded",
+      "descriptionUk": "передній високий огублений",
+      "baseGrapheme": "і",
+      "diacritics": [
+        "̊"
+      ],
+      "basic": "і̊",
+      "detailed": "і̊",
+      "extended": "і̊",
+      "features": [],
+      "examples": [
+        "lune",
+        "tu"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_oe_close",
+      "ipa": "ø",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front close-mid rounded",
+      "descriptionUk": "передній напівзакритий огублений",
+      "baseGrapheme": "е",
+      "diacritics": [
+        "̊",
+        "́"
+      ],
+      "basic": "е̊́",
+      "detailed": "е̊́",
+      "extended": "е̊́",
+      "features": [],
+      "examples": [
+        "deux",
+        "peu"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_oe_open",
+      "ipa": "œ",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front open-mid rounded",
+      "descriptionUk": "передній напіввідкритий огублений",
+      "baseGrapheme": "е",
+      "diacritics": [
+        "̊",
+        "̆"
+      ],
+      "basic": "е̊̆",
+      "detailed": "е̊̆",
+      "extended": "е̊̆",
+      "features": [],
+      "examples": [
+        "peur",
+        "sœur"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_u",
+      "ipa": "u",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "back close rounded",
+      "descriptionUk": "задній високий огублений",
+      "baseGrapheme": "у",
+      "diacritics": [],
+      "basic": "у",
+      "detailed": "у",
+      "extended": "у",
+      "features": [],
+      "examples": [
+        "roue",
+        "tout"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_o",
+      "ipa": "o",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "back close-mid rounded",
+      "descriptionUk": "задній напівзакритий огублений",
+      "baseGrapheme": "о",
+      "diacritics": [
+        "́"
+      ],
+      "basic": "о́",
+      "detailed": "о́",
+      "extended": "о́",
+      "features": [],
+      "examples": [
+        "beau",
+        "mot"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_open_o",
+      "ipa": "ɔ",
+      "category": "vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "back open-mid rounded",
+      "descriptionUk": "задній напіввідкритий огублений",
+      "baseGrapheme": "о",
+      "diacritics": [
+        "̆"
+      ],
+      "basic": "о̆",
+      "detailed": "о̆",
+      "extended": "о̆",
+      "features": [],
+      "examples": [
+        "porte",
+        "bonne"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "v_schwa",
+      "ipa": "ə",
+      "category": "vowel",
+      "phonologicalStatus": "VARIABLE",
+      "articulation": "central mid variable",
+      "descriptionUk": "центральний середній редукований, варіативний",
+      "baseGrapheme": "е",
+      "diacritics": [
+        "̇"
+      ],
+      "basic": "е̇",
+      "detailed": "е̇",
+      "extended": "е̇",
+      "features": [],
+      "examples": [
+        "petit",
+        "semaine"
+      ],
+      "sources": [
+        "S1",
+        "S9",
+        "S12"
+      ],
+      "confidence": "variable",
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+    },
+    {
+      "id": "nv_alpha",
+      "ipa": "ɑ̃",
+      "category": "nasal-vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "back open nasal",
+      "descriptionUk": "задній відкритий носовий; якість варіює",
+      "baseGrapheme": "а",
+      "diacritics": [
+        "̠",
+        "̃"
+      ],
+      "basic": "а̠̃",
+      "detailed": "а̠̃",
+      "extended": "а̠̃",
+      "features": [],
+      "examples": [
+        "temps",
+        "dans"
+      ],
+      "sources": [
+        "S1",
+        "S10"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "nv_eps",
+      "ipa": "ɛ̃",
+      "category": "nasal-vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "front open-mid nasal",
+      "descriptionUk": "передній носовий; можливе злиття з /œ̃/",
+      "baseGrapheme": "э",
+      "diacritics": [
+        "̃"
+      ],
+      "basic": "э̃",
+      "detailed": "э̃",
+      "extended": "э̃",
+      "features": [],
+      "examples": [
+        "vin",
+        "pain"
+      ],
+      "sources": [
+        "S1",
+        "S10",
+        "S31",
+        "S32"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark"
+    },
+    {
+      "id": "nv_open_o",
+      "ipa": "ɔ̃",
+      "category": "nasal-vowel",
+      "phonologicalStatus": "CORE",
+      "articulation": "back open-mid rounded nasal",
+      "descriptionUk": "задній огублений носовий",
+      "baseGrapheme": "о",
+      "diacritics": [
+        "̆",
+        "̃"
+      ],
+      "basic": "о̆̃",
+      "detailed": "о̆̃",
+      "extended": "о̆̃",
+      "features": [],
+      "examples": [
+        "bon",
+        "nom"
+      ],
+      "sources": [
+        "S1",
+        "S10"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "nv_oe",
+      "ipa": "œ̃",
+      "category": "nasal-vowel",
+      "phonologicalStatus": "VARIABLE",
+      "articulation": "front open-mid rounded nasal",
+      "descriptionUk": "передній огублений носовий; часто злитий з /ɛ̃/",
+      "baseGrapheme": "е",
+      "diacritics": [
+        "̊",
+        "̆",
+        "̃"
+      ],
+      "basic": "е̊̆̃",
+      "detailed": "е̊̆̃",
+      "extended": "е̊̆̃",
+      "features": [],
+      "examples": [
+        "brun",
+        "parfum"
+      ],
+      "sources": [
+        "S1",
+        "S10"
+      ],
+      "confidence": "variable",
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+    },
+    {
+      "id": "g_j",
+      "ipa": "j",
+      "category": "glide",
+      "phonologicalStatus": "CORE",
+      "articulation": "palatal approximant",
+      "descriptionUk": "піднебінний апроксимант",
+      "baseGrapheme": "й",
+      "diacritics": [],
+      "basic": "й",
+      "detailed": "й",
+      "extended": "й",
+      "features": [],
+      "examples": [
+        "yeux",
+        "fille"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "g_h",
+      "ipa": "ɥ",
+      "category": "glide",
+      "phonologicalStatus": "CORE",
+      "articulation": "labial-palatal approximant",
+      "descriptionUk": "огублений піднебінний апроксимант",
+      "baseGrapheme": "й",
+      "diacritics": [
+        "̊"
+      ],
+      "basic": "й̊",
+      "detailed": "й̊",
+      "extended": "й̊",
+      "features": [],
+      "examples": [
+        "huit",
+        "lui"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "g_w",
+      "ipa": "w",
+      "category": "glide",
+      "phonologicalStatus": "CORE",
+      "articulation": "labial-velar approximant",
+      "descriptionUk": "огублений губно-велярний апроксимант",
+      "baseGrapheme": "ў",
+      "diacritics": [],
+      "basic": "ў",
+      "detailed": "ў",
+      "extended": "ў",
+      "features": [],
+      "examples": [
+        "oui",
+        "ouest"
+      ],
+      "sources": [
+        "S1",
+        "S31",
+        "S32"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
+      "graphemeOrigin": "Belarusian Cyrillic letter ў"
+    },
+    {
+      "id": "c_p",
+      "ipa": "p",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless bilabial stop",
+      "descriptionUk": "глухий губно-губний проривний",
+      "baseGrapheme": "п",
+      "diacritics": [],
+      "basic": "п",
+      "detailed": "п",
+      "extended": "п",
+      "features": [],
+      "examples": [
+        "père",
+        "appel"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_b",
+      "ipa": "b",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced bilabial stop",
+      "descriptionUk": "дзвінкий губно-губний проривний",
+      "baseGrapheme": "б",
+      "diacritics": [],
+      "basic": "б",
+      "detailed": "б",
+      "extended": "б",
+      "features": [],
+      "examples": [
+        "bon",
+        "beau"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_t",
+      "ipa": "t",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless dental/alveolar stop",
+      "descriptionUk": "глухий зубний/альвеолярний проривний",
+      "baseGrapheme": "т",
+      "diacritics": [],
+      "basic": "т",
+      "detailed": "т",
+      "extended": "т",
+      "features": [],
+      "examples": [
+        "tout",
+        "temps"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_d",
+      "ipa": "d",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced dental/alveolar stop",
+      "descriptionUk": "дзвінкий зубний/альвеолярний проривний",
+      "baseGrapheme": "д",
+      "diacritics": [],
+      "basic": "д",
+      "detailed": "д",
+      "extended": "д",
+      "features": [],
+      "examples": [
+        "dans",
+        "deux"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_k",
+      "ipa": "k",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless velar stop",
+      "descriptionUk": "глухий велярний проривний",
+      "baseGrapheme": "к",
+      "diacritics": [],
+      "basic": "к",
+      "detailed": "к",
+      "extended": "к",
+      "features": [],
+      "examples": [
+        "café",
+        "qui"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_g",
+      "ipa": "ɡ",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced velar stop",
+      "descriptionUk": "дзвінкий велярний проривний",
+      "baseGrapheme": "ґ",
+      "diacritics": [],
+      "basic": "ґ",
+      "detailed": "ґ",
+      "extended": "ґ",
+      "features": [],
+      "examples": [
+        "gare",
+        "gagner"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_f",
+      "ipa": "f",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless labiodental fricative",
+      "descriptionUk": "глухий губно-зубний щілинний",
+      "baseGrapheme": "ф",
+      "diacritics": [],
+      "basic": "ф",
+      "detailed": "ф",
+      "extended": "ф",
+      "features": [],
+      "examples": [
+        "feu",
+        "femme"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_v",
+      "ipa": "v",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced labiodental fricative",
+      "descriptionUk": "дзвінкий губно-зубний щілинний",
+      "baseGrapheme": "в",
+      "diacritics": [],
+      "basic": "в",
+      "detailed": "в",
+      "extended": "в",
+      "features": [],
+      "examples": [
+        "vous",
+        "vie"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_s",
+      "ipa": "s",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless alveolar fricative",
+      "descriptionUk": "глухий альвеолярний щілинний",
+      "baseGrapheme": "с",
+      "diacritics": [],
+      "basic": "с",
+      "detailed": "с",
+      "extended": "с",
+      "features": [],
+      "examples": [
+        "sac",
+        "merci"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_z",
+      "ipa": "z",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced alveolar fricative",
+      "descriptionUk": "дзвінкий альвеолярний щілинний",
+      "baseGrapheme": "з",
+      "diacritics": [],
+      "basic": "з",
+      "detailed": "з",
+      "extended": "з",
+      "features": [],
+      "examples": [
+        "zéro",
+        "maison"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_sh",
+      "ipa": "ʃ",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiceless postalveolar fricative",
+      "descriptionUk": "глухий постальвеолярний щілинний",
+      "baseGrapheme": "ш",
+      "diacritics": [],
+      "basic": "ш",
+      "detailed": "ш",
+      "extended": "ш",
+      "features": [],
+      "examples": [
+        "chat",
+        "chien"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_zh",
+      "ipa": "ʒ",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "voiced postalveolar fricative",
+      "descriptionUk": "дзвінкий постальвеолярний щілинний",
+      "baseGrapheme": "ж",
+      "diacritics": [],
+      "basic": "ж",
+      "detailed": "ж",
+      "extended": "ж",
+      "features": [],
+      "examples": [
+        "jour",
+        "je"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_m",
+      "ipa": "m",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "bilabial nasal",
+      "descriptionUk": "губно-губний носовий",
+      "baseGrapheme": "м",
+      "diacritics": [],
+      "basic": "м",
+      "detailed": "м",
+      "extended": "м",
+      "features": [],
+      "examples": [
+        "mère",
+        "amour"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_n",
+      "ipa": "n",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "dental/alveolar nasal",
+      "descriptionUk": "зубний/альвеолярний носовий",
+      "baseGrapheme": "н",
+      "diacritics": [],
+      "basic": "н",
+      "detailed": "н",
+      "extended": "н",
+      "features": [],
+      "examples": [
+        "nous",
+        "non"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_ny",
+      "ipa": "ɲ",
+      "category": "consonant",
+      "phonologicalStatus": "VARIABLE",
+      "articulation": "palatal nasal",
+      "descriptionUk": "піднебінний носовий; можливі [nj] або [n]",
+      "baseGrapheme": "нь",
+      "diacritics": [],
+      "basic": "нь",
+      "detailed": "нь",
+      "extended": "нь",
+      "features": [],
+      "examples": [
+        "agneau",
+        "montagne"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "variable",
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+    },
+    {
+      "id": "c_ng",
+      "ipa": "ŋ",
+      "category": "consonant",
+      "phonologicalStatus": "PERIPHERAL",
+      "articulation": "velar nasal",
+      "descriptionUk": "велярний носовий, периферійний у запозиченнях",
+      "baseGrapheme": "нґ",
+      "diacritics": [],
+      "basic": "нґ",
+      "detailed": "нґ",
+      "extended": "нґ",
+      "features": [],
+      "examples": [
+        "camping",
+        "parking"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "variable",
+      "evidenceStatus": "VARIANT_OR_PERIPHERAL"
+    },
+    {
+      "id": "c_l",
+      "ipa": "l",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "alveolar lateral approximant",
+      "descriptionUk": "альвеолярний боковий апроксимант",
+      "baseGrapheme": "л",
+      "diacritics": [],
+      "basic": "л",
+      "detailed": "л",
+      "extended": "л",
+      "features": [],
+      "examples": [
+        "lune",
+        "livre"
+      ],
+      "sources": [
+        "S1"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "c_r",
+      "ipa": "ʁ",
+      "category": "consonant",
+      "phonologicalStatus": "CORE",
+      "articulation": "uvular rhotic variable manner/voicing",
+      "descriptionUk": "увулярний ротичний; фрикативна/апроксимантна/тремтлива варіативність",
+      "baseGrapheme": "х",
+      "diacritics": [
+        "̬",
+        "̠"
+      ],
+      "basic": "х̬̠",
+      "detailed": "х̬̠",
+      "extended": "х̬̠",
+      "features": [],
+      "examples": [
+        "rue",
+        "Paris"
+      ],
+      "sources": [
+        "S19",
+        "S20"
+      ],
+      "confidence": "medium",
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    }
+  ],
+  "allophones": [
+    {
+      "id": "r-uvular-manner",
+      "phoneme": "ʁ",
+      "realizations": [
+        "ʁ",
+        "ʁ̞",
+        "χ",
+        "ʀ",
+        "ɣ"
+      ],
+      "scope": "metropolitan; speaker/context dependent",
+      "decision": "Basic/Detailed retain х̬̠; Extended only preserves observed narrow IPA. Never infer allophone without audio.",
+      "sources": [
+        "S19",
+        "S20"
+      ]
+    },
+    {
+      "id": "ny-variable",
+      "phoneme": "ɲ",
+      "realizations": [
+        "ɲ",
+        "nj",
+        "n"
+      ],
+      "scope": "some contemporary Parisian speakers",
+      "decision": "нь is practical base; alternatives remain speaker/lexeme-specific.",
+      "sources": [
+        "S17"
+      ]
+    },
+    {
+      "id": "nasal-merger",
+      "phoneme": "œ̃",
+      "realizations": [
+        "œ̃",
+        "ɛ̃"
+      ],
+      "scope": "widespread in northern/supralocal/Parisian speech, not universal",
+      "decision": "Keep /œ̃/ in mapping; merge only in explicitly selected profile.",
+      "sources": [
+        "S10"
+      ]
+    },
+    {
+      "id": "low-vowel-merger",
+      "phoneme": "ɑ",
+      "realizations": [
+        "ɑ",
+        "a"
+      ],
+      "scope": "many Metropolitan French speakers, with regional/generational variation",
+      "decision": "Keep both IPA values; profile may mark contrast merged.",
+      "sources": [
+        "S12"
+      ]
+    },
+    {
+      "id": "mid-vowel-height",
+      "phoneme": "e ɛ ø œ o ɔ",
+      "realizations": [
+        "higher",
+        "lower",
+        "overlap in unstressed contexts"
+      ],
+      "scope": "Parisian and metropolitan; syllable structure/duration/speaker",
+      "decision": "Do not infer quality from spelling alone.",
+      "sources": [
+        "S9"
+      ]
+    },
+    {
+      "id": "schwa-deletion",
+      "phoneme": "ə",
+      "realizations": [
+        "ə",
+        "∅",
+        "reduced ə"
+      ],
+      "scope": "lexical, prosodic, dialectal, stylistic",
+      "decision": "Distinguish categorical deletion from gradient reduction.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
+    },
+    {
+      "id": "schwa-epenthesis",
+      "phoneme": "ə",
+      "realizations": [
+        "ə",
+        "excrescent vocoid",
+        "∅"
+      ],
+      "scope": "external sandhi and dialect/style-sensitive",
+      "decision": "Separate intrusive phonetic vocoid from phonological epenthesis.",
+      "sources": [
+        "S16",
+        "S18"
+      ]
+    },
+    {
+      "id": "nasal-coarticulation",
+      "phoneme": "V",
+      "realizations": [
+        "V",
+        "Ṽ",
+        "gradient nasalization"
+      ],
+      "scope": "adjacent nasal consonants; vowel height and direction matter",
+      "decision": "Extended requires narrow IPA/audio evidence.",
+      "sources": [
+        "S8"
+      ]
+    },
+    {
+      "id": "nasal-chain-shift",
+      "phoneme": "ɛ̃ ɑ̃ ɔ̃",
+      "realizations": [
+        "lower/backed ɛ̃",
+        "backed/raised ɑ̃",
+        "raised/rounded ɔ̃"
+      ],
+      "scope": "contemporary Parisian change; speaker-specific",
+      "decision": "Do not make this a universal pan-French mapping.",
+      "sources": [
+        "S10"
+      ]
+    },
+    {
+      "id": "mid-vowel-neutralization",
+      "phoneme": "e ɛ ø œ",
+      "realizations": [
+        "overlap/neutralization in unstressed positions"
+      ],
+      "scope": "Parisian; context/duration/social variation",
+      "decision": "Keep lexical and phonetic layers separate.",
+      "sources": [
+        "S9"
+      ]
+    },
+    {
+      "id": "k-palatalization",
+      "phoneme": "k",
+      "realizations": [
+        "k",
+        "kʲ"
+      ],
+      "scope": "socially patterned Parisian variation",
+      "decision": "Extended only with profile/audio evidence.",
+      "sources": [
+        "S17"
+      ]
+    },
+    {
+      "id": "quebec-rhotic",
+      "phoneme": "ʁ",
+      "realizations": [
+        "ɾ",
+        "r",
+        "ɹ",
+        "ɣ",
+        "x",
+        "ʀ",
+        "χ",
+        "ʁ̞",
+        "∅"
+      ],
+      "scope": "Québec; regional/age variation",
+      "decision": "Separate regional profile; never mix into metropolitan default.",
+      "sources": [
+        "S20"
+      ]
+    },
+    {
+      "id": "liaison",
+      "phoneme": "latent consonant",
+      "realizations": [
+        "∅",
+        "z",
+        "t",
+        "n",
+        "ʁ",
+        "p",
+        "ɡ"
+      ],
+      "scope": "lexically stored, syntactically constrained, stylistically variable",
+      "decision": "Need lexical and syntactic evidence; current engine has only a narrow seed subset.",
+      "sources": [
+        "S5",
+        "S6"
+      ]
+    },
+    {
+      "id": "enchaînement",
+      "phoneme": "final consonant",
+      "realizations": [
+        "resyllabified onset"
+      ],
+      "scope": "word-boundary vowel onset",
+      "decision": "Preserve consonant and mark cross-word syllabification only when supported.",
+      "sources": [
+        "S5",
+        "S7"
+      ]
+    },
+    {
+      "id": "phrase-final-lengthening",
+      "phoneme": "syllable",
+      "realizations": [
+        "increased duration"
+      ],
+      "scope": "accentual/intonational phrase boundary",
+      "decision": "Only mark ː/ˑ with audio/annotated prosody.",
+      "sources": [
+        "S21"
+      ]
+    },
+    {
+      "id": "foreign-h",
+      "phoneme": "h",
+      "realizations": [
+        "h",
+        "∅",
+        "language-specific"
+      ],
+      "scope": "loanwords/code-switching",
+      "decision": "French h aspiré is not pronounced [h]; it is a morphophonological boundary class.",
+      "sources": [
+        "S1"
+      ]
+    },
+    {
+      "id": "quebec-coronal-affrication",
+      "phoneme": "t d",
+      "realizations": [
+        "t͡s",
+        "d͡z"
+      ],
+      "scope": "Québec French before high front vowels /i y/ and corresponding glides; profile-specific",
+      "decision": "Map only when Québec profile or a supplied narrow IPA confirms affrication; do not apply to Metropolitan French.",
+      "sources": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "nasal-place-assimilation",
+      "phoneme": "n",
+      "realizations": [
+        "n",
+        "n͡ŋ"
+      ],
+      "scope": "French cross-word /n/+velar-stop sequences; gradient and speaker-dependent",
+      "decision": "Do not replace /n/ categorically with /ŋ/; Extended may render overlapping gesture only when narrow IPA/audio supports it.",
+      "sources": [
+        "S29"
+      ]
+    },
+    {
+      "id": "fricative-voicing-assimilation",
+      "phoneme": "s z",
+      "realizations": [
+        "s",
+        "s̬",
+        "z",
+        "z̥"
+      ],
+      "scope": "French fricative + stop sequences across word boundaries; regressive and tempo/cohesion-sensitive",
+      "decision": "Keep underlying segment in Basic/Detailed; Extended preserves observed voicing/devoicing diacritic.",
+      "sources": [
+        "S30"
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "id": "liaison",
+      "name": "Liaison",
+      "classes": [
+        "obligatory",
+        "optional",
+        "forbidden"
+      ],
+      "requirements": [
+        "lexical status",
+        "POS/syntax",
+        "phonological environment",
+        "style"
+      ],
+      "status": "PARTIAL_EXISTING_ENGINE"
+    },
+    {
+      "id": "enchaînement",
+      "name": "Enchaînement consonantique",
+      "requirements": [
+        "word boundary",
+        "following vowel onset",
+        "syllabification"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "elision",
+      "name": "Élision",
+      "requirements": [
+        "lexical class",
+        "h muet/h aspiré",
+        "contraction"
+      ],
+      "status": "PARTIAL_EXISTING_ENGINE"
+    },
+    {
+      "id": "schwa",
+      "name": "Schwa realization/deletion/reduction/epenthesis",
+      "requirements": [
+        "lexeme",
+        "consonant cluster",
+        "prosodic boundary",
+        "dialect",
+        "style",
+        "speech rate"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "resyllabification",
+      "name": "Resyllabification",
+      "requirements": [
+        "segmental string",
+        "word boundary",
+        "prosodic boundary"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "nasal-coarticulation",
+      "name": "Nasal coarticulation",
+      "requirements": [
+        "vowel height",
+        "adjacent nasal consonant",
+        "direction",
+        "duration",
+        "audio/narrow IPA"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "vowel-height",
+      "name": "Mid-vowel height and loi de position",
+      "requirements": [
+        "lexical form",
+        "syllable structure",
+        "duration",
+        "profile"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "assimilation",
+      "name": "Assimilation and consonant lenition",
+      "requirements": [
+        "adjacent segments",
+        "word/morpheme boundary",
+        "profile",
+        "speech rate"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "prosody",
+      "name": "Accentual phrase and intonation",
+      "requirements": [
+        "syntax/discourse",
+        "audio or prosodic annotation"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "quebec-assibilation",
+      "name": "Québec French coronal-stop affrication/assibilation",
+      "requirements": [
+        "quebec-fr profile",
+        "/t/ or /d/ before high front vowel or corresponding glide",
+        "lexical/speaker/style context"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "quebec-diphthongization",
+      "name": "Québec French vowel lengthening and diphthongization",
+      "requirements": [
+        "quebec-fr profile",
+        "stressed/phrase-final vowel",
+        "lengthening coda or documented lexical exception",
+        "speaker/style"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "place-assimilation",
+      "name": "Gradient place assimilation",
+      "requirements": [
+        "adjacent nasal + velar stop",
+        "word boundary/cohesion",
+        "speaker and tempo",
+        "narrow IPA or articulatory evidence"
+      ],
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "fricative-voicing-assimilation",
+      "name": "Regressive voicing/devoicing assimilation of /s,z/",
+      "requirements": [
+        "fricative + stop sequence",
+        "word-boundary cohesion",
+        "speech rate",
+        "audio/narrow IPA"
+      ],
+      "status": "RESEARCH_ONLY"
+    }
+  ],
+  "prosody": [
+    {
+      "id": "phrase-accent",
+      "feature": "Phrase-level prominence",
+      "ipa": "ˈ",
+      "ufpn": "ˈ",
+      "rule": "French prominence is mainly phrasal; mark only an analyzed phrase."
+    },
+    {
+      "id": "secondary-accent",
+      "feature": "Secondary prominence",
+      "ipa": "ˌ",
+      "ufpn": "ˌ",
+      "rule": "Optional; audio/discourse annotation required."
+    },
+    {
+      "id": "lengthening",
+      "feature": "Phrase-final lengthening",
+      "ipa": "ː/ˑ",
+      "ufpn": "ː/ˑ",
+      "rule": "Duration needs acoustic evidence; punctuation is insufficient."
+    },
+    {
+      "id": "intonation",
+      "feature": "Intonation contour",
+      "ipa": "H/L or contour",
+      "ufpn": "↗ ↘ →",
+      "rule": "Question punctuation does not uniquely determine contour."
+    },
+    {
+      "id": "rhythmic-boundary",
+      "feature": "Accentual/rhythmic boundary",
+      "ipa": "|/‖",
+      "ufpn": "‖",
+      "rule": "Only when syntactic/prosodic analysis or audio supports it."
+    }
+  ],
+  "profiles": [
+    {
+      "id": "metropolitan-fr",
+      "name": "Metropolitan French reference",
+      "status": "PARTIAL",
+      "coverage": "Initial broad reference only; not a homogeneous speaker norm.",
+      "features": [
+        "/œ̃/ often merges with /ɛ̃/ in many speakers",
+        "/a–ɑ/ often merges",
+        "mid-vowel height is context- and speaker-sensitive",
+        "uvular /ʁ/ has manner/voicing variation"
+      ]
+    },
+    {
+      "id": "parisian-contemporary",
+      "name": "Contemporary Parisian French",
+      "status": "RESEARCH_ONLY",
+      "coverage": "Documented changes; no speaker-calibrated model.",
+      "features": [
+        "nasal vowel chain shift",
+        "/ɛ̃–œ̃/ merger is widespread but speaker-dependent",
+        "mid-vowel overlap in unstressed contexts",
+        "socially patterned /k/ palatalization",
+        "variable schwa and liaison"
+      ]
+    },
+    {
+      "id": "northern-fr",
+      "name": "Northern Metropolitan French",
+      "status": "RESEARCH_ONLY",
+      "coverage": "Not an executable profile.",
+      "features": [
+        "/ɛ̃–œ̃/ merger widespread in northern/supralocal areas"
+      ]
+    },
+    {
+      "id": "southern-fr",
+      "name": "Southern French",
+      "status": "RESEARCH_ONLY",
+      "coverage": "Not an executable profile.",
+      "features": [
+        "distinct schwa retention/deletion patterns",
+        "regional vowel/prosodic variation"
+      ]
+    },
+    {
+      "id": "quebec-fr",
+      "name": "Québec French",
+      "status": "PARTIAL_RESEARCH_ONLY",
+      "coverage": "Affrication and vowel lengthening/diphthongization documented; full executable regional G2P profile not implemented.",
+      "features": [
+        "regional rhotic allophones",
+        "vowel length/quality and affrication require dedicated coverage",
+        "coronal /t,d/ affrication before high front vowels and glides",
+        "stressed long vowels may diphthongize; coda and speaker/style condition the pattern"
+      ]
+    },
+    {
+      "id": "belgian-fr",
+      "name": "Belgian French",
+      "status": "UNSUPPORTED",
+      "coverage": "Architecture placeholder only.",
+      "features": [
+        "regional contrasts and numeral naming require evidence-backed profile"
+      ]
+    },
+    {
+      "id": "swiss-fr",
+      "name": "Swiss French",
+      "status": "UNSUPPORTED",
+      "coverage": "Architecture placeholder only.",
+      "features": [
+        "regional lexical, vowel and schwa patterns require evidence-backed profile"
+      ]
+    }
+  ],
+  "allophoneMappings": [
+    {
+      "id": "r-uvular-approximant",
+      "ipa": "ʁ̞",
+      "basic": "х̬̠",
+      "detailed": "х̬̠",
+      "extended": "х̬̠̞",
+      "phoneme": "ʁ",
+      "descriptionUk": "послаблена апроксимантна реалізація увулярного ротичного",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-uvular-voiceless-fricative",
+      "ipa": "χ",
+      "basic": "х̠",
+      "detailed": "х̠",
+      "extended": "х̠",
+      "phoneme": "ʁ",
+      "descriptionUk": "глуха увулярна фрикативна реалізація",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-voiced-velar-fricative",
+      "ipa": "ɣ",
+      "basic": "х̬",
+      "detailed": "х̬",
+      "extended": "х̬",
+      "phoneme": "ʁ",
+      "descriptionUk": "дзвінка велярна фрикативна реалізація/варіант",
+      "sources": [
+        "S18"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-uvular-trill",
+      "ipa": "ʀ",
+      "basic": "х̬̠",
+      "detailed": "х̬̠",
+      "extended": "х̬̠",
+      "phoneme": "ʁ",
+      "descriptionUk": "увулярний тремтливий алофон; спосіб творення збережено в provenance, бо окремого графічного знака ще не затверджено",
+      "sources": [
+        "S18",
+        "S19",
+        "S20"
+      ],
+      "evidenceStatus": "PARTIAL_MANNER_NOT_ENCODED"
+    },
+    {
+      "id": "r-alveolar-tap",
+      "ipa": "ɾ",
+      "basic": "р̌",
+      "detailed": "р̌",
+      "extended": "р̌",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний одноударний ротичний, регіональний/соціофонетичний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-alveolar-trill",
+      "ipa": "r",
+      "basic": "р",
+      "detailed": "р",
+      "extended": "р",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний тремтливий ротичний, регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-alveolar-approximant",
+      "ipa": "ɹ",
+      "basic": "р̞",
+      "detailed": "р̞",
+      "extended": "р̞",
+      "phoneme": "ʁ",
+      "descriptionUk": "альвеолярний апроксимантний ротичний, регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "r-velar-voiceless-fricative",
+      "ipa": "x",
+      "basic": "х",
+      "detailed": "х",
+      "extended": "х",
+      "phoneme": "ʁ",
+      "descriptionUk": "глухий велярний фрикативний регіональний варіант",
+      "sources": [
+        "S20"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-t-affricate-above",
+      "ipa": "t͡s",
+      "basic": "т͡с",
+      "detailed": "т͡с",
+      "extended": "т͡с",
+      "phoneme": "t",
+      "descriptionUk": "глухий альвеолярний африкатний алофон /t/ у квебекській французькій",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-d-affricate-above",
+      "ipa": "d͡z",
+      "basic": "д͡з",
+      "detailed": "д͡з",
+      "extended": "д͡з",
+      "phoneme": "d",
+      "descriptionUk": "дзвінкий альвеолярний африкатний алофон /d/ у квебекській французькій",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-t-affricate-below",
+      "ipa": "t͜s",
+      "basic": "т͜с",
+      "detailed": "т͜с",
+      "extended": "т͜с",
+      "phoneme": "t",
+      "descriptionUk": "глухий альвеолярний африкатний алофон /t/; варіант tie-bar placement",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "quebec-d-affricate-below",
+      "ipa": "d͜z",
+      "basic": "д͜з",
+      "detailed": "д͜з",
+      "extended": "д͜з",
+      "phoneme": "d",
+      "descriptionUk": "дзвінкий альвеолярний африкатний алофон /d/; варіант tie-bar placement",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "gradient-nasal-velar-overlap",
+      "ipa": "n͡ŋ",
+      "basic": "н",
+      "detailed": "н",
+      "extended": "н͡нґ",
+      "phoneme": "n",
+      "descriptionUk": "градієнтне перекриття коронального та велярного жестів у /n/+велярний приголосний; не категоричне /n/→/ŋ/",
+      "sources": [
+        "S29"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "regressive-voicing-s",
+      "ipa": "s̬",
+      "basic": "с",
+      "detailed": "с",
+      "extended": "с̬",
+      "phoneme": "s",
+      "descriptionUk": "частково або повністю озвончений /s/ у регресивній асиміляції",
+      "sources": [
+        "S30"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    },
+    {
+      "id": "regressive-devoicing-z",
+      "ipa": "z̥",
+      "basic": "з",
+      "detailed": "з",
+      "extended": "з̥",
+      "phoneme": "z",
+      "descriptionUk": "частково або повністю оглушений /z/ у регресивній асиміляції",
+      "sources": [
+        "S30"
+      ],
+      "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED"
+    }
+  ],
+  "featureDimensions": [
+    {
+      "id": "vowel-height",
+      "dimension": "Vowel height/aperture",
+      "values": [
+        "close",
+        "close-mid",
+        "open-mid",
+        "open"
+      ],
+      "ufpn": "Basic/Detailed quality marks",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S9"
+      ]
+    },
+    {
+      "id": "vowel-place",
+      "dimension": "Vowel frontness/backness/centrality",
+      "values": [
+        "front",
+        "central",
+        "back",
+        "advanced",
+        "retracted"
+      ],
+      "ufpn": "base mapping plus Extended modifiers",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S9",
+        "S12"
+      ]
+    },
+    {
+      "id": "rounding",
+      "dimension": "Lip rounding",
+      "values": [
+        "rounded",
+        "unrounded",
+        "more-rounded",
+        "less-rounded"
+      ],
+      "ufpn": "UFPN ring above for front rounded vowels; fine gradience Extended only",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S1"
+      ]
+    },
+    {
+      "id": "nasality",
+      "dimension": "Vowel/consonant nasality",
+      "values": [
+        "phonemic nasal vowel",
+        "gradient progressive/regressive nasalization",
+        "nasal consonant"
+      ],
+      "ufpn": "tilde for phonemic nasal vowels; Extended only for observed coarticulation",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S8",
+        "S29"
+      ]
+    },
+    {
+      "id": "duration",
+      "dimension": "Segmental duration",
+      "values": [
+        "short",
+        "half-long",
+        "long",
+        "phrase-final lengthening"
+      ],
+      "ufpn": "ˑ/ː in Detailed/Extended only when supplied",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S21",
+        "S27"
+      ]
+    },
+    {
+      "id": "diphthongization",
+      "dimension": "Vowel trajectory",
+      "values": [
+        "monophthong",
+        "diphthong",
+        "triphthong",
+        "centralizing",
+        "closing"
+      ],
+      "ufpn": "sequence plus tie-bar/transition in Extended; profile/audio required",
+      "status": "RESEARCH_ONLY",
+      "sources": [
+        "S27"
+      ]
+    },
+    {
+      "id": "consonant-place",
+      "dimension": "Consonant place of articulation",
+      "values": [
+        "bilabial",
+        "labiodental",
+        "dental",
+        "alveolar",
+        "postalveolar",
+        "palatal",
+        "velar",
+        "uvular",
+        "glottal"
+      ],
+      "ufpn": "base grapheme and explicit place metadata; not every place has a unique Ukrainian letter",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S1",
+        "S18"
+      ]
+    },
+    {
+      "id": "consonant-manner",
+      "dimension": "Consonant manner",
+      "values": [
+        "stop",
+        "fricative",
+        "approximant",
+        "tap",
+        "trill",
+        "nasal",
+        "lateral",
+        "affricate"
+      ],
+      "ufpn": "segment mappings, allophone mappings and tie-bar composites",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S18",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "phonation",
+      "dimension": "Voicing and phonation",
+      "values": [
+        "voiced",
+        "voiceless",
+        "partial voicing",
+        "partial devoicing",
+        "breathy",
+        "creaky"
+      ],
+      "ufpn": "◌̬/◌̥ in Extended; breathy/creaky are metadata until French evidence is supplied",
+      "status": "PARTIALLY_ENCODED",
+      "sources": [
+        "S18",
+        "S30"
+      ]
+    },
+    {
+      "id": "secondary-articulation",
+      "dimension": "Secondary articulation",
+      "values": [
+        "palatalized",
+        "labialized",
+        "velarized",
+        "pharyngealized",
+        "retracted",
+        "advanced"
+      ],
+      "ufpn": "standard IPA modifiers in Extended",
+      "status": "EXTENDED_ONLY",
+      "sources": [
+        "S17",
+        "S18"
+      ]
+    },
+    {
+      "id": "phonological-processes",
+      "dimension": "Segmental processes",
+      "values": [
+        "assimilation",
+        "coarticulation",
+        "deletion",
+        "epenthesis",
+        "elision",
+        "liaison",
+        "enchaînement",
+        "resyllabification",
+        "affrication",
+        "lenition"
+      ],
+      "ufpn": "rule metadata, alternatives, provenance and selected Extended annotations",
+      "status": "PARTIAL_RESEARCH_REGISTRY",
+      "sources": [
+        "S5",
+        "S14",
+        "S15",
+        "S25",
+        "S29",
+        "S30"
+      ]
+    },
+    {
+      "id": "prosody",
+      "dimension": "Prosody and voice dynamics",
+      "values": [
+        "prominence",
+        "rhythmic grouping",
+        "pitch contour",
+        "boundary tones",
+        "tempo",
+        "intensity",
+        "voice quality"
+      ],
+      "ufpn": "ˈ ˌ ‖ ↗ ↘ plus metadata; audio required",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S7",
+        "S22"
+      ]
+    },
+    {
+      "id": "variation",
+      "dimension": "Sociophonetic variation",
+      "values": [
+        "regional",
+        "social",
+        "age",
+        "register",
+        "style",
+        "speaker-specific"
+      ],
+      "ufpn": "profile IDs and alternatives; never collapse into default",
+      "status": "PROFILE_METADATA",
+      "sources": [
+        "S10",
+        "S17",
+        "S20",
+        "S25",
+        "S27"
+      ]
+    },
+    {
+      "id": "aspiration-release",
+      "dimension": "Aspiration and stop release",
+      "values": [
+        "unaspirated",
+        "aspirated",
+        "unreleased",
+        "nasal release",
+        "lateral release"
+      ],
+      "ufpn": "ʰ, ◌̚, ⁿ, ˡ in Extended; French default is not aspirated, only observed tokens are marked",
+      "status": "EXTENDED_AUDIO_ONLY",
+      "sources": [
+        "S1"
+      ]
+    },
+    {
+      "id": "syllabicity",
+      "dimension": "Syllabicity of consonants/glides",
+      "values": [
+        "syllabic",
+        "non-syllabic",
+        "resyllabified"
+      ],
+      "ufpn": "◌̩ and ◌̯ in Extended/Detailed where supplied",
+      "status": "EXTENDED_OR_ANALYSIS_ONLY",
+      "sources": [
+        "S1",
+        "S7"
+      ]
+    },
+    {
+      "id": "gemination",
+      "dimension": "Segment length and gemination",
+      "values": [
+        "singleton",
+        "geminate",
+        "emphatic lengthening",
+        "boundary-induced lengthening"
+      ],
+      "ufpn": "ː/ˑ plus segment alignment; audio/lexical evidence required",
+      "status": "ANNOTATION_ONLY",
+      "sources": [
+        "S21",
+        "S22"
+      ]
+    },
+    {
+      "id": "speech-fluency",
+      "dimension": "Speech fluency and disfluency",
+      "values": [
+        "pause",
+        "filled pause",
+        "repetition",
+        "repair",
+        "hesitation",
+        "restart"
+      ],
+      "ufpn": "separate timed annotation layer; not encoded as segment diacritics",
+      "status": "AUDIO_ANNOTATION_ONLY",
+      "sources": [
+        "S22"
+      ]
+    },
+    {
+      "id": "speech-rate",
+      "dimension": "Speech rate and reduction",
+      "values": [
+        "careful",
+        "normal",
+        "fast",
+        "compressed",
+        "reduced"
+      ],
+      "ufpn": "profile/context metadata; affects schwa, liaison and coarticulation, not a single symbol",
+      "status": "AUDIO_OR_STYLE_METADATA",
+      "sources": [
+        "S14",
+        "S15",
+        "S30"
+      ]
+    }
+  ],
+  "graphemeInventory": {
+    "policy": "UFPN is an extended Cyrillic-based practical phonetic notation, not restricted to modern Ukrainian. Graphemes may be selected from Belarusian, Russian and other Cyrillic orthographies when their established sound value improves segmental transparency. Familiarity alone is insufficient.",
+    "adopted": [
+      {
+        "grapheme": "ў",
+        "origin": "Belarusian Cyrillic",
+        "ipa": [
+          "w"
+        ],
+        "value": "Belarusian non-syllabic u; attested phonetic [w] or [u̯] in coda contexts; reused here for French /w/",
+        "decision": "ADOPTED",
+        "rationale": "Belarusian ў is the familiar non-syllabic-u grapheme and has an attested [w]-type realization. Belarusian analyses differ on whether that [w] is an allophone of /v/ or a phoneme; UFPN borrows the grapheme for French /w/ without importing Belarusian phonological rules.",
+        "sources": [
+          "S31",
+          "S33"
+        ]
+      },
+      {
+        "grapheme": "э",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipa": [
+          "ɛ",
+          "ɛ̃"
+        ],
+        "value": "open-mid front unrounded vowel; nasalized counterpart",
+        "decision": "ADOPTED",
+        "rationale": "Established [ɛ]-type vowel value; nasalization is shown by combining tilde.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      }
+    ],
+    "candidates": [
+      {
+        "grapheme": "ы",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipaCandidate": "ɨ",
+        "decision": "NOT_ASSIGNED",
+        "rationale": "[ɨ] is a high central/unrounded vowel; French /ə/ is a variable mid-central vowel and is not equivalent.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      },
+      {
+        "grapheme": "ё",
+        "origin": "Russian and Belarusian Cyrillic",
+        "ipaCandidate": "jo; o after a palatalized consonant",
+        "decision": "NOT_ASSIGNED",
+        "rationale": "Normally iotated/contextual; not a stable monophonemic symbol for /ø/ or /œ/.",
+        "sources": [
+          "S31",
+          "S32"
+        ]
+      }
+    ],
+    "inventoryStatus": "PARTIAL_RESEARCHED"
+  }
+}
