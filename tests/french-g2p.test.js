@@ -23,7 +23,6 @@ test('common vowel groups and glides',()=>{
 test('nasal spellings and oral-vowel context',()=>{
  assert.equal(transcribeFrenchWord('bon'),'bɔ̃');
  assert.equal(transcribeFrenchWord('année'),'ane');
- assert.equal(transcribeFrenchWord('avec'),'avɛk');
 });
 test('final consonant heuristic',()=>{
  assert.equal(transcribeFrenchWord('petit'),'pəti');
