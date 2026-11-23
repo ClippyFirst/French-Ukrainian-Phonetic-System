@@ -34,6 +34,7 @@ const RULE_TEXT={
  "y-glide":"y перед голосною може передавати /j/.",
  "silent-h":"h не має власного звука; h muet/h aspiré потребують окремого лексичного класу.",
  "silent-final-e":"Кінцеве e зазвичай не вимовляється в нейтральній розмовній французькій.",
+ "lyric-final-schwa":"У профілі вокальної дикції кінцеве німе e реалізується як /ə/ за лексичними та поетичними умовами.",
  "open-e":"e у цьому приголосному оточенні передається як /ɛ/.",
  "schwa-e":"e у цьому базовому шаблоні передається як /ə/; випадіння schwa залежить від контексту.",
  "single-vowel":"Базове читання одиничної голосної графеми.",
@@ -43,7 +44,8 @@ const RULE_TEXT={
  "lexical-exception":"Відомий лексичний виняток; запис потребує словникового підтвердження.",
  "unknown-symbol":"Символ пропущено: для нього немає правила в цьому рушії."
 };
-export function transcribeFrenchWordDetailed(input){
+export function transcribeFrenchWordDetailed(input,options={}){
+ const profile=options.profile||'metropolitan-fr';
  const s=String(input??"").toLocaleLowerCase("fr").normalize("NFC").replace(/[’']/g,"");
  if(!s)return {ipa:"",trace:[]};
  const exceptions={oui:"wi",nuit:"nɥi",hiver:"ivɛʁ",mer:"mɛʁ",mers:"mɛʁ",ver:"vɛʁ",vers:"vɛʁ",fer:"fɛʁ",fers:"fɛʁ",cher:"ʃɛʁ",chers:"ʃɛʁ",fier:"fjɛʁ",hier:"jɛʁ",enfer:"ɑ̃fɛʁ",ville:"vil",mille:"mil",tranquille:"tʁɑ̃kil"};
@@ -59,7 +61,7 @@ export function transcribeFrenchWordDetailed(input){
   if(rest.startsWith("ent")&&i===s.length-3){push("ɑ̃",3,"ambiguous-ent");continue}
   if(rest.startsWith("er")&&i===s.length-2){push("e",2,"suffix-er");continue}
   if(rest.startsWith("ez")&&i===s.length-2){push("e",2,"suffix-ez");continue}
-  if(rest.startsWith("es")&&i===s.length-2){skip(2,"silent-final-es");continue}
+  if(rest.startsWith("es")&&i===s.length-2){if(profile==="lyric-diction-fr")push("ə",2,"lyric-final-schwa");else skip(2,"silent-final-es");continue}
   if(rest.startsWith("eaux")){push("o",4,"vowel-digraph");continue}
   if(rest.startsWith("eau")){push("o",3,"vowel-digraph");continue}
   if(rest.startsWith("ou")&&isVowel(s[i+2]||"")){push("w",2,"ou-glide");continue}
@@ -81,7 +83,7 @@ export function transcribeFrenchWordDetailed(input){
   if(isConsonant(c)&&i===s.length-1&&!["c","r","f","l"].includes(c)){skip(1,"silent-final-consonant");continue}
   if(isConsonant(c)&&c===next&&c!=="s"){skip(1,"double-consonant");continue}
   if(c==="e"){
-   if(i===s.length-1){skip(1,"silent-final-e");continue}
+   if(i===s.length-1){if(profile==="lyric-diction-fr")push("ə",1,"lyric-final-schwa");else skip(1,"silent-final-e");continue}
    if(isConsonant(next)&&(isConsonant(after)||i+1===s.length-1)){push("ɛ",1,"open-e");continue}
    push("ə",1,"schwa-e");continue
   }
@@ -96,4 +98,4 @@ export function transcribeFrenchWordDetailed(input){
  }
  return {ipa:out,trace};
 }
-export function transcribeFrenchWord(input){return transcribeFrenchWordDetailed(input).ipa;}
+export function transcribeFrenchWord(input,options={}){return transcribeFrenchWordDetailed(input,options).ipa;}

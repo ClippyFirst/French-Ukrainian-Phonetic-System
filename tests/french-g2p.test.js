@@ -45,3 +45,8 @@ test('vowel-to-glide contexts include ou and final il',()=>{
  assert.equal(transcribeFrenchWord('jouer'),'ʒwe');
  assert.equal(transcribeFrenchWord('travail'),'tʁavaj');
 });
+
+test('lyric-diction profile realizes final mute e as schwa',()=>{
+ assert.equal(transcribeFrenchWord('table'),'tabl');
+ assert.equal(transcribeFrenchWord('table',{profile:'lyric-diction-fr'}),'tablə');
+});

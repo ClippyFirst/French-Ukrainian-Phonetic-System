@@ -19,3 +19,10 @@ test('Latin guide and segment explanations cover mapped allophones',()=>{
  assert.ok(a.ufpn.includes('т͡с'));
  assert.ok(describeSegment('t͡s').includes('Québec'));
 });
+
+test('lyric-diction profile applies final schwa while preserving lexical article forms',()=>{
+ const sung=transcribe('petite',{profile:'lyric-diction-fr'});
+ assert.equal(sung.words[0].ipa,'pə.titə');
+ assert.equal(transcribe('les amis',{profile:'lyric-diction-fr'}).words[0].ipa,'lez');
+ assert.equal(transcribe('petite',{profile:'metropolitan-fr'}).words[0].ipa,'pə.tit');
+});
