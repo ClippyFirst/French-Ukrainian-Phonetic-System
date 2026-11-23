@@ -1,24 +1,24 @@
-const COMBINING = /[\\u0300-\\u036f\\u1dc0-\\u1dff\\u20d0-\\u20ff]/u;
+const COMBINING = /[̀-ͯ᷀-᷿⃐-⃿]/u;
 const DISPLAY = new Map([
-  ['\\u030a',{glyph:'˚',position:'above'}],
-  ['\\u0301',{glyph:'ˊ',position:'above'}],
-  ['\\u0306',{glyph:'˘',position:'above'}],
-  ['\\u0303',{glyph:'˜',position:'above'}],
-  ['\\u0307',{glyph:'˙',position:'above'}],
-  ['\\u0320',{glyph:'ˍ',position:'below'}],
-  ['\\u032c',{glyph:'ˇ',position:'below',flip:true}],
-  ['\\u0325',{glyph:'˳',position:'below'}],
-  ['\\u031f',{glyph:'˖',position:'below'}],
-  ['\\u031e',{glyph:'˗',position:'below'}],
-  ['\\u031d',{glyph:'˔',position:'above'}],
-  ['\\u030c',{glyph:'ˇ',position:'above'}],
-  ['\\u032f',{glyph:'˘',position:'below'}],
-  ['\\u031a',{glyph:'˒',position:'above'}],
-  ['\\u0329',{glyph:'ˌ',position:'below'}],
-  ['\\u0324',{glyph:'˳',position:'below'}],
-  ['\\u0330',{glyph:'˜',position:'below'}],
-  ['\\u0339',{glyph:'˒',position:'below'}],
-  ['\\u031c',{glyph:'˓',position:'below'}]
+  [String.fromCodePoint(0x030a),{glyph:'˚',position:'above'}],
+  [String.fromCodePoint(0x0301),{glyph:'ˊ',position:'above'}],
+  [String.fromCodePoint(0x0306),{glyph:'˘',position:'above'}],
+  [String.fromCodePoint(0x0303),{glyph:'˜',position:'above'}],
+  [String.fromCodePoint(0x0307),{glyph:'˙',position:'above'}],
+  [String.fromCodePoint(0x0320),{glyph:'ˍ',position:'below'}],
+  [String.fromCodePoint(0x032c),{glyph:'ˇ',position:'below',flip:true}],
+  [String.fromCodePoint(0x0325),{glyph:'˳',position:'below'}],
+  [String.fromCodePoint(0x031f),{glyph:'˖',position:'below'}],
+  [String.fromCodePoint(0x031e),{glyph:'˗',position:'below'}],
+  [String.fromCodePoint(0x031d),{glyph:'˔',position:'above'}],
+  [String.fromCodePoint(0x030c),{glyph:'ˇ',position:'above'}],
+  [String.fromCodePoint(0x032f),{glyph:'˘',position:'below'}],
+  [String.fromCodePoint(0x031a),{glyph:'˒',position:'above'}],
+  [String.fromCodePoint(0x0329),{glyph:'ˌ',position:'below'}],
+  [String.fromCodePoint(0x0324),{glyph:'˳',position:'below'}],
+  [String.fromCodePoint(0x0330),{glyph:'˜',position:'below'}],
+  [String.fromCodePoint(0x0339),{glyph:'˒',position:'below'}],
+  [String.fromCodePoint(0x031c),{glyph:'˓',position:'below'}]
 ]);
 
 export function getUfpnDisplayClusters(value) {
@@ -46,9 +46,8 @@ export function renderUfpnDisplay(container, value) {
     let above=0,below=0;
     for (const mark of cluster.marks) {
       const node=document.createElement('span');
-      node.className='ufpn-display-mark '+mark.position;
+      node.className='ufpn-display-mark '+mark.position+(mark.flip?' flip':'');
       node.textContent=mark.glyph;
-      if(mark.flip) node.classList.add('flip');
       const index=mark.position==='above'?above++:below++;
       node.style.setProperty('--mark-index',index);
       wrapper.append(node);
