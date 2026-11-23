@@ -5,7 +5,7 @@
 const VOWELS=new Set([..."aeiouyàâäéèêëîïôöùûüÿœ"]);
 const CONSONANTS=new Set([..."bcdfghjklmnpqrstvwxz"]);
 const NASAL=[["oin","wɛ̃"],["ain","ɛ̃"],["aim","ɛ̃"],["ein","ɛ̃"],["eim","ɛ̃"],["ien","jɛ̃"],["an","ɑ̃"],["am","ɑ̃"],["en","ɑ̃"],["em","ɑ̃"],["on","ɔ̃"],["om","ɔ̃"],["in","ɛ̃"],["im","ɛ̃"],["yn","ɛ̃"],["ym","ɛ̃"],["un","œ̃"],["um","œ̃"]];
-const VOWEL_GROUPS=[["eaux","o"],["eau","o"],["euil","œj"],["euille","œj"],["ueil","œj"],["aille","aj"],["ail","aj"],["eille","ɛj"],["eil","ɛj"],["ou","u"],["oi","wa"],["oy","waj"],["au","o"],["eu","ø"],["œu","ø"],["oeu","ø"],["œ","œ"],["ai","ɛ"],["ei","ɛ"],["ë","ɛ"],["è","ɛ"],["ê","ɛ"],["é","e"],["â","ɑ"],["à","a"],["î","i"],["ï","i"],["ô","o"],["û","y"],["ù","y"]];
+const VOWEL_GROUPS=[["eaux","o"],["eau","o"],["euil","œj"],["euille","œj"],["ueil","œj"],["aille","aj"],["ail","aj"],["eille","ɛj"],["eil","ɛj"],["ou","u"],["oî","wa"],["oi","wa"],["oy","waj"],["au","o"],["eu","ø"],["œu","ø"],["oeu","ø"],["œ","œ"],["ai","ɛ"],["ei","ɛ"],["ë","ɛ"],["è","ɛ"],["ê","ɛ"],["é","e"],["â","ɑ"],["à","a"],["î","i"],["ï","i"],["ô","o"],["û","y"],["ù","y"]];
 const CONSONANT_GROUPS=[["ch","ʃ"],["gn","ɲ"],["ph","f"],["th","t"],["qu","k"],["gu","g"],["ill","ij"]];
 const isVowel=c=>!!c&&VOWELS.has(c);
 const isConsonant=c=>!!c&&CONSONANTS.has(c);
@@ -74,6 +74,8 @@ export function transcribeFrenchWordDetailed(input){
   if(c==="i"&&isVowel(next)){push("j",1,"i-glide");continue}
   if(c==="y"&&isVowel(next)){push("j",1,"y-glide");continue}
   if(c==="h"){skip(1,"silent-h");continue}
+  if(isConsonant(c)&&i===s.length-1&&!["c","r","f","l"].includes(c)){skip(1,"silent-final-consonant");continue}
+  if(isConsonant(c)&&c===next&&c!=="s"){skip(1,"double-consonant");continue}
   if(c==="e"){
    if(i===s.length-1){skip(1,"silent-final-e");continue}
    if(isConsonant(next)&&(isConsonant(after)||i+1===s.length-1)){push("ɛ",1,"open-e");continue}
@@ -85,8 +87,6 @@ export function transcribeFrenchWordDetailed(input){
   if(c==="ç"){push("s",1,"consonant");continue}
   if(c==="k"||c==="q"){push("k",1,"consonant");continue}
   if("fvbdptmnlzw".includes(c)){push(c,1,"consonant");continue}
-  if(isConsonant(c)&&i===s.length-1&&!["c","r","f","l"].includes(c)){skip(1,"silent-final-consonant");continue}
-  if(isConsonant(c)&&c===next&&c!=="s"){skip(1,"double-consonant");continue}
   if(isConsonant(c)){push(c,1,"consonant");continue}
   skip(1,"unknown-symbol");
  }
