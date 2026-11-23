@@ -38,6 +38,55 @@ def lookup_subtables(font: TTFont, feature_tag: str):
             yield lookup_type, subtable
 
 
+
+def script_feature_tags(font: TTFont):
+    gpos = font["GPOS"].table
+    result = {}
+    if not gpos.ScriptList:
+        return result
+    records = gpos.FeatureList.FeatureRecord
+    for script_record in gpos.ScriptList.ScriptRecord:
+        systems = []
+        script = script_record.Script
+        if script.DefaultLangSys:
+            systems.append(("default", script.DefaultLangSys))
+        systems.extend(
+            (record.LangSysTag, record.LangSys)
+            for record in script.LangSysRecord
+        )
+        tags = set()
+        for _, langsys in systems:
+            indices = list(langsys.FeatureIndex)
+            if langsys.ReqFeatureIndex != 0xFFFF:
+                indices.append(langsys.ReqFeatureIndex)
+            tags.update(records[index].FeatureTag for index in indices)
+        result[script_record.ScriptTag] = sorted(tags)
+    return result
+
+
+def anchor_details(font: TTFont, base_name: str, mark_name: str):
+    for lookup_type, table in lookup_subtables(font, "mark"):
+        if lookup_type != 4:
+            continue
+        if base_name not in table.BaseCoverage.glyphs or mark_name not in table.MarkCoverage.glyphs:
+            continue
+        base_index = table.BaseCoverage.glyphs.index(base_name)
+        mark_index = table.MarkCoverage.glyphs.index(mark_name)
+        mark_record = table.MarkArray.MarkRecord[mark_index]
+        base_record = table.BaseArray.BaseRecord[base_index]
+        cls = mark_record.Class
+        if cls < len(base_record.BaseAnchor):
+            mark_anchor = mark_record.MarkAnchor
+            base_anchor = base_record.BaseAnchor[cls]
+            if mark_anchor is not None and base_anchor is not None:
+                return {
+                    "mark": (mark_anchor.XCoordinate, mark_anchor.YCoordinate),
+                    "base": (base_anchor.XCoordinate, base_anchor.YCoordinate),
+                    "class": cls,
+                }
+    return None
+
+
 def mark_base_pairs(font: TTFont):
     pairs = set()
     for lookup_type, table in lookup_subtables(font, "mark"):
@@ -205,9 +254,14 @@ def main():
             if ("ABOVE" in unicode_name and y_offset <= 0) or (
                 "BELOW" in unicode_name and y_offset >= 0
             ):
+                base_glyph = cmap.get(ord(base))
+                details = anchor_details(font, base_glyph, glyph_name)
+                scripts = script_feature_tags(font)
                 raise SystemExit(
                     f"Unexpected vertical mark placement in {sample!r}: "
-                    f"{unicode_name} y_offset={y_offset}"
+                    f"{unicode_name} y_offset={y_offset}; "
+                    f"anchor_details={details}; script_features={scripts}; "
+                    f"shaped={[(font.getGlyphName(i.codepoint), p.x_offset, p.y_offset) for i, p in zip(buffer.glyph_infos, buffer.glyph_positions)]}"
                 )
             if index:
                 previous_name, previous_offset = shaped_marks[index - 1]
