@@ -208,3 +208,12 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 - Required next step: a fresh main workflow run with a single `github-pages` artifact, then verify deployment and re-scrape the live Pages site. Last verified live baseline remains commit `95ec26e6127465d0f3152194c07db1b3dbf089e2`; current main is not yet confirmed deployed.
 - Linguistic expert review and independently curated/licensed gold benchmark remain separate blockers. Screen-reader, zoom/reflow, physical-device and owner visual acceptance remain PARTIAL.
 
+
+
+## Pages artifact retry isolation — follow-up branch (2026-11-23)
+
+- The current main code commit `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28` passed run 45278852488's test job (58/58, build, syntax, font audit and all 12 cross-browser/viewport checks). The deploy job failed because `actions/deploy-pages@v4` could not resolve the uploaded `github-pages` artifact metadata.
+- The first Pages artifact was [14867792849](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867792849). Re-running the deploy job re-executed artifact upload, creating duplicate [14867374732](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867374732); deploy-pages then failed deterministically because two artifacts shared the `github-pages` name. This is a known deploy-pages retry behavior, not an app build failure.
+- New branch `ci/isolate-pages-artifact-from-deploy` moves `actions/upload-pages-artifact@v3` into a separate `pages-artifact` job. The `deploy` job now only calls `actions/deploy-pages@v4`; retrying it will reuse the one artifact created earlier in the same workflow run and cannot create a duplicate.
+- PR #30 and its CI are the acceptance gate for this workflow change. Main run 45279727256 is also running on the current docs-only main commit `5ec0ff1e2b456733fffad619f8d88e287a4096f6`.
+- Fresh live scrape returned HTTP 200 but still served the earlier UI: `<main id="top">` without `tabindex="-1"` and the source textarea without `aria-labelledby`. Do not mark the new accessibility changes live until a fresh deployment and scrape confirm them.
