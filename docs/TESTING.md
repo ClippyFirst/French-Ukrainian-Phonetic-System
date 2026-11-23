@@ -28,3 +28,6 @@ The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Deta
 - Regression fixtures in `tests/openipa-french.test.js` reproduce examples from the upstream OpenIPA French test corpus.
 - `sourceIpa` retains upstream conventions. Greek epsilon `ε` is normalized to standard IPA `ɛ`; `õ` remains visible until independently reviewed.
 - Do not count upstream's own expected fixtures as independent gold records or use them to claim comparative accuracy.
+
+
+Known upstream inconsistency: OpenIPA's legacy `src/tests/french/_words.csv` expects `descends` → `d(e)sɑ̃`, but the vendored executable `ParseFrench.ts` currently emits `dɛssɑ̃`. The regression test records the executable output and does not conceal the discrepancy. This is not a claim that the upstream suite passes unchanged.

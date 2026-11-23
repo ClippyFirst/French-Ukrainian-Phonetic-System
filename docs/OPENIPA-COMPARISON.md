@@ -33,7 +33,7 @@ The project seed lexicon still has precedence for words already present in it; t
 
 ## Verification
 
-Regression tests now include the upstream French test fixtures (`calme`, `éclate`, `docile`, `céleste`, `descends`, `garçon`) and adapter-level rule-trace checks. Passing these tests demonstrates integration and regression behavior, not phonetic accuracy across arbitrary French text.
+Regression tests include five outputs matching the upstream French fixture examples (`calme`, `éclate`, `docile`, `céleste`, `garçon`) and adapter-level rule-trace checks. One source fixture discrepancy is recorded: upstream `_words.csv` expects `descends` → `d(e)sɑ̃`, while the executable `ParseFrench.ts` parser currently returns `dɛssɑ̃`. The integration test pins the executable behavior rather than silently rewriting it to match the CSV. This is a known upstream inconsistency requiring specialist review. Passing tests demonstrate integration and regression behavior, not phonetic accuracy across arbitrary French text.
 
 Remaining work:
 - reconcile all upstream IPA conventions with the canonical IPA inventory without guessing;
