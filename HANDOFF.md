@@ -71,4 +71,4 @@
 - Code inspection identified a concrete mismatch: marks were bold Manrope at `.62em`, while base letters were Charis SIL. At 22px output that is about 13.6px.
 - Branch `fix/typographic-diacritic-scale` changes marks to regular Charis SIL at `.42em` (about 9.2px at 22px). This is a measured proportional adjustment, not a ratio mandated by the sources.
 - No changes to canonical combining Unicode, phonetic mappings, clipboard or export.
-- Pending: CI, Pages deployment, and owner visual acceptance. No browser screenshot was available, so visual resolution is not claimed.
+- PR #7 CI run [45210184497](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45210184497) passed build, tests and syntax checks. Merged as `a5b338077089c2653fd40d05d722d90574583b81`. Main run [45210252551](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45210252551) passed build, tests, syntax checks and Pages deployment. Owner visual acceptance remains pending; no browser screenshot was available, so visual resolution is not claimed.
