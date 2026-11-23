@@ -80,5 +80,5 @@
 - Fix: `src/ufpn-display.js` now passes the complete NFC-normalized UFPN string to a single text node via `textContent`; manual overlay CSS was removed. Existing `mark`/`mkmk` features remain enabled.
 - Regression tests cover stacked combining marks and affricate tie bars. The IPA→UFPN adapter, mapping data, clipboard/export and phonetic semantics are unchanged.
 - Research references: https://googlefonts.github.io/gf-guide/diacritics.html ; https://learn.microsoft.com/en-us/typography/opentype/spec/gpos ; https://software.sil.org/charis/release-7-000/
-- Verification: local clone and test execution blocked because DNS cannot resolve github.com. Available workflow-run lookup has not yet returned PR CI status. No browser runtime/screenshot QA is available; visual acceptance remains PARTIAL.
+- Verification: PR CI run [45211693977](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45211693977) passed build, 48/48 tests and syntax checks; PR deploy job skipped. Local clone remains blocked by DNS failure. No browser runtime/screenshot QA is available; visual acceptance remains PARTIAL.
 - Font caveat: current Google Fonts Charis SIL import remains; official SIL Charis 7.000 WOFF2 was not downloaded or vendored. Do not claim the current SIL package is installed.
