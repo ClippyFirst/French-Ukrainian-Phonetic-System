@@ -1,5 +1,6 @@
 import {transcribe,describeSegment} from './engine.js';
 import {renderUfpn,UFPN_MAPPING} from './ufpn.js';
+import {renderUfpnDisplay} from './ufpn-display.js';
 const $=id=>document.getElementById(id),source=$('source');let result;
 const levelLabel=document.createElement('label');levelLabel.textContent='Деталізація UFPN';
 const levelSelect=document.createElement('select');levelSelect.id='ufpn-level';
@@ -12,7 +13,7 @@ function render(){
  const text=source.value,level=levelSelect.value;result=transcribe(text,{profile:$('profile').value});
  for(const w of result.words){if(w.kind==='separator'){w.ufpn=w.text;continue}if(w.ipa==='???'){w.ufpn='???';w.ufpnUnsupported=['???'];continue}const adapted=renderUfpn(w.ipa,level);w.ufpn=adapted.text;w.ufpnUnsupported=adapted.unsupported}
  result.ufpn=result.words.map(w=>w.ufpn).join('');$('char-count').textContent=text.length+' символів';
- for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token'+(w.confidence==='low'?' low-confidence':'');b.dataset.index=i;b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]+'; '+w.confidence);target.append(b)})}
+ for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token'+(w.confidence==='low'?' low-confidence':'');b.dataset.index=i;if(key==='ufpn')renderUfpnDisplay(b,w[key]);else b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]+'; '+w.confidence);target.append(b)})}
  $('status').textContent=text.trim()?'Оброблено '+result.words.filter(w=>w.kind==='word').length+' словоформ · '+result.profile+' · UFPN '+level:'Готово до введення';
  $('uncertainty').hidden=!result.warnings.length;$('uncertainty').textContent=result.warnings.length?'Потребують перевірки: '+result.warnings.join(', ')+'. Низька впевненість означає, що вимову не підтверджено словником.':'';
 }
@@ -42,7 +43,7 @@ function renderReference(query=''){
   if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
   const tr=document.createElement('tr');
   for(const value of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status]){
-   const td=document.createElement('td');td.textContent=value;tr.append(td);
+   const td=document.createElement('td');if(['Basic','Detailed','Extended'].includes(['IPA','Basic','Detailed','Extended','Опис / статус'][[item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].indexOf(value)]))renderUfpnDisplay(td,value);else td.textContent=value;tr.append(td);
   }
   refBody.append(tr);
  }
