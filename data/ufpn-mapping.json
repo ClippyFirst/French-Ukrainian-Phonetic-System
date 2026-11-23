@@ -447,11 +447,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front close-mid rounded",
       "descriptionUk": "передній напівзакритий огублений",
-      "baseGrapheme": "ӧ",
+      "baseGrapheme": "ө",
       "diacritics": [],
-      "basic": "ӧ",
-      "detailed": "ӧ",
-      "extended": "ӧ",
+      "basic": "ө",
+      "detailed": "ө",
+      "extended": "ө",
       "features": [],
       "examples": [
         "deux",
@@ -477,12 +477,10 @@
       "articulation": "front open-mid rounded",
       "descriptionUk": "передній напіввідкритий огублений",
       "baseGrapheme": "ӧ",
-      "diacritics": [
-        "̆"
-      ],
-      "basic": "ӧ̆",
-      "detailed": "ӧ̆",
-      "extended": "ӧ̆",
+      "diacritics": [],
+      "basic": "ӧ",
+      "detailed": "ӧ",
+      "extended": "ӧ",
       "features": [],
       "examples": [
         "peur",
@@ -714,12 +712,11 @@
       "descriptionUk": "передній огублений носовий; часто злитий з /ɛ̃/",
       "baseGrapheme": "ӧ",
       "diacritics": [
-        "̆",
         "̃"
       ],
-      "basic": "ӧ̆̃",
-      "detailed": "ӧ̆̃",
-      "extended": "ӧ̆̃",
+      "basic": "ӧ̃",
+      "detailed": "ӧ̃",
+      "extended": "ӧ̃",
       "features": [],
       "examples": [
         "brun",
@@ -2402,13 +2399,13 @@
       },
       {
         "grapheme": "ӧ",
-        "origin": "Mari Cyrillic",
+        "origin": "Eastern Mari Cyrillic",
         "ipa": [
-          "ø"
+          "œ"
         ],
-        "value": "close-mid front rounded vowel",
+        "value": "open-mid front rounded vowel",
         "decision": "ADOPTED",
-        "rationale": "Mari Ӧ represents a mid front rounded vowel with IPA value /ø/, matching French /ø/.",
+        "rationale": "The Eastern Mari vowel inventory includes the open-mid front rounded /œ/; its Cyrillic grapheme ӧ is reused for French /œ/.",
         "sources": [
           "S36"
         ]
@@ -2463,6 +2460,19 @@
         "rationale": "Hill Mari Ӹ is documented with the reduced central vowel /ə/, a direct match for French schwa.",
         "sources": [
           "S36"
+        ]
+      },
+      {
+        "grapheme": "ө",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "ø"
+        ],
+        "value": "close-mid front rounded vowel",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ө has the established close-mid front rounded value /ø/, a direct segmental match for French /ø/.",
+        "sources": [
+          "S34"
         ]
       }
     ],
