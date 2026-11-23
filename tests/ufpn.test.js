@@ -80,3 +80,16 @@ test('extended Cyrillic inventory is internally consistent and source-backed',()
  assert.equal(UFPN_MAPPING.phonemes.find(x=>x.ipa==='w').basic,'ў');
  assert.equal(UFPN_MAPPING.phonemes.find(x=>x.ipa==='v').basic,'в');
 });
+
+import {getUfpnDisplayClusters} from '../src/ufpn-display.js';
+test('UFPN display renderer separates combining marks from Cyrillic bases',()=>{
+ const clusters=getUfpnDisplayClusters('е̊̆̃ а̠̃ х̬̠');
+ assert.deepEqual(clusters.map(x=>x.base),['е',' ','а',' ','х']);
+ assert.deepEqual(clusters.map(x=>x.marks.map(m=>m.position)),[
+  ['above','above','above'],[],['below','above'],[],['below','below']
+ ]);
+});
+test('UFPN display renderer uses explicit spacing glyphs for detached-mark-free layout',()=>{
+ const clusters=getUfpnDisplayClusters('і̊ е́ о̆ э̃');
+ assert.deepEqual(clusters.filter(x=>x.marks.length).map(x=>x.marks[0].glyph),['˚','ˊ','˘','˜']);
+});

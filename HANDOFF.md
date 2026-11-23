@@ -12,7 +12,7 @@
 - Static browser app: `index.html`, `styles.css`, `src/app.js`.
 - French input/examples, OpenIPA profile selection, synchronized IPA/UFPN/Latin guide.
 - Basic / Detailed / Extended UFPN, word-level parser explanations, uncertainty markers, searchable UFPN reference.
-- UFPN output and reference glyphs now use Charis SIL, a linguistics-oriented font with Cyrillic coverage and OpenType combining-mark anchors (`mark`/`mkmk`); Unicode mapping sequences were not changed. Browser visual verification remains pending.
+- UFPN base glyphs use Charis SIL. A follow-up display layer now decomposes combining sequences into base letters and spacing modifier glyphs explicitly positioned above/below them, avoiding dependence on font mark anchors. Canonical adapter strings and clipboard/export Unicode remain unchanged. Browser visual verification remains pending.
 - Copy, TXT export, browser print-to-PDF, responsive layout.
 - No application backend; entered text is processed in the browser.
 - Setup and hosting instructions: `docs/WEB-SERVICE.md`.
@@ -52,3 +52,9 @@
 
 ## Readiness
 **Partial research prototype with a functioning static browser app and passing hosted build/test/check. Deployed through GitHub Pages (deployment action verified; direct HTTP smoke test pending), not release-ready, and not independently validated for arbitrary French text.**
+
+
+## Owner-reported typography follow-up
+- Font-only changes did not resolve detached Cyrillic marks.
+- Branch `fix/deterministic-cyrillic-diacritic-layout` adds explicit visual mark placement in `src/ufpn-display.js` and `styles.css`; tests cover decomposition of stacked marks.
+- This has not yet been visually accepted by the owner. Do not call the issue resolved until the deployed page is checked.
