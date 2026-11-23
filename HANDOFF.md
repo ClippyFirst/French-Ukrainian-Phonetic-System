@@ -1,59 +1,48 @@
 # Handoff — French–Ukrainian phonetic web service
 
 ## Repository state
-- Default branch: `main`, starting SHA `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
-- Working branch: `feat/french-ipa-ufpn-engine`, latest head before this final handoff refresh: `1bc4240995b5d01fc39906ff2f12922eca580086`.
-- Draft PR #1: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1 (not merged).
-- No other branches were present at the latest inspection.
-- Branch comparison: 63 commits ahead of main, 0 behind.
-- Git clone was previously blocked by DNS; GitHub connector remote operations and hosted CI were used.
+- Default branch `main`: `b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed`.
+- Working branch: `feat/french-ipa-ufpn-engine`.
+- Latest inspected head before this handoff refresh: `9693885934e3ab56c659f479376cdefd8ee2b9dd`; 64 commits ahead and 0 behind main.
+- Draft PR #1: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/1 (open, not merged).
+- Git clone/local browser QA were not available in this connector-only environment; remote GitHub reads/writes and hosted CI were used.
 
 ## Web service
-The repository contains a static browser app, not merely a library:
-- `index.html`, `styles.css`, `src/app.js`;
-- engine path: browser ESM bundle of vendored OpenIPA → IPA → UFPN / Latin guide;
-- French text input and examples, profile selector, synchronized IPA/UFPN/Latin output;
-- Basic / Detailed / Extended UFPN levels;
-- word-level rule explanations, uncertainty warnings, searchable UFPN inventory;
-- copy, TXT export and browser print-to-PDF;
-- responsive styles.
-
-A full capability and hosting guide was added at `docs/WEB-SERVICE.md`; README now links it.
+- Static browser app: `index.html`, `styles.css`, `src/app.js`.
+- French text input/examples, OpenIPA profile selector, synchronized IPA/UFPN/Latin outputs.
+- Basic / Detailed / Extended UFPN, word-level rule explanations, uncertainty indicators, searchable UFPN reference.
+- Copy, TXT export, browser print-to-PDF, responsive styling.
+- No app backend: user-entered text is processed in the browser.
+- Capability and deployment guide: `docs/WEB-SERVICE.md`.
 
 ## Deployment finding
-- Repository API reports `has_pages=false`.
-- CI run `45177924718`, commit `0acb2e83a4b5ca9f1530d57a8f6c53ecd9cda310`: build passed, 46/46 tests passed, `npm run check` passed.
-- A feature-branch deployment probe reached `actions/configure-pages@v5` and failed with HTTP 404: no Pages site exists/configured. Upload and deploy were skipped.
-- The workflow was restored to its safe policy: build/test/check on feature branch and PR; deploy only from `main`. No repository Pages setting was changed.
-- Owner action required: GitHub repository Settings → Pages → Build and deployment → **GitHub Actions**. After enabling, merge PR #1 or run workflow on main and confirm the `github-pages` environment URL. Until then, no public website URL is verified.
-- Do not claim hosted service is live yet.
+- Repository metadata reports `has_pages=false`.
+- Workflow runs build/test/check on branch and PR; deploy is restricted to `main`.
+- Pages probe run `45177924718` passed build, 46/46 tests and syntax check, then failed at `actions/configure-pages@v5` with HTTP 404 because Pages is not configured. This confirms a hosting configuration blocker, not an application build failure.
+- Latest head CI: push `45178377533` and PR `45178389166`; both test jobs passed build, 46/46 tests and syntax checks; deploy skipped on feature/PR refs.
+- Owner action required: Settings → Pages → Build and deployment → **GitHub Actions**. After enabling, approve/merge PR #1 and verify the `github-pages` environment URL and deployed commit. No settings or merge were changed.
+- No Vercel project is Git-linked to this repo; no second hosting platform was created.
 
-## Latest engine architecture
-- Vendored original OpenIPA French parser from revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
-- Every French word goes through original OpenIPA full-text parser; project seed lexicon, hand-written liaison postprocessing and manual lyric-final-schwa injection were removed.
-- `lyric-diction-fr` enables OpenIPA text-level liaison/elision hooks; `metropolitan-fr` uses base parser without automatic cross-word liaison.
-- IPA is the only input to the UFPN adapter. Unsupported IPA remains visible.
-- Only explicit notation normalization currently made: OpenIPA Greek epsilon `ε` → standard IPA `ɛ`. `õ` remains visible pending expert review.
+## OpenIPA parser integration
+- Original OpenIPA French parser vendored from upstream revision `266c002d6c03c6b581b2bea74ca39bf1a92a7504`.
+- Browser ESM bundle built from upstream TypeScript with pinned esbuild 0.25.0.
+- All French words go through original OpenIPA full-text parser; project seed IPA overrides, manual liaison postprocessing and manual lyric-final-schwa injection were removed.
+- `lyric-diction-fr` invokes upstream text-level liaison/elision hooks; `metropolitan-fr` uses base parser without automatic cross-word liaison/elision.
+- Parser explanations, source IPA and word-local source spans preserved. Greek epsilon `ε` normalizes to IPA `ɛ`; `õ` remains visible pending review.
 - AGPL-3.0 adopted with owner approval; see LICENSE and THIRD_PARTY_NOTICES.md.
 
-## Verification
-- Engine CI run `45176571302` passed build, 46/46 tests and syntax checks on `c84e7274baf4c5bb4d5a31931f073da6bd69ee2c`.
-- Pages probe `45177924718`: build passed, 46/46 tests passed, syntax check passed; deploy failed only at Pages configuration because Pages is disabled.
-- Latest documentation/workflow CI on final head `1bc4240995b5d01fc39906ff2f12922eca580086`: push run `45178260179` and PR run `45178274841` both passed build, 46/46 tests and syntax checks; deploy skipped as expected on feature/PR refs.
-- No local test/browser run was possible in the connector-only environment. Browser QA remains outstanding.
-
-## Preserved implementation
+## UFPN implementation
 - 37 segmental mappings, 15 allophone mappings, 36 diacritic/prosodic markers, 18 feature dimensions, 19 allophone phenomena, 13 contextual processes and 7 profile records.
-- Three UFPN levels; extended Cyrillic inventory including `ў` for /w/ and `э` for /ɛ/; `ы` and `ё` remain unassigned.
-- Parser trace, provenance, NFC normalization, tests, documentation and PR #1 retained.
+- Three UFPN levels; IPA is the only adapter input; unsupported IPA remains visible.
+- Extended Cyrillic inventory includes `ў` for /w/ and `э` for /ɛ/; `ы` and `ё` remain unassigned.
 
-## Remaining tasks and acceptance criteria
-1. **Enable Pages (BLOCKED by owner setting):** Settings → Pages → GitHub Actions; then successful deployment job and verified environment URL.
-2. **Browser QA (TODO):** smoke test and responsive/keyboard/accessibility checks in Chromium, Firefox and WebKit.
-3. **Expert phonetic review (BLOCKED):** independent French phonologist and Ukrainian phonetician approve IPA conventions, UFPN mappings and edge cases.
-4. **Gold benchmark (BLOCKED):** independently curated/licensed French IPA and UFPN references with provenance; report error metrics only after review.
-5. **Linguistic coverage (PARTIAL):** POS/morphology, h-aspiré, lexical exception coverage, full liaison/schwa/enchaînement and regional G2P need source-backed expansion.
-6. **IPA notation reconciliation (PARTIAL):** review `õ` and other upstream conventions; no speculative mappings.
+## Remaining blockers
+1. **Public hosting:** enable GitHub Pages and approve PR #1; acceptance is successful main deploy plus verified URL/commit.
+2. **Browser QA:** Chromium, Firefox, WebKit, mobile, keyboard and screen-reader checks.
+3. **Expert review:** independent French phonologist and Ukrainian phonetician validate IPA conventions and UFPN mappings.
+4. **Gold benchmark:** licensed, independently curated IPA/UFPN references with provenance; no accuracy score before review.
+5. **Linguistic coverage:** POS-dependent `-ent`, h-aspiré, morphology, lexical exception coverage, liaison/schwa/enchaînement remain incomplete.
+6. **IPA conventions:** review `õ` and other upstream conventions; do not invent mappings.
 
 ## Readiness
-Partial research prototype with a functioning static browser app in the branch and passing hosted CI. Not release-ready, not yet publicly hosted, and not independently validated for arbitrary French text.
+**Partial research prototype with an implemented static browser service and green hosted CI. Not publicly deployed, not release-ready, and not independently validated for arbitrary French text.**
