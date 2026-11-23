@@ -21,7 +21,10 @@
 | D3 | Pages deployment | PARTIAL | Main run 45195557498 успішно розгорнув commit `360ef54a08af2ff7146d2a4052c326fec6968173`; URL https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ ; HTTP/browser smoke verification не виконана через DNS failure у цьому середовищі |
 | W1 | Browser web service UI | DONE_VERIFIED | Static app: French input, OpenIPA profiles, IPA/UFPN/Latin outputs, 3 UFPN levels, explanations, searchable reference, copy, TXT/PDF export |
 | W2 | Browser-hosted smoke/accessibility QA | TODO | Потрібні live site і browser QA в Chromium, Firefox та WebKit |
-| W3 | Cyrillic UFPN diacritic typography | PARTIAL | PR #8 `fix/native-opentype-diacritic-shaping` removes manual spacing-glyph decomposition and CSS overlays; canonical combining sequences are rendered as one text run for native OpenType GPOS `mark`/`mkmk` shaping. Regression tests added for stacked marks and tie bars. PR CI 45211693977: build passed, 48/48 tests passed, syntax checks passed; deploy skipped for PR. Local clone blocked by GitHub DNS; browser visual QA pending. Earlier overlay/scale fixes are superseded. |
+| W3 | Cyrillic UFPN diacritic typography | PARTIAL | Native NFC text run retained; official SIL Charis 7.000 is now self-hosted locally with Regular/Bold WOFF2 and OFL-1.1. Font audit script checks all 36 inventory codepoints, mapped mark-to-base/mark-to-mark anchor pairs and HarfBuzz shaping; CI pending. Browser visual acceptance still required. |
+| W4 | Vendor official Charis 7.000 webfonts | DONE_VERIFIED | Official SIL release archive SHA-256 verified in GitHub Actions run 45213736031; Regular/Bold WOFF2 and exact OFL text committed; local @font-face + preload replace external Charis SIL import. |
+| W5 | Inspect Charis 7 glyph and anchor coverage | PARTIAL | `scripts/audit-charis-font.py` added; hosted fontTools/HarfBuzz CI result pending. |
+| W6 | Browser visual QA for stacked UFPN marks | TODO | Confirm in Chromium, Firefox, WebKit and mobile; owner visual acceptance remains the final typography gate. |
 
 ## OpenIPA engine integration
 
@@ -66,3 +69,12 @@
 - Implementation on PR #8 branch: `src/ufpn-display.js` now assigns the complete NFC-normalized UFPN string to one text node; overlay CSS removed; `mark`/`mkmk` features remain enabled.
 - Tests added for stacked combining marks and affricate tie bars. No phonetic mappings or canonical output changed.
 - Status W3 remains PARTIAL until hosted CI and browser screenshots/visual acceptance are verified. Local clone/test execution was blocked by DNS failure resolving github.com; official SIL Charis 7 package was not vendored.
+
+
+### Official Charis 7.000 font migration (2026-11-23)
+- Feature branch: `fix/vendor-charis-7-diacritics`, based on main `b9fbca4fde027fc57213a205a3c5acf157b7c8f1`.
+- Official SIL Charis 7.000 ZIP downloaded by GitHub Actions and SHA-256 verified against the published release asset digest (`e3237b1303c5d31af8f59b1d1914886c5e873b77c71390e4742fb3bc1c187666`).
+- Vendored only Regular and Bold WOFF2 files (about 629 KB combined) plus the exact SIL OFL-1.1 license text. Local `@font-face` declarations and a preload replace the Charis SIL Google Fonts dependency for UFPN; the other UI fonts remain external.
+- `scripts/audit-charis-font.py` checks all 36 mapping inventory codepoints, actual mark-to-base pairs used in mapped outputs, mark-to-mark pairs used by stacked combinations, and HarfBuzz output/zero-advance behavior. CI result is pending.
+- The import-only workflow was deleted after the font files were committed; the normal Pages workflow now runs the font audit on PR and main.
+- W3/W6 remain PARTIAL/TODO until hosted font audit and actual browser screenshots/owner visual acceptance pass. No claim that the visual issue is fixed yet.
