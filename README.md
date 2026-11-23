@@ -40,6 +40,10 @@ python3 -m http.server 8000
 
 Немає повної морфології/POS, дизамбіґуації омографів, повної liaison/schwa/enchaînement моделі, числівників, власних назв, регіональних G2P профілів, аудіо й експертно верифікованого benchmark. Невідомі форми можуть бути неправильними. UFPN експериментальна й потребує незалежної перевірки.
 
+## Дизайн
+
+Візуальні принципи та правила доступності: [DESIGN.md](DESIGN.md). Інтерфейс зберігає статичну архітектуру; дизайн-зміни не змінюють фонетичний рушій.
+
 ## Документація
 
 [Вебсервіс і хостинг](docs/WEB-SERVICE.md) · [OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
