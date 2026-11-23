@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { transcribeFrenchWord, transcribeFrenchWordDetailed, transcribeFrenchText, transcribeFrenchTextDetailed } from '../src/french-g2p.js';
 
-test('OpenIPA upstream French regression corpus', () => {
+test('OpenIPA-derived French regression corpus uses canonical adapter IPA', () => {
   assert.equal(transcribeFrenchWord('calme'), 'kalmə');
   assert.equal(transcribeFrenchWord('éclate'), 'eklatə');
   assert.equal(transcribeFrenchWord('docile'), 'dɔsilə');
@@ -10,7 +10,7 @@ test('OpenIPA upstream French regression corpus', () => {
   // Upstream's legacy CSV expects d(e)sɑ̃, but the current parser actually emits dɛssɑ̃.
   // Pin the executable upstream behavior and document the source-fixture divergence.
   assert.equal(transcribeFrenchWord('descends'), 'dɛssɑ̃');
-  assert.equal(transcribeFrenchWord('garçon'), 'gaɾsõ');
+  assert.equal(transcribeFrenchWord('garçon'), 'gaʁsɔ̃');
 });
 
 test('OpenIPA rule explanations are preserved per source grapheme', () => {

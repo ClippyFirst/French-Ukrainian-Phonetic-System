@@ -22,7 +22,7 @@
 - Browser ESM bundle built from vendored TypeScript using pinned esbuild 0.25.0.
 - French G2P is routed through the upstream full-text parser; rule descriptions, source IPA and source spans are preserved.
 - IPA is the only input to the UFPN adapter. Unsupported IPA remains visible.
-- Explicit normalization: Greek epsilon `ε` → IPA `ɛ`; upstream `õ` remains unresolved and visible rather than guessed.
+- Explicit adapter normalization: OpenIPA legacy `ε` → IPA `ɛ`, `õ` → `ɔ̃`, and parser-default `ɾ` → `ʁ`; raw upstream notation remains in `sourceIpa`/trace. Direct external IPA `[ɾ]` still maps to the documented regional tap `р̌`. This adapter correction is covered by regressions but is not independent phonetic expert validation.
 - `lyric-diction-fr` uses upstream text-level liaison/elision hooks; `metropolitan-fr` uses the base parser.
 - Repository-wide AGPL-3.0 and upstream attribution/network-source notices are included; AGPL-3.0 was explicitly approved by the owner on 2026-11-23.
 
@@ -101,3 +101,10 @@
 - PR #10 was merged at `87ae7c3566e373633ad53b945ef811951d3f4ea0` after [run 45233413912](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45233413912) passed all six Chromium/Firefox/WebKit desktop/mobile typography checks.
 - Current main HEAD is `d4f417ad01785b6d2f4a7413b7930a4aa9427585` (matrix evidence update). Post-merge workflow [45236513836](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236513836): build, 48 tests, syntax check and Charis audit passed; Playwright browser installation is in progress. Earlier run 45236413859 was superseded/cancelled before browser rendering, not a test failure.
 - Automated cross-browser typography is DONE_VERIFIED from PR #10. Remaining separate gates: owner-side visual acceptance, keyboard/screen-reader and physical mobile device QA. Linguistic expert review and an independently curated/licensed gold benchmark remain BLOCKED.
+
+## OpenIPA adapter correction — 2026-11-23
+- Feature branch: `fix/openipa-canonical-ipa-adapter`, based on `78478b8e40335fd9988dce7aaec273a332bdd305`.
+- Root cause: vendored OpenIPA defines `NASAL_O='õ'` and `FLIPPED_R='ɾ'`; `parseR` uses the latter as its default French `r` output. The project IPA inventory instead encodes broad Metropolitan French `/ɔ̃/` and `/ʁ/`. Without normalization, the UI exposed `⟦õ⟧` and incorrectly rendered ordinary `r` as regional `р̌`.
+- The adapter converts OpenIPA output `õ→ɔ̃`, `ɾ→ʁ`, and `ε→ɛ`; raw upstream strings remain in `sourceIpa` and trace. The separate direct IPA→UFPN mapping for a genuinely supplied regional `[ɾ]` remains unchanged.
+- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бо̆̃жух̬̠` without unsupported IPA. CI and deployment are pending.
+- This resolves the known OpenIPA symbol mismatch, not general French pronunciation accuracy; independent specialist review and a licensed gold benchmark remain blocked.

@@ -101,3 +101,9 @@
 - PR #10 was merged after its run [45233413912](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45233413912) passed all six Chromium/Firefox/WebKit × desktop/mobile typography checks across all 23 UFPN clusters.
 - Post-merge main run [45236513836](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236513836) is the current verification. Build, 48 tests, syntax check and Charis glyph/anchor audit passed; browser-engine installation is still running. The preceding run [45236413859](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45236413859) was cancelled by the newer main commit before browser tests, so it is not evidence of a failed test.
 - Remaining: finish post-merge CI; owner-side visual acceptance, keyboard/screen-reader and physical-device QA; linguistic expert review and independently licensed gold benchmark.
+
+### OpenIPA legacy-symbol normalization (2026-11-23)
+- Verified in vendored source: `IPA.NASAL_O` is `õ`; `IPA.FLIPPED_R` is `ɾ`; `parseR` supplies `ɾ` for ordinary French `r` throughout the parser. This conflicted with the project's canonical broad Metropolitan IPA inventory (`ɔ̃`, `ʁ`) and caused `⟦õ⟧` plus regional tap `р̌` in ordinary output.
+- Adapter now normalizes OpenIPA-only legacy output `õ` → `ɔ̃` and `ɾ` → `ʁ`, while retaining raw values in `sourceIpa` and trace. Directly supplied IPA `[ɾ]` still maps to the documented regional tap `р̌`.
+- Regression cases: `bonjour`, `garçon`, `mer`; end-to-end `bonjour` expected UFPN `бо̆̃жух̬̠` with no unsupported IPA.
+- Feature branch: `fix/openipa-canonical-ipa-adapter`. CI/deployment result to be added after verification. Linguistic expert review remains an independent outstanding gate.

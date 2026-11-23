@@ -33,7 +33,7 @@
 | Vendor original OpenIPA French parser, letter rules, exceptions and minimal helpers | DONE_VERIFIED | Source у `vendor/openipa/`; upstream revision зазначена в THIRD_PARTY_NOTICES.md |
 | Build upstream TypeScript into browser ESM bundle | DONE_VERIFIED | `npm run build` passed in CI |
 | Route French G2P through upstream parser and preserve rule traces | DONE_VERIFIED | `src/french-g2p.js`, `src/engine.js`; integration tests included |
-| Align upstream IPA notation to canonical IPA | PARTIAL | `ε` → `ɛ` explicit; `õ` unresolved/visible pending phonetic review |
+| Align upstream IPA notation to canonical IPA | PARTIAL | Adapter normalizes OpenIPA `õ` → `ɔ̃` and parser-default `ɾ` → `ʁ`; raw upstream form remains in `sourceIpa`. Regression coverage for `bonjour`, `garçon`, and `mer`; independent phonetic review still pending. Other upstream notation/edge cases remain to audit |
 | Adopt AGPL-3.0 and upstream attribution | DONE_VERIFIED | LICENSE, THIRD_PARTY_NOTICES.md, README; owner approval explicit |
 | Expand upstream fixture and edge-case coverage | TODO | Port additional upstream tests; distinguish regression fixtures from independent gold data |
 | Browser/mobile/accessibility and expert phonetic QA | TODO | Manual browser matrix and independent French/Ukrainian review |
@@ -90,3 +90,10 @@
 - PR #10 merged at `87ae7c3566e373633ad53b945ef811951d3f4ea0`; its run 45233413912 passed all six cross-browser/viewport typography checks.
 - Latest post-merge main workflow is tracked in `docs/AUDIT.md` and `HANDOFF.md`; do not treat superseded/cancelled run 45236413859 as a failure. Build, 48 tests, syntax and font audit had passed in run 45236513836 before its browser installation stage.
 - Browser QA is technically verified; accessibility, physical-device and owner visual acceptance remain partial. Linguistic expert review and licensed gold benchmark remain blocked.
+
+
+### OpenIPA canonical IPA adapter correction (2026-11-23)
+- Source inspection verified `IPA.NASAL_O = 'õ'`, `IPA.FLIPPED_R = 'ɾ'`, and `parseR` supplies `ɾ` as the default French `r` output. The project's broad French inventory instead uses `/ɔ̃/` and `/ʁ/`; the direct IPA mapping for a genuinely supplied regional `[ɾ]` remains the distinct tap `р̌`.
+- `src/french-g2p.js` now normalizes only the vendored OpenIPA output at the adapter boundary: `õ` → `ɔ̃`, `ɾ` → `ʁ`, and `ε` → `ɛ`. Exact raw OpenIPA values remain available in `sourceIpa` and per-rule trace; no French-grapheme→UFPN shortcut was introduced.
+- Added regressions for `bonjour`, `garçon`, and `mer`, including the end-to-end `bonjour` UFPN output `бо̆̃жух̬̠` and an empty unsupported-symbol list.
+- Status: implementation committed to a feature branch; CI and Pages deployment are pending. This is an adapter normalization based on the vendored parser's own enum and default `parseR` implementation, not independent expert validation of every French speaker or dialect.
