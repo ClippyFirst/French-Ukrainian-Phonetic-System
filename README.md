@@ -1,8 +1,14 @@
 # French–Ukrainian Phonetic System
 
-Дослідницький вебінструмент: французький текст → IPA → експериментальна українська нотація UFPN та допоміжний Latin guide. Це прототип, не академічно затверджений стандарт і не повний вимовний словник.
+Дослідницький вебсервіс: французький текст → IPA → експериментальна українська нотація UFPN та допоміжний Latin guide. Це не переклад, а спроба показати вимову. Прототип не є академічно затвердженим стандартом і не є повним вимовним словником.
 
-## Запуск
+## Вебсервіс
+
+У репозиторії є браузерний застосунок із введенням тексту, трьома синхронними форматами (IPA / UFPN / Latin guide), трьома рівнями деталізації UFPN, профілями OpenIPA, послівним розбором, пошуковим довідником, копіюванням і TXT/PDF експортом.
+
+[Опис функцій, локальний запуск і публікація GitHub Pages](docs/WEB-SERVICE.md).
+
+## Запуск локально
 
 Node.js 20.10+ потрібен для збірки й тестів. Перший запуск збірки завантажує зафіксовану версію esbuild через npx; браузерний runtime зовнішніх залежностей не має.
 
@@ -13,9 +19,10 @@ npm run check
 python3 -m http.server 8000
 ```
 
-Відкрийте http://localhost:8000. GitHub Pages workflow публікує кореневу директорію після налаштування Pages.
+Відкрийте http://localhost:8000. GitHub Pages deploy job наразі очікує ввімкнення Pages у Settings → Pages → Build and deployment → GitHub Actions; докладніше — у [WEB-SERVICE.md](docs/WEB-SERVICE.md).
 
 ## Зараз працює
+
 - Синхронізовані IPA, UFPN та Latin guide.
 - IPA — єдиний вхід для UFPN adapter.
 - UFPN має Basic / Detailed / Extended режими та розширений кириличний інвентар (зокрема білоруське `ў` для /w/ і `э` для /ɛ/).
@@ -29,10 +36,13 @@ python3 -m http.server 8000
 - Пошуковий довідник UFPN з таблицями фонем/алофонів і 18 фонетичними вимірами.
 
 ## Обмеження
+
 Немає повної морфології/POS, дизамбіґуації омографів, повної liaison/schwa/enchaînement моделі, числівників, власних назв, регіональних G2P профілів, аудіо й експертно верифікованого benchmark. Невідомі форми можуть бути неправильними. UFPN експериментальна й потребує незалежної перевірки.
 
 ## Документація
-[OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
+
+[Вебсервіс і хостинг](docs/WEB-SERVICE.md) · [OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
 
 ## Ліцензія
+
 Проєкт поширюється за AGPL-3.0. Частина французького G2P рушія взята з [OpenIPA](https://github.com/hfellerhoff/openipa); див. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) та [LICENSE](LICENSE).
