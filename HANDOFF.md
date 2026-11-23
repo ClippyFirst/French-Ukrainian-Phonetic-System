@@ -230,3 +230,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - A fresh main workflow run is required to publish with one unique Pages artifact. After it succeeds, verify the live site and check the 37-row, five-column table plus current accessibility changes. Last verified live baseline is commit `95ec26e6127465d0f3152194c07db1b3dbf089e2`; current main is not yet confirmed deployed.
 - Remaining gates: manual screen-reader/zoom/reflow/physical-device/owner visual QA PARTIAL; independent French/Ukrainian phonetic review BLOCKED; independently curated and licensed gold IPA/UFPN benchmark BLOCKED. The project remains a research prototype, not an academically validated phonetic standard.
 
+
+
+## Pages deployment retry-resilience follow-up — 2026-11-23
+
+- Current main HEAD before this workflow branch: `5ec0ff1e2b456733fffad619f8d88e287a4096f6` (documentation-only on top of tested application code `39eb12f6712c26c3afb1864ff8fbb8d5dbc78c28`).
+- Main workflow [45278852488](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488) passed all 58 tests and all browser checks, but Pages deploy failed at artifact metadata lookup. The first `github-pages` artifact is [14867792849](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867792849). A deploy-only rerun uploaded duplicate [14867374732](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45278852488/artifacts/14867374732), after which deploy-pages rejected the duplicate name. Do not rerun the old job again.
+- Branch `ci/isolate-pages-artifact-from-deploy` (PR #30 pending) splits Pages artifact creation and deployment into separate jobs. If the deploy action fails, the deploy-only retry will not re-upload the Pages artifact. PR CI and a fresh main deployment are required before calling this fix verified.
+- Fresh live scrape: HTTP 200, but it still serves the prior deployment (main target has no `tabindex="-1"` on `main`, and the source textarea has no `aria-labelledby`). The latest accessible UI is therefore not yet confirmed live.
+- Continue with PR #30 CI, merge if green, then verify the new main run's test job, unique Pages artifact, deploy job and live page. Do not rerun deploy on a run that already contains duplicate `github-pages` artifacts.
