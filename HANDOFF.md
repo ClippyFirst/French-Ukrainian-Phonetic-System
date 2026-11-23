@@ -207,3 +207,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Main before this design branch: `81098345c69a3c58d770b95fd63949133fa872d7`.
 - Last verified live Pages commit: `95ec26e6127465d0f3152194c07db1b3dbf089e2`. The current main /œ/ articulation wording correction is therefore not yet reflected on the public site.
 - Main workflow `45265871092` passed build, 57 tests, syntax, font audit and browser rendering; deployment failed only when `actions/deploy-pages@v4` could not retrieve the uploaded `github-pages` artifact metadata. Retry the Pages deployment after the external Actions/Pages API issue clears.
+
+
+## 2026-11-23 — PR #25 merged / UI handoff
+- Starting main: `81098345c69a3c58d770b95fd63949133fa872d7`.
+- PR #25: [Refine the phonetics workbench UI](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/25), merged (squash) as `41f96a1f3fbb8b220931d434626a4edddc3c13c7`. Feature head: `3ee313c31ed8c4a005fd1daea234b1a2817a3d34`.
+- Final PR CI [45270636340](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340): SUCCESS. Build, 57/57 tests, syntax, Charis 7/OpenType audit, Playwright install, 12 Chromium/Firefox/WebKit × viewport checks passed. Screenshot artifact: [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425); desktop/laptop/tablet/mobile screenshots manually inspected.
+- UI improvements merged; no phonetic engine/data behavior changed. Screen-reader, real-device and zoom/reflow checks remain PARTIAL.
+- Next: verify the main-branch Pages workflow triggered by the merge, then fetch the live site and confirm the new UI is deployed. Previous Pages deploy failure was artifact metadata retrieval; do not assume fixed until a fresh main deploy succeeds.
+- Linguistic expert review and independently curated/licensed gold benchmark remain blockers for linguistic release validation.
