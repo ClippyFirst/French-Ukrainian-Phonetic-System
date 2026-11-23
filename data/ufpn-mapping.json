@@ -447,11 +447,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front close-mid rounded",
       "descriptionUk": "передній напівзакритий огублений",
-      "baseGrapheme": "ө",
+      "baseGrapheme": "ӧ",
       "diacritics": [],
-      "basic": "ө",
-      "detailed": "ө",
-      "extended": "ө",
+      "basic": "ӧ",
+      "detailed": "ӧ",
+      "extended": "ӧ",
       "features": [],
       "examples": [
         "deux",
@@ -477,10 +477,12 @@
       "articulation": "front open-mid rounded",
       "descriptionUk": "передній напіввідкритий огублений",
       "baseGrapheme": "ӧ",
-      "diacritics": [],
-      "basic": "ӧ",
-      "detailed": "ӧ",
-      "extended": "ӧ",
+      "diacritics": [
+        "̆"
+      ],
+      "basic": "ӧ̆",
+      "detailed": "ӧ̆",
+      "extended": "ӧ̆",
       "features": [],
       "examples": [
         "peur",
@@ -591,13 +593,11 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "central mid variable",
       "descriptionUk": "центральний середній редукований, варіативний",
-      "baseGrapheme": "е",
-      "diacritics": [
-        "̇"
-      ],
-      "basic": "е̇",
-      "detailed": "е̇",
-      "extended": "е̇",
+      "baseGrapheme": "ӹ",
+      "diacritics": [],
+      "basic": "ӹ",
+      "detailed": "ӹ",
+      "extended": "ӹ",
       "features": [],
       "examples": [
         "petit",
@@ -714,11 +714,12 @@
       "descriptionUk": "передній огублений носовий; часто злитий з /ɛ̃/",
       "baseGrapheme": "ӧ",
       "diacritics": [
+        "̆",
         "̃"
       ],
-      "basic": "ӧ̃",
-      "detailed": "ӧ̃",
-      "extended": "ӧ̃",
+      "basic": "ӧ̆̃",
+      "detailed": "ӧ̆̃",
+      "extended": "ӧ̆̃",
       "features": [],
       "examples": [
         "brun",
@@ -2400,27 +2401,14 @@
         ]
       },
       {
-        "grapheme": "ө",
-        "origin": "Kazakh Cyrillic",
+        "grapheme": "ӧ",
+        "origin": "Mari Cyrillic",
         "ipa": [
           "ø"
         ],
         "value": "close-mid front rounded vowel",
         "decision": "ADOPTED",
-        "rationale": "Kazakh Ө has the established close-mid front rounded value /ø/, matching French /ø/.",
-        "sources": [
-          "S34"
-        ]
-      },
-      {
-        "grapheme": "ӧ",
-        "origin": "Mari Cyrillic",
-        "ipa": [
-          "œ"
-        ],
-        "value": "open-mid front rounded vowel",
-        "decision": "ADOPTED",
-        "rationale": "Mari Ӧ represents the open-mid front rounded vowel /œ/, matching French /œ/.",
+        "rationale": "Mari Ӧ represents a mid front rounded vowel with IPA value /ø/, matching French /ø/.",
         "sources": [
           "S36"
         ]
@@ -2462,6 +2450,19 @@
         "rationale": "Kazakh Ғ has the established voiced uvular fricative /ʁ/ value; this avoids the former stacked voicing/backing marks on х.",
         "sources": [
           "S34"
+        ]
+      },
+      {
+        "grapheme": "ӹ",
+        "origin": "Hill Mari Cyrillic",
+        "ipa": [
+          "ə"
+        ],
+        "value": "reduced central vowel",
+        "decision": "ADOPTED",
+        "rationale": "Hill Mari Ӹ is documented with the reduced central vowel /ə/, a direct match for French schwa.",
+        "sources": [
+          "S36"
         ]
       }
     ],
