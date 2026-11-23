@@ -23,6 +23,20 @@ test('Latin guide and segment explanations cover mapped allophones',()=>{
 test('lyric-diction profile applies final schwa while preserving lexical article forms',()=>{
  const sung=transcribe('petite',{profile:'lyric-diction-fr'});
  assert.equal(sung.words[0].ipa,'pə.titə');
- assert.equal(transcribe('les amis',{profile:'lyric-diction-fr'}).words[0].ipa,'lez');
+ assert.equal(transcribe('les amis',{profile:'lyric-diction-fr'}).words[0].ipa,'lez‿');
  assert.equal(transcribe('petite',{profile:'metropolitan-fr'}).words[0].ipa,'pə.tit');
+});
+
+test('OpenIPA full-text parser applies schwa elision only when enabled',()=>{
+ const spoken=transcribe('calme ami',{profile:'metropolitan-fr'});
+ const sung=transcribe('calme ami',{profile:'lyric-diction-fr'});
+ assert.equal(spoken.words[0].ipa,'kalmə');
+ assert.equal(sung.words[0].ipa,'kalm');
+});
+
+test('OpenIPA liaison trace is attached to the preceding word in lyric profile',()=>{
+ const result=transcribe('les amis',{profile:'lyric-diction-fr'});
+ assert.equal(result.words[0].ipa,'lez‿');
+ assert.equal(result.words[0].liaisonApplied,true);
+ assert.ok(result.words[0].ruleTrace.some(item=>item.boundary&&item.ipa==='z‿'));
 });
