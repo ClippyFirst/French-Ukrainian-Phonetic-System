@@ -1,13 +1,13 @@
 # Audit Register — Phase 2
 
 ## Verified repository state
-- Last CI-verified branch head before final metadata refresh: 6262733f4b93489c01ca5e597e608b815ca17d2c on `feat/french-ipa-ufpn-engine`; last code change is 1c6322365cbef42cf33b5a79a04656bd3de8afe0; branch is 0 commits behind `main` (see PR #1 for the live ahead count).
-- GitHub Actions push run 45168038041 on 6262733 passed `npm test` (42/42: 12 engine + 23 UFPN + 7 French G2P/trace) and `npm run check`; PR run 45168051416 also passed. Pages deploy skipped because this is not `main`. A final metadata-only commit follows this verified state.
+- Current code head: 594cb0be465a6dff6fc5427f9873f4c1b3e0c0f8 on `feat/french-ipa-ufpn-engine`; branch is 42 commits ahead and 0 behind `main`.
+- GitHub Actions push run 45168613204 passed `npm test` (44/44: 13 engine + 23 UFPN + 8 French G2P/trace) and `npm run check`; PR run 45168622148 also passed. Pages deploy skipped because this is not `main`.
 - CI concurrency was corrected: push and PR runs now use distinct concurrency groups so they no longer cancel each other. Earlier failed runs exposed and helped fix source escaping, final consonant ordering, nasal cancellation, and lexical exceptions.
 - Local clone/test attempt failed before checkout: `Could not resolve host: github.com`; hosted CI is the verification evidence.
 - main SHA: b7c74e2829d34cd8baa6f418d93e95c1a6a6d6ed.
 - Phase 2 starting working head: 7cdbcbbc54918d94195c1d5d058a04acb23f9ee0.
-- Current CI-verified branch head: 6262733f4b93489c01ca5e597e608b815ca17d2c (42 tests + syntax check; run 45168038041; PR validation run 45168051416).
+- Current CI-verified code head: 594cb0be465a6dff6fc5427f9873f4c1b3e0c0f8 (44 tests + syntax check; run 45168613204; PR validation run 45168622148).
 - Draft PR #1 open; based on main with 0 commits behind; consult PR #1 for live ahead count.
 - GitHub Actions run 45154509214 on implementation head: test job success; npm test (31 tests) and npm run check passed; deploy skipped on PR.
 

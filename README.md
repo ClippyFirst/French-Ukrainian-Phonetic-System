@@ -23,7 +23,7 @@ python3 -m http.server 8000
 - Невідомі IPA символи не губляться: позначаються й потрапляють у список unsupported.
 - Регіональні Québec affrication/diphthongization та cross-word assimilation описані окремо й не застосовуються до Metropolitan French за замовчуванням.
 - Seed-лексикон і контекстний clean-room French G2P fallback для поширених графемних правил; кожне fallback-слово має низьку впевненість та трасу правил із фрагментами, IPA й українськими поясненнями.
-- Вузькі liaison/elision шаблони; POS-залежна морфологія, повний schwa/enchaînement, h aspiré та винятки ще не завершені.
+- Окремі профілі сучасної розмовної французької та вокальної дикції (OpenIPA-aligned final-schwa mode); вузькі liaison/elision шаблони. POS-залежна морфологія, повний schwa/enchaînement, h aspiré та винятки ще не завершені.
 - Послівні пояснення, provenance, copy, TXT і browser print-to-PDF.
 - Пошуковий довідник UFPN з таблицями фонем/алофонів і 18 фонетичними вимірами.
 

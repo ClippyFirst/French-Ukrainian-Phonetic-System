@@ -9,6 +9,9 @@ The generic engine now uses a deterministic, context-sensitive grapheme pass for
 - common suffix spellings (`-tion`, `-sion`, `-er`, `-ez`);
 - silent `h`, common final-consonant behavior, and consonant doubling.
 
+## Scope alignment
+The UI exposes a separate `lyric-diction-fr` profile for the upstream project's stated vocal/lyric diction use case. It realizes final mute `e` as schwa in supported patterns; the default `metropolitan-fr` profile remains spoken French. This is a scoped compatibility layer, not a complete classical singing/poetic scansion engine.
+
 ## Explicit limitations
 - `-ent` is morphosyntactically ambiguous: the fallback currently emits a nasal vowel and cannot reliably distinguish verb inflection from lexical endings.
 - schwa deletion, liaison, enchaînement, h-aspiré lexical classes, POS, homographs, regional variants, proper names, and loanwords require lexical/contextual data.

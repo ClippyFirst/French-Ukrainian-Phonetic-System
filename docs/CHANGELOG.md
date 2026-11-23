@@ -25,5 +25,6 @@
 ## 0.4.0 — Context-sensitive French G2P (work in progress)
 - Replaced the generic longest-match spelling fallback with a clean-room context-sensitive French grapheme pass for common digraphs, vowel groups, nasal spellings, glides (including `ou`→/w/ and vowel+`il`→/j/), contextual consonants, suffixes and silent endings.
 - Added source-span rule traces with rule identifiers and Ukrainian explanations to word details.
+- Added a dedicated lyric-diction profile with final-schwa handling to align the supported use case with OpenIPA; the default spoken-French profile remains separate.
 - Added focused French G2P tests and OpenIPA scope/reuse comparison.
-- This remains a low-confidence fallback; GitHub Actions run 45168038041 passed all 42 tests and syntax checks. Independent pronunciation evaluation remains pending.
+- This remains a low-confidence fallback; GitHub Actions run 45168613204 passed all 44 tests and syntax checks. Independent pronunciation evaluation remains pending.
