@@ -24,7 +24,10 @@ const DISPLAY = new Map([
 export function getUfpnDisplayClusters(value) {
   const clusters=[];
   for (const cp of String(value ?? '').normalize('NFC')) {
-    if (COMBINING.test(cp) && clusters.length) clusters[clusters.length-1].marks.push(DISPLAY.get(cp) ?? {glyph:cp,position:'above'});
+    // Affricate tie bars span two bases; they are not diacritics to reposition over one letter.
+    if ((cp.codePointAt(0)===0x035c || cp.codePointAt(0)===0x0361) && clusters.length) {
+      clusters[clusters.length-1].base += cp;
+    } else if (COMBINING.test(cp) && clusters.length) clusters[clusters.length-1].marks.push(DISPLAY.get(cp) ?? {glyph:cp,position:'above'});
     else clusters.push({base:cp,marks:[]});
   }
   return clusters;
