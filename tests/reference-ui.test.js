@@ -34,6 +34,8 @@ test('grapheme inventory distinguishes adopted graphemes from unassigned candida
  assert.equal(mapping.graphemeInventory.adopted.length,10);
  assert.equal(mapping.graphemeInventory.candidates.length,2);
  assert.ok(mapping.graphemeInventory.adopted.some(item=>item.grapheme==='ъ'&&item.ipa.includes('ə')));
+ assert.match(app,/Cyrillic hard sign \(project-specific UFPN use\).*Кириличний твердий знак, проєктна голосна графема UFPN/s);
+ assert.match(app,/'ъ':'У UFPN твердий знак ъ — проєктна голосна графема для IPA \/ə\//);
 });
 
 test('explanation checkbox names the exact panel and states that transcription is unaffected',()=>{

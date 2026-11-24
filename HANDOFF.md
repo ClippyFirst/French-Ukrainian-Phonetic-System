@@ -336,3 +336,6 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 
 - Initial PR #46 CI exposed five stale schwa expectations in `tests/ufpn.test.js` (two IPA→UFPN expected strings, adopted-inventory assertion and former standalone-grapheme assertion). The implementation output was correct (`пъті`); the tests were updated to expect `ъ`. Latest test correction commit: `6267e18acbc8a2cdff63bf67d7141c0ecbc33745`; fresh CI [45442539824](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45442539824) passed all 75 tests, syntax, font audit and browser rendering.
+
+
+- Follow-up live review found and fixed English fallback text in the `ъ` grapheme inventory card. `src/app.js` now translates both the new origin and rationale; regression coverage checks both entries. Re-run PR CI and main Pages deployment before treating this final localization correction as hosted.
