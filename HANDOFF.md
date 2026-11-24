@@ -355,6 +355,10 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Технічні акордеони отримали стабільні anchor IDs; користувач може перейти від навчального блоку до таблиці IPA → UFPN, фонетичних вимірів, походження графем і таблиці «літера — звук — українське слово».
 - Фонетичний рушій, IPA → UFPN mapping, профілі, рівні деталізації та експорт не змінювалися.
 - Regression coverage додано в tests/reference-ui.test.js; перевірки build/test/syntax/font/browser і live deployment ще очікують виконання для цього PR.
-- Status: W8/W9 PARTIAL до завершення CI, браузерної перевірки та production smoke test.
+- Status: W8/W9 DONE_VERIFIED. PR #53 merged to main; final commit ba02467bd7b8c1102bab0ec79d9fff5568acd87d.
+- CI run 45466119617: npm run build PASS; npm test PASS (79/79); npm run check PASS; Charis 7/OpenType audit PASS; Playwright Chromium/Firefox/WebKit render PASS; browser specimen uploaded.
+- Main Pages workflow 45466573635: test PASS, Pages artifact PASS, deploy PASS.
+- Live smoke test with cache bypass: public homepage HTTP 200; reading guide and UFPN guide present; nav links resolve to in-page anchors; no raw Markdown navigation; styles.css contains the new guide selectors and French editorial palette.
+- Educational scope: the visible learning section states that it has exclusively educational purpose and is not a full dictionary or a substitute for audio.
 
 - Додані джерела S38–S44 на основі Undermind: прочитані повні PDF Racine & Detey (2017), Stridfeldt (2019), Nawafleh (2023); abstract/metadata для Law (2022), Brissaud et al. (2012), Viebahn et al. (2018), Granget et al. (2024). Лінгвістичні дані/корпуси з цих праць не імпортовано.
