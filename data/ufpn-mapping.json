@@ -228,7 +228,7 @@
       "id": "more-rounded",
       "glyph": "◌̹",
       "unicode": "U+0339 COMBINING RIGHT HALF RING BELOW",
-      "meaning": "Extended: додаткове огублення; не плутати з базовим округленням передніх голосних."
+      "meaning": "UFPN: сильніше огублення відносно неогубленого й; у базовому записі /ɥ/ утворює й̹. В Extended може також передавати вузьку градацію огублення за наявності IPA-доказу."
     },
     {
       "id": "less-rounded",
@@ -783,13 +783,13 @@
       "phonologicalStatus": "CORE",
       "articulation": "labial-palatal approximant",
       "descriptionUk": "огублений піднебінний апроксимант",
-      "baseGrapheme": "ү",
+      "baseGrapheme": "й",
       "diacritics": [
-        "̯"
+        "̹"
       ],
-      "basic": "ү̯",
-      "detailed": "ү̯",
-      "extended": "ү̯",
+      "basic": "й̹",
+      "detailed": "й̹",
+      "extended": "й̹",
       "features": [],
       "examples": [
         "huit",
@@ -803,7 +803,7 @@
       "ukrainianExample": "Найближче: й у слові «йод» [j]",
       "ukrainianExampleStatus": "APPROXIMATE",
       "ukrainianExampleNote": "Українське [j] не має французького одночасного огублення, характерного для [ɥ].",
-      "graphemeOrigin": "UFPN composed grapheme ү + non-syllabic mark",
+      "graphemeOrigin": "UFPN composition: Ukrainian й + U+0339 COMBINING RIGHT HALF RING BELOW; project-specific shorthand for the labial-palatal glide /ɥ/",
       "pronunciationGuideUk": "Як для [j], але одночасно округліть губи; не додавайте окремого [у]."
     },
     {

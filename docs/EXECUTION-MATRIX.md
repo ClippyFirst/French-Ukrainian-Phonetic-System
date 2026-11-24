@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a dedicated Ukrainian articulation guide (`pronunciationGuideUk`) for each segment; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -158,3 +158,11 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Build, `npm test`, syntax check, and Charis 7 glyph/OpenType audit have passed. Playwright browser-engine installation is still in progress; Chromium/Firefox/WebKit rendering, artifact upload, and Pages deployment have not started.
 - Earlier run 45272182990 and other superseded documentation-push runs were cancelled by concurrency. Do not use their status as the current deployment gate.
 - UI-04 remains PARTIAL until this run's test job and Pages deploy both succeed and the live site is checked. No new main commit was made while this workflow was active.
+
+
+## Owner-approved glide notation update — 2026-11-24
+- Branch: `feat/ufpn-labial-palatal-glide-grapheme`, based on main `9633b43bad1a74899ac556bfd19f293977c18d61`.
+- The IPA adapter now maps /ɥ/ to `й̹` at Basic, Detailed and Extended levels: Ukrainian `й` + U+0339 COMBINING RIGHT HALF RING BELOW. This is an explicit UFPN design convention for a /j/-like glide with added lip rounding, not a claim that the composed spelling is an IPA character.
+- /ɲ/ remains `њ` unchanged; no other vowel or consonant mappings were changed.
+- Regression test covers all three levels, exact Unicode code points, and the preserved /ɲ/ → `њ` mapping. Charis 7 and three-engine browser rendering checks must verify the new base/mark attachment before merge/deploy.
+- Status: PARTIAL pending CI/browser/font audit and owner-side visual acceptance; independent phonetic review remains outside this implementation change.

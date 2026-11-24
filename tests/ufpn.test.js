@@ -30,7 +30,16 @@ test('documented rhotic allophones have explicit practical mappings',()=>{
  assert.equal(renderUfpn('χ ɣ ʁ̞ ɾ r ɹ x','extended').text,'х̠ х̬ ғ̞ р̌ р р̞ х');
 });
 
-test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й ү̯ ў'));
+test('glides remain distinct and /w/ uses Belarusian ў',()=>assert.equal(renderUfpn('j ɥ w').text,'й й̹ ў'));
+test('/ɥ/ uses the project-approved й̹ composition at every level while њ remains /ɲ/',()=>{
+ const glide=UFPN_MAPPING.phonemes.find(item=>item.ipa==='ɥ');
+ assert.equal(glide.baseGrapheme,'й');
+ assert.deepEqual(glide.diacritics,['̹']);
+ for(const level of ['basic','detailed','extended']) assert.equal(renderUfpn('ɥ',level).text,'й̹');
+ assert.equal(renderUfpn('ɲ').text,'њ');
+ assert.equal('й̹'.normalize('NFC'),'й̹');
+ assert.deepEqual([...('й̹')].map(char=>char.codePointAt(0)),[0x0439,0x0339]);
+});
 test('/w/ and /v/ remain distinct in every level',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('w v',level).text,'ў в')});
 test('/ɛ/ uses э and nasal /ɛ̃/ preserves its nasal marker',()=>assert.equal(renderUfpn('ɛ ɛ̃').text,'э э̃'));
 test('extended Cyrillic inventory records adopted graphemes and rejected candidates',()=>{const g=UFPN_MAPPING.graphemeInventory;assert.ok(g.adopted.some(x=>x.grapheme==='ў'&&x.ipa.includes('w')));assert.ok(g.adopted.some(x=>x.grapheme==='э'&&x.ipa.includes('ɛ')));assert.ok(g.adopted.some(x=>x.grapheme==='ү'&&x.ipa.includes('y')));assert.ok(g.adopted.some(x=>x.grapheme==='ө'&&x.ipa.includes('ø')));assert.ok(g.adopted.some(x=>x.grapheme==='ӧ'&&x.ipa.includes('œ')));assert.ok(g.adopted.some(x=>x.grapheme==='њ'&&x.ipa.includes('ɲ')));assert.ok(g.adopted.some(x=>x.grapheme==='ң'&&x.ipa.includes('ŋ')));assert.ok(g.adopted.some(x=>x.grapheme==='ғ'&&x.ipa.includes('ʁ')));assert.ok(g.candidates.some(x=>x.grapheme==='ы'&&x.decision==='NOT_ASSIGNED'));assert.ok(g.candidates.some(x=>x.grapheme==='ё'&&x.decision==='NOT_ASSIGNED'))});
