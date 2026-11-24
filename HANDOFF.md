@@ -243,3 +243,10 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Exactly one Pages artifact [14870605812](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45281476706/artifacts/14870605812) and browser specimen [14870611063](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45281476706/artifacts/14870611063) were uploaded.
 - Fresh live scrape 01a20a90-e14f-7024-b6d9-0f5af46dd418 returned HTTP 200 and verified the focusable `main`, labelled French input, 37 table rows and all five expected headers.
 - Remaining blockers are not deployment-related: manual screen-reader/zoom/reflow/physical-device/owner visual QA PARTIAL; independent French/Ukrainian phonetic review BLOCKED; independently curated/licensed gold benchmark BLOCKED. The project is a working research prototype, not a validated phonetic standard.
+
+
+## Owner-approved glide notation update — 2026-11-24
+- Feature branch: `feat/ufpn-labial-palatal-glide-grapheme`, based on main `9633b43bad1a74899ac556bfd19f293977c18d61`.
+- The owner selected the below-diacritic option for /ɥ/: canonical UFPN is `й̹` (U+0439 U+0339; Ukrainian `й` + COMBINING RIGHT HALF RING BELOW) at Basic, Detailed and Extended levels.
+- /ɲ/ remains `њ`. No other mappings changed.
+- Regression test asserts the three-level /ɥ/ output, exact Unicode sequence, and /ɲ/ → `њ` preservation. CI/font shaping/browser specimen and deployment verification remain pending; this branch has not yet been merged or deployed.
