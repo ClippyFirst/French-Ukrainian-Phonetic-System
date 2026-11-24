@@ -67,7 +67,7 @@ const featureUfpnUk={
  syllabicity:'◌̩ та ◌̯ у розширеному або докладному записі, якщо ці ознаки надані.',
  gemination:'ː/ˑ і вирівнювання сегментів; потрібні аудіо- або лексичні докази.',
  'speech-fluency':'Окремий шар часового анотування; не кодується діакритиками сегментів.',
- 'speech-rate':'Метадані профілю й контексту; впливають на звук ə та зв’язування та коартикуляцію, але не мають одного окремого знака.'
+ 'speech-rate':'Метадані профілю й контексту; впливають на звук ə, зв’язування та коартикуляцію, але не мають одного окремого знака.'
 };
 const inventoryOriginUk={
  'IPA symbol retained (Latin-derived IPA letter)':'Збережений символ МФА (літера латинського походження)',
@@ -121,7 +121,15 @@ document.querySelectorAll('.output').forEach(p=>p.addEventListener('click',e=>{c
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(result?.[b.dataset.copy]||'')));
 $('copy-all').addEventListener('click',()=>copy(['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN ('+({basic:'базовий',detailed:'докладний',extended:'розширений'}[levelSelect.value])+'): '+result.ufpn,'Латинська підказка: '+result.romanized].join('\n')));
 $('export-txt').addEventListener('click',()=>{const blob=new Blob([['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN ('+({basic:'базовий',detailed:'докладний',extended:'розширений'}[levelSelect.value])+'): '+result.ufpn,'Латинська підказка: '+result.romanized,'Позначені форми потребують перевірки.'].join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='french-ukrainian-phonetics.txt';a.click();URL.revokeObjectURL(url)});
-$('export-pdf').addEventListener('click',()=>window.print());$('show-explanations').addEventListener('change',e=>$('explain-panel').hidden=!e.target.checked);
+$('export-pdf').addEventListener('click',()=>window.print());
+const explanationToggle=$('show-explanations'),explanationPanel=$('explain-panel');
+function syncExplanationVisibility(){
+ const enabled=explanationToggle.checked;
+ explanationPanel.hidden=!enabled;
+ explanationToggle.setAttribute('aria-expanded',String(enabled));
+}
+explanationToggle.addEventListener('change',syncExplanationVisibility);
+syncExplanationVisibility();
 const reference=document.createElement('section');reference.id='ukrainian-sound-reference';reference.className='ufpn-reference';
 const refTitle=document.createElement('h2');refTitle.textContent='Буква — звук — українське слово';reference.append(refTitle);
 const refIntro=document.createElement('p');refIntro.textContent='Колонка «Як вимовити» пояснює артикуляцію кожного звука. Далі показано, чи можна почути його в нормативній українській вимові. «Контекстний» означає позиційний алофон; «наближений» — схожий, але не тотожний звук. Якщо точного відповідника немає, ми так і пишемо — без вигаданих прикладів.';reference.append(refIntro);
@@ -142,11 +150,19 @@ function renderReference(query=''){
 }
 refSearch.addEventListener('input',()=>renderReference(refSearch.value.trim()));
 renderReference();
-const technicalDetails=document.createElement('details');technicalDetails.className='ufpn-technical';
-const technicalSummary=document.createElement('summary');technicalSummary.textContent='Довідкова таблиця IPA → базовий / докладний / розширений';technicalDetails.append(technicalSummary);
+function createReferenceAccordion(className,title,count,description){
+ const details=document.createElement('details');details.className='reference-accordion '+className;
+ const summary=document.createElement('summary');
+ const heading=document.createElement('span');heading.className='reference-accordion-title';heading.textContent=title;
+ const meta=document.createElement('small');meta.className='reference-accordion-count';meta.textContent=count;
+ summary.append(heading,meta);details.append(summary);
+ const intro=document.createElement('p');intro.className='reference-description';intro.textContent=description;details.append(intro);
+ return details;
+}
+const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
+const technicalDetails=createReferenceAccordion('ufpn-technical','Довідкова таблиця IPA → UFPN','52 записи','Порівняння вхідного IPA з трьома рівнями української нотації. У кінцевій колонці наведено опис звука та статус доказовості.');
 const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>Базовий</th><th>Докладний</th><th>Розширений</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
 const refBody=refTable.querySelector('tbody');
-const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
 function renderTechnicalReference(){
  refBody.replaceChildren();
  for(const item of referenceRows){
@@ -162,15 +178,33 @@ function renderTechnicalReference(){
  }
 }
 renderTechnicalReference();reference.append(technicalDetails);
-const featureDetails=document.createElement('details');featureDetails.className='ufpn-features';
-const featureSummary=document.createElement('summary');featureSummary.textContent='Повний перелік фонетичних вимірів';featureDetails.append(featureSummary);
-const featureList=document.createElement('ul');
+const featureDetails=createReferenceAccordion('ufpn-features','Повний перелік фонетичних вимірів',UFPN_MAPPING.featureDimensions.length+' вимірів','Що саме описуємо у вимові, які значення розрізняємо та наскільки кожен вимір уже представлений у UFPN. Статус показує межі кодування, а не оцінку якості вимови.');
+const featureList=document.createElement('div');featureList.className='feature-grid';
 for(const feature of UFPN_MAPPING.featureDimensions){
- const li=document.createElement('li');li.textContent=(featureDimensionUk[feature.dimension]||feature.dimension)+': '+feature.values.map(value=>featureValueUk[value]||value).join(', ')+' — '+(featureStatusUk[feature.status]||feature.status)+'. '+(featureUfpnUk[feature.id]||localizeTechnicalText(feature.ufpn));featureList.append(li);
+ const card=document.createElement('article');card.className='feature-card';
+ const heading=document.createElement('h3');heading.textContent=featureDimensionUk[feature.dimension]||feature.dimension;
+ const values=document.createElement('p');values.className='feature-values';values.textContent=feature.values.map(value=>featureValueUk[value]||value).join(' · ');
+ const status=document.createElement('span');status.className='feature-status';status.textContent=featureStatusUk[feature.status]||feature.status;
+ const explanation=document.createElement('p');explanation.className='feature-explanation';explanation.textContent=featureUfpnUk[feature.id]||localizeTechnicalText(feature.ufpn);
+ card.append(heading,values,status,explanation);featureList.append(card);
 }
 featureDetails.append(featureList);reference.append(featureDetails);
-const graphemeDetails=document.createElement('details');const graphemeSummary=document.createElement('summary');graphemeSummary.textContent='Графемний склад UFPN';graphemeDetails.append(graphemeSummary);
-const graphemeList=document.createElement('ul');for(const item of UFPN_MAPPING.graphemeInventory.adopted){const li=document.createElement('li');li.textContent=item.grapheme+' — '+item.ipa.join(', ')+' ('+(inventoryOriginUk[item.origin]||item.origin)+'): '+(inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale));graphemeList.append(li)}for(const item of UFPN_MAPPING.graphemeInventory.candidates){const li=document.createElement('li');li.textContent=item.grapheme+' — не призначено: '+(inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale));graphemeList.append(li)}graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
+const inventory=UFPN_MAPPING.graphemeInventory;
+const graphemeCount=inventory.adopted.length+' прийнятих · '+inventory.candidates.length+' кандидатів';
+const graphemeDetails=createReferenceAccordion('ufpn-graphemes','Графемний склад UFPN',graphemeCount,'Прийняті графеми є частиною чинної нотації. Кандидати наведені для прозорості, але ще не мають призначеного звукового значення.');
+const graphemeList=document.createElement('ul');graphemeList.className='grapheme-list';
+function appendGraphemeItem(item,adopted){
+ const li=document.createElement('li');li.className='grapheme-card';
+ const symbol=document.createElement('strong');symbol.className='grapheme-symbol';symbol.textContent=item.grapheme;
+ const info=document.createElement('div');info.className='grapheme-info';
+ const mapping=document.createElement('span');mapping.className='grapheme-mapping';mapping.textContent=adopted?'IPA: '+item.ipa.join(', '):'Кандидат · не призначено';
+ const origin=document.createElement('span');origin.className='grapheme-origin';origin.textContent=adopted?(inventoryOriginUk[item.origin]||item.origin):'Потребує окремого рішення';
+ const rationale=document.createElement('p');rationale.textContent=inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale);
+ info.append(mapping,origin,rationale);li.append(symbol,info);graphemeList.append(li);
+}
+for(const item of inventory.adopted)appendGraphemeItem(item,true);
+for(const item of inventory.candidates)appendGraphemeItem(item,false);
+graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
 render();
