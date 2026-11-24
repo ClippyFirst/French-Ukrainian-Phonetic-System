@@ -76,3 +76,11 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 
 
 Додаткове наукове підґрунтя навчального модуля: S38–S44 у [реєстрі джерел](SOURCE-REGISTRY.md). Зокрема, навчальний матеріал не перетворює liaison на універсальне правило, розрізняє liaison та enchaînement, позначає schwa як варіативний і подає /œ̃/–/ɛ̃/ merger як регіонально/соціально неоднорідний процес.
+
+
+## Production verification — 2026-11-24
+
+- PR #53 merged to main as `ba02467bd7b8c1102bab0ec79d9fff5568acd87d`.
+- Main Pages run #380 (`45466573635`) passed the test job (79/79), build, syntax, Charis 7/OpenType audit, Chromium/Firefox/WebKit rendering, Pages artifact upload and deploy.
+- Live service smoke test returned HTTP 200. The header links to the in-page French reading module and UFPN guide; the UFPN link is no longer a raw Markdown target.
+- The learning add-on is static and educational. No pronunciation engine or data mapping was changed.
