@@ -100,7 +100,7 @@ test('profile help is visually subordinate but readable',()=>{
 
 test('French reading companion teaches common spelling patterns and keeps examples actionable',()=>{
  assert.match(html,/id="french-reading-guide"/);assert.match(html,/Як читати французькою/);
- for(const pattern of ['ou','oi','au · eau','an · en','ch','gn','ph','qu','liaison'])assert.ok(html.includes(pattern),'reading guide is missing '+pattern);
+ for(const pattern of ['ou','u','oi','au · eau','an · en','un · um','œ̃','è · ê','ç','Noël','-ent','enchaînement','ch','gn','ph','qu','liaison'])assert.ok(html.includes(pattern),'reading guide is missing '+pattern);
  assert.match(html,/data-lesson-example="Bonjour !"/);assert.match(app,/data-lesson-example/);assert.match(app,/source\.value=b\.dataset\.lessonExample/);
 });
 test('UFPN documentation is presented as an in-page visual guide, not a raw Markdown navigation link',()=>{
@@ -109,5 +109,5 @@ test('UFPN documentation is presented as an in-page visual guide, not a raw Mark
  assert.match(app,/technicalDetails\.id='ufpn-technical'/);assert.match(app,/featureDetails\.id='ufpn-features'/);assert.match(app,/graphemeDetails\.id='ufpn-graphemes'/);
 });
 test('learning companion and UFPN guide remain responsive and keyboard accessible',()=>{
- assert.match(css,/\.learning-section/);assert.match(css,/\.self-check summary/);assert.match(css,/\.ufpn-symbol-grid/);assert.match(css,/@media\(max-width:700px\)\{\.learning-section/);assert.match(css,/\.lesson-examples button/);
+ assert.match(css,/\.learning-section/);assert.match(css,/\.self-check summary/);assert.match(css,/\.ufpn-symbol-grid/);assert.match(css,/@media\(max-width:700px\)\{\.learning-section/);assert.match(css,/\.lesson-examples button/);assert.match(html,/зливається з \/ɛ̃\//);
 });
