@@ -399,12 +399,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - UI-07 status: DONE_VERIFIED. Remaining prototype limitations (lexical coverage, regional variants and native-speaker review) are unrelated to this layout-only task.
 
 
-## Motion UX handoff — 2026-11-24
-- PR #62: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/62
-- Branch: `feat/editorial-motion-ux-2026-11-24`, based on main `0c8f7bb588c52dd8294b92e355a20304335d4327`.
-- Feature head at verification: `3553a911a855b4a8328905fc60fd381a6596b215`.
-- CSS-only motion follows the animate/review guidance: 140 ms ease for selected-word/link colour feedback; 2 px ease-in-out lift for spelling and adopted-grapheme cards only on fine-pointer hover. Reduced-motion removes card movement/transitions while retaining colour feedback.
+## Motion UX handoff — 2026-11-24 (closed)
+- PR #62 merged to `main`; merge commit: `ba55c46763d0a09f75faa55830d51192b6efb6e8`.
+- Original implementation branch: `feat/editorial-motion-ux-2026-11-24`, based on main `0c8f7bb588c52dd8294b92e355a20304335d4327`.
+- CSS-only motion: 140 ms ease for selected-word/link colour feedback; 2 px ease-in-out lift for spelling and adopted-grapheme cards only on fine-pointer hover. Reduced-motion removes card movement/transitions while retaining colour feedback.
 - No scroll reveal, moving phonetic output, JS animation loop, new runtime dependency or animation library.
-- CI run [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS: build, `npm test`, `npm run check`, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering and artifact upload. Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; no visible layout regression or horizontal overflow.
-- Local clone unavailable due DNS, but CI ran the full repository checks. MOTION-01 is DONE_VERIFIED in this PR branch.
-- PR #62 remains OPEN and unmerged; no production deployment is claimed. Next acceptance step is merge followed by main Pages workflow and live smoke verification.
+- PR CI [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS. Main Pages workflow #424 / [45483025203](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45483025203) SUCCESS: build, npm test, npm run check, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering, Pages artifact and deployment.
+- Browser specimen artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop/mobile. Live CSS fetch confirmed deployed motion tokens, hover gating and reduced-motion behavior; production homepage fetch succeeded.
+- Local clone was unavailable due DNS; CI ran the full repository checks. MOTION-01: DONE_VERIFIED, merged and deployed.
+
