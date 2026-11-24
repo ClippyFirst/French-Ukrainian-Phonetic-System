@@ -369,3 +369,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Live smoke test: HTTP 200 at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/`; `#french-reading-guide` and `#ufpn-guide` content present; nav no longer targets raw Markdown.
 - Evidence note in Undermind workspace: [French reading pronunciation research](https://app.undermind.ai/projects/80418e38-ab46-4cea-9b6c-0734cca58c2f?path=%2Fanalysis%2Ffrench-reading-pronunciation-notes.md). Repository references S38–S44 are in `docs/SOURCE-REGISTRY.md`.
 - Scope complete for W8/W9. Broader native-speaker review, regional coverage expansion and a full exceptions dictionary remain outside this small educational add-on; no false completeness claim is made.
+
+
+## Final main closeout — 2026-11-24
+
+- Final UI/educational-disclaimer closeout commit: `b9225311c80b18f99a8d90e5d49752ea9b9a6012` (PR #57). It aligns the browser theme-color with `#F5F0E7` and explicitly labels the reading guide as educational only.
+- Final main Pages run [#385 / 45468292682](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45468292682): 79/79 tests PASS; build/check PASS; Charis 7/OpenType audit PASS; Chromium/Firefox/WebKit render PASS; Pages artifact upload PASS; deploy PASS.
+- Final live smoke after #385: HTTP 200; the homepage still exposes the learning guide and in-page UFPN guide, the navigation avoids the raw Markdown file, and the theme-color meta value in main source is `#F5F0E7`.
+- No remaining blocker for W8/W9. The broader service remains an experimental prototype; a full exception dictionary and independent review by native-speaker specialists remain future work, not blockers for this educational add-on.
