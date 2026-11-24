@@ -31,7 +31,7 @@ test('UFPN guide explains IPA-first processing, all three levels and project-spe
 });
 
 test('French reading lessons cover common spelling patterns and contextual caveats',()=>{
- for(const phrase of ['ou','oi','au, eau','on, om','an, en, am, em','in, im, ain, ein','ch','gn','ils parlent','les amis','avec elle','Liaison','Enchaînement'])
+ for(const phrase of ['ou','oi','au, eau','on, om','an, en, am, em','in, im, ain, ein','un, um','ë, ï','ch','gn','ils parlent','les amis','avec elle','Liaison','Enchaînement'])
   assert.ok(html.includes(phrase),'missing learning content: '+phrase);
  assert.match(html,/не є універсальна заміна/);
  assert.match(html,/не виникає автоматично/);
