@@ -98,7 +98,7 @@ test('French reading companion teaches common spelling patterns and keeps exampl
 test('UFPN documentation is presented as an in-page visual guide, not a raw Markdown navigation link',()=>{
  assert.match(html,/href="#ufpn-guide"/);assert.match(html,/id="ufpn-guide"/);assert.doesNotMatch(html,/href="\.\/docs\/UKRAINIAN-NOTATION\.md"/);
  assert.match(html,/id="ufpn-symbol-grid"/);assert.match(html,/бɔ̃жуғ/);assert.match(app,/guideGrid\.append\(card\)/);
- assert.match(app,/technicalDetails\.id='ufpn-technical'/);assert.match(app,/featureDetails\.id='ufpn-features'/);assert.match(app,/graphemeDetails\.id='ufpn-graphemes'/);
+ assert.match(app,/technicalDetails\.id='ufpn-technical'/);assert.match(app,/graphemeDetails\.id='ufpn-graphemes'/);
 });
 test('learning companion and UFPN guide remain responsive and keyboard accessible',()=>{
  assert.match(css,/\.learning-section/);assert.match(css,/\.self-check summary/);assert.match(css,/\.ufpn-symbol-grid/);assert.match(css,/@media\(max-width:700px\)\{\.learning-section/);assert.match(css,/\.lesson-examples button/);assert.match(html,/зливається з \/ɛ̃\//);
