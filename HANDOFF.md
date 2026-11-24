@@ -298,4 +298,7 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - PR #41 (branch fix/reference-panels-and-explanation-toggle) addresses the inconsistent presentation of the IPA→UFPN table, 18 phonetic dimensions and grapheme inventory. The three sections now share a single accordion visual pattern, including short descriptions and counts.
 - The 18 dimensions are rendered as individual cards with Ukrainian names, values, evidence statuses and UFPN notes rather than a plain bullet list. The adopted grapheme inventory is visually distinguished from unassigned candidates.
 - «Показувати розбір вибраного слова» controls only the detail panel below the result cards. It does not alter IPA, UFPN, level selection or the transcription algorithm. The label now states this explicitly and the checkbox exposes the panel relationship/state to assistive technology.
-- New regression tests: tests/reference-ui.test.js. CI and visual verification are pending; do not call this change deployed or verified until PR checks and the live page are inspected.
+- New regression tests: `tests/reference-ui.test.js`.
+- PR #41 was squash-merged into `main` as `f04a7b280b9b1a855ae1faed4c6bf1b08f070998`.
+- Workflow `45407617594` passed build, all tests (including the new UI contract tests), syntax, Charis 7/OpenType audit, Playwright installation and UFPN rendering in Chromium, Firefox and WebKit; browser specimen upload succeeded.
+- Deployment is not yet verified: a fresh GitHub Pages fetch returned HTTP 200 but still showed the old checkbox label and plain bullet lists. The main-branch Pages run/deployment needs investigation or a successful retry; re-scrape until the new toggle label and accordion/card UI appear. Keep W7 PARTIAL until then.
