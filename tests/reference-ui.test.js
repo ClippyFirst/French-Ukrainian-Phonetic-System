@@ -59,3 +59,19 @@ test('the page removes decorative micro-labels and keeps meaningful navigation',
  assert.ok(html.includes('<footer>')&&html.includes('Джерела')&&html.includes('Стан проєкту')&&html.includes('</footer>'));
  assert.doesNotMatch(html,/<option disabled>/);
 });
+
+
+test('profile selector explains pronunciation differences in plain Ukrainian',()=>{
+ assert.match(html,/Варіант вимови/);
+ assert.match(html,/Елізія — випадіння звука ə/);
+ assert.match(html,/Звичайна вимова/);
+ assert.match(html,/Вокальна дикція/);
+});
+
+test('result captions distinguish phonetic notation from a reading aid',()=>{
+ assert.match(html,/Результат вимови/);
+ assert.match(html,/проміжний запис/);
+ assert.match(html,/гібридна нотація/);
+ assert.match(html,/Спрощена підказка для читання/);
+ assert.match(html,/не є точною фонетичною транскрипцією/);
+});
