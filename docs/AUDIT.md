@@ -309,3 +309,9 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - PR #48 fixed the only English fallback exposed by the new `ъ` inventory entry: origin and rationale now have explicit Ukrainian UI translations, guarded by regression assertions.
 - Main Pages workflow [45445140803](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45445140803) passed build, 75/75 tests, syntax, font audit, browser rendering, Pages artifact and deploy.
 - Final live smoke test confirmed: IPA retains `/ə/`; UFPN output uses `ъ`; the reference row is `ъ | ə`; the `ъ` inventory origin and rationale are Ukrainian.
+
+
+## French editorial colour review — 2026-11-24
+- Replaced the forest-green/lime emphasis with ink blue, wine red and muted champagne over warm ivory; neutral slate and pale blue-grey support text and surfaces.
+- The palette avoids a literal tricolour while evoking French editorial/print design.
+- Scope is deliberately limited to CSS colour values/tokens and a regression assertion. No typography, spacing, layout, wording, interaction or phonetic logic changes.
