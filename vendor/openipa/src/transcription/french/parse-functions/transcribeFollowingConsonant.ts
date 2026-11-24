@@ -2,7 +2,7 @@ import { Phoneme } from '../../../constants/Interfaces';
 import { isConsonant } from '../../../util/Helper';
 
 const getRule = (letter: string, ipa: string): string => {
-  return `'${letter}' consonants followed by a consonant are transcribed as [${ipa}].`;
+  return `Літера «${letter}» перед приголосним передає [${ipa}].`;
 };
 
 const transcribeFollowingConsonant = (
