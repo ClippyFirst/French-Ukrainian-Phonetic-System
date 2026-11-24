@@ -333,3 +333,6 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Owner-approved practical-notation decision: every IPA `/ə/` maps to `ъ` in UFPN Basic, Detailed and Extended. IPA remains unchanged in the IPA result and provenance; the adapter continues to consume IPA only.
 - `ъ` is a project-specific vowel grapheme here, not a silent hard sign and not a claim of identity with Bulgarian `/ɤ/`. If profile-driven elision removes `/ə/`, no `ъ` is emitted.
 - Mapping data, reference table documentation, UI helper text and regression tests were updated together. Await PR CI, merge, main Pages deploy and live content verification before marking hosting DONE_VERIFIED.
+
+
+- Initial PR #46 CI exposed five stale schwa expectations in `tests/ufpn.test.js` (two IPA→UFPN expected strings, adopted-inventory assertion and former standalone-grapheme assertion). The implementation output was correct (`пъті`); the tests were updated to expect `ъ`. Latest test correction commit: `6267e18acbc8a2cdff63bf67d7141c0ecbc33745`; a fresh CI pass is still required.
