@@ -337,7 +337,7 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 ## Final verification — French reading + UFPN web guide (2026-11-24)
 
-<badge>DONE_VERIFIED</badge>
+**Status: DONE_VERIFIED**
 
 - PR #53 merged by squash into main: `ba02467bd7b8c1102bab0ec79d9fff5568acd87d`.
 - PR CI run [#379 / 45466119617](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45466119617): build PASS; 79/79 tests PASS; syntax check PASS; Charis 7/OpenType audit PASS; Playwright browser install PASS; Chromium/Firefox/WebKit rendering PASS; specimen upload PASS.
