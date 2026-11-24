@@ -18,7 +18,7 @@ test('Latin guide and segment explanations cover mapped allophones',()=>{
  const a=adaptIpa('t͡s d͡z n͡ŋ s̬ z̥');
  assert.equal(a.romanized,'ts dz n-ng s-voiced z-devoiced');
  assert.ok(a.ufpn.includes('т͡с'));
- assert.ok(describeSegment('t͡s').includes('Québec'));
+ assert.ok(describeSegment('t͡s').includes('квебекської'));
 });
 
 test('lyric-diction profile delegates final schwa and lexical behavior to OpenIPA',()=>{
