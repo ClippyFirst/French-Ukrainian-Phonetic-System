@@ -332,7 +332,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Навігаційний пункт UFPN тепер веде до вбудованого HTML-розділу, а не до сирого Markdown. Картки графем створюються безпосередньо з UFPN_MAPPING.graphemeInventory.adopted, щоб уникнути дублювання інвентарю в UI-коді.
 - Приклад bonjour показує IPA як проміжний шар і чинний UFPN результат основного профілю; три рівні нотації пояснені окремо.
 - Регресійні перевірки охоплюють зміст навчальних правил, зв'язок кнопок прикладів з основним полем, генерацію карток із mapping та responsive CSS.
-- Статус до завершення PR CI і production smoke: PARTIAL. Навчальний матеріал не є повним підручником французької мови, не замінює аудіо та не обіцяє покрити всі лексичні винятки.
+- Статус: DONE_VERIFIED після merge PR #53. Навчальний матеріал не є повним підручником французької мови, не замінює аудіо та не обіцяє покрити всі лексичні винятки.
+- Перевірки: build, 79/79 tests, syntax/check, Charis 7/OpenType audit, Playwright Chromium/Firefox/WebKit, Pages artifact/deploy та live smoke test HTTP 200. У production підтверджено обидві секції, якорі навігації, UFPN приклад і CSS для нового UI.
+- Scope: навчальний блок має виключно навчальне призначення. Результати досліджень шведськомовних, японськомовних та арабомовних студентів не екстраполюються на україномовних учнів.
+- Deployment evidence: main commit ba02467bd7b8c1102bab0ec79d9fff5568acd87d; workflow run 45466573635 (test, pages-artifact, deploy success).
 
 
 ## Final verification — French reading + UFPN web guide (2026-11-24)
