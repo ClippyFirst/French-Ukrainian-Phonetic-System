@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node scripts/build-openipa.mjs",
     "test": "node --test",
-    "check": "node --check src/engine.js && node --check src/app.js && node --check src/ufpn.js && node --check src/ufpn-display.js && node --check src/french-g2p.js && node --check src/openipa-french.js"
+    "check": "node --check src/engine.js && node --check src/app.js && node --check src/ufpn.js && node --check src/ufpn-display.js && node --check src/french-g2p.js && node --check src/openipa-french.js && node --check docs/ufpn-page.js"
   },
   "engines": {
     "node": ">=20.10"
