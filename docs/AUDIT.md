@@ -105,14 +105,14 @@
 ### OpenIPA legacy-symbol normalization (2026-11-23)
 - Verified in vendored source: `IPA.NASAL_O` is `õ`; `IPA.FLIPPED_R` is `ɾ`; `parseR` supplies `ɾ` for ordinary French `r` throughout the parser. This conflicted with the project's canonical broad Metropolitan IPA inventory (`ɔ̃`, `ʁ`) and caused `⟦õ⟧` plus regional tap `р̌` in ordinary output.
 - Adapter normalizes OpenIPA `õ` → `ɔ̃` and applies profile-aware rhotic handling: `metropolitan-fr` maps the upstream lyric-diction tap `ɾ` to broad `/ʁ/`, while `lyric-diction-fr` preserves `[ɾ]` as intentional tap `р̌`. Raw values remain in `sourceIpa` and trace.
-- Regression cases: `bonjour`, `garçon`, `mer`; end-to-end `bonjour` expected UFPN `бо̆̃жух̬̠` with no unsupported IPA.
+- Regression cases: `bonjour`, `garçon`, `mer`; end-to-end `bonjour` expected UFPN `бɔ̃жух̬̠` with no unsupported IPA.
 - PR #11's adapter behavior was superseded by profile-aware PR #13. Final main commit `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5` and workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) verify the corrected profile contract; 52 tests, syntax, font audit, six browser/viewport checks and Pages deployment all passed. Linguistic expert review remains an independent outstanding gate.
 
 
 ### Final profile-aware deployment verification (2026-11-23)
 - PR #13 merged as `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5`.
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) passed build, all 52 tests, syntax, Charis 7 glyph/anchor audit, Playwright installation, six cross-browser/viewport checks and Pages deployment.
-- Fresh live Pages scrape shows default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; raw published adapter contains the profile-aware branch. Lyric-diction `[ɾ]` preservation is covered by unit tests (`бо̆̃жур̌`).
+- Fresh live Pages scrape shows default Metropolitan `bɔ̃ʒuʁ` → `бɔ̃жух̬̠`; raw published adapter contains the profile-aware branch. Lyric-diction `[ɾ]` preservation is covered by unit tests (`бо̆̃жур̌`).
 - No claim of independent linguistic validation; specialist review and licensed gold corpus remain blocked.
 
 ### Expanded Cyrillic inventory and Ukrainian sound correspondence table (2026-11-23)
