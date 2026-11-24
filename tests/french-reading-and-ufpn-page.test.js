@@ -26,14 +26,14 @@ test('UFPN guide explains IPA-first processing, all three levels and project-spe
  assert.match(page,/Basic/);
  assert.match(page,/Detailed/);
  assert.match(page,/Extended/);
- assert.match(page,/IPA \/ə\/.*графемою <b>ъ<\/b>/s);
+ assert.match(page,/графема ъ відповідає IPA \/ə\//);
  assert.match(page,/експериментальна проєктна нотація/);
 });
 
 test('French reading lessons cover common spelling patterns and contextual caveats',()=>{
  for(const phrase of ['ou','oi','au, eau','on, om','an, en, am, em','in, im, ain, ein','un, um','ë, ï','ch','gn','ils parlent','les amis','avec elle','Liaison','Enchaînement'])
   assert.ok(html.includes(phrase),'missing learning content: '+phrase);
- assert.match(html,/не є універсальна заміна/);
+ assert.match(html,/а не універсальна заміна/);
  assert.match(html,/не виникає автоматично/);
  assert.match(html,/регіональні варіанти/);
 });
