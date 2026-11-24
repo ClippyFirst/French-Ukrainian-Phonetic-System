@@ -374,3 +374,12 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Browser artifact [14959101782](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437/artifacts/14959101782) contains desktop, laptop, tablet and mobile screenshots. Desktop and mobile screenshots were inspected: lesson 04 spans both columns; the UFPN symbol-card final row uses the available width; mobile layout remains a single readable column without horizontal overflow.
 - Earlier failed CI runs were traced to stale assertions for removed UI and one temporary omission of localization dictionaries; all were corrected. The final run is green.
 - PR CI does not run Pages deployment. Hosting remains PARTIAL until merge, main Pages deploy and live HTTP/content smoke verification.
+
+
+## UI-07 — production closeout (2026-11-24)
+- PR #60 merged to main as `bcafb611bf90270f52e91d4c445f02cdbd8fe3fe`; implementation branch retained.
+- PR workflow [#409 / 45474480437](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437) SUCCESS: build, 79/79 tests, syntax check, Charis 7/OpenType audit, Playwright installation, Chromium/Firefox/WebKit render and specimen upload.
+- Main Pages workflow [#412 / 45475060963](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45475060963) SUCCESS: test job, Pages artifact and deploy.
+- Live smoke after deployment: `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/` returned HTTP 200. HTML confirms lesson 04 uses `lesson-wide`; the explanation checkbox, full feature-dimensions panel and unassigned candidate cards are absent; only Basic UFPN remains; confidence labels/warnings are absent. Live app.js confirms Basic-only mode and the selected-word detail behavior (hidden on input, shown on selection). Live CSS confirms full-width lesson card and flex-wrapped symbol cards.
+- Browser specimen [14959101782](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437/artifacts/14959101782) inspected at desktop and mobile sizes; the last UFPN card row fills available width and mobile has no horizontal overflow.
+- IPA, G2P engine, profiles, canonical mapping and internal confidence calculation were not changed. Candidate `ы` and `ё` records remain in the research registry but are not rendered on the website.
