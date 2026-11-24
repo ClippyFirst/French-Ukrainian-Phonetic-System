@@ -247,5 +247,9 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 
 
 ### French editorial colour palette (2026-11-24)
-- Apply a restrained French print-inspired palette in CSS only: ivory `#F5F0E7`, ink blue `#26364A`, wine red `#A64B55`, champagne `#D8B98A`, slate `#66717C`.
-- Preserve typography, layout, UI copy, interaction and all phonetic behavior. Regression test pins the palette tokens. PR CI and main Pages deployment are required before marking hosted.
+- Status: DONE_VERIFIED — PR #50 merged to `main` as `9efa311f0d500ab24347f481cc61ba151cecbea0`.
+- Palette: ivory `#F5F0E7`, ink blue `#26364A`, wine red `#A64B55`, champagne `#D8B98A`, slate `#66717C`; supporting surfaces use warm ivory and pale blue-grey.
+- Scope remained CSS colour values/tokens plus a palette regression test. Typography, layout, UI copy, interaction and phonetic behavior were not changed.
+- Main Pages workflow [45460636622](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45460636622) completed successfully: build, tests, syntax check, Charis 7/OpenType audit, Playwright installation, Chromium/Firefox/WebKit rendering, browser specimen upload, `pages-artifact` and `deploy` (all jobs SUCCESS).
+- Production verification: fresh uncached stylesheet request `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0` returned HTTP 200 and confirmed the deployed palette tokens and component colours. An initial cached request returned the previous stylesheet; cache-busting fetch resolved this and confirmed the current deployment.
+- Acceptance: DONE_VERIFIED for implementation, CI and production hosting. Owner-side visual preference remains subjective and can be revisited separately; no functional or linguistic blocker remains for this palette task.
