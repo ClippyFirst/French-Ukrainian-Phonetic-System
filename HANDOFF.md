@@ -358,3 +358,14 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Status: W8/W9 PARTIAL до завершення CI, браузерної перевірки та production smoke test.
 
 - Додані джерела S38–S44 на основі Undermind: прочитані повні PDF Racine & Detey (2017), Stridfeldt (2019), Nawafleh (2023); abstract/metadata для Law (2022), Brissaud et al. (2012), Viebahn et al. (2018), Granget et al. (2024). Лінгвістичні дані/корпуси з цих праць не імпортовано.
+
+
+## Final handoff — 2026-11-24
+
+- Main branch final feature commit: `ba02467bd7b8c1102bab0ec79d9fff5568acd87d` (PR #53, squash merge).
+- Feature branch: `feat/french-reading-and-ufpn-guide-2026-11-24`; retained after merge.
+- PR #52 (`feat/french-reading-and-ufpn-html-guide-2026-11-24`) was closed as a duplicate after comparing it with PR #53; its branch was retained and not deleted. PR #53's in-page guide was chosen to avoid duplicating the existing searchable technical tables.
+- PR CI #379 and main Pages run #380 both passed: 79/79 tests, build, syntax, Charis 7/OpenType audit, Chromium/Firefox/WebKit rendering; main Pages artifact and deployment passed.
+- Live smoke test: HTTP 200 at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/`; `#french-reading-guide` and `#ufpn-guide` content present; nav no longer targets raw Markdown.
+- Evidence note in Undermind workspace: [French reading pronunciation research](https://app.undermind.ai/projects/80418e38-ab46-4cea-9b6c-0734cca58c2f?path=%2Fanalysis%2Ffrench-reading-pronunciation-notes.md). Repository references S38–S44 are in `docs/SOURCE-REGISTRY.md`.
+- Scope complete for W8/W9. Broader native-speaker review, regional coverage expansion and a full exceptions dictionary remain outside this small educational add-on; no false completeness claim is made.
