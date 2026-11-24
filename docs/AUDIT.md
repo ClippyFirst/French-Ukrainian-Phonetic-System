@@ -400,3 +400,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - На гілці `fix/consistent-disclosure-accordions-2026-11-24` уніфіковано заголовки, індикатори відкриття/закриття, фокус-контур, hover-стан, розміри зон натискання та мобільні відступи. Збережено нативну семантику HTML `details/summary`; JS для відкриття не додавався.
 - Додано регресійні перевірки стилів у `tests/editorial-motion.test.js`. Reduced-motion вимикає переходи accordion-контейнерів.
 - Статус DISC-01: PARTIAL до проходження CI та перевірки browser specimen.
+
+
+### DISC-01 verification update — 2026-11-24
+- PR CI run [45491813658](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45491813658) SUCCESS: build, npm test, npm run check, Charis 7/OpenType audit, Playwright browser setup та Chromium/Firefox/WebKit rendering.
+- `src/app.js` now filters the IPA → UFPN reference by IPA, adopted grapheme, localized description and evidence status; the visible count updates and an empty state is rendered when no row matches.
+- `tests/reference-ui.test.js` covers the search contract; `tests/editorial-motion.test.js` covers disclosure control styling and reduced-motion behavior.
+- DISC-01 remains PARTIAL until the merged Pages deployment and live UI are checked; the CI browser step validates font rendering, not the complete accordion layout.
