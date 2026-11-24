@@ -95,7 +95,7 @@ const phonologyStatusUk={
  LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED:'Підтримано фаховою літературою; незалежної експертної перевірки ще немає',
  PARTIAL_MANNER_NOT_ENCODED:'Спосіб творення враховано частково, але не закодовано'
 };
-const localizeTechnicalText=value=>String(value??'').replaceAll('provenance','походження').replaceAll('tie-bar placement','розташування сполучної дужки').replaceAll('schwa','звук ə');
+const localizeTechnicalText=value=>String(value??'').replaceAll('provenance','походження').replaceAll('tie-bar placement','розташування сполучної дужки').replaceAll('schwa','звука ə');
 const $=id=>document.getElementById(id),source=$('source');let result;
 const levelLabel=document.createElement('label');levelLabel.textContent='Деталізація UFPN';
 const levelSelect=document.createElement('select');levelSelect.id='ufpn-level';
