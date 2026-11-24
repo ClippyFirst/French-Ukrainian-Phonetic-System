@@ -354,3 +354,6 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - The UFPN navigation now targets docs/ufpn.html, a rendered responsive page. It reads the current phoneme and grapheme inventory from data/ufpn-mapping.json; the original Markdown specification remains linked as a technical source.
 - New files: docs/ufpn.html, docs/ufpn-page.js, docs/ufpn-page.css, tests/french-reading-and-ufpn-page.test.js. Updated index.html, src/app.js, styles.css, README, WEB-SERVICE, matrix and audit.
 - No phonetic engine, IPA→UFPN mapping, profile or source-data changes were intended. Verification and Pages deployment remain pending until CI completes.
+
+
+- PR #52 CI [45464917783](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45464917783) passed: npm run build, 80/80 npm test, npm run check, Charis 7/OpenType audit, Playwright browser install, Chromium/Firefox/WebKit render, specimen upload. PR Pages artifact/deploy jobs were skipped as expected; main deployment and live smoke test remain after merge.
