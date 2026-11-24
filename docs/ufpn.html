@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F5F0E7">
+<meta name="description" content="Навчальний довідник української фонетичної нотації UFPN: графеми, звуки, діакритики та рівні деталізації.">
+<title>UFPN — довідник української фонетичної нотації</title>
+<link rel="preload" href="../assets/fonts/Charis-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="./ufpn-page.css">
+<script type="module" src="./ufpn-page.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">До основного вмісту</a>
+<header><a class="brand" href="../index.html"><b>ф</b> Фонетика</a><nav aria-label="Основна навігація"><a href="../index.html">Транскриптор</a><a href="../index.html#learn-french">Як читати французькою</a><a href="#inventory">Графеми UFPN</a></nav></header>
+<main id="main" class="ufpn-page">
+<section class="ufpn-hero"><p class="eyebrow">НАВЧАЛЬНИЙ ДОВІДНИК · ВЕРСІЯ 1.2</p><h1>UFPN<span>Українська фонетична нотація французької</span></h1>
+<p>UFPN — практичний спосіб записувати французьку вимову українськими та кількома спеціально обраними графемами. Це не переклад і не звичайна транслітерація французького написання.</p>
+<div class="notice"><strong>Важливо:</strong> UFPN — експериментальна проєктна нотація, а не академічний стандарт. Її результат залежить від якості IPA на вході; незнайомі або непідтверджені вимови не слід вважати безпомилковими.</div>
+<div class="ufpn-actions"><a class="guide-link" href="../index.html#top">Відкрити транскриптор</a><a class="plain-link" href="./UKRAINIAN-NOTATION.md">Технічна специфікація Markdown ↗</a></div>
+</section>
+<section class="guide-section" id="principle"><div class="section-heading"><p class="eyebrow">01 · ПРИНЦИП</p><h2>Як утворюється запис</h2></div>
+<div class="pipeline"><div><small>Вхід</small><b>Французький текст</b></div><span>→</span><div><small>Проміжний фонетичний шар</small><b>IPA / МФА</b></div><span>→</span><div><small>Адаптер</small><b>UFPN</b></div></div>
+<p>UFPN не читає французькі літери напряму. Спочатку рушій формує IPA, а вже адаптер перетворює IPA на UFPN. Це принципове розділення: орфографічні підказки не підміняють фонетичний аналіз.</p>
+</section>
+<section class="guide-section" id="levels"><div class="section-heading"><p class="eyebrow">02 · ДЕТАЛІЗАЦІЯ</p><h2>Три рівні запису</h2></div>
+<div class="level-grid">
+<article><span class="level-name">Basic</span><h3>Базовий</h3><p>Для першого читання. Зберігає головні звукові розрізнення, але не позначає кожну передбачувану деталь вимови.</p><ul><li>Основні сегменти й носовість</li><li>Без меж складів і позначення довготи</li><li>Найзручніший для навчального читання</li></ul></article>
+<article><span class="level-name">Detailed</span><h3>Докладний</h3><p>Для точнішого розбору сегментів і складів.</p><ul><li>Усе з Basic</li><li>Межа складу ·</li><li>Довгота ː/ˑ та зв'язування ‿ — лише якщо вони є у вхідному аналізі</li></ul></article>
+<article><span class="level-name">Extended</span><h3>Розширений</h3><p>Для вузької фонетичної та просодичної анотації.</p><ul><li>Модифікатори МФА</li><li>Наголос і межі ритмічних груп</li><li>Тільки ознаки, підтверджені вузьким IPA або аудіоанотацією</li></ul></article>
+</div>
+</section>
+<section class="guide-section" id="inventory"><div class="section-heading"><p class="eyebrow">03 · АЛФАВІТ НОТАЦІЇ</p><h2>Графеми UFPN</h2></div>
+<p>Таблиця нижче завантажується безпосередньо з машинозчитуваного реєстру проєкту. Скористайтеся пошуком за графемою, IPA або назвою звука.</p>
+<div id="inventory-cards" class="grapheme-grid" aria-live="polite"></div>
+<h3 class="subheading">Сегментний довідник</h3><label class="search-label" for="phoneme-search">Знайти звук, IPA або приклад</label><input id="phoneme-search" type="search" placeholder="Наприклад: ɛ̃, носовий, bon…">
+<div class="table-scroll"><table class="ufpn-data-table"><thead><tr><th>IPA</th><th>UFPN Basic</th><th>Артикуляція</th><th>Французькі приклади</th><th>Українська підказка</th></tr></thead><tbody id="phoneme-rows"></tbody></table></div>
+<p id="phoneme-count" class="table-count" aria-live="polite"></p>
+</section>
+<section class="guide-section" id="diacritics"><div class="section-heading"><p class="eyebrow">04 · ДІАКРИТИКИ</p><h2>Як читати додаткові знаки</h2></div>
+<div class="diacritic-grid">
+<article><strong>◌̃</strong><h3>Носовість</h3><p>Тильда над голосною позначає носовий голосний: наприклад, а̃, ɛ̃ або ɔ̃. Це властивість голосного, а не окрема літера після нього.</p></article>
+<article><strong>ъ</strong><h3>Центральний голосний /ə/</h3><p>У цій версії UFPN графема ъ відповідає IPA /ə/. Її треба вимовляти як короткий нейтральний голосний, а не пропускати як німий твердий знак.</p></article>
+<article><strong>й̹</strong><h3>Огублений ковзний звук</h3><p>Комбінація й̹ передає /ɥ/: артикуляція близька до [j], але з округленням губ. Нижній знак — комбінована діакритика, а не окрема літера.</p></article>
+<article><strong>р̌</strong><h3>Одноударний ротичний</h3><p>Використовується лише в окремих профільних реалізаціях, коли такий звук є у вхідному IPA. Це не загальне правило французького r.</p></article>
+<article><strong>·</strong><h3>Межа складу</h3><p>З'являється в Detailed, коли межу складу передано в аналізі. Не є паузою між словами.</p></article>
+<article><strong>‿</strong><h3>Зв'язування</h3><p>Позначає зв'язок на межі слів, якщо він присутній у вхідному фонетичному аналізі. Сам знак не пояснює, чи це liaison, чи enchaînement.</p></article>
+</div>
+</section>
+<section class="guide-section caution"><div class="section-heading"><p class="eyebrow">05 · МЕЖІ</p><h2>Чого UFPN не обіцяє</h2></div>
+<ul><li>Не відновлює правильну вимову, якщо французький G2P рушій помилився або не знає слова.</li><li>Не перетворює всі відмінності між мовцями й регіонами на одну «єдину правильну» форму.</li><li>Не додає фонетичних деталей лише тому, що їх можна здогадатися з написання.</li><li>Не замінює аудіо, словники вимови чи консультацію з фахівцем.</li></ul>
+<p>Для навчання порівнюйте UFPN з IPA, слухайте аудіо та перевіряйте невпевнені форми. Невідомий IPA має залишатися помітним, а не зникати.</p>
+</section>
+<footer><a href="../index.html">← На головну</a><span><a href="./UKRAINIAN-NOTATION.md">Повна технічна специфікація</a> · <a href="../docs/SOURCE-REGISTRY.md">Реєстр джерел</a></span></footer>
+</main>
+</body></html>
