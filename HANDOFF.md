@@ -284,3 +284,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Зміни: український інтерфейс, профілі й рівні UFPN, локалізовані довідкові таблиці/метадані/експорт, українські правила й пояснення OpenIPA, регресійні тести.
 - CI run [45383515829](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45383515829) на `d0bc7489618305f3636ad7f61adaa23174220ddb`: 65/65 tests, build, syntax, Charis 7 audit і Chromium/Firefox/WebKit rendering — SUCCESS. Browser artifact `14915013026`.
 - Наступні кроки: повторити CI після цього документаційного запису, злити PR #37, дочекатися Pages deployment і перевірити живий сайт на українські написи та відсутність англомовних підписів інтерфейсу.
+
+
+## Фінальний handoff — українська локалізація вебсайту (2026-11-24)
+- PR #37, #38, #39 злито; фінальний `main`: `3b67ef59ca9f012f00dcbf4bc04eb6ce32714778`.
+- Main workflow [45386058400](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45386058400) успішно завершив build, 65/65 tests, syntax check, Charis 7 audit, Chromium/Firefox/WebKit rendering, Pages artifact і deployment.
+- Live scrape `01a20d5c-3f55-7718-a428-e5656b4332ce`: HTTP 200; контрольний пошук не виявив англомовних підписів чи пояснень інтерфейсу. Примітка /ə/ виправлена на «до звука ə».
+- Локалізація інтерфейсу: DONE_VERIFIED. Залишкові латинські рядки — назви OpenIPA/GitHub, IPA/UFPN, TXT/PDF, французькі приклади та латинізований фонетичний результат.
+- Фонетичний рушій лишається експериментальним дослідницьким прототипом; незалежна експертна валідація та gold benchmark не входили до цієї задачі.
