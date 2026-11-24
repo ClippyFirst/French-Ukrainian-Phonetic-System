@@ -216,3 +216,10 @@ Baseline clarification: current `main` is `81098345c69a3c58d770b95fd63949133fa87
 The failure mechanism was confirmed by the logs: the Pages artifact finalized at 22:31:41.615Z, while `deploy-pages` queried artifact metadata at 22:31:42.089Z, only 0.47 seconds later. The internal artifact list did not yet include `github-pages`; a later retry in the same job uploaded a duplicate. The behavior matches reports in [actions/deploy-pages#418](https://github.com/actions/deploy-pages/issues/418) and duplicate-artifact retry reports in [actions/deploy-pages#415](https://github.com/actions/deploy-pages/issues/415).
 
 PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact` job and made `deploy` depend on it. Main workflow 45281476706 verified the fix: artifact job succeeded, exactly one `github-pages` artifact was listed, and `actions/deploy-pages@v4` succeeded. A fresh live scrape confirmed the deployed content. The workflow retry fix is therefore DONE_VERIFIED.
+
+
+## Owner-approved UFPN glide notation — 2026-11-24
+- Current implementation branch: `feat/ufpn-labial-palatal-glide-grapheme`; base main at start: `9633b43bad1a74899ac556bfd19f293977c18d61`.
+- /ɥ/ is now represented by the composed UFPN string `й̹` (U+0439 U+0339), using the existing U+0339 combining right half ring below as a project-specific more-rounded marker. All three output levels use the same canonical NFC string.
+- /ɲ/ remains the single Cyrillic letter `њ`; the regression test asserts this explicitly.
+- No IPA source, French G2P rule, other segment mapping, or /y/ mapping changed. CI must verify Charis mark-to-base support for `й̹` and browser rendering; no visual pass is claimed yet.
