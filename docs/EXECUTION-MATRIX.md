@@ -274,3 +274,10 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 | ID | Завдання | Статус | Доказ / acceptance |
 |---|---|---|---|
 | MOTION-01 | Додати стримані мікровзаємодії за принципами Emil Kowalski Skills | DONE_VERIFIED | CSS-only: 140 ms ease для кольорового feedback; підняття карток графем/буквосполучень на 2 px з ease-in-out лише для fine-pointer hover. prefers-reduced-motion прибирає рух карток і їхні переходи, залишаючи кольоровий feedback. `tests/editorial-motion.test.js` успішний. PR CI run [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) і post-merge main run [#424 / 45483025203](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45483025203) SUCCESS: build, npm test, npm run check, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering; Pages artifact та deploy також SUCCESS. Browser specimen artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) переглянуто на desktop/mobile. Live CSS після deploy підтверджує `--motion-fast:140ms`, fine-pointer hover lift і reduced-motion reset; live homepage доступна. PR #62 merged у main комітом `ba55c46763d0a09f75faa55830d51192b6efb6e8`. |
+
+
+## Disclosure accordion refinement (2026-11-24)
+
+| ID | Завдання | Статус | Доказ / acceptance |
+|---|---|---|---|
+| DISC-01 | Уніфікувати розгортані довідкові секції та відповіді самоперевірки | PARTIAL | Нативні `details/summary` збережено; додано спільну візуальну мову, виразні індикатори «+ / −», мінімальну висоту зони натискання 56 px, hover/focus-visible стани, адаптивні відступи та повагу до reduced-motion. Додано регресійні CSS-контрактні перевірки в `tests/editorial-motion.test.js`. Очікує CI та перевірки браузерного артефакту перед DONE_VERIFIED. Гілка `fix/consistent-disclosure-accordions-2026-11-24`. |
