@@ -323,3 +323,13 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Live production CSS was fetched uncached at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0` (HTTP 200). It contains the new `#F5F0E7`, `#26364A`, `#A64B55`, `#D8B98A`, `#66717C` palette, updated supporting surfaces and component colours.
 - The first live fetch was a stale cache hit showing the prior palette; a cache-busting request with `storeInCache=false` returned the current deployed CSS. This was a cache observation, not a deployment failure.
 - Outcome: palette implementation, automated checks and production hosting are DONE_VERIFIED. No phonetic, IPA, UFPN or runtime behavior was changed.
+
+
+## French reading module and rendered UFPN guide — 2026-11-24
+
+- Added a Ukrainian learning section to the main page covering common French vowel/consonant spellings, nasal vowels, frequent silent final consonants, the verb ending -ent, variable schwa/elision, liaison and enchaînement. Claims are explicitly framed as common patterns, not exceptionless rules.
+- Added a keyboard-operable multiple-choice self-check with a polite live status message.
+- Replaced the navigation target from raw docs/UKRAINIAN-NOTATION.md to a rendered docs/ufpn.html page. The page explains IPA-first processing, Basic/Detailed/Extended levels, the project-specific ъ for IPA /ə/, diacritics and known limitations.
+- The phoneme table and adopted grapheme cards are generated from data/ufpn-mapping.json, avoiding a second manually maintained inventory.
+- Added tests/french-reading-and-ufpn-page.test.js for navigation, content coverage, caveats and quiz wiring. CI/browser/deployment verification is pending at this audit point.
+- Scope: educational content and presentation only. No G2P, IPA normalization, IPA→UFPN mapping, profile, confidence or export behavior changed.
