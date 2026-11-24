@@ -261,3 +261,10 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 |---|---|---|---|
 | W8 | Навчальний супровід читання французькою | DONE_VERIFIED | На головній сторінці є україномовний мінікурс із голосними групами, чотирма носовими категоріями та варіантністю /œ̃/–/ɛ̃/, приголосними групами, c/g, акцентами/дієрезою, кінцевими приголосними й -ent, schwa, liaison та enchaînement; приклади підставляються в поле транскриптора. Verified: 79/79 tests, build/check, font audit, Chromium/Firefox/WebKit render, Pages deploy and production smoke HTTP 200. Матеріал має навчальний статус і явно позначає типові правила та винятки; джерела S38–S44 додають доказові застереження щодо liaison, enchaînement, schwa, носових голосних і орфографічної варіантності. |
 | W9 | Вбудований візуальний UFPN guide замість raw Markdown navigation | DONE_VERIFIED | Додано візуальне пояснення IPA → UFPN, Basic/Detailed/Extended, картки прийнятих графем із mapping JSON та переходи до технічних таблиць. Навігація більше не веде на UKRAINIAN-NOTATION.md. Verified: 79/79 tests, build/check, font audit, Chromium/Firefox/WebKit render, Pages deploy and production smoke HTTP 200. |
+
+
+### Final closeout evidence (PR #57, 2026-11-24)
+
+- Final closeout commit: b9225311c80b18f99a8d90e5d49752ea9b9a6012.
+- Main Pages workflow 45468292682: test, Pages artifact and deploy all PASS; build/check, 79/79 tests, font audit and Chromium/Firefox/WebKit specimen all PASS.
+- Post-closeout production smoke test (cache bypass): HTTP 200; both learning sections and the UFPN example present; explicit educational-only disclaimer present; browser theme-color is #F5F0E7; raw Markdown is not a navigation target.
