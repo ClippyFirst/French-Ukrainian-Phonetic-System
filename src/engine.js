@@ -2,7 +2,7 @@
 import {renderUfpn as renderUfpnAdapter, adaptIpa as adaptIpaAdapter, UFPN_INVENTORY, UFPN_MAPPING} from './ufpn.js';
 import {transcribeFrenchWordDetailed,transcribeFrenchTextDetailed} from './french-g2p.js';
 export const INVENTORY=UFPN_INVENTORY;
-export const LATIN_GUIDE={p:'p',b:'b',t:'t',d:'d',k:'k',g:'g','ɡ':'g',f:'f',v:'v',s:'s',z:'z','ʃ':'sh','ʒ':'zh',m:'m',n:'n','ɲ':'ny','ŋ':'ng',l:'l','ʁ':'rh',j:'y','ɥ':'ü',w:'w',i:'i',e:'é','ɛ':'è',a:'a',y:'ü','ø':'ö','œ':'œ',u:'ou',o:'ó','ɔ':'ò','ə':'ə','ɑ̃':'an','ɛ̃':'in','ɔ̃':'on','œ̃':'un','χ':'kh','ɣ':'gh','ʁ̞':'rh','ʀ':'rr','ɾ':'r̆','r':'r','ɹ':'r','x':'kh','t͡s':'ts','d͡z':'dz','t͜s':'ts','d͜z':'dz','n͡ŋ':'n-ng','s̬':'s-voiced','z̥':'z-devoiced','ː':':','ˑ':':','‿':'-','‖':'||','↗':'-rise','↘':'-fall','[':'[',']':']'};
+export const LATIN_GUIDE={p:'p',b:'b',t:'t',d:'d',k:'k',g:'g','ɡ':'g',f:'f',v:'v',s:'s',z:'z','ʃ':'sh','ʒ':'zh',m:'m',n:'n','ɲ':'ny','ŋ':'ng',l:'l','ʁ':'rh',j:'y','ɥ':'ü',w:'w',i:'i',e:'é','ɛ':'è',a:'a',y:'ü','ø':'ö','œ':'œ',u:'ou',o:'ó','ɔ':'ò','ə':'ə','ɑ̃':'an','ɛ̃':'in','ɔ̃':'on','œ̃':'un','χ':'kh','ɣ':'gh','ʁ̞':'rh','ʀ':'rr','ɾ':'r̆','r':'r','ɹ':'r','x':'kh','t͡s':'ts','d͡z':'dz','t͜s':'ts','d͜z':'dz','n͡ŋ':'n-ng','s̬':'s̬','z̥':'z̥','ː':':','ˑ':':','‿':'-','‖':'||','↗':'↗','↘':'↘','[':'[',']':']'};
 const tokensOf=ipa=>{const keys=Object.keys(INVENTORY).sort((a,b)=>b.length-a.length),raw=ipa.replace(/[.ˈˌ|]/g,'');const out=[];for(let i=0;i<raw.length;){const t=keys.find(k=>raw.startsWith(k,i));if(t){out.push(t);i+=t.length}else{out.push(raw[i++])}}return out};
 const map=(tokens,table)=>tokens.map(t=>table[t]??(/^\s+$/u.test(t)?t:'⟦'+t+'⟧')).join('');
 export function transcribe(text,options={}){
