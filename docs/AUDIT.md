@@ -393,3 +393,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; no visible layout regression or horizontal overflow.
 - Live production CSS was fetched after deployment and confirmed `--motion-fast:140ms`, fine-pointer hover lift by 2 px, and reduced-motion movement reset. Production homepage fetch succeeded. MOTION-01: DONE_VERIFIED and deployed.
 
+
+
+## Disclosure accordion refinement — 2026-11-24
+- У live UI виявлено неоднорідність: довідкові секції вже мали власний стилізований accordion, тоді як три питання «Перевірте себе» залишалися майже нативними details із браузерним маркером. Це робило взаємодію візуально непослідовною.
+- На гілці `fix/consistent-disclosure-accordions-2026-11-24` уніфіковано заголовки, індикатори відкриття/закриття, фокус-контур, hover-стан, розміри зон натискання та мобільні відступи. Збережено нативну семантику HTML `details/summary`; JS для відкриття не додавався.
+- Додано регресійні перевірки стилів у `tests/editorial-motion.test.js`. Reduced-motion вимикає переходи accordion-контейнерів.
+- Статус DISC-01: PARTIAL до проходження CI та перевірки browser specimen.
