@@ -19,6 +19,7 @@ test('dynamic interface labels and exported headings are localized',async()=>{
   assert.ok(!app.includes(phrase),'outdated English UI label: '+phrase);
  for(const phrase of ['Французький текст:','Латинська підказка:','Джерело:','Базовий · зручний для читання','Графемний склад UFPN'])
   assert.ok(app.includes(phrase),'missing Ukrainian UI label: '+phrase);
+ assert.ok(app.includes('localizeTechnicalText(item.ukrainianExampleNote)'), 'reference-table notes must pass through the Ukrainian text localizer');
 });
 
 test('OpenIPA rule explanations shown to users are Ukrainian',()=>{

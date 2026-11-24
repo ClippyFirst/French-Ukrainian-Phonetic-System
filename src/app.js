@@ -135,7 +135,7 @@ function renderReference(query=''){
   const haystack=[item.basic,item.ipa,item.pronunciationGuideUk,item.ukrainianExample,item.ukrainianExampleNote,item.ukrainianExampleStatus].join(' ').toLocaleLowerCase();
   if(query&&!haystack.includes(query.toLocaleLowerCase()))continue;
   const tr=document.createElement('tr');
-  const values=[item.basic,item.ipa,item.pronunciationGuideUk||'Інструкція ще не додана.',item.ukrainianExample+(item.ukrainianExampleNote?' — '+item.ukrainianExampleNote:''),statusLabels[item.ukrainianExampleStatus]||item.ukrainianExampleStatus];
+  const values=[item.basic,item.ipa,item.pronunciationGuideUk||'Інструкція ще не додана.',item.ukrainianExample+(item.ukrainianExampleNote?' — '+localizeTechnicalText(item.ukrainianExampleNote):''),statusLabels[item.ukrainianExampleStatus]||item.ukrainianExampleStatus];
   for(const [index,value] of values.entries()){const td=document.createElement('td');td.textContent=value;if(index===3)td.dataset.status=item.ukrainianExampleStatus;tr.append(td)}
   ukrBody.append(tr);
  }
