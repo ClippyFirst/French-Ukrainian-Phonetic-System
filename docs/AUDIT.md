@@ -355,3 +355,13 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - PR #57 merged as `b9225311c80b18f99a8d90e5d49752ea9b9a6012` to align `meta theme-color` with the French editorial paper token `#F5F0E7` and to make the educational-only purpose explicit in the learning module.
 - Final main Pages workflow [#385 / 45468292682](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45468292682) passed: 79/79 tests, build/check, font audit, Chromium/Firefox/WebKit render, artifact upload and deployment.
 - Final live smoke after this deploy returned HTTP 200; both sections remain present and UFPN navigation still points to the in-page HTML guide.
+
+
+## UI-07 — власницьке UX-уточнення (2026-11-24)
+- Коренева причина порожнього місця в блоці 04: картка не мала класу lesson-wide, хоча навчальна сітка мала дві колонки. Додано розтягування на всю ширину.
+- Коренева причина порожнього місця в останньому ряду графем: фіксована CSS Grid-колонкова схема. Візуальні картки переведено на flex-wrap з гнучкою базою; останній рядок може розтягувати картки, а не залишати порожню комірку.
+- Прибрано UI перемикача «Показувати розбір вибраного слова» та його допоміжний текст. Панель розбору прихована до вибору слова й відкривається через наявну взаємодію з сегментом результату.
+- Прибрано відображення рівнів «Докладний» і «Розширений»; транскриптор і технічна таблиця використовують лише базову форму UFPN. Інші рівні та їхні дані не видалялися з внутрішнього дослідницького mapping.
+- Прибрано з сайту повний список фонетичних вимірів і картки кандидатів ы / ё. Їхні дослідницькі записи лишилися в JSON-реєстрі, але не відображаються користувачу; прийняті графеми не змінені.
+- Прибрано індикатори впевненості з інтерфейсу (хвилясте підкреслення, підписи в aria-label, метадані розбору й попереджувальний блок). Внутрішні оцінки рушія не змінювалися.
+- PR #60: fix/streamline-ufpn-and-reading-layout-2026-11-24; реалізація/CI ще перевіряються.
