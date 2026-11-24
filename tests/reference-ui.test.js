@@ -36,7 +36,7 @@ test('grapheme inventory distinguishes adopted graphemes from unassigned candida
 });
 
 test('explanation checkbox names the exact panel and states that transcription is unaffected',()=>{
- assert.match(html,/id="show-explanations"[^>]*aria-controls="explain-panel"/);
+ assert.match(html,/id="show-explanations"[^>]*aria-controls="explain-panel"[^>]*aria-describedby="explanation-toggle-help"/);
  assert.match(html,/Показувати розбір вибраного слова/);
  assert.match(html,/на саму транскрипцію не впливає/);
  assert.match(app,/explanationPanel\.hidden=!enabled/);
