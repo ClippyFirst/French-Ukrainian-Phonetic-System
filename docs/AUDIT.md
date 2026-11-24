@@ -240,3 +240,12 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Corrective branch `feat/retain-ipa-vowel-graphemes` retains the exact standalone IPA symbols `œ`, `ɔ`, `ə`, `ɛ` in the executable mapping. Nasal vowels use `œ̃`, `ɔ̃`, `ɛ̃`; `/ɔ̃/` no longer carries the extra breve.
 - The change is an owner-approved notation decision, not a claim that the IPA symbols are native Ukrainian letters. Cyrillic graphemes `ў`, `ү`, `ө`, `њ`, `ң`, `ғ` remain intact; `/ɥ/` remains `й̹`.
 - Acceptance and evidence are pending CI, browser checks, and a fresh live Pages scrape. Until those pass, this correction is PARTIAL and not deployed.
+
+
+## Verification — standalone IPA vowel graphemes deployed (2026-11-24)
+- PR #35 merged as `4c56c5637831bdbfb12dc1a93b0e104624ab2454`; main workflow [45378841718](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45378841718) completed SUCCESS.
+- Verified: build, 60/60 tests, syntax, Charis 7 glyph/anchor audit, 12 Chromium/Firefox/WebKit × viewport combinations, Pages artifact and deployment.
+- Charis 7 covered 46 UFPN inventory codepoints, 19 combining marks, 13 mapped clusters and 26 HarfBuzz shaping samples; anchor inspections passed.
+- Fresh live scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d` returned HTTP 200 and confirmed `bɔ̃ʒuʁ` → `бɔ̃жуғ`, plus visible `ɛ`, `œ`, `ɔ`, `ə`, nasal `ɛ̃`, `ɔ̃`, `œ̃`, `й̹` and `њ`.
+- The previous failure was limited to two stale end-to-end expected strings (`о̆̃`); tests were corrected to expect `ɔ̃`, and final CI passed 60/60.
+- Remaining linguistic expert review, licensed gold benchmark, screen-reader/zoom/reflow and physical-device checks remain evidence-limited; this does not change the experimental research-prototype status.
