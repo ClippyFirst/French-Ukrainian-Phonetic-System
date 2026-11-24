@@ -210,3 +210,10 @@ graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
 render();
+
+const quizFeedback=$('quiz-feedback');
+document.querySelectorAll('[data-quiz-answer]').forEach(button=>button.addEventListener('click',()=>{
+ const correct=button.dataset.quizAnswer==='/o/';
+ document.querySelectorAll('[data-quiz-answer]').forEach(option=>{option.disabled=true;option.classList.toggle('quiz-correct',option===button&&correct);option.classList.toggle('quiz-incorrect',option===button&&!correct)});
+ quizFeedback.textContent=correct?'Так! У слові beau буквосполучення eau зазвичай передає /o/.':'Не зовсім. Правильна відповідь — /o/: beau вимовляється приблизно як /bo/.';
+}));
