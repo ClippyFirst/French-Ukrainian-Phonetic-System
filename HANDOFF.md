@@ -400,8 +400,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 
 ## Motion UX handoff — 2026-11-24
-- Branch: feat/editorial-motion-ux-2026-11-24, based on main 0c8f7bb588c52dd8294b92e355a20304335d4327.
-- Added restrained CSS-only motion following emilkowalski/skills: 140 ms ease for selected-word/link colour feedback; 2 px ease-in-out lift for spelling and adopted-grapheme cards only on fine-pointer hover.
-- Reduced-motion media query removes transitions and movement. No scroll reveal, no animation library, no JS animation runtime and no motion of phonetic output.
-- Added tests/editorial-motion.test.js; updated DESIGN.md, WEB-SERVICE.md, execution matrix and audit.
-- Verification blocker: local clone failed (Could not resolve host: github.com), so tests/build/browser rendering have not run locally. Awaiting PR CI and browser artifact review; MOTION-01 remains PARTIAL.
+- PR #62: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/62
+- Branch: `feat/editorial-motion-ux-2026-11-24`, based on main `0c8f7bb588c52dd8294b92e355a20304335d4327`.
+- Feature head at verification: `3553a911a855b4a8328905fc60fd381a6596b215`.
+- CSS-only motion follows the animate/review guidance: 140 ms ease for selected-word/link colour feedback; 2 px ease-in-out lift for spelling and adopted-grapheme cards only on fine-pointer hover. Reduced-motion removes card movement/transitions while retaining colour feedback.
+- No scroll reveal, moving phonetic output, JS animation loop, new runtime dependency or animation library.
+- CI run [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS: build, `npm test`, `npm run check`, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering and artifact upload. Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; no visible layout regression or horizontal overflow.
+- Local clone unavailable due DNS, but CI ran the full repository checks. MOTION-01 is DONE_VERIFIED in this PR branch.
+- PR #62 remains OPEN and unmerged; no production deployment is claimed. Next acceptance step is merge followed by main Pages workflow and live smoke verification.
