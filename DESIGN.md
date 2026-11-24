@@ -54,3 +54,11 @@ This project is AGPL-3.0. These links are design references only; no upstream sk
 ## Colour palette update — 2026-11-24
 - Adopted the French editorial palette: warm ivory `#F5F0E7`, ink blue `#26364A` / deep ink `#17263A`, wine red `#A64B55`, muted champagne `#D8B98A`, and slate `#66717C`.
 - This is a colour-only refinement. Typography, layout, interaction, phonetic processing, mapping, output content, and accessibility structure remain unchanged.
+
+
+## Motion refinement — 2026-11-24
+- Motion is limited to brief state feedback and small spatial affordances; the page does not animate every section on scroll or move phonetic output while it is being read.
+- Word selection uses a short colour/background transition. On fine-pointer hover devices, spelling and adopted-grapheme cards lift by 2px; reference links receive a restrained colour transition.
+- Motion uses CSS only (140ms: ease for colour feedback, ease-in-out for card movement), with no JavaScript animation loop, scroll hijacking, external library or new runtime dependency.
+- Hover movement is gated by (hover: hover) and (pointer: fine); prefers-reduced-motion: reduce removes transitions and movement.
+- This follows the Emil Kowalski animate and review-animations guidance: animate only where feedback/spatial affordance helps, keep UI motion short, and prefer the cheapest suitable primitive.

@@ -352,3 +352,39 @@ footer a:hover{color:var(--green);text-decoration:underline}
 @media(max-width:850px){.spelling-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ufpn-guide-heading{grid-template-columns:1fr}}
 @media(max-width:700px){.learning-section,.ufpn-guide{margin-inline:12px;padding:20px}.learning-grid{grid-template-columns:1fr}.lesson-wide{grid-column:auto}.spelling-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ufpn-example strong,.ufpn-example b{font-size:19px}}
 @media print{.learning-section,.ufpn-guide{box-shadow:none;break-inside:avoid}.lesson-examples{display:none}}
+
+
+/* Restrained editorial motion — feedback and spatial affordance only. */
+:root{
+  --motion-fast:140ms;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+}
+.word-token{
+  transition:color var(--motion-fast) ease,background-color var(--motion-fast) ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .spelling-card,.ufpn-symbol-card{
+    transition:transform var(--motion-fast) var(--ease-in-out);
+  }
+  .spelling-card:hover,.ufpn-symbol-card:hover{
+    transform:translateY(-2px);
+  }
+  .learning-sources a,.ufpn-detail-links a{
+    transition:color var(--motion-fast) ease;
+  }
+  .learning-sources a:hover,.ufpn-detail-links a:hover{
+    color:var(--coral);
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .spelling-card,.ufpn-symbol-card{
+    transition:none;
+  }
+  .word-token,.learning-sources a,.ufpn-detail-links a{
+    transition:color var(--motion-fast) ease,background-color var(--motion-fast) ease;
+  }
+  .spelling-card:hover,.ufpn-symbol-card:hover{
+    transform:none;
+  }
+}
