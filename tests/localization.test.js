@@ -24,6 +24,9 @@ test('dynamic interface labels and exported headings are localized',async()=>{
 test('OpenIPA rule explanations shown to users are Ukrainian',()=>{
  const examples=[
   transcribeFrenchWordDetailed('chat'),
+  transcribeFrenchWordDetailed('mer'),
+  transcribeFrenchWordDetailed('écho'),
+  transcribeFrenchWordDetailed('et'),
   transcribeFrenchWordDetailed('bonjour',{profile:'metropolitan-fr'}),
   transcribeFrenchWordDetailed('calme ami',{profile:'lyric-diction-fr'}),
   transcribeFrenchWordDetailed('les amis',{profile:'lyric-diction-fr'})
