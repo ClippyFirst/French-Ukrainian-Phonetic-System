@@ -2110,7 +2110,7 @@
         "more-rounded",
         "less-rounded"
       ],
-      "ufpn": "UFPN ring above for front rounded vowels; fine gradience Extended only",
+      "ufpn": "Dedicated Cyrillic letters encode /y ø œ/; й̹ (U+0339 below й) encodes the labial-palatal glide /ɥ/; finer rounding gradience is retained only from narrow IPA/audio",
       "status": "PARTIALLY_ENCODED",
       "sources": [
         "S1"
