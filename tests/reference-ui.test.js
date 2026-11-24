@@ -111,3 +111,23 @@ test('UFPN documentation is presented as an in-page visual guide, not a raw Mark
 test('learning companion and UFPN guide remain responsive and keyboard accessible',()=>{
  assert.match(css,/\.learning-section/);assert.match(css,/\.self-check summary/);assert.match(css,/\.ufpn-symbol-grid/);assert.match(css,/@media\(max-width:700px\)\{\.learning-section/);assert.match(css,/\.lesson-examples button/);assert.match(html,/зливається з \/ɛ̃\//);
 });
+
+
+test('requested UI simplification removes unused controls and expands the two uneven grids',()=>{
+ assert.match(html,/class="lesson-card lesson-wide"[\s\S]*?04 · КІНЦІВКИ ТА ЗВ’ЯЗУВАННЯ/);
+ assert.doesNotMatch(html,/show-explanations|explanation-toggle-help|Показувати розбір вибраного слова/);
+ assert.doesNotMatch(html,/ufpn-features|Повний перелік фонетичних вимірів/);
+ assert.doesNotMatch(html,/href="#ufpn-features"/);
+ assert.doesNotMatch(html,/ufpn-level/);
+ assert.doesNotMatch(html,/id="uncertainty"/);
+ assert.match(html,/id="explain-panel"[^>]*hidden/);
+ assert.match(app,/renderUfpn\(w\.ipa,'basic'\)/);
+ assert.doesNotMatch(app,/w\.confidence|Упевненість|низька впевненість|explanationToggle|featureDetails/);
+ assert.match(app,/for\(const item of inventory\.adopted\)/);
+ assert.doesNotMatch(app,/appendGraphemeItem\(item,false\)|inventory\.candidates/);
+ assert.match(css,/\.lesson-wide\{grid-column:1\/-1\}/);
+ assert.match(css,/\.ufpn-symbol-grid\{display:flex/);
+ assert.match(css,/\.ufpn-symbol-card\{flex:1 1 220px/);
+ assert.match(css,/\.grapheme-list\{display:flex/);
+ assert.match(css,/\.grapheme-card\{flex:1 1 320px/);
+});
