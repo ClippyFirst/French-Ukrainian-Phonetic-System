@@ -138,7 +138,7 @@
 | UI-01 | Refine existing editorial UI, responsive layout, controls, outputs, focus states and reduced-motion behavior without changing phonetic logic | DONE_VERIFIED | PR #25 merged as `41f96a1f3fbb8b220931d434626a4edddc3c13c7`; source head `3ee313c31ed8c4a005fd1daea234b1a2817a3d34`; final PR workflow [45270636340](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340) passed build, 57/57 tests, syntax, Charis audit and 12 browser/viewport combinations |
 | UI-02 | Automated responsive and keyboard checks | DONE_VERIFIED | Chromium, Firefox and WebKit × 1440, 1024, 768 and 390 px; checks confirm output panels render, expected 3/3/2/1 result columns, first-tab skip-link focus and no horizontal page overflow. Final artifact [14865776425](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45270636340/artifacts/14865776425) |
 | UI-03 | Human visual review, screen-reader and physical-device accessibility review | PARTIAL | Desktop/laptop/tablet/mobile screenshots from artifact 14865776425 were manually inspected; visual refinements were applied and rechecked by CI. Screen-reader, physical-device and browser zoom/reflow checks remain outstanding |
-| UI-04 | Publish the design refinement to GitHub Pages | PARTIAL | PR #25 merged as 41f96a1f3fbb8b220931d434626a4edddc3c13c7. Main Pages workflow 45272182990 has build, 57/57 tests, syntax and Charis audit passed; Playwright browser installation is still in progress and deploy has not started. Live-page verification remains required |
+| UI-04 | Publish the design refinement to GitHub Pages | DONE_VERIFIED | Main workflow 45370457031 deployed main commit `c76801dbfa9c7bae1009ad3b137c652f033da517`; test, Pages artifact and deploy jobs all succeeded. Fresh live scrape `01a20d01-a5ea-70bf-bafe-3e58d7a307bb` returned HTTP 200 and verified the new /ɥ/ row `й̹` in the visible 37-row sound table. |
 
 Scope guard: no French G2P, IPA normalization, IPA → UFPN mapping, phonetic data, confidence/provenance logic, export behavior or runtime dependencies were changed. The repository remains a research prototype; this UI work does not change linguistic validation or release-readiness status.
 
@@ -164,11 +164,18 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Branch: `feat/ufpn-labial-palatal-glide-grapheme`, based on main `9633b43bad1a74899ac556bfd19f293977c18d61`.
 - The IPA adapter now maps /ɥ/ to `й̹` at Basic, Detailed and Extended levels: Ukrainian `й` + U+0339 COMBINING RIGHT HALF RING BELOW. This is an explicit UFPN design convention for a /j/-like glide with added lip rounding, not a claim that the composed spelling is an IPA character.
 - /ɲ/ remains `њ` unchanged; no other vowel or consonant mappings were changed.
-- Regression test covers all three levels, exact Unicode code points, and the preserved /ɲ/ → `њ` mapping. Charis 7 and three-engine browser rendering checks must verify the new base/mark attachment before merge/deploy.
-- Status: PARTIAL pending CI/browser/font audit and owner-side visual acceptance; independent phonetic review remains outside this implementation change.
+- PR #33 merged as `c76801dbfa9c7bae1009ad3b137c652f033da517`. PR workflow 45370163542 passed build, 59/59 tests, syntax, Charis 7 audit (45 codepoints, 19 marks, 14 mapped clusters, 28 HarfBuzz samples) and all 12 Chromium/Firefox/WebKit × viewport checks; specimen artifact [14908069680](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45370163542/artifacts/14908069680).
+- Main workflow [45370457031](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45370457031) passed all three jobs: test, `pages-artifact`, deploy. Pages artifact [14908164942](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45370457031/artifacts/14908164942); browser specimen [14909131178](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45370457031/artifacts/14909131178).
+- Fresh live scrape `01a20d01-a5ea-70bf-bafe-3e58d7a307bb` returned HTTP 200 and confirmed the visible table row /ɥ/ → `й̹`; /ɲ/ remains `њ`.
+- Runtime mapping and browser typography are DONE_VERIFIED. Manual owner visual acceptance and independent phonetic review remain separate acceptance items.
 
 
 ## Rounding feature registry consistency — 2026-11-24
 - Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
 - The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
 - Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
+
+
+## Rounding feature metadata follow-up — 2026-11-24
+- PR #34 aligns `featureDimensions.rounding.ufpn` with the approved /ɥ/ notation `й̹`; this is a metadata consistency change and does not alter adapter output.
+- A regression assertion requires the rounding feature description to mention `й̹`; PR CI is running before merge.
