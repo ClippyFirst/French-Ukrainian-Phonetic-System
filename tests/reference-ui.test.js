@@ -18,52 +18,44 @@ test('French editorial colour palette uses ink blue, warm paper, wine red and mu
  assert.doesNotMatch(css,/--green:#245b49|--lime:#d9e77c|--coral:#e77f61/);
 });
 
-test('all three UFPN reference sections use the shared accordion component',()=>{
+test('the technical IPA-to-UFPN and adopted-grapheme references use shared accordions',()=>{
  assert.match(app,/createReferenceAccordion\('ufpn-technical'/);
- assert.match(app,/createReferenceAccordion\('ufpn-features'/);
  assert.match(app,/createReferenceAccordion\('ufpn-graphemes'/);
  assert.match(app,/reference-accordion-title/);
  assert.match(app,/reference-accordion-count/);
+ assert.doesNotMatch(app,/ufpn-features|featureDetails/);
 });
 
-test('all 18 phonetic dimensions render as readable cards with Ukrainian status and guidance',()=>{
+test('phonetic dimensions remain in canonical data but are not exposed as a site panel',()=>{
  assert.equal(mapping.featureDimensions.length,18);
- assert.match(app,/featureList\.className='feature-grid'/);
- assert.match(app,/card\.className='feature-card'/);
- assert.match(app,/featureStatusUk\[feature\.status\]/);
- assert.match(app,/featureUfpnUk\[feature\.id\]/);
- for(const feature of mapping.featureDimensions){
-  assert.ok(feature.values.length>0,feature.id+' must list its values');
-  assert.ok(feature.status,feature.id+' must expose an evidence status');
- }
+ assert.doesNotMatch(html,/Повний перелік фонетичних вимірів|ufpn-features/);
+ assert.doesNotMatch(app,/createReferenceAccordion\('ufpn-features'/);
 });
 
-test('grapheme inventory distinguishes adopted graphemes from unassigned candidates',()=>{
- assert.match(app,/appendGraphemeItem\(item,true\)/);
- assert.match(app,/appendGraphemeItem\(item,false\)/);
- assert.match(app,/Кандидат · не призначено/);
+test('only adopted graphemes are displayed in the site inventory',()=>{
+ assert.match(app,/appendGraphemeItem\(item\)/);
+ assert.doesNotMatch(app,/appendGraphemeItem\(item,false\)|inventory\.candidates|Кандидат · не призначено/);
  assert.equal(mapping.graphemeInventory.adopted.length,10);
  assert.equal(mapping.graphemeInventory.candidates.length,2);
  assert.ok(mapping.graphemeInventory.adopted.some(item=>item.grapheme==='ъ'&&item.ipa.includes('ə')));
+ for(const item of mapping.graphemeInventory.candidates)assert.ok(['ы','ё'].includes(item.grapheme));
  assert.match(app,/Cyrillic hard sign \(project-specific UFPN use\).*Кириличний твердий знак, проєктна голосна графема UFPN/s);
  assert.match(app,/'ъ':'У UFPN твердий знак ъ — проєктна голосна графема для IPA \/ə\//);
 });
 
-test('explanation checkbox names the exact panel and states that transcription is unaffected',()=>{
- assert.match(html,/id="show-explanations"[^>]*aria-controls="explain-panel"[^>]*aria-describedby="explanation-toggle-help"/);
- assert.match(html,/Показувати розбір вибраного слова/);
- assert.match(html,/на саму транскрипцію не впливає/);
- assert.match(app,/explanationPanel\.hidden=!enabled/);
- assert.match(app,/explanationToggle\.setAttribute\('aria-expanded',String\(enabled\)\)/);
+test('word breakdown opens on word selection without an extra checkbox',()=>{
+ assert.match(html,/id="explain-panel"[^>]*hidden/);
+ assert.doesNotMatch(html,/show-explanations|explanation-toggle-help|Показувати розбір вибраного слова/);
+ assert.match(app,/\$\('explain-panel'\)\.hidden=false/);
+ assert.match(app,/if\(b\)detail\(Number\(b\.dataset\.index\)\)/);
 });
 
-test('reference panels and explanation control have responsive and keyboard-visible styling',()=>{
+test('reference panels remain responsive and keyboard accessible without unused controls',()=>{
  assert.match(css,/\.reference-accordion>summary:focus-visible/);
  assert.match(css,/\.feature-grid/);
  assert.match(css,/\.grapheme-list/);
- assert.match(css,/\.status-options/);
+ assert.doesNotMatch(css,/\.status-options|\.explanation-toggle/);
 });
-
 
 test('the page removes decorative micro-labels and keeps meaningful navigation',()=>{
  for(const phrase of ['ФОНЕТИЧНИЙ РОБОЧИЙ СТІЛ','01 / ВВЕДЕННЯ','02 / РЕЗУЛЬТАТ','03 / ФОНЕТИЧНИЙ РОЗБІР','ПРИНЦИП РОБОТИ','дослідницька версія 0.2','незабаром'])
