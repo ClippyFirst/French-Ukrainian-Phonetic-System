@@ -266,3 +266,13 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - The owner's complete requested set is `œ`, `ɔ`, `ə`, `ɛ`, retained as standalone UFPN graphemes. Their previous substitutes (`ӧ`, `о̆`, `ӹ`, `э`) are removed from the canonical phoneme output/inventory.
 - Nasal forms preserve the same base symbols with combining tilde: `œ̃`, `ɔ̃`, `ɛ̃`. `/ɔ̃/` no longer adds the extra breve.
 - Tests and docs are updated; CI, merge, and live deployment must still be verified. Existing `й̹` for `/ɥ/` and `њ` for `/ɲ/` remain unchanged.
+
+
+## Final handoff — standalone IPA vowel graphemes deployed (2026-11-24)
+- Starting main: `4117f10cbd51f034835242491beb1dda3ee1c479`.
+- PR #35 merged as `4c56c5637831bdbfb12dc1a93b0e104624ab2454`.
+- Main workflow [45378841718](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45378841718): SUCCESS. Build, 60/60 tests, syntax, Charis 7 audit, 12 Chromium/Firefox/WebKit viewport combinations, Pages artifact and deploy passed.
+- Charis 7: 46 codepoints, 19 combining marks, 13 mapped clusters, 26 HarfBuzz shaping samples; mark anchor inspections passed.
+- Live site returned HTTP 200 on scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d`; it displays `bɔ̃ʒuʁ` → `бɔ̃жуғ` and the reference rows for `ɛ`, `œ`, `ɔ`, `ə`, plus `ɛ̃`, `ɔ̃`, `œ̃`. `й̹` and `њ` remain intact.
+- Implementation/deployment DONE_VERIFIED. Independent French/Ukrainian phonetic expert review and a licensed gold benchmark remain BLOCKED; screen-reader, zoom/reflow and physical-device QA remain PARTIAL. Project remains an experimental research prototype, not an academically validated standard.
+- PR #36 updates one visible caption to accurately call UFPN a hybrid notation; no runtime mapping change.
