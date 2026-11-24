@@ -369,3 +369,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Live smoke test: HTTP 200 at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/`; `#french-reading-guide` and `#ufpn-guide` content present; nav no longer targets raw Markdown.
 - Evidence note in Undermind workspace: [French reading pronunciation research](https://app.undermind.ai/projects/80418e38-ab46-4cea-9b6c-0734cca58c2f?path=%2Fanalysis%2Ffrench-reading-pronunciation-notes.md). Repository references S38–S44 are in `docs/SOURCE-REGISTRY.md`.
 - Scope complete for W8/W9. Broader native-speaker review, regional coverage expansion and a full exceptions dictionary remain outside this small educational add-on; no false completeness claim is made.
+
+
+## Final main-branch closeout — 2026-11-24
+
+- Final main commit after PR #57: b9225311c80b18f99a8d90e5d49752ea9b9a6012.
+- Main Pages workflow 45468292682: all jobs PASS (build, 79/79 tests, syntax/check, Charis 7/OpenType audit, Playwright Chromium/Firefox/WebKit, Pages artifact, deploy).
+- Live smoke test after this deployment returned HTTP 200 and confirmed both in-page sections, the explicit educational-only notice, UFPN sample and #F5F0E7 browser theme color.
+- W8/W9 remain DONE_VERIFIED. No remaining blocker for this scoped educational UI task; a comprehensive exceptions dictionary, additional regional variants and native-speaker review remain separate future scope.
