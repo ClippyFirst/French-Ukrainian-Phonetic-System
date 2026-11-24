@@ -74,3 +74,6 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 - Міні-вправа має клавіатурно доступні кнопки та live-region для зворотного зв'язку.
 - Навігаційне посилання UFPN веде на docs/ufpn.html, а не на сирий Markdown. Сторінка завантажує сегментні записи та інвентар безпосередньо з data/ufpn-mapping.json; технічна Markdown-специфікація лишається окремим посиланням.
 - Навчальний контент статичний; введений французький текст і результати не надсилаються на сервер.
+
+
+PR CI run [45464917783](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45464917783) пройшов: build, 80/80 tests, syntax checks, Charis 7/OpenType audit та Chromium/Firefox/WebKit render. Pages deploy і live smoke test очікуються після merge.
