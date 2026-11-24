@@ -282,3 +282,12 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Kept intentionally: distinct format names and explanatory descriptions, uncertainty/prototype limitations, accessible control labels, source/status navigation. These communicate product semantics rather than decoration.
 - Changes are isolated to HTML, design guidance and regression coverage; no G2P, IPA, UFPN, confidence, provenance or export logic was edited.
 - PR workflow [45417023021](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021) succeeded: build, 71/71 tests, syntax check, Charis 7/OpenType audit, and 12 Chromium/Firefox/WebKit × viewport checks. Screenshots at 1440/1024/768/390 px were downloaded and manually inspected; the updated hierarchy remains legible and no horizontal overflow was reported. Artifact [14931722793](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021/artifacts/14931722793).
+
+
+## Контентний UX — UI-06 (2026-11-24)
+- Вихідний стан: селектор називався «Профіль OpenIPA», а самі опції пояснювали різницю через технічне «випадіння голосного» / «елізія» без визначення. Користувач мав знати назву рушія, щоб зрозуміти контроль.
+- Вихідний стан результатів: латинський стовпець називався «Латинська підказка», але його пояснення «авторська мнемонічна підказка» не пояснювало практичного застосування й не попереджало прямо, що це не точна транскрипція.
+- Зміни: «Варіант вимови», коротке визначення елізії та її впливу; заголовок «Результат вимови»; описи IPA, UFPN і латинської підказки уточнюють їхню різну роль. Для профільної підказки додано `aria-describedby`; стиль підказки не використовує дрібний моноширинний метатекст.
+- Методика: контентний аудит, контентна ієрархія, мікрокопірайтинг та узгоджене маркування за designer-skills (MIT). У репозиторій не копіювалися файли upstream skill.
+- Зміни обмежені HTML/CSS/тестами/дизайн-документацією. G2P, IPA, профільні ідентифікатори, UFPN mapping, confidence, provenance та експорт не змінювалися.
+- Статус: PARTIAL до проходження CI, браузерних перевірок та live-перевірки після merge.
