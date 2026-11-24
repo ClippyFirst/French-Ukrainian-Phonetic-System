@@ -108,7 +108,7 @@ function render(){
  const text=source.value,level=levelSelect.value;result=transcribe(text,{profile:$('profile').value});
  for(const w of result.words){if(w.kind==='separator'){w.ufpn=w.text;continue}if(w.ipa==='???'){w.ufpn='???';w.ufpnUnsupported=['???'];continue}const adapted=renderUfpn(w.ipa,level);w.ufpn=adapted.text;w.ufpnUnsupported=adapted.unsupported}
  result.ufpn=result.words.map(w=>w.ufpn).join('');$('char-count').textContent=text.length+' символів';
- for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token'+(w.confidence==='low'?' low-confidence':'');b.dataset.index=i;if(key==='ufpn')renderUfpnDisplay(b,w[key]);else b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]+'; '+w.confidence);target.append(b)})}
+ for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token'+(w.confidence==='low'?' low-confidence':'');b.dataset.index=i;if(key==='ufpn')renderUfpnDisplay(b,w[key]);else b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]+'; впевненість: '+({low:'низька',medium:'середня',high:'висока'}[w.confidence]||w.confidence));target.append(b)})}
  $('status').textContent=text.trim()?'Оброблено '+result.words.filter(w=>w.kind==='word').length+' словоформ · '+({ 'metropolitan-fr':'основний профіль', 'lyric-diction-fr':'профіль вокальної дикції' }[result.profile]||'профіль OpenIPA')+' · UFPN '+({basic:'базовий',detailed:'докладний',extended:'розширений'}[level]):'Готово до введення';
  $('uncertainty').hidden=!result.warnings.length;$('uncertainty').textContent=result.warnings.length?'Потребують перевірки: '+result.warnings.join(', ')+'. Низька впевненість означає, що вимову не підтверджено словником.':'';
 }
@@ -144,7 +144,7 @@ refSearch.addEventListener('input',()=>renderReference(refSearch.value.trim()));
 renderReference();
 const technicalDetails=document.createElement('details');technicalDetails.className='ufpn-technical';
 const technicalSummary=document.createElement('summary');technicalSummary.textContent='Довідкова таблиця IPA → базовий / докладний / розширений';technicalDetails.append(technicalSummary);
-const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>Basic</th><th>Detailed</th><th>Extended</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
+const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>Базовий</th><th>Докладний</th><th>Розширений</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
 const refBody=refTable.querySelector('tbody');
 const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
 function renderTechnicalReference(){
