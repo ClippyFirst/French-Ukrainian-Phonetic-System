@@ -383,3 +383,11 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Live smoke after deployment: `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/` returned HTTP 200. HTML confirms lesson 04 uses `lesson-wide`; the explanation checkbox, full feature-dimensions panel and unassigned candidate cards are absent; only Basic UFPN remains; confidence labels/warnings are absent. Live app.js confirms Basic-only mode and the selected-word detail behavior (hidden on input, shown on selection). Live CSS confirms full-width lesson card and flex-wrapped symbol cards.
 - Browser specimen [14959101782](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437/artifacts/14959101782) inspected at desktop and mobile sizes; the last UFPN card row fills available width and mobile has no horizontal overflow.
 - IPA, G2P engine, profiles, canonical mapping and internal confidence calculation were not changed. Candidate `ы` and `ё` records remain in the research registry but are not rendered on the website.
+
+
+## Editorial motion audit — 2026-11-24
+- Added CSS-only micro-interactions: 140 ms ease-out transitions for selected-word colour/background and reference-link colour; 2 px card lift on fine-pointer hover for spelling/grapheme cards.
+- Hover effects are gated with (hover: hover) and (pointer: fine); prefers-reduced-motion: reduce removes transitions and movement.
+- No scroll reveal, no movement of phonetic output, no JS animation loop, no external runtime dependency.
+- Regression tests were added in tests/editorial-motion.test.js. They have not been executed in this environment: GitHub clone failed because github.com DNS resolution was unavailable. CI must execute them; browser screenshots must be inspected before marking DONE_VERIFIED.
+- Status: PARTIAL pending PR CI and browser rendering evidence.
