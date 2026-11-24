@@ -380,3 +380,22 @@ footer a:hover{color:var(--green);text-decoration:underline}
   font:11px/1.5 var(--sans);
   letter-spacing:0;
 }
+
+/* French reading mini-course */
+.learning{margin:0 clamp(12px,3vw,40px) 76px;padding:clamp(22px,4vw,48px);border:1px solid var(--line);border-radius:var(--radius-panel);background:#FAF7F0}
+.learning-heading{max-width:76ch;margin-bottom:25px}.learning-heading h2{font-size:clamp(29px,4vw,40px);margin:7px 0}.learning-heading>p:last-child{color:var(--muted);font-size:14px;line-height:1.8}
+.eyebrow{font:10px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lesson-card{padding:19px;border:1px solid var(--line);border-radius:9px;background:var(--white)}
+.lesson-card>span{font:10px var(--mono);letter-spacing:.08em;color:var(--coral)}
+.lesson-card h3{margin:8px 0 12px;font:600 20px var(--serif)}
+.lesson-card p,.lesson-card dd{font-size:13px;line-height:1.75;color:var(--muted)}
+.lesson-card dl{margin:0}.lesson-card dl>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;padding:7px 0;border-bottom:1px solid #EEE8DF}
+.lesson-card dt{font:700 14px var(--phonetic);color:var(--green)}.lesson-card dd{margin:0}
+.lesson-card em{color:var(--ink)}.lesson-note{font-size:11px!important}
+.reading-quiz{display:grid;grid-template-columns:1fr auto;gap:10px 22px;align-items:center;margin-top:15px;padding:20px;border:1px solid #D8C5A6;border-radius:9px;background:#F5F0E7}
+.reading-quiz h3{margin:5px 0;font:600 21px var(--serif)}.reading-quiz p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.7}
+.quiz-options{display:flex;flex-wrap:wrap;gap:7px}.quiz-options button{min-width:65px;padding:9px 12px;border:1px solid var(--line);border-radius:6px;background:var(--white);color:var(--ink);font:14px var(--phonetic)}
+.quiz-options button:disabled{opacity:.9;cursor:default}.quiz-options button.quiz-correct{border-color:#526D5A;background:#E7EEE7;color:#294633}.quiz-options button.quiz-incorrect{border-color:var(--coral);background:#F7EDEA;color:#783A45}
+#quiz-feedback{grid-column:1/-1;margin:0}.learning-disclaimer{margin:18px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+@media(max-width:760px){.lesson-grid{grid-template-columns:1fr}.reading-quiz{grid-template-columns:1fr}.quiz-options{grid-row:auto}}
