@@ -4,7 +4,7 @@
 
 ## Вебсервіс
 
-У репозиторії є браузерний застосунок із введенням тексту, трьома синхронними форматами (IPA / UFPN / Latin guide), трьома рівнями деталізації UFPN, профілями OpenIPA, послівним розбором, пошуковим довідником, копіюванням і TXT/PDF експортом.
+У репозиторії є браузерний застосунок із введенням тексту, трьома синхронними форматами (IPA / UFPN / Latin guide), трьома рівнями деталізації UFPN, профілями OpenIPA, послівним розбором, пошуковим довідником, копіюванням і TXT/PDF експортом. На головній сторінці також є навчальний модуль із правилами читання французької та короткою вправою; окремий [HTML-довідник UFPN](docs/ufpn.html) відображає специфікацію у вигляді сторінки, таблиць і карток.
 
 [Опис функцій, локальний запуск і публікація GitHub Pages](docs/WEB-SERVICE.md).
 
@@ -46,7 +46,7 @@ python3 -m http.server 8000
 
 ## Документація
 
-[Вебсервіс і хостинг](docs/WEB-SERVICE.md) · [OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
+[Вебсервіс і хостинг](docs/WEB-SERVICE.md) · [OpenIPA comparison](docs/OPENIPA-COMPARISON.md) · [Архітектура](ARCHITECTURE.md) · [Фонологія](docs/PHONOLOGY.md) · [UFPN — навчальний HTML-довідник](docs/ufpn.html) · [Технічна специфікація UFPN](docs/UKRAINIAN-NOTATION.md) · [IPA mapping](docs/IPA-MAPPING.md) · [Правила](docs/FRENCH-RULES.md) · [Контекст](docs/CONTEXTUAL-PRONUNCIATION.md) · [Джерела](docs/SOURCE-REGISTRY.md) · [Бенчмарки](docs/BENCHMARKS.md) · [Тести](docs/TESTING.md) · [Матриця](docs/EXECUTION-MATRIX.md) · [Аудит](docs/AUDIT.md) · [Handoff](HANDOFF.md)
 
 ## Ліцензія
 
