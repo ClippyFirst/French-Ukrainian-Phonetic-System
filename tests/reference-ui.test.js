@@ -54,8 +54,30 @@ test('reference panels and explanation control have responsive and keyboard-visi
 test('the page removes decorative micro-labels and keeps meaningful navigation',()=>{
  for(const phrase of ['ФОНЕТИЧНИЙ РОБОЧИЙ СТІЛ','01 / ВВЕДЕННЯ','02 / РЕЗУЛЬТАТ','03 / ФОНЕТИЧНИЙ РОЗБІР','ПРИНЦИП РОБОТИ','дослідницька версія 0.2','незабаром'])
   assert.ok(!html.includes(phrase),'decorative or unavailable UI copy remains: '+phrase);
- for(const phrase of ['Ваш текст','Три способи побачити вимову','Міжнародний фонетичний алфавіт','Український запис','Латинська підказка','Не транслітерація.'])
+ for(const phrase of ['Ваш текст','Результат вимови','Міжнародний фонетичний алфавіт','Український запис','Підказка латиницею','Не транслітерація.'])
   assert.ok(html.includes(phrase),'meaningful product information was removed: '+phrase);
  assert.ok(html.includes('<footer>')&&html.includes('Джерела')&&html.includes('Стан проєкту')&&html.includes('</footer>'));
  assert.doesNotMatch(html,/<option disabled>/);
+});
+
+
+test('profile selector explains pronunciation differences in plain Ukrainian',()=>{
+ assert.match(html,/Варіант вимови/);
+ assert.match(html,/Елізія — випадіння звука ə/);
+ assert.match(html,/Звичайна вимова/);
+ assert.match(html,/Вокальна дикція/);
+});
+
+test('result captions distinguish phonetic notation from a reading aid',()=>{
+ assert.match(html,/Результат вимови/);
+ assert.match(html,/проміжний запис/);
+ assert.match(html,/гібридна нотація/);
+ assert.match(html,/Спрощена підказка для читання/);
+ assert.match(html,/не є точною фонетичною транскрипцією/);
+});
+
+
+test('profile help is visually subordinate but readable',()=>{
+ assert.match(html,/aria-describedby="profile-help"/);
+ assert.match(css,/#profile-help/);
 });

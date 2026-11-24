@@ -315,3 +315,15 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - PR workflow [45417023021](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021): SUCCESS — build, 71/71 tests, syntax, Charis 7/OpenType audit, Chromium/Firefox/WebKit across desktop/laptop/tablet/mobile (12 combinations). Browser artifact [14931722793](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021/artifacts/14931722793); desktop and mobile screenshots manually inspected. No horizontal overflow or result-layout regressions.
 - First CI attempt [45416850694](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45416850694) failed because the newly added test contained an invalid regular-expression literal. The error was traced to the assertion itself, corrected to a direct string-presence assertion, and the full workflow rerun passed.
 - Current status: DONE_VERIFIED in the PR branch. Pages publication is not applicable until merge; no production deployment is claimed.
+
+
+## Контентна зрозумілість інтерфейсу — UI-06 (2026-11-24)
+- Гілка: `content/ux-copy-clarity-2026-11-24`, відгалужена від main `493f4c9deeeb97857305750873137166ded1f260`.
+- Застосовано принципи designer-skills: content strategy, UX writing та information architecture. Це методичне застосування; upstream skills не копіювалися й не встановлювалися в runtime.
+- Оновлено назву селектора профілю, назви опцій і пояснення елізії; уточнено роль IPA, UFPN та латинської підказки. Додано доступно пов’язану допоміжну підказку й регресійні тести.
+- Змінені файли: `index.html`, `styles.css`, `tests/reference-ui.test.js`, `tests/localization.test.js`, `DESIGN.md`, `docs/EXECUTION-MATRIX.md`, `docs/AUDIT.md`, `HANDOFF.md`.
+- Фонетичний рушій, профільні ID, мапінг, рівні UFPN, впевненість, походження та експорт не змінювалися.
+- Статус UI-06: PARTIAL до CI, браузерного рендерингу й live-перевірки після merge. Локальний git clone у попередніх сесіях був недоступний через DNS; цього разу зміни зроблено через GitHub API, тому локальні команди Node не виконувалися.
+
+- CI run [45421702699](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45421702699): build passed; tests 73/74. Єдиний failure — застаріла локалізаційна assertion `Латинська підказка` у `tests/localization.test.js`, що суперечила новому напису `Підказка латиницею`. Виправлено комітом `012beb169565c639d24192705e29d233fb0791d6`.
+- Повторний CI [45433252768](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45433252768): build, 74/74 tests, syntax і Charis 7/OpenType audit — PASS; run скасовано на встановленні Playwright після нових документаційних комітів. Актуальний CI [45433450826](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45433450826) повторно пройшов build, 74/74 tests, syntax та font audit; Playwright installation і рендеринг UFPN у Chromium, Firefox та WebKit завершилися успішно. Pages artifact/deploy не запускаються для PR до merge.

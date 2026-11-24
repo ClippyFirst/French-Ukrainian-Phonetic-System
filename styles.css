@@ -369,3 +369,14 @@ footer a:hover{color:var(--green);text-decoration:underline}
   .feature-grid,.grapheme-list{grid-template-columns:1fr}
   .status{align-items:flex-start;flex-direction:column}
 }
+
+
+/* Plain-language helper copy for the pronunciation profile selector. */
+#profile-help{
+  display:block;
+  max-width:30rem;
+  margin-top:6px;
+  color:var(--muted);
+  font:11px/1.5 var(--sans);
+  letter-spacing:0;
+}
