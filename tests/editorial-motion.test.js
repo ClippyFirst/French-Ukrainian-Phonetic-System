@@ -19,3 +19,12 @@ test('reduced-motion preference removes transitions and movement', () => {
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?transition:none/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?transform:none/);
 });
+
+
+test('reference and self-check disclosures share clear, accessible controls', () => {
+  assert.match(css, /\.reference-accordion>summary,\s*\.self-check details>summary/);
+  assert.match(css, /\.self-check details>summary::after\s*\{[^}]*content:"\+"/s);
+  assert.match(css, /\.self-check details\[open\]>summary::after\s*\{content:"−"\}/);
+  assert.match(css, /\.self-check details>summary:focus-visible/);
+  assert.match(css, /@media\(prefers-reduced-motion:reduce\)\s*\{\s*\.reference-accordion,\.self-check details\{transition:none\}/);
+});
