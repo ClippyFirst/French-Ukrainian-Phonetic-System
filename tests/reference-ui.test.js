@@ -64,7 +64,8 @@ test('the page removes decorative micro-labels and keeps meaningful navigation',
 
 test('profile selector explains pronunciation differences in plain Ukrainian',()=>{
  assert.match(html,/Варіант вимови/);
- assert.match(html,/Елізія — випадіння звука /ə//);
+ assert.match(html,/Елізія — випадіння звука \/ə\//);
+ assert.match(html,/цей звук позначається літерою ъ/);
  assert.match(html,/Звичайна вимова/);
  assert.match(html,/Вокальна дикція/);
 });
