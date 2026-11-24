@@ -386,8 +386,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 
 ## Editorial motion audit — 2026-11-24
-- PR #62, branch `feat/editorial-motion-ux-2026-11-24`, based on main `0c8f7bb588c52dd8294b92e355a20304335d4327`.
+- PR #62 merged into main as `ba55c46763d0a09f75faa55830d51192b6efb6e8`.
 - CSS-only micro-interactions: 140 ms ease for selected-word colour/background and reference-link colour; 2 px ease-in-out lift for spelling/grapheme cards only on fine-pointer hover.
 - `prefers-reduced-motion: reduce` removes card transitions and movement while retaining colour feedback. No scroll reveal, no movement of phonetic output, no JS animation loop or external runtime dependency.
-- CI run [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS: build, `npm test`, `npm run check`, Charis 7/OpenType audit, Playwright install and Chromium/Firefox/WebKit rendering. Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; responsive page composition is intact and no visible horizontal overflow/regression was found.
-- Local clone was blocked by DNS, but CI executed the repository checks successfully. MOTION-01 is DONE_VERIFIED in PR #62. Hosting remains outside acceptance until merge and a Pages deployment/live smoke check.
+- PR CI [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS. Post-merge main Pages workflow [#424 / 45483025203](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45483025203) SUCCESS: build, tests, check, font audit, Playwright install, Chromium/Firefox/WebKit rendering, Pages artifact and deploy.
+- Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; no visible layout regression or horizontal overflow.
+- Live production CSS was fetched after deployment and confirmed `--motion-fast:140ms`, fine-pointer hover lift by 2 px, and reduced-motion movement reset. Production homepage fetch succeeded. MOTION-01: DONE_VERIFIED and deployed.
+
