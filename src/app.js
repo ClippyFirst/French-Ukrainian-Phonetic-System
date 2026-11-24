@@ -99,22 +99,15 @@ const phonologyStatusUk={
 };
 const localizeTechnicalText=value=>String(value??'').replaceAll('provenance','походження').replaceAll('tie-bar placement','розташування сполучної дужки').replaceAll('schwa','звука ə');
 const $=id=>document.getElementById(id),source=$('source');let result;
-const levelLabel=document.createElement('label');levelLabel.textContent='Деталізація UFPN';
-const levelSelect=document.createElement('select');levelSelect.id='ufpn-level';
-levelSelect.setAttribute('aria-label','Рівень деталізації української фонетичної нотації');
-for(const [value,label] of [['basic','Базовий · зручний для читання'],['detailed','Докладний · склади й довгота'],['extended','Розширений · вузька фонетика']]){
- const option=document.createElement('option');option.value=value;option.textContent=label;levelSelect.append(option);
-}
-levelLabel.append(levelSelect);document.querySelector('.workspace > .bar').append(levelLabel);
+const level='basic';
 function render(){
- const text=source.value,level=levelSelect.value;result=transcribe(text,{profile:$('profile').value});
+ const text=source.value;result=transcribe(text,{profile:$('profile').value});
  for(const w of result.words){if(w.kind==='separator'){w.ufpn=w.text;continue}if(w.ipa==='???'){w.ufpn='???';w.ufpnUnsupported=['???'];continue}const adapted=renderUfpn(w.ipa,level);w.ufpn=adapted.text;w.ufpnUnsupported=adapted.unsupported}
  result.ufpn=result.words.map(w=>w.ufpn).join('');$('char-count').textContent=text.length+' символів';
- for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token'+(w.confidence==='low'?' low-confidence':'');b.dataset.index=i;if(key==='ufpn')renderUfpnDisplay(b,w[key]);else b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]+'; впевненість: '+({low:'низька',medium:'середня',high:'висока'}[w.confidence]||w.confidence));target.append(b)})}
- $('status').textContent=text.trim()?'Оброблено '+result.words.filter(w=>w.kind==='word').length+' словоформ · '+({ 'metropolitan-fr':'основний профіль', 'lyric-diction-fr':'профіль вокальної дикції' }[result.profile]||'профіль OpenIPA')+' · UFPN '+({basic:'базовий',detailed:'докладний',extended:'розширений'}[level]):'Готово до введення';
- $('uncertainty').hidden=!result.warnings.length;$('uncertainty').textContent=result.warnings.length?'Потребують перевірки: '+result.warnings.join(', ')+'. Низька впевненість означає, що вимову не підтверджено словником.':'';
+ for(const key of ['ipa','ufpn','romanized']){const target=$(key+'-output');target.replaceChildren();result.words.forEach((w,i)=>{if(w.kind==='separator'){target.append(document.createTextNode(w[key]));return}const b=document.createElement('button');b.type='button';b.className='word-token';b.dataset.index=i;if(key==='ufpn')renderUfpnDisplay(b,w[key]);else b.textContent=w[key];b.title=w.text+' → '+w.ipa;b.setAttribute('aria-label',w.text+': '+w[key]);target.append(b)})}
+ $('status').textContent=text.trim()?'Оброблено '+result.words.filter(w=>w.kind==='word').length+' словоформ · '+({ 'metropolitan-fr':'основний профіль', 'lyric-diction-fr':'профіль вокальної дикції' }[result.profile]||'профіль OpenIPA')+' · UFPN базовий:'Готово до введення';
 }
-function detail(i){const w=result?.words[i];if(!w||w.kind!=='word')return;$('detail-title').textContent=w.text+' → '+w.ipa;$('detail-body').textContent=w.explanation+(w.ruleTrace?.length?'\n\n'+w.ruleTrace.map(r=>r.grapheme+' → '+(r.ipa||'∅')+' — '+'Правило OpenIPA: '+r.explanationUk).join('\n'):'');$('detail-meta').textContent=['UFPN: '+w.ufpn,'Латинська підказка: '+w.romanized,'Джерело: '+(w.source==='openipa-french-engine'?'рушій транскрипції OpenIPA':w.source==='unsupported-number'?'числівник, який поки не підтримується':w.source),'Упевненість: '+({low:'низька',medium:'середня',high:'висока'}[w.confidence]||w.confidence),w.alternatives.length?'Альтернативи: '+w.alternatives.join(' / '):'','Сегменти: '+w.segments.map(s=>s+' — '+describeSegment(s)).join(' · '),w.ufpnUnsupported?.length?'Непідтримані IPA: '+w.ufpnUnsupported.join(', '):''].filter(Boolean).join(' | ');document.querySelectorAll('.word-token').forEach(b=>b.classList.toggle('selected',Number(b.dataset.index)===i))}
+function detail(i){const w=result?.words[i];if(!w||w.kind!=='word')return;$('explain-panel').hidden=false;$('detail-title').textContent=w.text+' → '+w.ipa;$('detail-body').textContent=w.explanation+(w.ruleTrace?.length?'\n\n'+w.ruleTrace.map(r=>r.grapheme+' → '+(r.ipa||'∅')+' — '+'Правило OpenIPA: '+r.explanationUk).join('\n'):'');$('detail-meta').textContent=['UFPN: '+w.ufpn,'Латинська підказка: '+w.romanized,'Джерело: '+(w.source==='openipa-french-engine'?'рушій транскрипції OpenIPA':w.source==='unsupported-number'?'числівник, який поки не підтримується':w.source),w.alternatives.length?'Альтернативи: '+w.alternatives.join(' / '):'','Сегменти: '+w.segments.map(s=>s+' — '+describeSegment(s)).join(' · '),w.ufpnUnsupported?.length?'Непідтримані IPA: '+w.ufpnUnsupported.join(', '):''].filter(Boolean).join(' | ');document.querySelectorAll('.word-token').forEach(b=>b.classList.toggle('selected',Number(b.dataset.index)===i))}
 async function copy(text){try{await navigator.clipboard.writeText(text);$('status').textContent='Скопійовано'}catch{$('status').textContent='Буфер обміну недоступний у цьому браузері'}}
 source.addEventListener('input',render);$('profile').addEventListener('change',render);levelSelect.addEventListener('change',render);
 $('clear').addEventListener('click',()=>{source.value='';render();source.focus()});
@@ -122,17 +115,9 @@ document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click
 document.querySelectorAll('[data-lesson-example]').forEach(b=>b.addEventListener('click',()=>{source.value=b.dataset.lessonExample;render();source.focus();source.scrollIntoView({behavior:'smooth',block:'center'})}));
 document.querySelectorAll('.output').forEach(p=>p.addEventListener('click',e=>{const b=e.target.closest('.word-token');if(b)detail(Number(b.dataset.index))}));
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(result?.[b.dataset.copy]||'')));
-$('copy-all').addEventListener('click',()=>copy(['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN ('+({basic:'базовий',detailed:'докладний',extended:'розширений'}[levelSelect.value])+'): '+result.ufpn,'Латинська підказка: '+result.romanized].join('\n')));
-$('export-txt').addEventListener('click',()=>{const blob=new Blob([['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN ('+({basic:'базовий',detailed:'докладний',extended:'розширений'}[levelSelect.value])+'): '+result.ufpn,'Латинська підказка: '+result.romanized,'Позначені форми потребують перевірки.'].join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='french-ukrainian-phonetics.txt';a.click();URL.revokeObjectURL(url)});
+$('copy-all').addEventListener('click',()=>copy(['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN (базовий): '+result.ufpn,'Латинська підказка: '+result.romanized].join('\n')));
+$('export-txt').addEventListener('click',()=>{const blob=new Blob([['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN (базовий): '+result.ufpn,'Латинська підказка: '+result.romanized].join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='french-ukrainian-phonetics.txt';a.click();URL.revokeObjectURL(url)});
 $('export-pdf').addEventListener('click',()=>window.print());
-const explanationToggle=$('show-explanations'),explanationPanel=$('explain-panel');
-function syncExplanationVisibility(){
- const enabled=explanationToggle.checked;
- explanationPanel.hidden=!enabled;
- explanationToggle.setAttribute('aria-expanded',String(enabled));
-}
-explanationToggle.addEventListener('change',syncExplanationVisibility);
-syncExplanationVisibility();
 const reference=document.createElement('section');reference.id='ukrainian-sound-reference';reference.className='ufpn-reference';
 const refTitle=document.createElement('h2');refTitle.textContent='Буква — звук — українське слово';reference.append(refTitle);
 const refIntro=document.createElement('p');refIntro.textContent='Колонка «Як вимовити» пояснює артикуляцію кожного звука. Далі показано, чи можна почути його в нормативній українській вимові. «Контекстний» означає позиційний алофон; «наближений» — схожий, але не тотожний звук. Якщо точного відповідника немає, ми так і пишемо — без вигаданих прикладів.';reference.append(refIntro);
@@ -164,7 +149,7 @@ function createReferenceAccordion(className,title,count,description){
 }
 const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
 const technicalDetails=createReferenceAccordion('ufpn-technical','Довідкова таблиця IPA → UFPN','52 записи','Порівняння вхідного IPA з трьома рівнями української нотації. У кінцевій колонці наведено опис звука та статус доказовості.');
-const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>Базовий</th><th>Докладний</th><th>Розширений</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
+const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>UFPN</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
 const refBody=refTable.querySelector('tbody');
 function renderTechnicalReference(){
  refBody.replaceChildren();
@@ -172,9 +157,9 @@ function renderTechnicalReference(){
   const description=localizeTechnicalText(item.descriptionUk||item.description||'');
   const rawStatus=item.phonologicalStatus||item.evidenceStatus||'';const status=phonologyStatusUk[rawStatus]||featureStatusUk[rawStatus]||rawStatus;
   const tr=document.createElement('tr');
-  for(const [index,value] of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].entries()){
+  for(const [index,value] of [item.ipa,item.basic,description+' · '+status].entries()){
    const td=document.createElement('td');
-   if(index>=1&&index<=3)renderUfpnDisplay(td,value);else td.textContent=value;
+   if(index===1)renderUfpnDisplay(td,value);else td.textContent=value;
    tr.append(td);
   }
   refBody.append(tr);
@@ -182,34 +167,23 @@ function renderTechnicalReference(){
 }
 renderTechnicalReference();reference.append(technicalDetails);
 technicalDetails.id='ufpn-technical';
-const featureDetails=createReferenceAccordion('ufpn-features','Повний перелік фонетичних вимірів',UFPN_MAPPING.featureDimensions.length+' вимірів','Що саме описуємо у вимові, які значення розрізняємо та наскільки кожен вимір уже представлений у UFPN. Статус показує межі кодування, а не оцінку якості вимови.');
-const featureList=document.createElement('div');featureList.className='feature-grid';
-for(const feature of UFPN_MAPPING.featureDimensions){
- const card=document.createElement('article');card.className='feature-card';
- const heading=document.createElement('h3');heading.textContent=featureDimensionUk[feature.dimension]||feature.dimension;
- const values=document.createElement('p');values.className='feature-values';values.textContent=feature.values.map(value=>featureValueUk[value]||value).join(' · ');
- const status=document.createElement('span');status.className='feature-status';status.textContent=featureStatusUk[feature.status]||feature.status;
- const explanation=document.createElement('p');explanation.className='feature-explanation';explanation.textContent=featureUfpnUk[feature.id]||localizeTechnicalText(feature.ufpn);
- card.append(heading,values,status,explanation);featureList.append(card);
-}
-featureDetails.id='ufpn-features';featureDetails.append(featureList);reference.append(featureDetails);
 const inventory=UFPN_MAPPING.graphemeInventory;
 const guideGrid=document.querySelector('#ufpn-symbol-grid');
 if(guideGrid){for(const item of inventory.adopted){const card=document.createElement('article');card.className='ufpn-symbol-card';const symbol=document.createElement('strong');symbol.className='ufpn-symbol';renderUfpnDisplay(symbol,item.grapheme);const ipa=document.createElement('span');ipa.className='ufpn-symbol-ipa';ipa.textContent='IPA: '+item.ipa.join(', ');const rationale=document.createElement('p');rationale.textContent=inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale);card.append(symbol,ipa,rationale);guideGrid.append(card);}}
-const graphemeCount=inventory.adopted.length+' прийнятих · '+inventory.candidates.length+' кандидатів';
-const graphemeDetails=createReferenceAccordion('ufpn-graphemes','Графемний склад UFPN',graphemeCount,'Прийняті графеми є частиною чинної нотації. Кандидати наведені для прозорості, але ще не мають призначеного звукового значення.');
+const graphemeCount=inventory.adopted.length+' прийнятих графем';
+const graphemeDetails=createReferenceAccordion('ufpn-graphemes','Графемний склад UFPN',graphemeCount,'Нижче наведено лише графеми, які вже входять до чинної нотації UFPN.');
 const graphemeList=document.createElement('ul');graphemeList.className='grapheme-list';
-function appendGraphemeItem(item,adopted){
+function appendGraphemeItem(item){
  const li=document.createElement('li');li.className='grapheme-card';
  const symbol=document.createElement('strong');symbol.className='grapheme-symbol';symbol.textContent=item.grapheme;
  const info=document.createElement('div');info.className='grapheme-info';
- const mapping=document.createElement('span');mapping.className='grapheme-mapping';mapping.textContent=adopted?'IPA: '+item.ipa.join(', '):'Кандидат · не призначено';
- const origin=document.createElement('span');origin.className='grapheme-origin';origin.textContent=adopted?(inventoryOriginUk[item.origin]||item.origin):'Потребує окремого рішення';
+ const mapping=document.createElement('span');mapping.className='grapheme-mapping';mapping.textContent='IPA: '+item.ipa.join(', ');
+ const origin=document.createElement('span');origin.className='grapheme-origin';origin.textContent=inventoryOriginUk[item.origin]||item.origin;
  const rationale=document.createElement('p');rationale.textContent=inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale);
  info.append(mapping,origin,rationale);li.append(symbol,info);graphemeList.append(li);
 }
-for(const item of inventory.adopted)appendGraphemeItem(item,true);
-for(const item of inventory.candidates)appendGraphemeItem(item,false);
+for(const item of inventory.adopted)appendGraphemeItem(item);
+
 graphemeDetails.id='ufpn-graphemes';graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
