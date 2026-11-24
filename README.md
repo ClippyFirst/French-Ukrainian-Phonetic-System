@@ -51,3 +51,8 @@ python3 -m http.server 8000
 ## Ліцензія
 
 Проєкт поширюється за AGPL-3.0. Частина французького G2P рушія взята з [OpenIPA](https://github.com/hfellerhoff/openipa); див. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) та [LICENSE](LICENSE).
+
+
+## Навчальний додаток на сайті
+
+На головній сторінці сервісу є навчальний блок [«Як читати французькою»](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#french-reading-guide) та вбудований [візуальний довідник UFPN](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#ufpn-guide). Матеріал має виключно навчальне призначення; для невпевнених форм потрібна перевірка за аудіо/словником.
