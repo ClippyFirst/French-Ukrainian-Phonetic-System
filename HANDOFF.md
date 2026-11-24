@@ -377,3 +377,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Final main Pages run [#385 / 45468292682](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45468292682): 79/79 tests PASS; build/check PASS; Charis 7/OpenType audit PASS; Chromium/Firefox/WebKit render PASS; Pages artifact upload PASS; deploy PASS.
 - Final live smoke after #385: HTTP 200; the homepage still exposes the learning guide and in-page UFPN guide, the navigation avoids the raw Markdown file, and the theme-color meta value in main source is `#F5F0E7`.
 - No remaining blocker for W8/W9. The broader service remains an experimental prototype; a full exception dictionary and independent review by native-speaker specialists remain future work, not blockers for this educational add-on.
+
+
+## UX refinement handoff — 2026-11-24
+- PR #60: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/60
+- Branch: fix/streamline-ufpn-and-reading-layout-2026-11-24, based on main f2d03c3bcc33732cfb2258aa2efbaaec2a1cdd00.
+- Scope: full-width lesson 04; flex-wrap inventory cards to fill the final row; remove the explanation checkbox but retain click-to-open word breakdown; remove confidence UI; show only Basic UFPN in the app and technical table; remove the phonetic-dimensions panel and unassigned ы/ё candidate cards from the site.
+- Canonical candidate records remain in data/ufpn-mapping.json for research traceability; accepted grapheme inventory and IPA→UFPN engine are unchanged.
+- Current head 422d8d749480372ff2b8e0b7781ca45c328e158a. PR workflow 45472721047 was in_progress at handoff update; no pass is claimed yet.
+- Final status remains PARTIAL until build, tests, static/font checks, browser rendering and production deployment/smoke test are verified.
