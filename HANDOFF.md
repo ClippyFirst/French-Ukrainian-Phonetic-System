@@ -382,6 +382,9 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 ## UX refinement handoff — 2026-11-24
 - PR #60: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/60
 - Branch: fix/streamline-ufpn-and-reading-layout-2026-11-24, based on main f2d03c3bcc33732cfb2258aa2efbaaec2a1cdd00.
-- Scope: full-width lesson 04; flex-wrap inventory cards to fill the final row; remove the explanation checkbox but retain click-to-open word breakdown; remove confidence UI; show only Basic UFPN in the app and technical table; remove the phonetic-dimensions panel and unassigned ы/ё candidate cards from the site.
+- Final PR head: 1eb528df11d0175de84a98d8cfa91871aae40e47.
+- Scope: full-width lesson 04; flex-wrap symbol cards fill the final row; remove the explanation checkbox but retain click-to-open word breakdown; remove confidence UI; show only Basic UFPN in the app and technical table; remove the phonetic-dimensions panel and unassigned ы/ё candidate cards from the site.
 - Canonical candidate records remain in data/ufpn-mapping.json for research traceability; accepted grapheme inventory and IPA→UFPN engine are unchanged.
-- - Current branch head: 3cf8429691d31ad5c04c1ad129b4e499db6df05e (PR #60). Static acceptance inspection: 12/12 focused checks passed. Workflow #393 (45472721047): build passed, 74/80 tests passed; six stale UI/localization expectations and one accidentally removed localization-map block were diagnosed and corrected. Workflows #397/#398 were cancelled by later pushes. Latest workflow #402 (45473750549) remained pending at last check. Local clone is blocked by DNS resolution failure for github.com. Do not merge or claim completion until CI succeeds and Pages deployment plus live smoke verification are confirmed.
+- PR workflow #409 / 45474480437 SUCCESS: build, 79/79 tests, check, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering and artifact upload.
+- Browser artifact 14959101782 includes desktop/laptop/tablet/mobile screenshots. Desktop and mobile screenshots were inspected; the requested full-width and final-row layouts render correctly, with no horizontal overflow.
+- PR CI skips Pages deployment. Merge and production smoke verification remain the final acceptance steps.
