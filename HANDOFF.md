@@ -321,8 +321,9 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Гілка: `content/ux-copy-clarity-2026-11-24`, відгалужена від main `493f4c9deeeb97857305750873137166ded1f260`.
 - Застосовано принципи designer-skills: content strategy, UX writing та information architecture. Це методичне застосування; upstream skills не копіювалися й не встановлювалися в runtime.
 - Оновлено назву селектора профілю, назви опцій і пояснення елізії; уточнено роль IPA, UFPN та латинської підказки. Додано доступно пов’язану допоміжну підказку й регресійні тести.
-- Змінені файли: `index.html`, `styles.css`, `tests/reference-ui.test.js`, `DESIGN.md`, `docs/EXECUTION-MATRIX.md`, `docs/AUDIT.md`, `HANDOFF.md`.
+- Змінені файли: `index.html`, `styles.css`, `tests/reference-ui.test.js`, `tests/localization.test.js`, `DESIGN.md`, `docs/EXECUTION-MATRIX.md`, `docs/AUDIT.md`, `HANDOFF.md`.
 - Фонетичний рушій, профільні ID, мапінг, рівні UFPN, впевненість, походження та експорт не змінювалися.
 - Статус UI-06: PARTIAL до CI, браузерного рендерингу й live-перевірки після merge. Локальний git clone у попередніх сесіях був недоступний через DNS; цього разу зміни зроблено через GitHub API, тому локальні команди Node не виконувалися.
 
-- CI run [45421702699](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45421702699): build passed; tests 73/74. Єдиний failure — застаріла локалізаційна assertion `Латинська підказка` у `tests/localization.test.js`, що суперечила новому напису `Підказка латиницею`. Виправлено окремим комітом `a5be3fb615606fcb1ef312a3ef21f41441dad788`; повний повторний CI очікується. Syntax, font audit, Playwright, Pages artifact/deploy були skipped після fail-fast.
+- CI run [45421702699](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45421702699): build passed; tests 73/74. Єдиний failure — застаріла локалізаційна assertion `Латинська підказка` у `tests/localization.test.js`, що суперечила новому напису `Підказка латиницею`. Виправлено комітом `012beb169565c639d24192705e29d233fb0791d6`.
+- Повторний CI [45433252768](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45433252768): build, 74/74 tests, syntax і Charis 7/OpenType audit — PASS. Playwright browser installation/rendering ще триває; Pages artifact/deploy не запускаються для PR до merge.
