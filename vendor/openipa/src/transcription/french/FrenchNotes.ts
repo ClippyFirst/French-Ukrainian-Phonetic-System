@@ -1,9 +1,9 @@
 import IPA from '../../constants/IPA';
 
 const Notes = {
-  FINAL_E_HALFCLOSED: ` Note: Final [${IPA.OPEN_E}] vowels are closed to a half-closed [${IPA.OPEN_E}] or a fully closed [${IPA.CLOSED_E}]. In practice, pronunciation is closer to [${IPA.CLOSED_E}], so that is what has been notated here.`,
-  GLIDE_FOLLOWING: ` Note: medial '-ill' and '-il' glides are transcribed separately from a preceding vowel.`,
-  LIASON: ` Note: This normally silent consonant is pronounced in this case due to liason, as the following word begins with a vowel. Liason rules are complex, so take this transcription with a grain of salt.`,
+  FINAL_E_HALFCLOSED: ` Примітка: кінцеві голосні [${IPA.OPEN_E}] можуть бути напівзакритими [${IPA.OPEN_E}] або повністю закритими [${IPA.CLOSED_E}]. На практиці вимова ближча до [${IPA.CLOSED_E}], тому тут використано саме цей знак.`,
+  GLIDE_FOLLOWING: ` Примітка: серединні сполуки «-ill» та «-il» передають ковзний звук окремо від попереднього голосного.`,
+  LIASON: ` Примітка: цей зазвичай невимовлюваний приголосний у цьому випадку вимовляється, оскільки наступне слово починається з голосного. Правила зв’язування складні, тому транскрипцію слід вважати попередньою.`,
 };
 
 export default Notes;
