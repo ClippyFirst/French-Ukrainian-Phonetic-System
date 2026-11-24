@@ -12,7 +12,7 @@ test('the website shell uses Ukrainian interface copy',async()=>{
  assert.ok(html.includes('Підказка латиницею'));
  assert.ok(html.includes('з елізією'));
  assert.ok(html.includes('Варіант вимови'));
- assert.ok(html.includes('Елізія — випадіння звука ə'));
+ assert.ok(html.includes('Елізія — випадіння звука /ə/'));
 });
 
 test('dynamic interface labels and exported headings are localized',async()=>{
