@@ -119,6 +119,6 @@ test('requested UI simplification removes unused controls and expands the two un
  assert.match(css,/\.lesson-wide\{grid-column:1\/-1\}/);
  assert.match(css,/\.ufpn-symbol-grid\{display:flex/);
  assert.match(css,/\.ufpn-symbol-card\{[^}]*flex:1 1 220px/);
- assert.match(css,/\.grapheme-list\{[\s\S]*?display:flex/);
- assert.match(css,/\.grapheme-card\{[^}]*flex:1 1 320px/);
+ assert.match(css,/\.grapheme-list\{[\s\S]*?display:grid/);
+ assert.match(css,/\.grapheme-card\{[\s\S]*?grid-template-columns:58px/);
 });
