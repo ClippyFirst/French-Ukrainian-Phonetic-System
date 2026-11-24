@@ -33,7 +33,7 @@ const featureValueUk={
  stop:'проривний', fricative:'фрикативний', approximant:'апроксимант', tap:'одноударний', trill:'тремтливий', nasal:'носовий', lateral:'боковий', affricate:'африкат',
  voiced:'дзвінкий', voiceless:'глухий', 'partial voicing':'часткова дзвінкість', 'partial devoicing':'часткове оглушення', breathy:'придиховий', creaky:'скрипучий',
  palatalized:'палаталізований', labialized:'лабіалізований', velarized:'веляризований', pharyngealized:'фарингалізований',
- assimilation:'асиміляція', coarticulation:'коартикуляція', deletion:'випадіння', epenthesis:'епентеза', elision:'елізія', liaison:'зв’язування (liaison)', 'enchaînement':'еншене́ман (enchaînement)', resyllabification:'перескладовування', affrication:'африкація', lenition:'ослаблення',
+ assimilation:'асиміляція', coarticulation:'коартикуляція', deletion:'випадіння', epenthesis:'епентеза', elision:'елізія', liaison:'зв’язування', 'enchaînement':'зчеплення слів', resyllabification:'перескладовування', affrication:'африкація', lenition:'ослаблення',
  prominence:'виділеність', 'rhythmic grouping':'ритмічне групування', 'pitch contour':'контур висоти тону', 'boundary tones':'граничні тони', tempo:'темп', intensity:'інтенсивність', 'voice quality':'якість голосу',
  regional:'регіональний', social:'соціальний', age:'віковий', register:'регістр', style:'стиль', 'speaker-specific':'індивідуальний для мовця',
  unaspirated:'без придиху', aspirated:'з придихом', unreleased:'без чутного вибуху', 'nasal release':'носовий випуск', 'lateral release':'боковий випуск',
@@ -67,7 +67,7 @@ const featureUfpnUk={
  syllabicity:'◌̩ та ◌̯ у розширеному або докладному записі, якщо ці ознаки надані.',
  gemination:'ː/ˑ і вирівнювання сегментів; потрібні аудіо- або лексичні докази.',
  'speech-fluency':'Окремий шар часового анотування; не кодується діакритиками сегментів.',
- 'speech-rate':'Метадані профілю й контексту; впливають на schwa, зв’язування та коартикуляцію, але не мають одного окремого знака.'
+ 'speech-rate':'Метадані профілю й контексту; впливають на звук ə та зв’язування та коартикуляцію, але не мають одного окремого знака.'
 };
 const inventoryOriginUk={
  'IPA symbol retained (Latin-derived IPA letter)':'Збережений символ МФА (літера латинського походження)',
