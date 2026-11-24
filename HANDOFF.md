@@ -339,3 +339,6 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 
 - Follow-up live review found and fixed English fallback text in the `ъ` grapheme inventory card. `src/app.js` now translates both the new origin and rationale; regression coverage checks both entries. PR #48 CI [45444699428](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45444699428) passed build, 75/75 tests, syntax, font audit and Chromium/Firefox/WebKit rendering. Main Pages workflow [45445140803](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45445140803) passed artifact and deploy. Final live check confirmed Ukrainian-only inventory text, IPA `/ə/` and UFPN `ъ`. Hosting and localization: DONE_VERIFIED.
+
+
+- Colour-only refinement in branch `design/french-editorial-colour-palette-2026-11-24`: French editorial palette (ivory, ink blue, wine red, champagne, slate). CSS and a palette regression test changed; design spec, matrix and audit updated. Await PR CI and Pages deploy before calling it hosted.
