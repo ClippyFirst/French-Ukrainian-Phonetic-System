@@ -345,3 +345,16 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Main Pages workflow [45460636622](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45460636622) completed SUCCESS: build, tests, syntax, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering, specimen artifact, Pages artifact and deploy.
 - Live production CSS verified with an uncached HTTP 200 request at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0`; all principal palette tokens are present. The first fetch was served from stale cache; cache-busting confirmed the current deployment.
 - Documentation follow-up branch: `docs/verify-french-palette-deployment-2026-11-24`; this handoff, `docs/EXECUTION-MATRIX.md` and `docs/AUDIT.md` now record the final CI and hosting evidence. Documentation PR/CI remains to be opened and verified.
+
+
+## Навчальний мінікурс і UFPN guide — handoff (2026-11-24)
+
+- Branch: feat/french-reading-and-ufpn-guide-2026-11-24, based on main after palette deployment closeout PR #51, merge SHA 339c69a600a129adf2afeac2136a7abfec07d73f.
+- Додано окремий навчальний блок «Як читати французькою»: типові голосні групи, чотири типи носових голосних із приміткою про неповне/регіональне злиття /œ̃/–/ɛ̃/, часті буквосполучення приголосних, контекстні правила c/g, акценти й дієрезу, кінцеві приголосні та -ent, liaison, enchaînement і schwa. Кнопки прикладів заповнюють головне поле транскриптора.
+- Навігація UFPN більше не відкриває docs/UKRAINIAN-NOTATION.md як сирий Markdown. Замість цього є вбудований візуальний довідник із прикладом IPA → UFPN, трьома рівнями та картками прийнятого графемного інвентарю з machine-readable mapping.
+- Технічні акордеони отримали стабільні anchor IDs; користувач може перейти від навчального блоку до таблиці IPA → UFPN, фонетичних вимірів, походження графем і таблиці «літера — звук — українське слово».
+- Фонетичний рушій, IPA → UFPN mapping, профілі, рівні деталізації та експорт не змінювалися.
+- Regression coverage додано в tests/reference-ui.test.js; перевірки build/test/syntax/font/browser і live deployment ще очікують виконання для цього PR.
+- Status: W8/W9 PARTIAL до завершення CI, браузерної перевірки та production smoke test.
+
+- Додані джерела S38–S44 на основі Undermind: прочитані повні PDF Racine & Detey (2017), Stridfeldt (2019), Nawafleh (2023); abstract/metadata для Law (2022), Brissaud et al. (2012), Viebahn et al. (2018), Granget et al. (2024). Лінгвістичні дані/корпуси з цих праць не імпортовано.

@@ -119,6 +119,7 @@ async function copy(text){try{await navigator.clipboard.writeText(text);$('statu
 source.addEventListener('input',render);$('profile').addEventListener('change',render);levelSelect.addEventListener('change',render);
 $('clear').addEventListener('click',()=>{source.value='';render();source.focus()});
 document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>{source.value=b.dataset.example;render()}));
+document.querySelectorAll('[data-lesson-example]').forEach(b=>b.addEventListener('click',()=>{source.value=b.dataset.lessonExample;render();source.focus();source.scrollIntoView({behavior:'smooth',block:'center'})}));
 document.querySelectorAll('.output').forEach(p=>p.addEventListener('click',e=>{const b=e.target.closest('.word-token');if(b)detail(Number(b.dataset.index))}));
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(result?.[b.dataset.copy]||'')));
 $('copy-all').addEventListener('click',()=>copy(['Французький текст: '+result.text,'IPA: '+result.ipa,'UFPN ('+({basic:'базовий',detailed:'докладний',extended:'розширений'}[levelSelect.value])+'): '+result.ufpn,'Латинська підказка: '+result.romanized].join('\n')));
@@ -180,6 +181,7 @@ function renderTechnicalReference(){
  }
 }
 renderTechnicalReference();reference.append(technicalDetails);
+technicalDetails.id='ufpn-technical';
 const featureDetails=createReferenceAccordion('ufpn-features','Повний перелік фонетичних вимірів',UFPN_MAPPING.featureDimensions.length+' вимірів','Що саме описуємо у вимові, які значення розрізняємо та наскільки кожен вимір уже представлений у UFPN. Статус показує межі кодування, а не оцінку якості вимови.');
 const featureList=document.createElement('div');featureList.className='feature-grid';
 for(const feature of UFPN_MAPPING.featureDimensions){
@@ -190,8 +192,10 @@ for(const feature of UFPN_MAPPING.featureDimensions){
  const explanation=document.createElement('p');explanation.className='feature-explanation';explanation.textContent=featureUfpnUk[feature.id]||localizeTechnicalText(feature.ufpn);
  card.append(heading,values,status,explanation);featureList.append(card);
 }
-featureDetails.append(featureList);reference.append(featureDetails);
+featureDetails.id='ufpn-features';featureDetails.append(featureList);reference.append(featureDetails);
 const inventory=UFPN_MAPPING.graphemeInventory;
+const guideGrid=document.querySelector('#ufpn-symbol-grid');
+if(guideGrid){for(const item of inventory.adopted){const card=document.createElement('article');card.className='ufpn-symbol-card';const symbol=document.createElement('strong');symbol.className='ufpn-symbol';renderUfpnDisplay(symbol,item.grapheme);const ipa=document.createElement('span');ipa.className='ufpn-symbol-ipa';ipa.textContent='IPA: '+item.ipa.join(', ');const rationale=document.createElement('p');rationale.textContent=inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale);card.append(symbol,ipa,rationale);guideGrid.append(card);}}
 const graphemeCount=inventory.adopted.length+' прийнятих · '+inventory.candidates.length+' кандидатів';
 const graphemeDetails=createReferenceAccordion('ufpn-graphemes','Графемний склад UFPN',graphemeCount,'Прийняті графеми є частиною чинної нотації. Кандидати наведені для прозорості, але ще не мають призначеного звукового значення.');
 const graphemeList=document.createElement('ul');graphemeList.className='grapheme-list';
@@ -206,7 +210,7 @@ function appendGraphemeItem(item,adopted){
 }
 for(const item of inventory.adopted)appendGraphemeItem(item,true);
 for(const item of inventory.candidates)appendGraphemeItem(item,false);
-graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
+graphemeDetails.id='ufpn-graphemes';graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
 render();

@@ -253,3 +253,11 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Main Pages workflow [45460636622](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45460636622) completed successfully: build, tests, syntax check, Charis 7/OpenType audit, Playwright installation, Chromium/Firefox/WebKit rendering, browser specimen upload, `pages-artifact` and `deploy` (all jobs SUCCESS).
 - Production verification: fresh uncached stylesheet request `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0` returned HTTP 200 and confirmed the deployed palette tokens and component colours. An initial cached request returned the previous stylesheet; cache-busting fetch resolved this and confirmed the current deployment.
 - Acceptance: DONE_VERIFIED for implementation, CI and production hosting. Owner-side visual preference remains subjective and can be revisited separately; no functional or linguistic blocker remains for this palette task.
+
+
+## Навчальний розділ і візуальне представлення UFPN (2026-11-24)
+
+| ID | Завдання | Статус | Доказ / acceptance |
+|---|---|---|---|
+| W8 | Навчальний супровід читання французькою | PARTIAL до merge/deploy | На сторінці додано структурований україномовний мінікурс: голосні буквосполучення, чотири носові категорії з варіантністю /œ̃/–/ɛ̃/ та посиланнями на дослідження S41, часті приголосні групи, контекстні c/g, акценти й дієреза, кінцеві приголосні та -ent, schwa, liaison і enchaînement; приклади можна передати в основне поле сервісу. Потрібні CI, browser review і live smoke test. Матеріал має навчальний статус і явно позначає типові правила та винятки; джерела S38–S44 додають доказові застереження щодо liaison, enchaînement, schwa, носових голосних і орфографічної варіантності. |
+| W9 | Вбудований візуальний UFPN guide замість raw Markdown navigation | PARTIAL до merge/deploy | Додано візуальне пояснення IPA → UFPN, Basic/Detailed/Extended, картки прийнятих графем із mapping JSON та переходи до технічних таблиць. Навігація більше не веде на UKRAINIAN-NOTATION.md. Потрібні CI, browser review і live smoke test. |
