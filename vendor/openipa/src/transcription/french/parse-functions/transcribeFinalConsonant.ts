@@ -6,10 +6,10 @@ import {
 } from '../FrenchHelper';
 
 const getRulePronounced = (letter: string, ipa: string): string => {
-  return `Final 'c', 'r', 'f', and 'l' consonants are pronounced. '${letter}' consonants are transcribed as [${ipa}].`;
+  return `Кінцеві «c», «r», «f» та «l» вимовляються; літера «${letter}» передає [${ipa}].`;
 };
 const getRuleSilent = (letter: string): string => {
-  return `Final '${letter}' consonants are silent.`;
+  return `Кінцева літера «${letter}» не вимовляється.`;
 };
 
 const transcribeFinalConsonant = (
