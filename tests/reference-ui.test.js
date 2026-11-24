@@ -75,3 +75,9 @@ test('result captions distinguish phonetic notation from a reading aid',()=>{
  assert.match(html,/Спрощена підказка для читання/);
  assert.match(html,/не є точною фонетичною транскрипцією/);
 });
+
+
+test('profile help is visually subordinate but readable',()=>{
+ assert.match(html,/aria-describedby="profile-help"/);
+ assert.match(css,/#profile-help/);
+});
