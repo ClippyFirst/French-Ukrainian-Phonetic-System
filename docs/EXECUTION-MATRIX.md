@@ -244,3 +244,8 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 
 
 - Final inventory localization follow-up: PR #48 added Ukrainian origin/rationale text for `ъ`; main Pages workflow [45445140803](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45445140803) passed all CI, artifact and deploy jobs. Live verification confirmed the adopted `ъ` card contains Ukrainian text only.
+
+
+### French editorial colour palette (2026-11-24)
+- Apply a restrained French print-inspired palette in CSS only: ivory `#F5F0E7`, ink blue `#26364A`, wine red `#A64B55`, champagne `#D8B98A`, slate `#66717C`.
+- Preserve typography, layout, UI copy, interaction and all phonetic behavior. Regression test pins the palette tokens. PR CI and main Pages deployment are required before marking hosted.
