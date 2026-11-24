@@ -166,3 +166,9 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - /ɲ/ remains `њ` unchanged; no other vowel or consonant mappings were changed.
 - Regression test covers all three levels, exact Unicode code points, and the preserved /ɲ/ → `њ` mapping. Charis 7 and three-engine browser rendering checks must verify the new base/mark attachment before merge/deploy.
 - Status: PARTIAL pending CI/browser/font audit and owner-side visual acceptance; independent phonetic review remains outside this implementation change.
+
+
+## Rounding feature registry consistency — 2026-11-24
+- Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
+- The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
+- Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
