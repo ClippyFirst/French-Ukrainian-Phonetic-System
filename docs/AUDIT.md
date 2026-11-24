@@ -348,3 +348,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Live smoke test via Firecrawl on 2026-11-24: `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/` returned HTTP 200. Extracted live page contains the French reading module, nasal-vowel variation note, liaison/enchaînement, the UFPN visual guide, adopted grapheme cards and technical table anchors. Navigation points to `#ufpn-guide`; the raw `docs/UKRAINIAN-NOTATION.md` is no longer a navigation target.
 - Linguistic scope: educational orientation only. Source registry S38–S44 records peer-reviewed evidence; full PDFs of Racine & Detey, Stridfeldt and Nawafleh were reviewed; abstracts/metadata were reviewed for Law, Brissaud et al., Viebahn et al. and Granget et al. No licensed corpora or paper datasets were imported.
 - The phonetic engine, IPA generation, IPA→UFPN mapping, profiles, notation levels and exports were not changed.
+
+
+## Final closeout verification — PR #57 (2026-11-24)
+
+- Final main commit: b9225311c80b18f99a8d90e5d49752ea9b9a6012.
+- Workflow 45468292682: test PASS (79/79), build PASS, check PASS, Charis 7/OpenType audit PASS, Playwright Chromium/Firefox/WebKit render PASS, Pages artifact PASS, deploy PASS.
+- Live smoke test after deployment: HTTP 200; learning section, UFPN guide, educational-only disclaimer and theme-color #F5F0E7 confirmed in the public HTML. No raw Markdown navigation target.
