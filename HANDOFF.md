@@ -324,3 +324,5 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Змінені файли: `index.html`, `styles.css`, `tests/reference-ui.test.js`, `DESIGN.md`, `docs/EXECUTION-MATRIX.md`, `docs/AUDIT.md`, `HANDOFF.md`.
 - Фонетичний рушій, профільні ID, мапінг, рівні UFPN, впевненість, походження та експорт не змінювалися.
 - Статус UI-06: PARTIAL до CI, браузерного рендерингу й live-перевірки після merge. Локальний git clone у попередніх сесіях був недоступний через DNS; цього разу зміни зроблено через GitHub API, тому локальні команди Node не виконувалися.
+
+- CI run [45421702699](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45421702699): build passed; tests 73/74. Єдиний failure — застаріла локалізаційна assertion `Латинська підказка` у `tests/localization.test.js`, що суперечила новому напису `Підказка латиницею`. Виправлено окремим комітом `a5be3fb615606fcb1ef312a3ef21f41441dad788`; повний повторний CI очікується. Syntax, font audit, Playwright, Pages artifact/deploy були skipped після fail-fast.
