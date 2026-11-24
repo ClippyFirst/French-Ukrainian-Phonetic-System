@@ -1,6 +1,101 @@
 import {transcribe,describeSegment} from './engine.js';
 import {renderUfpn,UFPN_MAPPING} from './ufpn.js';
 import {renderUfpnDisplay} from './ufpn-display.js';
+
+const featureDimensionUk={
+ 'Vowel height/aperture':'Висота й відкритість голосного',
+ 'Vowel frontness/backness/centrality':'Передність, задність і центральність голосного',
+ 'Lip rounding':'Огублення губ',
+ 'Vowel/consonant nasality':'Носовість голосних і приголосних',
+ 'Segmental duration':'Тривалість сегмента',
+ 'Vowel trajectory':'Зміна якості голосного',
+ 'Consonant place of articulation':'Місце творення приголосного',
+ 'Consonant manner':'Спосіб творення приголосного',
+ 'Voicing and phonation':'Дзвінкість і тип фонації',
+ 'Secondary articulation':'Вторинна артикуляція',
+ 'Segmental processes':'Сегментні процеси',
+ 'Prosody and voice dynamics':'Просодія та динаміка голосу',
+ 'Sociophonetic variation':'Соціофонетична варіативність',
+ 'Aspiration and stop release':'Придих і випуск зімкненого',
+ 'Syllabicity of consonants/glides':'Складотворчість приголосних і ковзних',
+ 'Segment length and gemination':'Тривалість сегмента й подвоєння',
+ 'Speech fluency and disfluency':'Плавність і порушення плавності мовлення',
+ 'Speech rate and reduction':'Темп мовлення та редукція'
+};
+const featureValueUk={
+ close:'високий (закритий)', 'close-mid':'напівзакритий', 'open-mid':'напіввідкритий', open:'відкритий',
+ front:'передній', central:'центральний', back:'задній', advanced:'висунутий уперед', retracted:'відсунений назад',
+ rounded:'огублений', unrounded:'неогублений', 'more-rounded':'сильніше огублений', 'less-rounded':'слабше огублений',
+ 'phonemic nasal vowel':'фонемний носовий голосний', 'gradient progressive/regressive nasalization':'градієнтна прогресивна / регресивна назалізація', 'nasal consonant':'носовий приголосний',
+ short:'короткий', 'half-long':'напівдовгий', long:'довгий', 'phrase-final lengthening':'подовження наприкінці фрази',
+ monophthong:'монофтонг', diphthong:'дифтонг', triphthong:'трифтонг', centralizing:'централізація', closing:'звуження',
+ bilabial:'губно-губний', labiodental:'губно-зубний', dental:'зубний', alveolar:'альвеолярний', postalveolar:'післяальвеолярний', palatal:'палатальний', velar:'велярний', uvular:'увулярний', glottal:'гортанний',
+ stop:'проривний', fricative:'фрикативний', approximant:'апроксимант', tap:'одноударний', trill:'тремтливий', nasal:'носовий', lateral:'боковий', affricate:'африкат',
+ voiced:'дзвінкий', voiceless:'глухий', 'partial voicing':'часткова дзвінкість', 'partial devoicing':'часткове оглушення', breathy:'придиховий', creaky:'скрипучий',
+ palatalized:'палаталізований', labialized:'лабіалізований', velarized:'веляризований', pharyngealized:'фарингалізований',
+ assimilation:'асиміляція', coarticulation:'коартикуляція', deletion:'випадіння', epenthesis:'епентеза', elision:'елізія', liaison:'зв’язування (liaison)', 'enchaînement':'еншене́ман (enchaînement)', resyllabification:'перескладовування', affrication:'африкація', lenition:'ослаблення',
+ prominence:'виділеність', 'rhythmic grouping':'ритмічне групування', 'pitch contour':'контур висоти тону', 'boundary tones':'граничні тони', tempo:'темп', intensity:'інтенсивність', 'voice quality':'якість голосу',
+ regional:'регіональний', social:'соціальний', age:'віковий', register:'регістр', style:'стиль', 'speaker-specific':'індивідуальний для мовця',
+ unaspirated:'без придиху', aspirated:'з придихом', unreleased:'без чутного вибуху', 'nasal release':'носовий випуск', 'lateral release':'боковий випуск',
+ syllabic:'складотворчий', 'non-syllabic':'нескладотворчий', resyllabified:'перенесений до іншого складу',
+ singleton:'одиничний приголосний', geminate:'подвоєний приголосний', 'emphatic lengthening':'емфатичне подовження', 'boundary-induced lengthening':'подовження на межі',
+ pause:'пауза', 'filled pause':'заповнена пауза', repetition:'повтор', repair:'самовиправлення', hesitation:'вагання', restart:'повторний початок',
+ careful:'ретельний', normal:'звичайний', fast:'швидкий', compressed:'стислий', reduced:'редукований
+};
+const featureStatusUk={
+ PARTIALLY_ENCODED:'Закодовано частково', ANNOTATION_ONLY:'Лише анотування', RESEARCH_ONLY:'Лише для досліджень',
+ EXTENDED_ONLY:'Лише в розширеному записі', PARTIAL_RESEARCH_REGISTRY:'Частковий дослідницький реєстр',
+ PROFILE_METADATA:'Метадані профілю', EXTENDED_AUDIO_ONLY:'Розширений запис лише за аудіоданими',
+ EXTENDED_OR_ANALYSIS_ONLY:'Лише розширений запис або аналітичні дані', AUDIO_ANNOTATION_ONLY:'Лише аудіоанотування',
+ AUDIO_OR_STYLE_METADATA:'Метадані аудіо або стилю'
+};
+const featureUfpnUk={
+ 'vowel-height':'Позначки якості голосного в базовому й докладному записі.',
+ 'vowel-place':'Основна графема та додаткові знаки розширеного запису.',
+ rounding:'Окремі кириличні літери передають /y/ і /ø/; графему œ збережено для /œ/; й̹ (U+0339 під й) передає лабіально-палатальний апроксимант /ɥ/. Тонші ступені огублення зберігаються лише за наявності вузької транскрипції або аудіоданих.',
+ nasality:'Тильда позначає фонемні носові голосні; у розширеному записі — лише підтверджену коартикуляцію.',
+ duration:'ˑ/ː у докладному й розширеному записі — лише коли ці знаки є у вхідній транскрипції.',
+ diphthongization:'Послідовність звуків і сполучна дужка / перехід у розширеному записі; потрібні профіль або аудіодані.',
+ 'consonant-place':'Основна графема та явні метадані місця творення; не кожне місце має окрему українську літеру.',
+ 'consonant-manner':'Відповідники сегментів, алофонів і складені африкати зі сполучною дужкою.',
+ phonation:'◌̬/◌̥ у розширеному записі; придихова та скрипуча фонація лишаються метаданими, доки немає французьких доказів.',
+ 'secondary-articulation':'Стандартні модифікатори МФА в розширеному записі.',
+ 'phonological-processes':'Метадані правил, альтернативи, походження та окремі позначки розширеного запису.',
+ prosody:'ˈ ˌ ‖ ↗ ↘ і додаткові метадані; потрібні аудіодані.',
+ variation:'Ідентифікатори профілів та альтернативи; варіанти не зводяться до одного типового.',
+ 'aspiration-release':'ʰ, ◌̚, ⁿ, ˡ у розширеному записі; типова французька вимова не має придиху — позначаються лише спостережені випадки.',
+ syllabicity:'◌̩ та ◌̯ у розширеному або докладному записі, якщо ці ознаки надані.',
+ gemination:'ː/ˑ і вирівнювання сегментів; потрібні аудіо- або лексичні докази.',
+ 'speech-fluency':'Окремий шар часового анотування; не кодується діакритиками сегментів.',
+ 'speech-rate':'Метадані профілю й контексту; впливають на schwa, зв’язування та коартикуляцію, але не мають одного окремого знака.'
+};
+const inventoryOriginUk={
+ 'IPA symbol retained (Latin-derived IPA letter)':'Збережений символ МФА (літера латинського походження)',
+ 'IPA symbol retained (Latin-derived IPA ligature)':'Збережений символ МФА (лігатура латинського походження)',
+ 'Kazakh Cyrillic':'Казахська кирилиця', 'Serbian Cyrillic':'Сербська кирилиця',
+ 'Belarusian Cyrillic':'Білоруська кирилиця', 'Russian and Belarusian Cyrillic':'Російська й білоруська кирилиця'
+};
+const inventoryRationaleUk={
+ 'ə':'Зберігаємо точну графему МФА як самостійну основу UFPN; не замінюємо її сторонньою кириличною голосною.',
+ 'ɛ':'Зберігаємо точну графему МФА як самостійну основу UFPN; носовість позначаємо комбінованою тильдою.',
+ 'œ':'Зберігаємо точну графему МФА як самостійну основу UFPN; носовість позначаємо комбінованою тильдою.',
+ 'ɔ':'Зберігаємо точну графему МФА як самостійну основу UFPN; носовість позначаємо комбінованою тильдою.',
+ 'ғ':'Казахська Ғ має усталене значення дзвінкого увулярного фрикативного /ʁ/; це усуває потребу в колишньому поєднанні діакритик над х.',
+ 'ң':'Казахська Ң — окрема літера для велярного носового /ŋ/.',
+ 'њ':'Сербська Њ — окрема літера для /ɲ/, на відміну від українського нь, що передає /nʲ/.',
+ 'ө':'Казахська Ө має усталене значення переднього огубленого /ø/ напівзакритого підняття й безпосередньо відповідає французькому /ø/.',
+ 'ў':'Білоруська ў — відома нескладова графема у з фонетично засвідченою реалізацією типу [w]. Аналізи білоруської мови різняться щодо статусу цього звука; UFPN запозичує графему для французького /w/, не переносячи білоруських фонологічних правил.',
+ 'ү':'Казахська Ү має усталене значення переднього огубленого /y/ високого підняття й безпосередньо відповідає французькому /y/.',
+ 'ы':'[ɨ] — високий центральний неогублений голосний; французький /ə/ — змінний центральний голосний середнього підняття, тому це не тотожні звуки.',
+ 'ё':'Зазвичай передає йотований звук або залежить від контексту; це не стабільний однофонемний знак для /ø/ чи /œ/.'
+};
+const phonologyStatusUk={
+ CORE:'Основна фонема', MARGINAL:'Маргінальна фонема', VARIABLE:'Варіативна реалізація',
+ PERIPHERAL:'Периферійна фонема', VARIANT_OR_PERIPHERAL:'Варіантна або периферійна реалізація',
+ LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED:'Підтримано фаховою літературою; незалежної експертної перевірки ще немає',
+ PARTIAL_MANNER_NOT_ENCODED:'Спосіб творення враховано частково, але не закодовано'
+};
+const localizeTechnicalText=value=>String(value??'').replaceAll('provenance','походження').replaceAll('tie-bar placement','розташування сполучної дужки').replaceAll('schwa','звук ə');
 const $=id=>document.getElementById(id),source=$('source');let result;
 const levelLabel=document.createElement('label');levelLabel.textContent='Деталізація UFPN';
 const levelSelect=document.createElement('select');levelSelect.id='ufpn-level';
@@ -55,8 +150,8 @@ const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings]
 function renderTechnicalReference(){
  refBody.replaceChildren();
  for(const item of referenceRows){
-  const description=item.descriptionUk||item.description||'';
-  const status=item.phonologicalStatus||item.evidenceStatus||'';
+  const description=localizeTechnicalText(item.descriptionUk||item.description||'');
+  const rawStatus=item.phonologicalStatus||item.evidenceStatus||'';const status=phonologyStatusUk[rawStatus]||featureStatusUk[rawStatus]||rawStatus;
   const tr=document.createElement('tr');
   for(const [index,value] of [item.ipa,item.basic,item.detailed,item.extended,description+' · '+status].entries()){
    const td=document.createElement('td');
@@ -71,11 +166,11 @@ const featureDetails=document.createElement('details');featureDetails.className=
 const featureSummary=document.createElement('summary');featureSummary.textContent='Повний перелік фонетичних вимірів';featureDetails.append(featureSummary);
 const featureList=document.createElement('ul');
 for(const feature of UFPN_MAPPING.featureDimensions){
- const li=document.createElement('li');li.textContent=feature.dimension+': '+feature.values.join(', ')+' — '+feature.status+'. '+feature.ufpn;featureList.append(li);
+ const li=document.createElement('li');li.textContent=(featureDimensionUk[feature.dimension]||feature.dimension)+': '+feature.values.map(value=>featureValueUk[value]||value).join(', ')+' — '+(featureStatusUk[feature.status]||feature.status)+'. '+(featureUfpnUk[feature.id]||localizeTechnicalText(feature.ufpn));featureList.append(li);
 }
 featureDetails.append(featureList);reference.append(featureDetails);
 const graphemeDetails=document.createElement('details');const graphemeSummary=document.createElement('summary');graphemeSummary.textContent='Графемний склад UFPN';graphemeDetails.append(graphemeSummary);
-const graphemeList=document.createElement('ul');for(const item of UFPN_MAPPING.graphemeInventory.adopted){const li=document.createElement('li');li.textContent=item.grapheme+' — '+item.ipa.join(', ')+' ('+item.origin+'): '+item.rationale;graphemeList.append(li)}for(const item of UFPN_MAPPING.graphemeInventory.candidates){const li=document.createElement('li');li.textContent=item.grapheme+' — не призначено: '+item.rationale;graphemeList.append(li)}graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
+const graphemeList=document.createElement('ul');for(const item of UFPN_MAPPING.graphemeInventory.adopted){const li=document.createElement('li');li.textContent=item.grapheme+' — '+item.ipa.join(', ')+' ('+(inventoryOriginUk[item.origin]||item.origin)+'): '+(inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale));graphemeList.append(li)}for(const item of UFPN_MAPPING.graphemeInventory.candidates){const li=document.createElement('li');li.textContent=item.grapheme+' — не призначено: '+(inventoryRationaleUk[item.grapheme]||localizeTechnicalText(item.rationale));graphemeList.append(li)}graphemeDetails.append(graphemeList);reference.append(graphemeDetails);
 document.querySelector('.workspace').after(reference);
 
 render();
