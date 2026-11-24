@@ -9,8 +9,10 @@ test('the website shell uses Ukrainian interface copy',async()=>{
  assert.match(html,/<html lang="uk">/);
  for(const phrase of ['Latin guide','Basic ·','Detailed ·','Extended ·','FR → UKR','elision)'])
   assert.ok(!html.includes(phrase),'unexpected English interface text: '+phrase);
- assert.ok(html.includes('Латинська підказка'));
+ assert.ok(html.includes('Підказка латиницею'));
  assert.ok(html.includes('з елізією'));
+ assert.ok(html.includes('Варіант вимови'));
+ assert.ok(html.includes('Елізія — випадіння звука ə'));
 });
 
 test('dynamic interface labels and exported headings are localized',async()=>{
