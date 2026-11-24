@@ -388,3 +388,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - PR workflow #409 / 45474480437 SUCCESS: build, 79/79 tests, check, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering and artifact upload.
 - Browser artifact 14959101782 includes desktop/laptop/tablet/mobile screenshots. Desktop and mobile screenshots were inspected; the requested full-width and final-row layouts render correctly, with no horizontal overflow.
 - PR CI skips Pages deployment. Merge and production smoke verification remain the final acceptance steps.
+
+
+## UI-07 — final deployed state (2026-11-24)
+- PR #60 merged: `bcafb611bf90270f52e91d4c445f02cdbd8fe3fe`.
+- PR CI #409 / 45474480437: SUCCESS — build, 79/79 tests, check, Charis 7/OpenType audit, Playwright browser install, Chromium/Firefox/WebKit render and artifact upload.
+- Main Pages #412 / 45475060963: SUCCESS — test, Pages artifact and deploy.
+- Live site `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/`: HTTP 200. Verified removal of checkbox, phonetic dimensions panel, `ы`/`ё` candidate cards and confidence UI; Basic-only UFPN; click-to-open selected-word breakdown; full-width lesson 04; flex-wrapped symbol grid.
+- Browser screenshots artifact: 14959101782. Desktop/mobile visual review passed.
+- UI-07 status: DONE_VERIFIED. Remaining prototype limitations (lexical coverage, regional variants and native-speaker review) are unrelated to this layout-only task.
