@@ -58,7 +58,7 @@ export function transcribeFrenchTextDetailed(input, options = {}) {
           sourceIpa: phoneme.ipa,
           ruleId: 'openipa-rule',
           rule: phoneme.rule,
-          explanationUk: 'Оригінальне пояснення правила OpenIPA (англійською): ' + phoneme.rule,
+          explanationUk: phoneme.rule,
           source: 'OpenIPA',
         });
       }
