@@ -49,3 +49,13 @@ test('reference panels and explanation control have responsive and keyboard-visi
  assert.match(css,/\.grapheme-list/);
  assert.match(css,/\.status-options/);
 });
+
+
+test('the page removes decorative micro-labels and keeps meaningful navigation',()=>{
+ for(const phrase of ['ФОНЕТИЧНИЙ РОБОЧИЙ СТІЛ','01 / ВВЕДЕННЯ','02 / РЕЗУЛЬТАТ','03 / ФОНЕТИЧНИЙ РОЗБІР','ПРИНЦИП РОБОТИ','дослідницька версія 0.2','незабаром'])
+  assert.ok(!html.includes(phrase),'decorative or unavailable UI copy remains: '+phrase);
+ for(const phrase of ['Ваш текст','Три способи побачити вимову','Міжнародний фонетичний алфавіт','Український запис','Латинська підказка','Не транслітерація.'])
+  assert.ok(html.includes(phrase),'meaningful product information was removed: '+phrase);
+ assert.ok(html.includes('<footer>')&&html.includes('Джерела')&&html.includes('Стан проєкту')&&html.includes('</footer>'));
+ assert.doesNotMatch(html,/<option disabled>/);
+});

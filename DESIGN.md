@@ -31,3 +31,11 @@ The following repositories informed the design review and interaction principles
 - [Emil Kowalski Skills](https://github.com/emilkowalski/skills) — restrained interaction feedback, motion purpose, and reduced-motion awareness. MIT.
 
 This project is AGPL-3.0. These links are design references only; no upstream skill implementation or asset has been copied into the repository.
+
+
+## Інформаційна дисципліна інтерфейсу — 2026-11-24
+- Видимий текст має називати функцію, стан або наступну дію; декоративні номери, службові «kicker»-підписи та дублювання назви продукту не додають цінності й не використовуються.
+- Не показувати в робочих контролах недоступні регіональні профілі з написом «незабаром»: перелік містить лише реальні опції.
+- Зберігати пояснення, які допомагають розрізнити IPA, UFPN і латинську підказку, а також попередження про межі точності. Це не візуальний шум.
+- Нижній колонтитул містить лише довідкові переходи, які не дублюють основну навігацію; номер версії не виводити, доки він не є керованим релізним значенням.
+- Перевірка спирається на [kill-ai-slop](https://github.com/yetone/kill-ai-slop) (виявлення шаблонних UI/copy-тригерів), [Impeccable](https://github.com/pbakaus/impeccable) (clarify/distill: усунення повторів) і [Taste Skill](https://github.com/Leonxlnx/taste-skill) (ієрархія, щільність, перевірка в браузері). Репозиторії використано як методичні орієнтири; їхній код/асети не копіювалися.

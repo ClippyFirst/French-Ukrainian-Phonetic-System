@@ -304,3 +304,14 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Main workflow `45411777853` completed SUCCESS: build, tests, syntax, Charis 7 audit, Playwright install, Chromium/Firefox/WebKit rendering, Pages artifact and deploy all passed.
 - Fresh live scrape using `?deploycheck=45411777853` returned HTTP 200 and confirmed «Показувати розбір вибраного слова», the helper text explaining that transcription is unaffected, and the new card/accordion reference UI (the former plain list is absent).
 - W7 is now DONE_VERIFIED. The change is presentation/accessibility only; no phonetic runtime or mappings were modified.
+
+## UI information-density refinement — 2026-11-24
+- Branch: `design/remove-interface-noise-2026-11-24`, based on `main` `f04a7b280b9b1a855ae1faed4c6bf1b08f070998`.
+- Applied a focused copy/IA pass guided by kill-ai-slop, Impeccable and Taste Skill. Removed decorative ordinal labels and hero kicker, redundant brand microcopy, disabled future-region options, repeated footer GitHub link and static version label.
+- Preserved useful distinctions between IPA, UFPN and Latin guide; kept explanatory copy, uncertainty warning, functional controls and source/status links.
+- Changed files: `index.html`, `tests/reference-ui.test.js`, `DESIGN.md`, `docs/EXECUTION-MATRIX.md`, `docs/AUDIT.md`, `HANDOFF.md`.
+- Acceptance: `npm run build`, `npm test`, `npm run check`, plus browser rendering and inspection at desktop/mobile. No phonetic engine/data behavior should change.
+- PR #43: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/43.
+- PR workflow [45417023021](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021): SUCCESS — build, 71/71 tests, syntax, Charis 7/OpenType audit, Chromium/Firefox/WebKit across desktop/laptop/tablet/mobile (12 combinations). Browser artifact [14931722793](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45417023021/artifacts/14931722793); desktop and mobile screenshots manually inspected. No horizontal overflow or result-layout regressions.
+- First CI attempt [45416850694](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45416850694) failed because the newly added test contained an invalid regular-expression literal. The error was traced to the assertion itself, corrected to a direct string-presence assertion, and the full workflow rerun passed.
+- Current status: DONE_VERIFIED in the PR branch. Pages publication is not applicable until merge; no production deployment is claimed.
