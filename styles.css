@@ -357,27 +357,32 @@ footer a:hover{color:var(--green);text-decoration:underline}
 /* Restrained editorial motion — feedback and spatial affordance only. */
 :root{
   --motion-fast:140ms;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
 }
 .word-token{
-  transition:color var(--motion-fast) ease-out,background-color var(--motion-fast) ease-out;
+  transition:color var(--motion-fast) ease,background-color var(--motion-fast) ease;
 }
 @media (hover:hover) and (pointer:fine){
   .spelling-card,.ufpn-symbol-card{
-    transition:transform var(--motion-fast) ease-out;
+    transition:transform var(--motion-fast) var(--ease-in-out);
   }
   .spelling-card:hover,.ufpn-symbol-card:hover{
     transform:translateY(-2px);
   }
   .learning-sources a,.ufpn-detail-links a{
-    transition:color var(--motion-fast) ease-out;
+    transition:color var(--motion-fast) ease;
   }
   .learning-sources a:hover,.ufpn-detail-links a:hover{
     color:var(--coral);
   }
 }
 @media (prefers-reduced-motion:reduce){
-  .word-token,.spelling-card,.ufpn-symbol-card,.learning-sources a,.ufpn-detail-links a{
+  .spelling-card,.ufpn-symbol-card{
     transition:none;
+  }
+  .word-token,.learning-sources a,.ufpn-detail-links a{
+    transition:color var(--motion-fast) ease,background-color var(--motion-fast) ease;
   }
   .spelling-card:hover,.ufpn-symbol-card:hover{
     transform:none;
