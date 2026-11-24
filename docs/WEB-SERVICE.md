@@ -95,3 +95,10 @@ Final visual/educational closeout: PR #57 (`b9225311c80b18f99a8d90e5d49752ea9b9a
 - Усі переходи тривають 140 ms; окремого JS animation runtime або сторонньої motion-бібліотеки немає.
 - За prefers-reduced-motion: reduce рух і переходи вимикаються.
 - Навчальні блоки не з'являються через автоматичні scroll-reveal анімації; фонетичні результати не рухаються під час читання.
+
+## Production deployment — editorial motion — 2026-11-24
+- PR #62 merged to `main` as `ba55c46763d0a09f75faa55830d51192b6efb6e8`.
+- Main Pages workflow #424 / [45483025203](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45483025203): SUCCESS — build, tests, syntax check, Charis 7/OpenType audit, Chromium/Firefox/WebKit rendering, Pages artifact upload and deployment.
+- Post-deploy live CSS verified `--motion-fast:140ms`, 2 px card lift restricted to fine-pointer hover, and reduced-motion reset. Production homepage fetch succeeded.
+- No pronunciation engine, IPA adapter, UFPN mapping or lexical data changed; this was a presentation-only update.
+
