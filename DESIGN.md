@@ -4,9 +4,9 @@
 An editorial phonetics workbench: calm, precise, readable, and recognisably Ukrainian. The interface should feel like a carefully typeset linguistic instrument, not a generic SaaS dashboard.
 
 ## Visual foundations
-- Preserve the warm paper background, forest-green action colour, and editorial serif/sans pairing already used by the service.
+- Use a restrained French editorial palette: warm ivory `#F5F0E7`, ink blue `#26364A`, wine red `#A64B55`, muted champagne `#D8B98A`, and slate `#66717C`. Avoid a literal flag treatment; the intended reference is French print/editorial design.
 - Use the self-hosted Charis font for UFPN, extended Cyrillic and combining-mark clusters; preserve the established editorial serif for IPA and Latin guide unless a dedicated font audit justifies a change. Use the UI sans face for controls and explanatory prose.
-- Keep the page mostly neutral. Green marks the primary action and meaningful UFPN emphasis; coral is reserved for uncertainty or warnings.
+- Keep the page mostly neutral. Ink blue carries primary actions and structural emphasis; wine red marks uncertainty or warnings; champagne is a restrained secondary accent. Pale blue-grey and warm ivory distinguish surfaces without adding visual noise.
 - Prefer clear whitespace, aligned edges, readable text, and a small number of coherent surfaces over decorative gradients, glass effects, or nested cards.
 - Keep phonetic outputs visually distinct: IPA is the source-facing reference, UFPN is the primary Ukrainian reading aid, and Latin guide remains explicitly secondary.
 
@@ -49,3 +49,8 @@ This project is AGPL-3.0. These links are design references only; no upstream sk
 - Писати коротко, прямо й послідовно; уникати маркетингових метафор там, де потрібна інструкція. Не прибирати застереження про невизначеність і межі прототипу.
 - Контентна зміна не має змінювати поведінку профілів, фонетичні дані, адаптер, оцінки впевненості чи експорт.
 - Методичні орієнтири: [designer-skills](https://github.com/Owl-Listener/designer-skills), зокрема [content-strategy](https://github.com/Owl-Listener/designer-skills/tree/main/ux-strategy/skills/content-strategy), [ux-writing](https://github.com/Owl-Listener/designer-skills/tree/main/designer-toolkit/skills/ux-writing) та [information-architecture](https://github.com/Owl-Listener/designer-skills/tree/main/ux-strategy/skills/information-architecture). Використано як методику; код навичок не копіювався.
+
+
+## Colour palette update — 2026-11-24
+- Adopted the French editorial palette: warm ivory `#F5F0E7`, ink blue `#26364A` / deep ink `#17263A`, wine red `#A64B55`, muted champagne `#D8B98A`, and slate `#66717C`.
+- This is a colour-only refinement. Typography, layout, interaction, phonetic processing, mapping, output content, and accessibility structure remain unchanged.
