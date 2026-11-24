@@ -37,6 +37,7 @@ test('/ɥ/ uses the project-approved й̹ composition at every level while њ re
  assert.deepEqual(glide.diacritics,['̹']);
  for(const level of ['basic','detailed','extended']) assert.equal(renderUfpn('ɥ',level).text,'й̹');
  assert.equal(renderUfpn('ɲ').text,'њ');
+ assert.match(UFPN_MAPPING.featureDimensions.find(item=>item.id==='rounding').ufpn,/й̹/);
  assert.equal('й̹'.normalize('NFC'),'й̹');
  assert.deepEqual([...('й̹')].map(char=>char.codePointAt(0)),[0x0439,0x0339]);
 });

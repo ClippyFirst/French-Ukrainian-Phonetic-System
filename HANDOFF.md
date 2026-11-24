@@ -249,4 +249,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Feature branch: `feat/ufpn-labial-palatal-glide-grapheme`, based on main `9633b43bad1a74899ac556bfd19f293977c18d61`.
 - The owner selected the below-diacritic option for /ɥ/: canonical UFPN is `й̹` (U+0439 U+0339; Ukrainian `й` + COMBINING RIGHT HALF RING BELOW) at Basic, Detailed and Extended levels.
 - /ɲ/ remains `њ`. No other mappings changed.
-- Regression test asserts the three-level /ɥ/ output, exact Unicode sequence, and /ɲ/ → `њ` preservation. CI/font shaping/browser specimen and deployment verification remain pending; this branch has not yet been merged or deployed.
+- PR #33 merged as `c76801dbfa9c7bae1009ad3b137c652f033da517`. PR CI 45370163542 passed 59/59 tests, build, syntax, Charis 7 audit and all 12 browser/viewport combinations. Main workflow 45370457031 passed test, Pages artifact and deploy.
+- Live scrape `01a20d01-a5ea-70bf-bafe-3e58d7a307bb` returned HTTP 200 and verified the visible /ɥ/ → `й̹` reference-table row. /ɲ/ → `њ` remains unchanged.
+- PR #34 is a metadata consistency follow-up: its `featureDimensions.rounding` description and regression assertion are being aligned with the approved composition; no runtime output change.
+
+
+## Rounding feature registry consistency — 2026-11-24
+- Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
+- The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
+- Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
