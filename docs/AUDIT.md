@@ -303,3 +303,9 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 ## Localization correction — 2026-11-24
 - Live review found the newly adopted `ъ` grapheme inventory card exposed its origin and rationale in English because its new data values had no Ukrainian UI dictionary entries. Added explicit Ukrainian labels and regression assertions; the page's existing Ukrainian-only content requirement is preserved.
+
+
+## Final live localization verification — 2026-11-24
+- PR #48 fixed the only English fallback exposed by the new `ъ` inventory entry: origin and rationale now have explicit Ukrainian UI translations, guarded by regression assertions.
+- Main Pages workflow [45445140803](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45445140803) passed build, 75/75 tests, syntax, font audit, browser rendering, Pages artifact and deploy.
+- Final live smoke test confirmed: IPA retains `/ə/`; UFPN output uses `ъ`; the reference row is `ъ | ə`; the `ъ` inventory origin and rationale are Ukrainian.
