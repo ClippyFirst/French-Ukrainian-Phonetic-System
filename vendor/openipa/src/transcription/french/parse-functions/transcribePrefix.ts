@@ -2,7 +2,7 @@ import { Phoneme } from '../../../constants/Interfaces';
 import { isEndOfSentence } from '../../../util/Helper';
 
 const getRule = (text: string, ipa: string): string => {
-  return `'${text}-' prefixes are transcribed as [${ipa}].`;
+  return `Префікс «${text}-» передає [${ipa}].`;
 };
 
 const transcribePrefix = (

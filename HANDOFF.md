@@ -276,3 +276,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Live site returned HTTP 200 on scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d`; it displays `bɔ̃ʒuʁ` → `бɔ̃жуғ` and the reference rows for `ɛ`, `œ`, `ɔ`, `ə`, plus `ɛ̃`, `ɔ̃`, `œ̃`. `й̹` and `њ` remain intact.
 - Implementation/deployment DONE_VERIFIED. Independent French/Ukrainian phonetic expert review and a licensed gold benchmark remain BLOCKED; screen-reader, zoom/reflow and physical-device QA remain PARTIAL. Project remains an experimental research prototype, not an academically validated standard.
 - PR #36 updates one visible caption to accurately call UFPN a hybrid notation; no runtime mapping change.
+
+
+## Handoff — українська локалізація вебсайту (2026-11-24)
+- Робоча гілка: `i18n/ukrainian-only-site-copy`, відгалужена від `main` `6ccf44347925c97155cc7b3fdd4e5cd82c51140c`.
+- PR #37: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/37.
+- Зміни: український інтерфейс, профілі й рівні UFPN, локалізовані довідкові таблиці/метадані/експорт, українські правила й пояснення OpenIPA, регресійні тести.
+- CI run [45383515829](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45383515829) на `d0bc7489618305f3636ad7f61adaa23174220ddb`: 65/65 tests, build, syntax, Charis 7 audit і Chromium/Firefox/WebKit rendering — SUCCESS. Browser artifact `14915013026`.
+- Наступні кроки: повторити CI після цього документаційного запису, злити PR #37, дочекатися Pages deployment і перевірити живий сайт на українські написи та відсутність англомовних підписів інтерфейсу.

@@ -1,11 +1,11 @@
 import { Phoneme } from '../../../constants/Interfaces';
 
 const getRule = (text: string, ipa: string): string => {
-  return `'${text}' letters are transcribed as [${ipa}].`;
+  return `Літери «${text}» передають [${ipa}].`;
 };
 
 const getRuleSilent = (text: string): string => {
-  return `'${text}' letters are silent, so they are not transcribed.`;
+  return `Літери «${text}» не вимовляються й не відображаються у транскрипції.`;
 };
 
 const transcribeLetter = (

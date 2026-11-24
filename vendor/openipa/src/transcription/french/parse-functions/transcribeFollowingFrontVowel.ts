@@ -2,7 +2,7 @@ import { Phoneme } from '../../../constants/Interfaces';
 import { isFrontVowel } from '../../../util/Helper';
 
 const getRule = (letter: string, ipa: string): string => {
-  return `'${letter}' consonants followed by a front vowel are transcribed as [${ipa}].`;
+  return `Літера «${letter}» перед переднім голосним передає [${ipa}].`;
 };
 
 const transcribeFollowingFrontVowel = (

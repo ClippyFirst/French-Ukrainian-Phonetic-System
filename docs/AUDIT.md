@@ -249,3 +249,11 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Fresh live scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d` returned HTTP 200 and confirmed `bɔ̃ʒuʁ` → `бɔ̃жуғ`, plus visible `ɛ`, `œ`, `ɔ`, `ə`, nasal `ɛ̃`, `ɔ̃`, `œ̃`, `й̹` and `њ`.
 - The previous failure was limited to two stale end-to-end expected strings (`о̆̃`); tests were corrected to expect `ɔ̃`, and final CI passed 60/60.
 - Remaining linguistic expert review, licensed gold benchmark, screen-reader/zoom/reflow and physical-device checks remain evidence-limited; this does not change the experimental research-prototype status.
+
+
+## Перевірка української локалізації сайту — 2026-11-24
+- Виявлено, що англійська була не лише в HTML, а й у динамічних підписах результатів, feature registry, поясненнях OpenIPA та загальних шаблонах транскрипційних правил.
+- Перекладено всі виявлені користувацькі рядки, які рендеряться головною сторінкою й довідковими панелями; перекладено також доступні назви та підписи TXT/копіювання.
+- Переклад не змінює фонетичні значення, IPA, французькі приклади або машинні ідентифікатори. Брендові назви та міжнародні абревіатури залишаються.
+- CI run [45383515829](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45383515829): build PASS; 65/65 tests PASS; syntax PASS; Charis 7 glyph/anchor audit PASS; 12 browser × viewport combinations across Chromium, Firefox and WebKit PASS. Browser specimen artifact `14915013026`.
+- На момент цього запису PR #37 ще відкритий; публікація очікує злиття та успішного main Pages deployment.

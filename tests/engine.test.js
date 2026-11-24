@@ -16,9 +16,9 @@ test('common words are delegated to the upstream parser without project override
 
 test('Latin guide and segment explanations cover mapped allophones',()=>{
  const a=adaptIpa('t͡s d͡z n͡ŋ s̬ z̥');
- assert.equal(a.romanized,'ts dz n-ng s-voiced z-devoiced');
+ assert.equal(a.romanized,'ts dz n-ng s̬ z̥');
  assert.ok(a.ufpn.includes('т͡с'));
- assert.ok(describeSegment('t͡s').includes('Québec'));
+ assert.ok(describeSegment('t͡s').includes('квебекської'));
 });
 
 test('lyric-diction profile delegates final schwa and lexical behavior to OpenIPA',()=>{

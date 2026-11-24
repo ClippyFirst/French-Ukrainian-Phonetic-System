@@ -8,20 +8,20 @@ type ExceptionPhenome = {
 type ExceptionDictionary = { [key: string]: ExceptionPhenome };
 
 const Rules = {
-  EXCEPTION: `This word is an exception, and is transcribed as shown.`,
-  MER_VER: `This is known as a 'mer/ver' word, which gets transcribed with an open [${IPA.OPEN_E}].`,
-  OPEN_ER: `This word is an exception in which the final '-er' is transcribed with an open [${IPA.OPEN_E}].`,
-  HARD_CH: `This word is an exception in which the 'ch' consonant group becomes a plosive [${IPA.K}].`,
-  BRIGHT_A: `This word is an exception, and is transcribed with a bright [${IPA.BRIGHT_A}].`,
-  FINAL_AI: `This word is an exception, and is transcribed with a (semi-open) [${IPA.OPEN_E}].`,
-  AVOIR: `Conjugated forms of 'avoir' are transcribed with a [${IPA.CLOSED_Y}].`,
-  MEDIAL_ILL: `This word is an exception, as it is not transcribed with a [${IPA.J_GLIDE}] as typically found in words with a medial 'ill'.`,
-  DARK_OY_A: `While not critical for Lyric Diction, this word is an exception, as it transcribes the bright [${IPA.BRIGHT_A}] from the 'oi' of the word as a dark [${IPA.DARK_A}].`,
-  PRONOUNCED_NASAL_N: `This word is an exception, as the 'n' after the nasal is still pronounced.`,
-  NASAL_TWO_N: `This word is an exception, as it has a double 'n' and still has a nasal.`,
-  NO_NASAL: `This word is an exception, as it is not nasal despite transcription rules indicating it should be.`,
-  UNUSAL_NASAL: `This word is an exception, as it is nasal despite transcription rules indicating it shouldn't be.`,
-  ARTICLES: `This is an article, and the final '-es' is pronounced with a closed [${IPA.CLOSED_E}].`,
+  EXCEPTION: `Це слово є винятком; його транскрипцію наведено вище.`,
+  MER_VER: `Це слово належить до групи «mer/ver» і має відкритий голосний [${IPA.OPEN_E}].`,
+  OPEN_ER: `Це слово є винятком: кінцеве «-er» передає відкритий голосний [${IPA.OPEN_E}].`,
+  HARD_CH: `Це слово є винятком: сполука «ch» передає проривний [${IPA.K}].`,
+  BRIGHT_A: `Це слово є винятком і транскрибується з переднім голосним [${IPA.BRIGHT_A}].`,
+  FINAL_AI: `Це слово є винятком і транскрибується з напіввідкритим голосним [${IPA.OPEN_E}].`,
+  AVOIR: `Відмінювані форми дієслова «avoir» передають [${IPA.CLOSED_Y}].`,
+  MEDIAL_ILL: `Це слово є винятком: сполука «ill» усередині слова не передає [${IPA.J_GLIDE}], як це зазвичай буває.`,
+  DARK_OY_A: `Хоча це не є визначальним для вокальної дикції, слово становить виняток: сполука «oi» передає задній голосний [${IPA.DARK_A}] замість переднього [${IPA.BRIGHT_A}].`,
+  PRONOUNCED_NASAL_N: `Це слово є винятком: літера «n» після носового голосного все ж вимовляється.`,
+  NASAL_TWO_N: `Це слово є винятком: попри подвоєну «n», носовий голосний зберігається.`,
+  NO_NASAL: `Це слово є винятком: голосний не носовий, хоча правила транскрипції передбачають носову вимову.`,
+  UNUSAL_NASAL: `Це слово є винятком: голосний носовий, хоча правила транскрипції передбачають неносову вимову.`,
+  ARTICLES: `Це артикль; кінцеве «-es» вимовляється із закритим голосним [${IPA.CLOSED_E}].`,
 };
 
 const MerVerExceptions: ExceptionDictionary = {
@@ -237,15 +237,15 @@ const DarkOyAExceptions: ExceptionDictionary = {
 const MiscExceptions: ExceptionDictionary = {
   et: {
     ipa: 'e',
-    rule: `'et' (French for 'and') is pronounced as [e] to make a distinction between it and 'es/est' (French for 'is'), which are pronounced [ε].`,
+    rule: `Французьке «et» («і») вимовляється як [e], щоб відрізняти його від «es/est» («є»), які вимовляються як [ε].`,
   },
   es: {
     ipa: IPA.OPEN_E,
-    rule: `'es' and 'est' (French for 'is') are pronounced as [${IPA.OPEN_E}] to make a distinction between it and 'et' (French for 'and'), which are pronounced [e].`,
+    rule: `Французькі «es» та «est» («є») вимовляються як [${IPA.OPEN_E}], щоб відрізняти їх від «et» («і»), яке вимовляється як [e].`,
   },
   est: {
     ipa: IPA.OPEN_E,
-    rule: `'es' and 'est' (French for 'is') are pronounced as [${IPA.OPEN_E}] to make a distinction between it and 'et' (French for 'and'), which are pronounced [e].`,
+    rule: `Французькі «es» та «est» («є») вимовляються як [${IPA.OPEN_E}], щоб відрізняти їх від «et» («і»), яке вимовляється як [e].`,
   },
   dessous: {
     ipa: 'd' + IPA.SCHWA + 'su',

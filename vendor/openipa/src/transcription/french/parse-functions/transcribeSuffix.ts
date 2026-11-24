@@ -2,7 +2,7 @@ import { Phoneme } from '../../../constants/Interfaces';
 import { isEndOfSentence } from '../../../util/Helper';
 
 const getRule = (text: string, ipa: string): string => {
-  return `Final '-${text}' letter groups are transcribed as [${ipa}].`;
+  return `Кінцева сполука «-${text}» передає [${ipa}].`;
 };
 
 const transcribeSuffix = (

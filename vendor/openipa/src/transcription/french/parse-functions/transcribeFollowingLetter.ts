@@ -7,31 +7,31 @@ const getRule = (
 ): string => {
   let followingLettersText = '';
   followingLettersGroup.forEach((followingLetters, index) => {
-    followingLettersText += `'${followingLetters}'`;
+    followingLettersText += `«${followingLetters}»`;
     if (index !== followingLettersGroup.length - 1) {
-      followingLettersText += ` or `;
+      followingLettersText += ` або `;
     }
   });
   if (
     followingLettersGroup.length === 1 &&
     text.length === (text.substring(0, 1) + followingLettersGroup[0]).length
   ) {
-    return `'${text}' letter groups are transcribed as [${ipa}].`;
+    return `Сполука «${text}» передає [${ipa}].`;
   }
   if (text.length === 1) {
-    return `'${text}' letters followed by ${followingLettersText} are transcribed as [${ipa}].`;
+    return `Літери «${text}» перед сполукою ${followingLettersText} передають [${ipa}].`;
   }
   followingLettersText = '';
   followingLettersGroup.forEach((followingLetters, index) => {
-    followingLettersText += `'${followingLetters.substring(
+    followingLettersText += `«${followingLetters.substring(
       text.length,
       followingLetters.length
-    )}'`;
+    )}»`;
     if (index !== followingLettersGroup.length - 1) {
-      followingLettersText += ` or `;
+      followingLettersText += ` або `;
     }
   });
-  return `'${text}' letter groups followed by '${followingLettersText}' are transcribed as [${ipa}].`;
+  return `Сполука «${text}» перед «${followingLettersText}» передає [${ipa}].`;
 };
 
 const transcribeFollowingLetter = (

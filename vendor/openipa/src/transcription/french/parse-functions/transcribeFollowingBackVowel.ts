@@ -3,7 +3,7 @@ import IPA from '../../../constants/IPA';
 import { isBackVowel } from '../../../util/Helper';
 
 const getRule = (letter: string, ipa: string): string => {
-  return `'${letter}' consonants followed by a back vowel are transcribed as [${ipa}].`;
+  return `Літера «${letter}» перед заднім голосним передає [${ipa}].`;
 };
 
 const transcribeFollowingBackVowel = (

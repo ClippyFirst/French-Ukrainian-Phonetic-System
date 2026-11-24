@@ -2,7 +2,7 @@ import { Phoneme } from '../../../constants/Interfaces';
 import { isVowel } from '../../../util/Helper';
 
 const getRule = (letter: string, ipa: string): string => {
-  return `Intervocalic '${letter}' consonants are transcribed as [${ipa}].`;
+  return `Літера «${letter}» між голосними передає [${ipa}].`;
 };
 
 const transcribeIntervocalic = (

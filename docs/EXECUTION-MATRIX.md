@@ -197,3 +197,12 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Fresh live scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d` returned HTTP 200. The live result shows `bɔ̃ʒuʁ` → `бɔ̃жуғ`; the searchable sound table contains `ɛ`, `œ`, `ɔ`, `ə` and nasal forms `ɛ̃`, `ɔ̃`, `œ̃`. It also retains `й̹` and `њ`.
 - U5 remains PARTIAL only for independent linguistic/readability review and manual accessibility/device QA; the grapheme implementation and deployment are DONE_VERIFIED.
 - PR #36 separately corrects the visible result caption from “extended Cyrillic” to “hybrid notation”; no mapping behavior changes.
+
+
+## Україномовний інтерфейс сайту — 2026-11-24
+- Реалізовано переклад статичних і динамічних написів інтерфейсу: назви режимів UFPN, профілі, метадані результату, підказки, таблиці, статуси, доступні назви, копіювання та TXT-експорт.
+- Перекладено 18 фонетичних вимірів, їхні значення й статуси, описи інвентарю графем та технічної таблиці.
+- Перекладено пояснення правил OpenIPA, зокрема загальні шаблони для літер/сполук і лексичні винятки; французькі приклади й IPA не змінювалися.
+- Внутрішні ідентифікатори, назви брендів OpenIPA/GitHub, абревіатури IPA/UFPN і формати TXT/PDF не є англомовним текстом інтерфейсу й залишені як власні назви/позначення.
+- Регресійні тести локалізації додані в `tests/localization.test.js`; CI на коміті `d0bc7489618305f3636ad7f61adaa23174220ddb` пройшов: 65/65 тестів, build, syntax check, Charis 7 audit і браузерне відображення Chromium/Firefox/WebKit успішні. Після документаційного оновлення потрібен повторний CI.
+- PR #37: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/37.
