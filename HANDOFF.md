@@ -292,3 +292,10 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Live scrape `01a20d5c-3f55-7718-a428-e5656b4332ce`: HTTP 200; контрольний пошук не виявив англомовних підписів чи пояснень інтерфейсу. Примітка /ə/ виправлена на «до звука ə».
 - Локалізація інтерфейсу: DONE_VERIFIED. Залишкові латинські рядки — назви OpenIPA/GitHub, IPA/UFPN, TXT/PDF, французькі приклади та латинізований фонетичний результат.
 - Фонетичний рушій лишається експериментальним дослідницьким прототипом; незалежна експертна валідація та gold benchmark не входили до цієї задачі.
+
+
+## Owner-reported reference-panel and explanation-toggle follow-up — 2026-11-24
+- PR #41 (branch fix/reference-panels-and-explanation-toggle) addresses the inconsistent presentation of the IPA→UFPN table, 18 phonetic dimensions and grapheme inventory. The three sections now share a single accordion visual pattern, including short descriptions and counts.
+- The 18 dimensions are rendered as individual cards with Ukrainian names, values, evidence statuses and UFPN notes rather than a plain bullet list. The adopted grapheme inventory is visually distinguished from unassigned candidates.
+- «Показувати розбір вибраного слова» controls only the detail panel below the result cards. It does not alter IPA, UFPN, level selection or the transcription algorithm. The label now states this explicitly and the checkbox exposes the panel relationship/state to assistive technology.
+- New regression tests: tests/reference-ui.test.js. CI and visual verification are pending; do not call this change deployed or verified until PR checks and the live page are inspected.

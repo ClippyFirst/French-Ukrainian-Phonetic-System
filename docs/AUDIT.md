@@ -267,3 +267,11 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Live audit `01a20d5c-3f55-7718-a428-e5656b4332ce` returned HTTP 200 and found no residual English interface/rule phrases from the audited list. The /ə/ note now reads grammatically «до звука ə».
 - Залишкові латинські рядки на сторінці — власні назви/бренди, абревіатури, французькі приклади та латинізований фонетичний запис. Це не англомовний текст інтерфейсу.
 - Фонетична валідність самої експериментальної системи й незалежна експертна перевірка залишаються окремими дослідницькими задачами; локалізація не змінює статусу дослідницького прототипу.
+
+
+## Reference panels and explanation control — 2026-11-24
+- Owner feedback: the IPA mapping table, the full list of phonetic dimensions and the UFPN grapheme inventory looked like unrelated UI components; the 18-dimension list was difficult to read and appeared as empty list markers in the reported view. The explanation checkbox did not state what it controlled.
+- PR #41 (branch fix/reference-panels-and-explanation-toggle) gives all three reference sections one shared accordion hierarchy with consistent title/count/description treatment. It replaces the dense 18-item plain list with cards showing Ukrainian dimension names, Ukrainian values, evidence status and UFPN coverage notes. Adopted graphemes and unassigned candidates are shown separately.
+- The checkbox is now labelled «Показувати розбір вибраного слова» and explicitly says it only shows/hides the selected-word analysis panel; it does not change transcription output. aria-controls and aria-expanded expose the relationship/state.
+- Added tests/reference-ui.test.js for the three accordion contracts, 18-dimension rendering contract, adopted/candidate inventory distinction, checkbox semantics and responsive/focus styles.
+- Scope is presentation/accessibility only; no G2P, IPA normalization or UFPN mapping changes. Status remains PARTIAL until hosted CI and deployed browser rendering are verified.
