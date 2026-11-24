@@ -299,3 +299,7 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Owner decision: map all IPA `/ə/` tokens to `ъ` in practical UFPN output at all three detail levels. The canonical IPA layer remains `/ə/`; no French G2P, profile elision, or IPA provenance behavior is altered.
 - The mapping registry now records `ъ` as the adopted UFPN grapheme for IPA `/ə/`, with an explicit project-specific rationale. This does not claim that the French vowel is silent or identical to Bulgarian `/ɤ/`; in UFPN, `ъ` is to be read as a short neutral vowel.
 - Automated regression tests cover Basic/Detailed/Extended, word context and supplied length. PR CI [45442539824](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45442539824) passed build, 75/75 tests, syntax, Charis 7/OpenType audit, Playwright install and Chromium/Firefox/WebKit rendering. Production Pages deployment [workflow 45443265333](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45443265333) succeeded; live smoke verification confirmed `/ə/` remains in IPA while UFPN output and the grapheme reference use `ъ`.
+
+
+## Localization correction — 2026-11-24
+- Live review found the newly adopted `ъ` grapheme inventory card exposed its origin and rationale in English because its new data values had no Ukrainian UI dictionary entries. Added explicit Ukrainian labels and regression assertions; the page's existing Ukrainian-only content requirement is preserved.
