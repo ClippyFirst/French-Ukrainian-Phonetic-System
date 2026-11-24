@@ -233,3 +233,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 ## Rounding feature metadata follow-up — 2026-11-24
 - PR #34 synchronizes `featureDimensions.rounding` with the merged /ɥ/ composition `й̹` and adds a regression assertion. It changes descriptive metadata only; no IPA→UFPN output changes.
+
+
+## Owner-approved IPA vowel graphemes — 2026-11-24
+- The previous inventory did not implement the owner's full requested set: it still rendered `/œ/` as `ӧ`, `/ɔ/` as `о̆`, `/ə/` as `ӹ`, and `/ɛ/` as `э`.
+- Corrective branch `feat/retain-ipa-vowel-graphemes` retains the exact standalone IPA symbols `œ`, `ɔ`, `ə`, `ɛ` in the executable mapping. Nasal vowels use `œ̃`, `ɔ̃`, `ɛ̃`; `/ɔ̃/` no longer carries the extra breve.
+- The change is an owner-approved notation decision, not a claim that the IPA symbols are native Ukrainian letters. Cyrillic graphemes `ў`, `ү`, `ө`, `њ`, `ң`, `ғ` remain intact; `/ɥ/` remains `й̹`.
+- Acceptance and evidence are pending CI, browser checks, and a fresh live Pages scrape. Until those pass, this correction is PARTIAL and not deployed.
