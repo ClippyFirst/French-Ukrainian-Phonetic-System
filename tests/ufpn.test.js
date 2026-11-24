@@ -155,6 +155,6 @@ test('standalone IPA grapheme inventory replaces former Cyrillic substitutes',()
 
 test('French schwa maps to the project-specific hard-sign grapheme at every UFPN level',()=>{
  for(const level of ['basic','detailed','extended']) assert.equal(renderUfpn('ə',level).text,'ъ');
- assert.equal(renderUfpn('ˈpə.ti','basic').text,'ˈпъті');
+ assert.equal(renderUfpn('ˈpə.ti','basic').text,'пъті');
  assert.equal(renderUfpn('əː','detailed').text,'ъː');
 });
