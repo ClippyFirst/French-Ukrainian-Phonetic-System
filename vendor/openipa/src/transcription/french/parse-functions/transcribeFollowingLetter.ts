@@ -26,7 +26,7 @@ const getRule = (
     followingLettersText += `«${followingLetters.substring(
       text.length,
       followingLetters.length
-    )}'`;
+    )}»`;
     if (index !== followingLettersGroup.length - 1) {
       followingLettersText += ` або `;
     }
