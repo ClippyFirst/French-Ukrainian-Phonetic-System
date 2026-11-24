@@ -8,8 +8,8 @@ test('uvular rhotic is not represented as Ukrainian alveolar r',()=>assert.equal
 test('palatal and velar nasals remain distinct',()=>assert.equal(renderUfpn('ɲ ŋ').text,'њ ң'));
 test('Detailed retains syllable boundaries and supplied length',()=>assert.equal(renderUfpn('ˈbɔ̃.ʒuːʁ','detailed').text,'бɔ̃·жуːғ'));
 test('Basic suppresses prosodic annotation while Extended preserves it',()=>{
- assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пəті');
- assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпə·ті↗');
+ assert.equal(renderUfpn('ˈpə.ti↗','basic').text,'пъті');
+ assert.equal(renderUfpn('ˈpə.ti↗','extended').text,'ˈпъ·ті↗');
 });
 test('Extended preserves narrow phonetic modifiers',()=>assert.equal(renderUfpn('ʁ̞ tʲ kʷ','extended').text,'ғ̞ тʲ кʷ'));
 test('unknown IPA remains visible and is reported',()=>{
@@ -147,7 +147,7 @@ test('the /œ/ articulation guide keeps open-mid tongue height and adds lip roun
 
 test('standalone IPA grapheme inventory and the schwa hard-sign mapping are explicit',()=>{
  const adopted=UFPN_MAPPING.graphemeInventory.adopted.map(item=>item.grapheme);
- for(const grapheme of ['ɛ','œ','ɔ','ə']) assert.ok(adopted.includes(grapheme),grapheme);
+ for(const grapheme of ['ɛ','œ','ɔ','ъ']) assert.ok(adopted.includes(grapheme),grapheme);
  for(const grapheme of ['э','ӧ','ӹ']) assert.ok(!adopted.includes(grapheme),grapheme+' must not remain adopted');
  assert.equal(renderUfpn('ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃').text,'ɛ œ ɔ ъ ɛ̃ œ̃ ɔ̃');
  assert.equal(renderUfpn('ɔ̃','detailed').text,'ɔ̃');
