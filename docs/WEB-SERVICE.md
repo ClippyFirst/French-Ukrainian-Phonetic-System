@@ -84,3 +84,6 @@ GitHub Pages увімкнено для репозиторію; workflow `.github
 - Main Pages run #380 (`45466573635`) passed the test job (79/79), build, syntax, Charis 7/OpenType audit, Chromium/Firefox/WebKit rendering, Pages artifact upload and deploy.
 - Live service smoke test returned HTTP 200. The header links to the in-page French reading module and UFPN guide; the UFPN link is no longer a raw Markdown target.
 - The learning add-on is static and educational. No pronunciation engine or data mapping was changed.
+
+
+Final visual/educational closeout: PR #57 (`b9225311c80b18f99a8d90e5d49752ea9b9a6012`) aligned the browser theme-color with `#F5F0E7` and made the educational-only purpose explicit. Main Pages run #385 (`45468292682`) passed 79/79 tests, build/check, font audit, Chromium/Firefox/WebKit rendering, artifact upload and deployment. Final live smoke returned HTTP 200.
