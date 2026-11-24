@@ -1,9 +1,9 @@
 import { Phoneme } from '../../../constants/Interfaces';
 
 const getDoubleLetterRule = (letter: string, ipa: string): string => {
-  return `Double '${
+  return `Подвоєні літери «${
     letter + letter
-  }' consonants are transcribed as a single [${ipa}].`;
+  }» передають один приголосний [${ipa}].`;
 };
 
 const transcribeDoubleLetter = (
