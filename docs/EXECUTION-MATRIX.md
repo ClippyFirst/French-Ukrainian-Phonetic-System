@@ -187,3 +187,13 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 - Nasal counterparts preserve their base grapheme: `œ̃`, `ɔ̃`, `ɛ̃`; `/ɔ̃/` no longer adds a redundant open-mid breve.
 - Runtime mapping, machine-readable inventory, unit tests, Ukrainian notation guide and IPA mapping table updated together. `/ɥ/ → й̹` and `/ɲ/ → њ` are unchanged.
 - Acceptance: all three output levels must preserve the exact graphemes; nasal forms must retain the base symbol plus combining tilde; retired substitutes must not appear as adopted graphemes. CI and live Pages verification pending.
+
+
+## Verification — standalone IPA vowel graphemes deployed (2026-11-24)
+- PR #35 merged as `4c56c5637831bdbfb12dc1a93b0e104624ab2454`.
+- Main workflow [45378841718](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45378841718): SUCCESS — build, 60/60 tests, syntax, Charis 7 audit, Chromium/Firefox/WebKit rendering (12 browser × viewport combinations), Pages artifact and deploy all passed.
+- Charis 7 audit: 46 UFPN inventory codepoints covered; 19 combining marks; 13 mapped base/mark clusters; 26 HarfBuzz shaping samples; mark-to-base and Cyrillic mark-to-mark anchor inspections passed.
+- Pages artifact: `14913211117`; browser specimen: `14912862093`.
+- Fresh live scrape `01a20d31-75b2-723e-aad0-aef0e6e8005d` returned HTTP 200. The live result shows `bɔ̃ʒuʁ` → `бɔ̃жуғ`; the searchable sound table contains `ɛ`, `œ`, `ɔ`, `ə` and nasal forms `ɛ̃`, `ɔ̃`, `œ̃`. It also retains `й̹` and `њ`.
+- U5 remains PARTIAL only for independent linguistic/readability review and manual accessibility/device QA; the grapheme implementation and deployment are DONE_VERIFIED.
+- PR #36 separately corrects the visible result caption from “extended Cyrillic” to “hybrid notation”; no mapping behavior changes.
