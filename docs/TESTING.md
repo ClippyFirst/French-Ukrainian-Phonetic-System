@@ -20,7 +20,7 @@
 Поточний набір: 14 engine tests + 23 UFPN adapter/specification tests + 4 French G2P adapter tests + 5 OpenIPA parser/integration tests = 46. GitHub Actions run 45175694114 passed all 46 tests and `npm run check` on code head 3d0d756. Ці перевірки демонструють інтеграцію, а не gold pronunciation benchmark і не доводять вимову довільних слів. Незалежно верифікованих IPA/UFPN gold records поки 0. Browser, mobile, screen-reader, clipboard, аудіоакустичні вимірювання й експертна оцінка не виконані.
 
 
-The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `э`, nasal /ɛ̃/ → `э̃`, and explicit non-assignment rationale for `ы` and `ё`.
+The UFPN suite additionally asserts /w/ → `ў`, /v/ → `в` across Basic/Detailed/Extended, /ɛ/ → `ɛ`, nasal /ɛ̃/ → `ɛ̃`; /œ/, /ɔ/, /ə/ are retained as standalone IPA graphemes, and explicit non-assignment rationale for `ы` and `ё`.
 
 
 ## OpenIPA integration gates

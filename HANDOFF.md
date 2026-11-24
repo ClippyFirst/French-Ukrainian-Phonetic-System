@@ -106,7 +106,7 @@
 - Feature branch: `fix/openipa-canonical-ipa-adapter`, based on `78478b8e40335fd9988dce7aaec273a332bdd305`.
 - Root cause: vendored OpenIPA defines `NASAL_O='õ'` and `FLIPPED_R='ɾ'`; `parseR` uses the latter as its default French `r` output. The project IPA inventory instead encodes broad Metropolitan French `/ɔ̃/` and `/ʁ/`. Without normalization, the UI exposed `⟦õ⟧` and incorrectly rendered ordinary `r` as regional `р̌`.
 - The adapter converts OpenIPA output `õ→ɔ̃` and `ε→ɛ`; for `metropolitan-fr`, it maps the upstream lyric-diction `ɾ` convention to broad `/ʁ/`, while `lyric-diction-fr` preserves the intended `[ɾ]` tap. Raw upstream strings remain in `sourceIpa` and trace. The direct IPA→UFPN mapping `[ɾ]` → `р̌` remains unchanged.
-- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бо̆̃жух̬̠` without unsupported IPA. CI and deployment are pending.
+- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бɔ̃жух̬̠` without unsupported IPA. CI and deployment are pending.
 - This resolves the known OpenIPA symbol mismatch, not general French pronunciation accuracy; independent specialist review and a licensed gold benchmark remain blocked.
 
 
@@ -120,7 +120,7 @@
 ## Final verified profile-aware deployment — 2026-11-23
 - Main commit: `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5` (PR #13).
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029): build passed; 52/52 tests passed; syntax and Charis 7 audits passed; Chromium, Firefox and WebKit desktop/mobile checks passed; GitHub Pages deployment passed.
-- Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
+- Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бɔ̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
 - Remaining independent gates: French/Ukrainian specialist phonetic review, licensed gold benchmark, broader G2P coverage, keyboard/screen-reader and physical-device/owner visual acceptance.
 
 
@@ -258,3 +258,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
 - The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
 - Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
+
+
+## Owner-approved standalone IPA vowel graphemes — 2026-11-24
+- Starting main: `4117f10cbd51f034835242491beb1dda3ee1c479`.
+- Branch: `feat/retain-ipa-vowel-graphemes`.
+- The owner's complete requested set is `œ`, `ɔ`, `ə`, `ɛ`, retained as standalone UFPN graphemes. Their previous substitutes (`ӧ`, `о̆`, `ӹ`, `э`) are removed from the canonical phoneme output/inventory.
+- Nasal forms preserve the same base symbols with combining tilde: `œ̃`, `ɔ̃`, `ɛ̃`. `/ɔ̃/` no longer adds the extra breve.
+- Tests and docs are updated; CI, merge, and live deployment must still be verified. Existing `й̹` for `/ɥ/` and `њ` for `/ɲ/` remain unchanged.

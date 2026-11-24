@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `њ`, `ң`, `ғ` та збережені IPA-графеми `ɛ`, `œ`, `ɔ`, `ə` реалізовано; носові варіанти зберігають базову графему з тильдою; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -95,21 +95,21 @@
 ### OpenIPA canonical IPA adapter correction (2026-11-23)
 - Primary-source check: the official OpenIPA site describes itself as a Lyric Diction tool and explicitly documents flipped French `r` as `[ɾ]`. Therefore the tap is intentional in the lyric profile, not a parser error.
 - Adapter behavior is profile-aware: `metropolitan-fr` converts OpenIPA's lyric-diction `[ɾ]` convention to broad `/ʁ/`; `lyric-diction-fr` preserves `[ɾ]` → UFPN `р̌`. The raw upstream value remains in `sourceIpa` and trace. `õ` → `ɔ̃` and `ε` → `ɛ` remain explicit broad-IPA normalizations; no French-grapheme→UFPN shortcut was introduced.
-- Added regressions for `bonjour`, `garçon`, and `mer`, including `bonjour` in both profiles: Metropolitan `бо̆̃жух̬̠`, lyric diction `бо̆̃жур̌`; both have no unsupported IPA.
+- Added regressions for `bonjour`, `garçon`, and `mer`, including `bonjour` in both profiles: Metropolitan `бɔ̃жух̬̠`, lyric diction `бɔ̃жур̌`; both have no unsupported IPA.
 - Status: implementation committed to a feature branch; CI and Pages deployment are pending. This is an adapter normalization based on the vendored parser's own enum and default `parseR` implementation, not independent expert validation of every French speaker or dialect.
 
 
 ### Profile-aware OpenIPA rhotic normalization (2026-11-23)
 - Primary-source check: the official OpenIPA site describes itself as a Lyric Diction tool and explicitly describes flipped French `r` as `[ɾ]` (https://www.openipa.org/).
 - Adapter behavior is profile-aware: `metropolitan-fr` converts OpenIPA's lyric-diction `[ɾ]` convention to broad `/ʁ/`; `lyric-diction-fr` preserves `[ɾ]` → UFPN `р̌`. The raw upstream value remains in `sourceIpa` and trace. `õ` → `ɔ̃` and `ε` → `ɛ` remain explicit broad-IPA normalizations.
-- Regressions cover `bonjour` in both profiles, `garçon`, and `mer`; lyric-profile output is intentionally `бо̆̃жур̌`, while default Metropolitan output is `бо̆̃жух̬̠`.
+- Regressions cover `bonjour` in both profiles, `garçon`, and `mer`; lyric-profile output is intentionally `бɔ̃жур̌`, while default Metropolitan output is `бɔ̃жух̬̠`.
 - Independent expert review remains pending.
 
 
 ### Profile-aware OpenIPA correction — final main verification (2026-11-23)
 - PR #13 merged as `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5`.
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029) passed: build, 52/52 tests, syntax check, Charis 7 audit, all six Chromium/Firefox/WebKit desktop/mobile checks, and GitHub Pages deployment.
-- Fresh live scrape confirms the default Metropolitan sample displays IPA `bɔ̃ʒuʁ` and UFPN `бо̆̃жух̬̠`; published source confirms the profile-aware adapter. Unit tests verify lyric-diction preserves `[ɾ]` and `р̌`.
+- Fresh live scrape confirms the default Metropolitan sample displays IPA `bɔ̃ʒuʁ` and UFPN `бɔ̃жух̬̠`; published source confirms the profile-aware adapter. Unit tests verify lyric-diction preserves `[ɾ]` and `р̌`.
 - The adapter/profile behavior is DONE_VERIFIED. Independent phonetic expert review and licensed gold benchmark remain separate PARTIAL/BLOCKED gates.
 
 
@@ -179,3 +179,11 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 ## Rounding feature metadata follow-up — 2026-11-24
 - PR #34 aligns `featureDimensions.rounding.ufpn` with the approved /ɥ/ notation `й̹`; this is a metadata consistency change and does not alter adapter output.
 - A regression assertion requires the rounding feature description to mention `й̹`; PR CI is running before merge.
+
+
+## Owner-approved IPA vowel graphemes — 2026-11-24
+- Feature branch: `feat/retain-ipa-vowel-graphemes`, based on main `4117f10cbd51f034835242491beb1dda3ee1c479`.
+- Owner clarification: retain `œ`, `ɔ`, `ə`, `ɛ` as standalone UFPN graphemes. Removed former Cyrillic substitutions `ӧ`, `ӹ`, `э` and the diacritic substitute `о̆` for these four IPA symbols.
+- Nasal counterparts preserve their base grapheme: `œ̃`, `ɔ̃`, `ɛ̃`; `/ɔ̃/` no longer adds a redundant open-mid breve.
+- Runtime mapping, machine-readable inventory, unit tests, Ukrainian notation guide and IPA mapping table updated together. `/ɥ/ → й̹` and `/ɲ/ → њ` are unchanged.
+- Acceptance: all three output levels must preserve the exact graphemes; nasal forms must retain the base symbol plus combining tilde; retired substitutes must not appear as adopted graphemes. CI and live Pages verification pending.
