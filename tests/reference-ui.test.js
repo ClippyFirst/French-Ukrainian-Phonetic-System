@@ -7,6 +7,17 @@ const app=readFileSync(new URL('../src/app.js',import.meta.url),'utf8');
 const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const css=readFileSync(new URL('../styles.css',import.meta.url),'utf8');
 
+test('French editorial colour palette uses ink blue, warm paper, wine red and muted gold',()=>{
+ assert.match(css,/--paper:#F5F0E7/);
+ assert.match(css,/--ink:#252B35/);
+ assert.match(css,/--green:#26364A/);
+ assert.match(css,/--green-deep:#17263A/);
+ assert.match(css,/--coral:#A64B55/);
+ assert.match(css,/--lime:#D8B98A/);
+ assert.match(css,/--muted:#66717C/);
+ assert.doesNotMatch(css,/--green:#245b49|--lime:#d9e77c|--coral:#e77f61/);
+});
+
 test('all three UFPN reference sections use the shared accordion component',()=>{
  assert.match(app,/createReferenceAccordion\('ufpn-technical'/);
  assert.match(app,/createReferenceAccordion\('ufpn-features'/);
