@@ -250,3 +250,9 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - The owner selected the below-diacritic option for /ɥ/: canonical UFPN is `й̹` (U+0439 U+0339; Ukrainian `й` + COMBINING RIGHT HALF RING BELOW) at Basic, Detailed and Extended levels.
 - /ɲ/ remains `њ`. No other mappings changed.
 - Regression test asserts the three-level /ɥ/ output, exact Unicode sequence, and /ɲ/ → `њ` preservation. CI/font shaping/browser specimen and deployment verification remain pending; this branch has not yet been merged or deployed.
+
+
+## Rounding feature registry consistency — 2026-11-24
+- Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
+- The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
+- Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
