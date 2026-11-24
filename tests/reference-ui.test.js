@@ -47,6 +47,7 @@ test('word breakdown opens on word selection without an extra checkbox',()=>{
  assert.match(html,/id="explain-panel"[^>]*hidden/);
  assert.doesNotMatch(html,/show-explanations|explanation-toggle-help|Показувати розбір вибраного слова/);
  assert.match(app,/\$\('explain-panel'\)\.hidden=false/);
+ assert.match(app,/\$\('explain-panel'\)\.hidden=true/);
  assert.match(app,/if\(b\)detail\(Number\(b\.dataset\.index\)\)/);
 });
 
