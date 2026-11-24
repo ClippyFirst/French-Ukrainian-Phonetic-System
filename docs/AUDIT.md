@@ -275,3 +275,10 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - The checkbox is now labelled «Показувати розбір вибраного слова» and explicitly says it only shows/hides the selected-word analysis panel; it does not change transcription output. aria-controls and aria-expanded expose the relationship/state.
 - Added tests/reference-ui.test.js for the three accordion contracts, 18-dimension rendering contract, adopted/candidate inventory distinction, checkbox semantics and responsive/focus styles.
 - Scope is presentation/accessibility only; no G2P, IPA normalization or UFPN mapping changes. Status remains PARTIAL until hosted CI and deployed browser rendering are verified.
+
+## UI copy-noise review — 2026-11-24
+- Review scope: static page shell, profile selector, result-card labels, explanation heading and footer.
+- Findings addressed: repeated product/section identifiers, decorative ordinal labels, non-functional future profile options, duplicated GitHub destination and hard-coded version text.
+- Kept intentionally: distinct format names and explanatory descriptions, uncertainty/prototype limitations, accessible control labels, source/status navigation. These communicate product semantics rather than decoration.
+- Changes are isolated to HTML, design guidance and regression coverage; no G2P, IPA, UFPN, confidence, provenance or export logic was edited.
+- Verification is pending in the branch workflow; do not treat this audit as a visual/browser acceptance until CI artifacts are inspected.
