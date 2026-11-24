@@ -258,3 +258,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
 - The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
 - Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
+
+
+## Owner-approved standalone IPA vowel graphemes — 2026-11-24
+- Starting main: `4117f10cbd51f034835242491beb1dda3ee1c479`.
+- Branch: `feat/retain-ipa-vowel-graphemes`.
+- The owner's complete requested set is `œ`, `ɔ`, `ə`, `ɛ`, retained as standalone UFPN graphemes. Their previous substitutes (`ӧ`, `о̆`, `ӹ`, `э`) are removed from the canonical phoneme output/inventory.
+- Nasal forms preserve the same base symbols with combining tilde: `œ̃`, `ɔ̃`, `ɛ̃`. `/ɔ̃/` no longer adds the extra breve.
+- Tests and docs are updated; CI, merge, and live deployment must still be verified. Existing `й̹` for `/ɥ/` and `њ` for `/ɲ/` remain unchanged.
