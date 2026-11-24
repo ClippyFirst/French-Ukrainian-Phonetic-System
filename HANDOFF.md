@@ -354,8 +354,8 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Навігація UFPN більше не відкриває docs/UKRAINIAN-NOTATION.md як сирий Markdown. Замість цього є вбудований візуальний довідник із прикладом IPA → UFPN, трьома рівнями та картками прийнятого графемного інвентарю з machine-readable mapping.
 - Технічні акордеони отримали стабільні anchor IDs; користувач може перейти від навчального блоку до таблиці IPA → UFPN, фонетичних вимірів, походження графем і таблиці «літера — звук — українське слово».
 - Фонетичний рушій, IPA → UFPN mapping, профілі, рівні деталізації та експорт не змінювалися.
-- Regression coverage додано в tests/reference-ui.test.js; перевірки build/test/syntax/font/browser і live deployment ще очікують виконання для цього PR.
-- Status: W8/W9 PARTIAL до завершення CI, браузерної перевірки та production smoke test.
+- Regression coverage додано в tests/reference-ui.test.js; PR CI #379 і main Pages run #380 пройшли: 79/79 tests, build/check, Charis 7/OpenType audit, Chromium/Firefox/WebKit rendering, artifact upload і deployment.
+- Status: W8/W9 DONE_VERIFIED. Live smoke test повернув HTTP 200; `#french-reading-guide` і `#ufpn-guide` присутні, навігація більше не веде на сирий Markdown.
 
 - Додані джерела S38–S44 на основі Undermind: прочитані повні PDF Racine & Detey (2017), Stridfeldt (2019), Nawafleh (2023); abstract/metadata для Law (2022), Brissaud et al. (2012), Viebahn et al. (2018), Granget et al. (2024). Лінгвістичні дані/корпуси з цих праць не імпортовано.
 
