@@ -291,3 +291,5 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Методика: контентний аудит, контентна ієрархія, мікрокопірайтинг та узгоджене маркування за designer-skills (MIT). У репозиторій не копіювалися файли upstream skill.
 - Зміни обмежені HTML/CSS/тестами/дизайн-документацією. G2P, IPA, профільні ідентифікатори, UFPN mapping, confidence, provenance та експорт не змінювалися.
 - Статус: PARTIAL до проходження CI, браузерних перевірок та live-перевірки після merge.
+
+- CI-аудит PR #44: build PASS; `npm test` — 73/74, один збій у `tests/localization.test.js:12`, де залишилося старе очікування «Латинська підказка» після перейменування на «Підказка латиницею». Це тестова несумісність, не runtime regression. Виправлено у коміті `a5be3fb615606fcb1ef312a3ef21f41441dad788`; `npm run check`, font audit, browser checks і deploy були пропущені через fail-fast після тесту. Повторний CI ще не отримано.
