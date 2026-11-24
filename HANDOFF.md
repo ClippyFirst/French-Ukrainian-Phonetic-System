@@ -377,3 +377,14 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Final main Pages run [#385 / 45468292682](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45468292682): 79/79 tests PASS; build/check PASS; Charis 7/OpenType audit PASS; Chromium/Firefox/WebKit render PASS; Pages artifact upload PASS; deploy PASS.
 - Final live smoke after #385: HTTP 200; the homepage still exposes the learning guide and in-page UFPN guide, the navigation avoids the raw Markdown file, and the theme-color meta value in main source is `#F5F0E7`.
 - No remaining blocker for W8/W9. The broader service remains an experimental prototype; a full exception dictionary and independent review by native-speaker specialists remain future work, not blockers for this educational add-on.
+
+
+## UX refinement handoff — 2026-11-24
+- PR #60: https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/60
+- Branch: fix/streamline-ufpn-and-reading-layout-2026-11-24, based on main f2d03c3bcc33732cfb2258aa2efbaaec2a1cdd00.
+- Final PR head: 1eb528df11d0175de84a98d8cfa91871aae40e47.
+- Scope: full-width lesson 04; flex-wrap symbol cards fill the final row; remove the explanation checkbox but retain click-to-open word breakdown; remove confidence UI; show only Basic UFPN in the app and technical table; remove the phonetic-dimensions panel and unassigned ы/ё candidate cards from the site.
+- Canonical candidate records remain in data/ufpn-mapping.json for research traceability; accepted grapheme inventory and IPA→UFPN engine are unchanged.
+- PR workflow #409 / 45474480437 SUCCESS: build, 79/79 tests, check, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering and artifact upload.
+- Browser artifact 14959101782 includes desktop/laptop/tablet/mobile screenshots. Desktop and mobile screenshots were inspected; the requested full-width and final-row layouts render correctly, with no horizontal overflow.
+- PR CI skips Pages deployment. Merge and production smoke verification remain the final acceptance steps.

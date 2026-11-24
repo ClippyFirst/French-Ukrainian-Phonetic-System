@@ -55,4 +55,4 @@ python3 -m http.server 8000
 
 ## Навчальний додаток на сайті
 
-На головній сторінці сервісу є навчальний блок [«Як читати французькою»](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#french-reading-guide) та вбудований [візуальний довідник UFPN](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#ufpn-guide). Матеріал має виключно навчальне призначення; для невпевнених форм потрібна перевірка за аудіо/словником.
+На головній сторінці сервісу є навчальний блок [«Як читати французькою»](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#french-reading-guide) та вбудований [візуальний довідник UFPN](https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/#ufpn-guide). Матеріал має виключно навчальне призначення; незнайомі або неоднозначні слова варто звіряти з аудіо та словником.

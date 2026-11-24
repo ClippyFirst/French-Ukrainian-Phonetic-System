@@ -355,3 +355,22 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - PR #57 merged as `b9225311c80b18f99a8d90e5d49752ea9b9a6012` to align `meta theme-color` with the French editorial paper token `#F5F0E7` and to make the educational-only purpose explicit in the learning module.
 - Final main Pages workflow [#385 / 45468292682](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45468292682) passed: 79/79 tests, build/check, font audit, Chromium/Firefox/WebKit render, artifact upload and deployment.
 - Final live smoke after this deploy returned HTTP 200; both sections remain present and UFPN navigation still points to the in-page HTML guide.
+
+
+## UI-07 — власницьке UX-уточнення (2026-11-24)
+- Коренева причина порожнього місця в блоці 04: картка не мала класу lesson-wide, хоча навчальна сітка мала дві колонки. Додано розтягування на всю ширину.
+- Коренева причина порожнього місця в останньому ряду графем: фіксована CSS Grid-колонкова схема. Візуальні картки переведено на flex-wrap з гнучкою базою; останній рядок може розтягувати картки, а не залишати порожню комірку.
+- Прибрано UI перемикача «Показувати розбір вибраного слова» та його допоміжний текст. Панель розбору прихована до вибору слова й відкривається через наявну взаємодію з сегментом результату.
+- Прибрано відображення рівнів «Докладний» і «Розширений»; транскриптор і технічна таблиця використовують лише базову форму UFPN. Інші рівні та їхні дані не видалялися з внутрішнього дослідницького mapping.
+- Прибрано з сайту повний список фонетичних вимірів і картки кандидатів ы / ё. Їхні дослідницькі записи лишилися в JSON-реєстрі, але не відображаються користувачу; прийняті графеми не змінені.
+- Прибрано індикатори впевненості з інтерфейсу (хвилясте підкреслення, підписи в aria-label, метадані розбору й попереджувальний блок). Внутрішні оцінки рушія не змінювалися.
+- PR #60: fix/streamline-ufpn-and-reading-layout-2026-11-24; реалізація/CI ще перевіряються.
+- Перший PR CI [45472721047](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45472721047): build PASS; 74/80 tests PASS. Шість падінь були зумовлені застарілими перевірками UI після навмисного видалення перемикача/рівнів/панелі вимірів, старим очікуванням локалізаційного підпису, а також ненавмисним вилученням словників локалізації прийнятих графем під час прибирання невикористаного коду. Словники inventoryOriginUk, inventoryRationaleUk, featureStatusUk і phonologyStatusUk відновлено; таблиця IPA→UFPN продовжує використовувати потрібні статуси. Тестові очікування оновлено відповідно до нового контракту. Runs [45473143323](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45473143323) та [45473266943](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45473266943) скасовані наступними push. Workflow [45473750549](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45473750549) — pending на момент останнього огляду; успішне завершення не заявляється.
+- Локальний git clone недоступний: DNS не розв’язує github.com. Статичні acceptance checks через GitHub API пройшли для 12 вимог; це не замінює повний npm test/check/build та браузерний CI.
+
+## UI-07 — final PR verification (2026-11-24)
+- Final PR #60 head: `1eb528df11d0175de84a98d8cfa91871aae40e47`.
+- Workflow [#409 / 45474480437](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437) SUCCESS: build, 79/79 tests, syntax check, Charis 7/OpenType audit, Playwright browser installation, Chromium/Firefox/WebKit render and artifact upload.
+- Browser artifact [14959101782](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45474480437/artifacts/14959101782) contains desktop, laptop, tablet and mobile screenshots. Desktop and mobile screenshots were inspected: lesson 04 spans both columns; the UFPN symbol-card final row uses the available width; mobile layout remains a single readable column without horizontal overflow.
+- Earlier failed CI runs were traced to stale assertions for removed UI and one temporary omission of localization dictionaries; all were corrected. The final run is green.
+- PR CI does not run Pages deployment. Hosting remains PARTIAL until merge, main Pages deploy and live HTTP/content smoke verification.
