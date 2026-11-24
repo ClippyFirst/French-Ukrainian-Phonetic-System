@@ -397,3 +397,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Live site `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/`: HTTP 200. Verified removal of checkbox, phonetic dimensions panel, `ы`/`ё` candidate cards and confidence UI; Basic-only UFPN; click-to-open selected-word breakdown; full-width lesson 04; flex-wrapped symbol grid.
 - Browser screenshots artifact: 14959101782. Desktop/mobile visual review passed.
 - UI-07 status: DONE_VERIFIED. Remaining prototype limitations (lexical coverage, regional variants and native-speaker review) are unrelated to this layout-only task.
+
+
+## Motion UX handoff — 2026-11-24
+- Branch: feat/editorial-motion-ux-2026-11-24, based on main 0c8f7bb588c52dd8294b92e355a20304335d4327.
+- Added restrained CSS-only motion following emilkowalski/skills: 140 ms ease-out selected-word/link feedback; 2 px lift for spelling and adopted-grapheme cards only on fine-pointer hover.
+- Reduced-motion media query removes transitions and movement. No scroll reveal, no animation library, no JS animation runtime and no motion of phonetic output.
+- Added tests/editorial-motion.test.js; updated DESIGN.md, WEB-SERVICE.md, execution matrix and audit.
+- Verification blocker: local clone failed (Could not resolve host: github.com), so tests/build/browser rendering have not run locally. Awaiting PR CI and browser artifact review; MOTION-01 remains PARTIAL.
