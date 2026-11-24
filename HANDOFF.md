@@ -301,4 +301,6 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - New regression tests: `tests/reference-ui.test.js`.
 - PR #41 was squash-merged into `main` as `f04a7b280b9b1a855ae1faed4c6bf1b08f070998`.
 - Workflow `45407617594` passed build, all tests (including the new UI contract tests), syntax, Charis 7/OpenType audit, Playwright installation and UFPN rendering in Chromium, Firefox and WebKit; browser specimen upload succeeded.
-- Deployment is not yet verified: a fresh GitHub Pages fetch returned HTTP 200 but still showed the old checkbox label and plain bullet lists. The main-branch Pages run/deployment needs investigation or a successful retry; re-scrape until the new toggle label and accordion/card UI appear. Keep W7 PARTIAL until then.
+- Main workflow `45411777853` completed SUCCESS: build, tests, syntax, Charis 7 audit, Playwright install, Chromium/Firefox/WebKit rendering, Pages artifact and deploy all passed.
+- Fresh live scrape using `?deploycheck=45411777853` returned HTTP 200 and confirmed «Показувати розбір вибраного слова», the helper text explaining that transcription is unaffected, and the new card/accordion reference UI (the former plain list is absent).
+- W7 is now DONE_VERIFIED. The change is presentation/accessibility only; no phonetic runtime or mappings were modified.
