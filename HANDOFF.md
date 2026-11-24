@@ -106,7 +106,7 @@
 - Feature branch: `fix/openipa-canonical-ipa-adapter`, based on `78478b8e40335fd9988dce7aaec273a332bdd305`.
 - Root cause: vendored OpenIPA defines `NASAL_O='õ'` and `FLIPPED_R='ɾ'`; `parseR` uses the latter as its default French `r` output. The project IPA inventory instead encodes broad Metropolitan French `/ɔ̃/` and `/ʁ/`. Without normalization, the UI exposed `⟦õ⟧` and incorrectly rendered ordinary `r` as regional `р̌`.
 - The adapter converts OpenIPA output `õ→ɔ̃` and `ε→ɛ`; for `metropolitan-fr`, it maps the upstream lyric-diction `ɾ` convention to broad `/ʁ/`, while `lyric-diction-fr` preserves the intended `[ɾ]` tap. Raw upstream strings remain in `sourceIpa` and trace. The direct IPA→UFPN mapping `[ɾ]` → `р̌` remains unchanged.
-- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бо̆̃жух̬̠` without unsupported IPA. CI and deployment are pending.
+- Regression tests cover `bonjour`, `garçon`, and `mer`; end-to-end `bonjour` should render `бɔ̃жух̬̠` without unsupported IPA. CI and deployment are pending.
 - This resolves the known OpenIPA symbol mismatch, not general French pronunciation accuracy; independent specialist review and a licensed gold benchmark remain blocked.
 
 
@@ -120,7 +120,7 @@
 ## Final verified profile-aware deployment — 2026-11-23
 - Main commit: `e10368e3526deeecf773ee11ea8dd9d50e7c4dc5` (PR #13).
 - Main workflow [45252517029](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45252517029): build passed; 52/52 tests passed; syntax and Charis 7 audits passed; Chromium, Firefox and WebKit desktop/mobile checks passed; GitHub Pages deployment passed.
-- Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бо̆̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
+- Live app: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/ . Fresh page scrape confirms default Metropolitan `bɔ̃ʒuʁ` → `бɔ̃жух̬̠`; fresh published-source scrape confirms profile-aware `ɾ` handling. Lyric-diction output retains `[ɾ]` → `р̌`, verified by regression tests.
 - Remaining independent gates: French/Ukrainian specialist phonetic review, licensed gold benchmark, broader G2P coverage, keyboard/screen-reader and physical-device/owner visual acceptance.
 
 
