@@ -256,4 +256,14 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Перекладено всі виявлені користувацькі рядки, які рендеряться головною сторінкою й довідковими панелями; перекладено також доступні назви та підписи TXT/копіювання.
 - Переклад не змінює фонетичні значення, IPA, французькі приклади або машинні ідентифікатори. Брендові назви та міжнародні абревіатури залишаються.
 - CI run [45383515829](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45383515829): build PASS; 65/65 tests PASS; syntax PASS; Charis 7 glyph/anchor audit PASS; 12 browser × viewport combinations across Chromium, Firefox and WebKit PASS. Browser specimen artifact `14915013026`.
-- На момент цього запису PR #37 ще відкритий; публікація очікує злиття та успішного main Pages deployment.
+- PR #37, #38 і #39 злиті; фінальний стан і live-перевірку зафіксовано нижче.
+
+
+## Остаточне закриття української локалізації — 2026-11-24
+- Публічний інтерфейс і видимі довідкові панелі локалізовані українською; статус DONE_VERIFIED.
+- Динамічні пояснення правил OpenIPA, загальні шаблони для графем, лексичні винятки, таблиці вимірів/статусів, метадані, доступні назви та TXT/копіювання також локалізовані.
+- PR #37, #38 і #39 merged; фінальний `main` SHA `3b67ef59ca9f012f00dcbf4bc04eb6ce32714778`.
+- Main CI/deploy [45386058400](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45386058400): 65/65 tests, build, syntax, Charis 7 glyph/anchor audit, 12 Chromium/Firefox/WebKit viewport combinations, Pages artifact and deployment — SUCCESS.
+- Live audit `01a20d5c-3f55-7718-a428-e5656b4332ce` returned HTTP 200 and found no residual English interface/rule phrases from the audited list. The /ə/ note now reads grammatically «до звука ə».
+- Залишкові латинські рядки на сторінці — власні назви/бренди, абревіатури, французькі приклади та латинізований фонетичний запис. Це не англомовний текст інтерфейсу.
+- Фонетична валідність самої експериментальної системи й незалежна експертна перевірка залишаються окремими дослідницькими задачами; локалізація не змінює статусу дослідницького прототипу.
