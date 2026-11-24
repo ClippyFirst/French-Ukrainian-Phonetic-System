@@ -333,3 +333,11 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - The phoneme table and adopted grapheme cards are generated from data/ufpn-mapping.json, avoiding a second manually maintained inventory.
 - Added tests/french-reading-and-ufpn-page.test.js for navigation, content coverage, caveats and quiz wiring. CI/browser/deployment verification is pending at this audit point.
 - Scope: educational content and presentation only. No G2P, IPA normalization, IPA→UFPN mapping, profile, confidence or export behavior changed.
+
+
+## PR #52 — CI verification update (2026-11-24)
+
+- PR workflow run [45464917783](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45464917783) completed successfully.
+- npm run build: PASS; npm test: 80/80 PASS; npm run check: PASS; Charis 7/OpenType audit: PASS; Playwright browser-engine install: PASS; Chromium/Firefox/WebKit render: PASS; specimen upload: PASS.
+- PR run's Pages artifact/deploy jobs were skipped by workflow design for pull-request events. Main-branch Pages deployment and live HTTP smoke test remain pending merge.
+- Two initial test-only assertion mismatches were corrected before this passing run; no production code behavior was changed in that correction.
