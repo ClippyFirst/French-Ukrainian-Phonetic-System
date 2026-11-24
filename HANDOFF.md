@@ -415,3 +415,11 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Гілка: `fix/consistent-disclosure-accordions-2026-11-24`, від main cf8fe7af9f667263fe78a6621ec6d629e9c23aec.
 - Збережено доступну нативну HTML-поведінку; додано однакову ієрархію заголовків, круглі «+ / −», чіткий клавіатурний фокус, 56 px мінімальної висоти заголовка, hover і мобільну адаптацію. Не додавав JS чи сторонніх бібліотек.
 - Додано тести стилів і функціональний пошук у 52-рядковій таблиці IPA → UFPN (IPA, графема, опис, статус; динамічний лічильник і повідомлення про відсутність збігів). CI run [45491813658](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45491813658) пройшов повністю (build, tests, check, OpenType audit, Chromium/Firefox/WebKit). Статус DISC-01 — PARTIAL до merge, production deploy та перевірки live UI; browser job перевіряє рендеринг шрифту, а не весь accordion layout.
+
+
+### DISC-01 production closeout — 2026-11-24
+- PR [#64](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/pull/64) merged; final main commit `b04b2263bb99fd6269de2d1cf6b008cf294ee69d` (parent `cf8fe7af9f667263fe78a6621ec6d629e9c23aec`). No open PRs remained at closeout.
+- Main workflow [#432 / 45492328800](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45492328800) SUCCESS. Passed build, `npm test`, `npm run check`, Charis 7/OpenType audit, Playwright browser setup, Chromium/Firefox/WebKit font rendering, Pages artifact and Pages deployment.
+- Live production smoke: homepage HTML contains the IPA → UFPN and grapheme-inventory disclosure sections, all three self-check disclosures and the search input. Deployed `src/app.js` contains the filtering listener, live result counter and no-results row; deployed CSS contains shared disclosure styling, 56 px summary hit area, keyboard focus, mobile spacing and reduced-motion handling.
+- The Playwright workflow validates font specimens, not the complete accordion layout; a separate visual pixel audit was not performed. This limitation is explicit rather than represented as a browser-layout test.
+- DISC-01 acceptance is complete for implementation, automated checks, production deployment and live DOM/CSS/JS smoke: DONE_VERIFIED. Production URL: https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/.
