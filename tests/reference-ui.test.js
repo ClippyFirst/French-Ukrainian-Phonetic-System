@@ -33,6 +33,7 @@ test('grapheme inventory distinguishes adopted graphemes from unassigned candida
  assert.match(app,/Кандидат · не призначено/);
  assert.equal(mapping.graphemeInventory.adopted.length,10);
  assert.equal(mapping.graphemeInventory.candidates.length,2);
+ assert.ok(mapping.graphemeInventory.adopted.some(item=>item.grapheme==='ъ'&&item.ipa.includes('ə')));
 });
 
 test('explanation checkbox names the exact panel and states that transcription is unaffected',()=>{
@@ -63,7 +64,8 @@ test('the page removes decorative micro-labels and keeps meaningful navigation',
 
 test('profile selector explains pronunciation differences in plain Ukrainian',()=>{
  assert.match(html,/Варіант вимови/);
- assert.match(html,/Елізія — випадіння звука ə/);
+ assert.match(html,/Елізія — випадіння звука \/ə\//);
+ assert.match(html,/цей звук позначається літерою ъ/);
  assert.match(html,/Звичайна вимова/);
  assert.match(html,/Вокальна дикція/);
 });
