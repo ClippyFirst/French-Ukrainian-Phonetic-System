@@ -89,23 +89,32 @@ function createReferenceAccordion(className,title,count,description){
  return details;
 }
 const referenceRows=[...UFPN_MAPPING.phonemes,...UFPN_MAPPING.allophoneMappings];
-const technicalDetails=createReferenceAccordion('ufpn-technical','Довідкова таблиця IPA → UFPN','52 записи','Порівняння вхідного IPA з базовим українським записом. У кінцевій колонці наведено опис звука та статус доказовості.');
+const technicalDetails=createReferenceAccordion('ufpn-technical','Довідкова таблиця IPA → UFPN',referenceRows.length+' записів','Порівняння вхідного IPA з базовим українським записом. У кінцевій колонці наведено опис звука та статус доказовості.');
+const technicalSearch=document.createElement('input');technicalSearch.type='search';technicalSearch.className='reference-search';technicalSearch.placeholder='Шукати IPA, графему UFPN або опис звука…';technicalSearch.setAttribute('aria-label','Пошук у довідковій таблиці IPA — UFPN');technicalDetails.append(technicalSearch);
 const refTable=document.createElement('table');refTable.className='ipa-mapping-table';refTable.innerHTML='<thead><tr><th>IPA</th><th>UFPN</th><th>Опис / статус</th></tr></thead><tbody></tbody>';technicalDetails.append(refTable);
 const refBody=refTable.querySelector('tbody');
-function renderTechnicalReference(){
+function renderTechnicalReference(query=''){
  refBody.replaceChildren();
+ let visibleCount=0;
+ const normalizedQuery=query.toLocaleLowerCase().trim();
  for(const item of referenceRows){
   const description=localizeTechnicalText(item.descriptionUk||item.description||'');
   const rawStatus=item.phonologicalStatus||item.evidenceStatus||'';const status=phonologyStatusUk[rawStatus]||featureStatusUk[rawStatus]||rawStatus;
+  if(normalizedQuery&&![item.ipa,item.basic,description,status].join(' ').toLocaleLowerCase().includes(normalizedQuery))continue;
   const tr=document.createElement('tr');
   for(const [index,value] of [item.ipa,item.basic,description+' · '+status].entries()){
    const td=document.createElement('td');
    if(index===1)renderUfpnDisplay(td,value);else td.textContent=value;
    tr.append(td);
   }
-  refBody.append(tr);
+  refBody.append(tr);visibleCount++;
+ }
+ technicalDetails.querySelector('.reference-accordion-count').textContent=normalizedQuery?visibleCount+' із '+referenceRows.length+' записів':referenceRows.length+' записів';
+ if(!visibleCount){
+  const emptyRow=document.createElement('tr');const emptyCell=document.createElement('td');emptyCell.colSpan=3;emptyCell.textContent='Нічого не знайдено. Спробуйте інший IPA-символ або графему.';emptyRow.append(emptyCell);refBody.append(emptyRow);
  }
 }
+technicalSearch.addEventListener('input',()=>renderTechnicalReference(technicalSearch.value));
 renderTechnicalReference();reference.append(technicalDetails);
 technicalDetails.id='ufpn-technical';
 const inventory=UFPN_MAPPING.graphemeInventory;

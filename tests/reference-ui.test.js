@@ -123,3 +123,13 @@ test('requested UI simplification removes unused controls and expands the two un
  assert.match(css,/\.grapheme-list\{[\s\S]*?display:grid/);
  assert.match(css,/\.grapheme-card\{[\s\S]*?grid-template-columns:58px/);
 });
+
+
+test('the IPA-to-UFPN reference can be searched by IPA, grapheme and localized description',()=>{
+ assert.match(app,/technicalSearch\.type='search'/);
+ assert.match(app,/aria-label','Пошук у довідковій таблиці IPA — UFPN/);
+ assert.match(app,/technicalSearch\.addEventListener\('input'/);
+ assert.match(app,/\[item\.ipa,item\.basic,description,status\]\.join\(' '\)/);
+ assert.match(app,/visibleCount\+' із '\+referenceRows\.length\+' записів'/);
+ assert.match(app,/Нічого не знайдено/);
+});

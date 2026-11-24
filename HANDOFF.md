@@ -408,3 +408,10 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Browser specimen artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop/mobile. Live CSS fetch confirmed deployed motion tokens, hover gating and reduced-motion behavior; production homepage fetch succeeded.
 - Local clone was unavailable due DNS; CI ran the full repository checks. MOTION-01: DONE_VERIFIED, merged and deployed.
 
+
+
+## Disclosure accordion refinement — 2026-11-24
+- Виявлена причина непослідовності: технічні/довідкові секції використовували стилізовані `reference-accordion`, а запитання «Перевірте себе» залишалися окремими нативними `details` без такого самого візуального індикатора та повної зони натискання.
+- Гілка: `fix/consistent-disclosure-accordions-2026-11-24`, від main cf8fe7af9f667263fe78a6621ec6d629e9c23aec.
+- Збережено доступну нативну HTML-поведінку; додано однакову ієрархію заголовків, круглі «+ / −», чіткий клавіатурний фокус, 56 px мінімальної висоти заголовка, hover і мобільну адаптацію. Не додавав JS чи сторонніх бібліотек.
+- Додано тести стилів і функціональний пошук у 52-рядковій таблиці IPA → UFPN (IPA, графема, опис, статус; динамічний лічильник і повідомлення про відсутність збігів). CI run [45491813658](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45491813658) пройшов повністю (build, tests, check, OpenType audit, Chromium/Firefox/WebKit). Статус DISC-01 — PARTIAL до merge, production deploy та перевірки live UI; browser job перевіряє рендеринг шрифту, а не весь accordion layout.
