@@ -327,7 +327,7 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 ## French reading module and rendered UFPN guide — 2026-11-24
 
-- Added a Ukrainian learning section to the main page covering common French vowel/consonant spellings, nasal vowels, frequent silent final consonants, the verb ending -ent, variable schwa/elision, liaison and enchaînement. Claims are explicitly framed as common patterns, not exceptionless rules.
+- Added a Ukrainian learning section to the main page covering common French vowel/consonant spellings, four nasal-vowel categories with a note on /œ̃/–/ɛ̃/ merger variation, accent marks/diaeresis, frequent silent final consonants, the verb ending -ent, variable schwa/elision, liaison and enchaînement. Claims are explicitly framed as common patterns, not exceptionless rules.
 - Added a keyboard-operable multiple-choice self-check with a polite live status message.
 - Replaced the navigation target from raw docs/UKRAINIAN-NOTATION.md to a rendered docs/ufpn.html page. The page explains IPA-first processing, Basic/Detailed/Extended levels, the project-specific ъ for IPA /ə/, diacritics and known limitations.
 - The phoneme table and adopted grapheme cards are generated from data/ufpn-mapping.json, avoiding a second manually maintained inventory.
