@@ -401,7 +401,7 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 
 ## Motion UX handoff — 2026-11-24
 - Branch: feat/editorial-motion-ux-2026-11-24, based on main 0c8f7bb588c52dd8294b92e355a20304335d4327.
-- Added restrained CSS-only motion following emilkowalski/skills: 140 ms ease-out selected-word/link feedback; 2 px lift for spelling and adopted-grapheme cards only on fine-pointer hover.
+- Added restrained CSS-only motion following emilkowalski/skills: 140 ms ease for selected-word/link colour feedback; 2 px ease-in-out lift for spelling and adopted-grapheme cards only on fine-pointer hover.
 - Reduced-motion media query removes transitions and movement. No scroll reveal, no animation library, no JS animation runtime and no motion of phonetic output.
 - Added tests/editorial-motion.test.js; updated DESIGN.md, WEB-SERVICE.md, execution matrix and audit.
 - Verification blocker: local clone failed (Could not resolve host: github.com), so tests/build/browser rendering have not run locally. Awaiting PR CI and browser artifact review; MOTION-01 remains PARTIAL.
