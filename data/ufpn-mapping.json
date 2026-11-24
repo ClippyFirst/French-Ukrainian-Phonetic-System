@@ -84,7 +84,7 @@
       "id": "schwa",
       "glyph": "◌̇",
       "unicode": "U+0307",
-      "meaning": "Центральний редукований голосний /ə/."
+      "meaning": "Historical/optional central-vowel marker; not used for canonical /ə/, which is retained as the standalone grapheme ə."
     },
     {
       "id": "voicing",
@@ -333,11 +333,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid unrounded",
       "descriptionUk": "передній напіввідкритий неогублений",
-      "baseGrapheme": "э",
+      "baseGrapheme": "ɛ",
       "diacritics": [],
-      "basic": "э",
-      "detailed": "э",
-      "extended": "э",
+      "basic": "ɛ",
+      "detailed": "ɛ",
+      "extended": "ɛ",
       "features": [],
       "examples": [
         "mère",
@@ -351,7 +351,7 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э",
+      "graphemeOrigin": "IPA symbol retained as a standalone UFPN grapheme by owner-approved notation decision.",
       "ukrainianExample": "день — е [ɛ]",
       "ukrainianExampleStatus": "EXACT",
       "ukrainianExampleNote": "Звичайне українське е має відкритішу якість [ɛ].",
@@ -483,11 +483,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid rounded",
       "descriptionUk": "передній напіввідкритий огублений",
-      "baseGrapheme": "ӧ",
+      "baseGrapheme": "œ",
       "diacritics": [],
-      "basic": "ӧ",
-      "detailed": "ӧ",
-      "extended": "ӧ",
+      "basic": "œ",
+      "detailed": "œ",
+      "extended": "œ",
       "features": [],
       "examples": [
         "peur",
@@ -503,9 +503,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Точного відповідника [œ] у нормативній українській вимові немає.",
-      "graphemeOrigin": "UFPN project-specific assignment using the extended Cyrillic glyph ӧ; not a verified Mari ӧ → /œ/ correspondence",
-      "pronunciationGuideUk": "Вимовте [ɛ], зберігаючи переднє й напіввідкрите положення язика; округліть губи, не змінюючи висоту голосного.",
-      "graphemeOriginNote": "Eastern Mari phoneme inventory supports the existence of /œ/ but does not establish ӧ as its grapheme. Mari orthographic ӧ is reported with a different vowel value in the reviewed sources. UFPN reserves ӧ for French /œ/ to distinguish it from ө /ø/; this is a notation-design choice pending expert review."
+      "graphemeOrigin": "IPA symbol retained as a standalone UFPN grapheme by owner-approved notation decision.",
+      "pronunciationGuideUk": "Вимовте [ɛ], зберігаючи переднє й напіввідкрите положення язика; округліть губи, не змінюючи висоту голосного."
     },
     {
       "id": "v_u",
@@ -572,13 +571,11 @@
       "phonologicalStatus": "CORE",
       "articulation": "back open-mid rounded",
       "descriptionUk": "задній напіввідкритий огублений",
-      "baseGrapheme": "о",
-      "diacritics": [
-        "̆"
-      ],
-      "basic": "о̆",
-      "detailed": "о̆",
-      "extended": "о̆",
+      "baseGrapheme": "ɔ",
+      "diacritics": [],
+      "basic": "ɔ",
+      "detailed": "ɔ",
+      "extended": "ɔ",
       "features": [],
       "examples": [
         "porte",
@@ -594,7 +591,8 @@
       "ukrainianExample": "сон — о [ɔ]",
       "ukrainianExampleStatus": "EXACT",
       "ukrainianExampleNote": "Той самий задній відкрито-середній огублений голосний.",
-      "pronunciationGuideUk": "Як для [о], але трохи опустіть щелепу; губи залишаються округленими."
+      "pronunciationGuideUk": "Як для [о], але трохи опустіть щелепу; губи залишаються округленими.",
+      "graphemeOrigin": "IPA symbol retained as a standalone UFPN grapheme by owner-approved notation decision."
     },
     {
       "id": "v_schwa",
@@ -603,11 +601,11 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "central mid variable",
       "descriptionUk": "центральний середній редукований, варіативний",
-      "baseGrapheme": "ӹ",
+      "baseGrapheme": "ə",
       "diacritics": [],
-      "basic": "ӹ",
-      "detailed": "ӹ",
-      "extended": "ӹ",
+      "basic": "ə",
+      "detailed": "ə",
+      "extended": "ə",
       "features": [],
       "examples": [
         "petit",
@@ -623,7 +621,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Стабільного українського відповідника [ə] немає; редуковані голосні не слід автоматично прирівнювати до schwa.",
-      "pronunciationGuideUk": "Розслабте язик у центрі рота й вимовте короткий нейтральний голосний; не наближайте його автоматично до [и]."
+      "pronunciationGuideUk": "Розслабте язик у центрі рота й вимовте короткий нейтральний голосний; не наближайте його автоматично до [и].",
+      "graphemeOrigin": "IPA symbol retained as a standalone UFPN grapheme by owner-approved notation decision."
     },
     {
       "id": "nv_alpha",
@@ -662,13 +661,13 @@
       "phonologicalStatus": "CORE",
       "articulation": "front open-mid nasal",
       "descriptionUk": "передній носовий; можливе злиття з /œ̃/",
-      "baseGrapheme": "э",
+      "baseGrapheme": "ɛ",
       "diacritics": [
         "̃"
       ],
-      "basic": "э̃",
-      "detailed": "э̃",
-      "extended": "э̃",
+      "basic": "ɛ̃",
+      "detailed": "ɛ̃",
+      "extended": "ɛ̃",
       "features": [],
       "examples": [
         "vin",
@@ -682,7 +681,7 @@
       ],
       "confidence": "medium",
       "evidenceStatus": "LITERATURE_SUPPORTED_NOT_EXPERT_REVIEWED",
-      "graphemeOrigin": "Russian/Belarusian Cyrillic letter э + nasalization mark",
+      "graphemeOrigin": "Retained IPA base grapheme plus the UFPN combining tilde for nasalization.",
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɛ̃].",
@@ -695,14 +694,13 @@
       "phonologicalStatus": "CORE",
       "articulation": "back open-mid rounded nasal",
       "descriptionUk": "задній огублений носовий",
-      "baseGrapheme": "о",
+      "baseGrapheme": "ɔ",
       "diacritics": [
-        "̆",
         "̃"
       ],
-      "basic": "о̆̃",
-      "detailed": "о̆̃",
-      "extended": "о̆̃",
+      "basic": "ɔ̃",
+      "detailed": "ɔ̃",
+      "extended": "ɔ̃",
       "features": [],
       "examples": [
         "bon",
@@ -717,7 +715,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "В українській немає фонемних носових голосних [ɔ̃].",
-      "pronunciationGuideUk": "Збережіть заднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс."
+      "pronunciationGuideUk": "Збережіть заднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс.",
+      "graphemeOrigin": "Retained IPA base grapheme plus the UFPN combining tilde for nasalization."
     },
     {
       "id": "nv_oe",
@@ -726,13 +725,13 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "front open-mid rounded nasal",
       "descriptionUk": "передній огублений носовий; часто злитий з /ɛ̃/",
-      "baseGrapheme": "ӧ",
+      "baseGrapheme": "œ",
       "diacritics": [
         "̃"
       ],
-      "basic": "ӧ̃",
-      "detailed": "ӧ̃",
-      "extended": "ӧ̃",
+      "basic": "œ̃",
+      "detailed": "œ̃",
+      "extended": "œ̃",
       "features": [],
       "examples": [
         "brun",
@@ -747,7 +746,8 @@
       "ukrainianExample": "—",
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "В українській немає фонемних носових голосних [œ̃].",
-      "pronunciationGuideUk": "Збережіть переднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс."
+      "pronunciationGuideUk": "Збережіть переднє напіввідкрите положення язика й округлення губ; повітря спрямовуйте також через ніс.",
+      "graphemeOrigin": "Retained IPA base grapheme plus the UFPN combining tilde for nasalization."
     },
     {
       "id": "g_j",
@@ -2110,7 +2110,7 @@
         "more-rounded",
         "less-rounded"
       ],
-      "ufpn": "Dedicated Cyrillic letters encode /y ø œ/; й̹ (U+0339 below й) encodes the labial-palatal glide /ɥ/; finer rounding gradience is retained only from narrow IPA/audio",
+      "ufpn": "Dedicated Cyrillic letters encode /y ø/; standalone IPA grapheme œ is retained for /œ/; й̹ (U+0339 below й) encodes the labial-palatal glide /ɥ/; finer rounding gradience is retained only from narrow IPA/audio",
       "status": "PARTIALLY_ENCODED",
       "sources": [
         "S1"
@@ -2391,87 +2391,65 @@
     }
   ],
   "graphemeInventory": {
-    "policy": "UFPN is an extended Cyrillic-based practical phonetic notation, not restricted to modern Ukrainian. Graphemes may be selected from Belarusian, Russian and other Cyrillic orthographies when their established sound value improves segmental transparency. Familiarity alone is insufficient.",
+    "policy": "UFPN is a hybrid practical phonetic notation: it uses Ukrainian and selected extended-Cyrillic graphemes where useful, while retaining the IPA symbols ɛ, œ, ɔ and ə as standalone graphemes by owner-approved decision. Grapheme choices do not import unrelated orthographic or phonological rules.",
     "adopted": [
       {
-        "grapheme": "ў",
-        "origin": "Belarusian Cyrillic",
+        "grapheme": "ə",
+        "origin": "IPA symbol retained (Latin-derived IPA letter)",
         "ipa": [
-          "w"
+          "ə"
         ],
-        "value": "Belarusian non-syllabic u; attested phonetic [w] or [u̯] in coda contexts; reused here for French /w/",
+        "value": "central mid variable reduced vowel",
         "decision": "ADOPTED",
-        "rationale": "Belarusian ў is the familiar non-syllabic-u grapheme and has an attested [w]-type realization. Belarusian analyses differ on whether that [w] is an allophone of /v/ or a phoneme; UFPN borrows the grapheme for French /w/ without importing Belarusian phonological rules.",
+        "decisionBasis": "OWNER_APPROVED",
+        "rationale": "Retain the exact IPA grapheme as the standalone UFPN base; do not replace it with an unrelated Cyrillic vowel.",
         "sources": [
-          "S31",
-          "S33"
+          "S1"
         ]
       },
       {
-        "grapheme": "э",
-        "origin": "Russian and Belarusian Cyrillic",
+        "grapheme": "ɛ",
+        "origin": "IPA symbol retained (Latin-derived IPA letter)",
         "ipa": [
           "ɛ",
           "ɛ̃"
         ],
-        "value": "open-mid front unrounded vowel; nasalized counterpart",
+        "value": "front open-mid unrounded vowel and nasalized counterpart",
         "decision": "ADOPTED",
-        "rationale": "Established [ɛ]-type vowel value; nasalization is shown by combining tilde.",
+        "decisionBasis": "OWNER_APPROVED",
+        "rationale": "Retain the exact IPA grapheme as the standalone UFPN base; nasalization is marked with combining tilde.",
         "sources": [
-          "S31",
-          "S32"
+          "S1"
         ]
       },
       {
-        "grapheme": "ү",
-        "origin": "Kazakh Cyrillic",
+        "grapheme": "œ",
+        "origin": "IPA symbol retained (Latin-derived IPA ligature)",
         "ipa": [
-          "y"
+          "œ",
+          "œ̃"
         ],
-        "value": "close front rounded vowel",
+        "value": "front open-mid rounded vowel and nasalized counterpart",
         "decision": "ADOPTED",
-        "rationale": "Kazakh Ү has the established close front rounded value /y/, a direct segmental match for French /y/.",
+        "decisionBasis": "OWNER_APPROVED",
+        "rationale": "Retain the exact IPA grapheme as the standalone UFPN base; nasalization is marked with combining tilde.",
         "sources": [
-          "S34"
+          "S1"
         ]
       },
       {
-        "grapheme": "ӧ",
-        "origin": "Eastern Mari Cyrillic",
+        "grapheme": "ɔ",
+        "origin": "IPA symbol retained (Latin-derived IPA letter)",
         "ipa": [
-          "œ"
+          "ɔ",
+          "ɔ̃"
         ],
-        "value": "open-mid front rounded vowel",
+        "value": "back open-mid rounded vowel and nasalized counterpart",
         "decision": "ADOPTED",
-        "rationale": "The Eastern Mari vowel inventory includes the open-mid front rounded /œ/; its Cyrillic grapheme ӧ is reused for French /œ/.",
+        "decisionBasis": "OWNER_APPROVED",
+        "rationale": "Retain the exact IPA grapheme as the standalone UFPN base; nasalization is marked with combining tilde.",
         "sources": [
-          "S37"
-        ]
-      },
-      {
-        "grapheme": "њ",
-        "origin": "Serbian Cyrillic",
-        "ipa": [
-          "ɲ"
-        ],
-        "value": "palatal nasal",
-        "decision": "ADOPTED",
-        "rationale": "Serbian Њ is a single alphabetic letter for /ɲ/, unlike Ukrainian нь which is /nʲ/.",
-        "sources": [
-          "S35"
-        ]
-      },
-      {
-        "grapheme": "ң",
-        "origin": "Kazakh Cyrillic",
-        "ipa": [
-          "ŋ"
-        ],
-        "value": "velar nasal",
-        "decision": "ADOPTED",
-        "rationale": "Kazakh Ң represents the velar nasal /ŋ/ as a single letter.",
-        "sources": [
-          "S34"
+          "S1"
         ]
       },
       {
@@ -2488,16 +2466,29 @@
         ]
       },
       {
-        "grapheme": "ӹ",
-        "origin": "Hill Mari Cyrillic",
+        "grapheme": "ң",
+        "origin": "Kazakh Cyrillic",
         "ipa": [
-          "ə"
+          "ŋ"
         ],
-        "value": "reduced central vowel",
+        "value": "velar nasal",
         "decision": "ADOPTED",
-        "rationale": "Hill Mari Ӹ is documented with the reduced central vowel /ə/, a direct match for French schwa.",
+        "rationale": "Kazakh Ң represents the velar nasal /ŋ/ as a single letter.",
         "sources": [
-          "S36"
+          "S34"
+        ]
+      },
+      {
+        "grapheme": "њ",
+        "origin": "Serbian Cyrillic",
+        "ipa": [
+          "ɲ"
+        ],
+        "value": "palatal nasal",
+        "decision": "ADOPTED",
+        "rationale": "Serbian Њ is a single alphabetic letter for /ɲ/, unlike Ukrainian нь which is /nʲ/.",
+        "sources": [
+          "S35"
         ]
       },
       {
@@ -2509,6 +2500,33 @@
         "value": "close-mid front rounded vowel",
         "decision": "ADOPTED",
         "rationale": "Kazakh Ө has the established close-mid front rounded value /ø/, a direct segmental match for French /ø/.",
+        "sources": [
+          "S34"
+        ]
+      },
+      {
+        "grapheme": "ў",
+        "origin": "Belarusian Cyrillic",
+        "ipa": [
+          "w"
+        ],
+        "value": "Belarusian non-syllabic u; attested phonetic [w] or [u̯] in coda contexts; reused here for French /w/",
+        "decision": "ADOPTED",
+        "rationale": "Belarusian ў is the familiar non-syllabic-u grapheme and has an attested [w]-type realization. Belarusian analyses differ on whether that [w] is an allophone of /v/ or a phoneme; UFPN borrows the grapheme for French /w/ without importing Belarusian phonological rules.",
+        "sources": [
+          "S31",
+          "S33"
+        ]
+      },
+      {
+        "grapheme": "ү",
+        "origin": "Kazakh Cyrillic",
+        "ipa": [
+          "y"
+        ],
+        "value": "close front rounded vowel",
+        "decision": "ADOPTED",
+        "rationale": "Kazakh Ү has the established close front rounded value /y/, a direct segmental match for French /y/.",
         "sources": [
           "S34"
         ]
