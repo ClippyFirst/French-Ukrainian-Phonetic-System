@@ -315,3 +315,11 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Replaced the forest-green/lime emphasis with ink blue, wine red and muted champagne over warm ivory; neutral slate and pale blue-grey support text and surfaces.
 - The palette avoids a literal tricolour while evoking French editorial/print design.
 - Scope is deliberately limited to CSS colour values/tokens and a regression assertion. No typography, spacing, layout, wording, interaction or phonetic logic changes.
+
+
+## French editorial colour — post-merge production verification (2026-11-24)
+- PR #50 merged as `9efa311f0d500ab24347f481cc61ba151cecbea0`; the implementation is limited to CSS colour values/tokens, design guidance and a palette regression assertion.
+- Main Pages workflow [45460636622](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45460636622) completed successfully. The `test` job passed build, test suite, syntax, Charis 7/OpenType audit, Playwright installation and Chromium/Firefox/WebKit rendering; both `pages-artifact` and `deploy` jobs also succeeded.
+- Live production CSS was fetched uncached at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0` (HTTP 200). It contains the new `#F5F0E7`, `#26364A`, `#A64B55`, `#D8B98A`, `#66717C` palette, updated supporting surfaces and component colours.
+- The first live fetch was a stale cache hit showing the prior palette; a cache-busting request with `storeInCache=false` returned the current deployed CSS. This was a cache observation, not a deployment failure.
+- Outcome: palette implementation, automated checks and production hosting are DONE_VERIFIED. No phonetic, IPA, UFPN or runtime behavior was changed.
