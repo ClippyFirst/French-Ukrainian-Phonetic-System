@@ -42,7 +42,7 @@ test('/ɥ/ uses the project-approved й̹ composition at every level while њ re
  assert.deepEqual([...('й̹')].map(char=>char.codePointAt(0)),[0x0439,0x0339]);
 });
 test('/w/ and /v/ remain distinct in every level',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('w v',level).text,'ў в')});
-test('standalone IPA vowel graphemes are retained at all levels, including nasalized forms',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃',level).text,'ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃')});
+test('standalone IPA vowel graphemes and the UFPN schwa convention are retained at all levels, including nasalized forms',()=>{for(const level of ['basic','detailed','extended'])assert.equal(renderUfpn('ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃',level).text,'ɛ œ ɔ ъ ɛ̃ œ̃ ɔ̃')});
 test('grapheme inventory records adopted graphemes and rejected candidates',()=>{const g=UFPN_MAPPING.graphemeInventory;assert.ok(g.adopted.some(x=>x.grapheme==='ў'&&x.ipa.includes('w')));assert.ok(g.adopted.some(x=>x.grapheme==='ɛ'&&x.ipa.includes('ɛ')));assert.ok(g.adopted.some(x=>x.grapheme==='ү'&&x.ipa.includes('y')));assert.ok(g.adopted.some(x=>x.grapheme==='ɔ'&&x.ipa.includes('ɔ')));assert.ok(g.adopted.some(x=>x.grapheme==='ə'&&x.ipa.includes('ə')));assert.ok(g.adopted.some(x=>x.grapheme==='ө'&&x.ipa.includes('ø')));assert.ok(g.adopted.some(x=>x.grapheme==='œ'&&x.ipa.includes('œ')));assert.ok(g.adopted.some(x=>x.grapheme==='њ'&&x.ipa.includes('ɲ')));assert.ok(g.adopted.some(x=>x.grapheme==='ң'&&x.ipa.includes('ŋ')));assert.ok(g.adopted.some(x=>x.grapheme==='ғ'&&x.ipa.includes('ʁ')));assert.ok(g.candidates.some(x=>x.grapheme==='ы'&&x.decision==='NOT_ASSIGNED'));assert.ok(g.candidates.some(x=>x.grapheme==='ё'&&x.decision==='NOT_ASSIGNED'))});
 test('Québec coronal affricates preserve the tie bar in every UFPN level',()=>{
  assert.equal(renderUfpn('t͡s d͡z','basic').text,'т͡с д͡з');
@@ -151,4 +151,10 @@ test('standalone IPA grapheme inventory replaces former Cyrillic substitutes',()
  for(const grapheme of ['э','ӧ','ӹ']) assert.ok(!adopted.includes(grapheme),grapheme+' must not remain adopted');
  assert.equal(renderUfpn('ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃').text,'ɛ œ ɔ ə ɛ̃ œ̃ ɔ̃');
  assert.equal(renderUfpn('ɔ̃','detailed').text,'ɔ̃');
+});
+
+test('French schwa maps to the project-specific hard-sign grapheme at every UFPN level',()=>{
+ for(const level of ['basic','detailed','extended']) assert.equal(renderUfpn('ə',level).text,'ъ');
+ assert.equal(renderUfpn('ˈpə.ti','basic').text,'ˈпъті');
+ assert.equal(renderUfpn('əː','detailed').text,'ъː');
 });
