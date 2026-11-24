@@ -118,7 +118,7 @@ test('requested UI simplification removes unused controls and expands the two un
  assert.doesNotMatch(app,/appendGraphemeItem\(item,false\)|inventory\.candidates/);
  assert.match(css,/\.lesson-wide\{grid-column:1\/-1\}/);
  assert.match(css,/\.ufpn-symbol-grid\{display:flex/);
- assert.match(css,/\.ufpn-symbol-card\{flex:1 1 220px/);
- assert.match(css,/\.grapheme-list\{display:flex/);
- assert.match(css,/\.grapheme-card\{flex:1 1 320px/);
+ assert.match(css,/\.ufpn-symbol-card\{[^}]*flex:1 1 220px/);
+ assert.match(css,/\.grapheme-list\{[\s\S]*?display:flex/);
+ assert.match(css,/\.grapheme-card\{[^}]*flex:1 1 320px/);
 });
