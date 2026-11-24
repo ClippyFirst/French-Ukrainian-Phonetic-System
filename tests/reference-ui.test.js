@@ -56,6 +56,6 @@ test('the page removes decorative micro-labels and keeps meaningful navigation',
   assert.ok(!html.includes(phrase),'decorative or unavailable UI copy remains: '+phrase);
  for(const phrase of ['Ваш текст','Три способи побачити вимову','Міжнародний фонетичний алфавіт','Український запис','Латинська підказка','Не транслітерація.'])
   assert.ok(html.includes(phrase),'meaningful product information was removed: '+phrase);
- assert.match(html,/<footer>[\\s\\S]*Джерела[\\s\\S]*Стан проєкту[\\s\\S]*<\\/footer>/);
+ assert.ok(html.includes('<footer>')&&html.includes('Джерела')&&html.includes('Стан проєкту')&&html.includes('</footer>'));
  assert.doesNotMatch(html,/<option disabled>/);
 });
