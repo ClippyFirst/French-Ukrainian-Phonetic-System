@@ -41,6 +41,7 @@ const localizeTechnicalText=value=>String(value??'').replaceAll('provenance','п
 const $=id=>document.getElementById(id),source=$('source');let result;
 const level='basic';
 function render(){
+ $('explain-panel').hidden=true;
  const text=source.value;result=transcribe(text,{profile:$('profile').value});
  for(const w of result.words){if(w.kind==='separator'){w.ufpn=w.text;continue}if(w.ipa==='???'){w.ufpn='???';w.ufpnUnsupported=['???'];continue}const adapted=renderUfpn(w.ipa,level);w.ufpn=adapted.text;w.ufpnUnsupported=adapted.unsupported}
  result.ufpn=result.words.map(w=>w.ufpn).join('');$('char-count').textContent=text.length+' символів';
