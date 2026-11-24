@@ -268,8 +268,8 @@ footer a:hover{color:var(--green);text-decoration:underline}
   font:13px/1.7 var(--sans);
 }
 .grapheme-list{
-  display:flex;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:9px;
   margin:0;
   padding:0;
@@ -315,7 +315,8 @@ footer a:hover{color:var(--green);text-decoration:underline}
   .reference-accordion{padding:0 12px 14px}
   .reference-accordion>summary{align-items:flex-start;flex-wrap:wrap;gap:6px 12px}
   .reference-accordion-count{margin-left:0;text-align:left}
-  .grapheme-card,.ufpn-symbol-card{min-width:0;flex-basis:100%}
+  .grapheme-list{grid-template-columns:1fr}
+  .ufpn-symbol-card{min-width:0;flex-basis:100%}
   .status{align-items:flex-start;flex-direction:column}
 }
 
