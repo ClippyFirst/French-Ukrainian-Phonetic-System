@@ -601,11 +601,11 @@
       "phonologicalStatus": "VARIABLE",
       "articulation": "central mid variable",
       "descriptionUk": "центральний середній редукований, варіативний",
-      "baseGrapheme": "ə",
+      "baseGrapheme": "ъ",
       "diacritics": [],
-      "basic": "ə",
-      "detailed": "ə",
-      "extended": "ə",
+      "basic": "ъ",
+      "detailed": "ъ",
+      "extended": "ъ",
       "features": [],
       "examples": [
         "petit",
@@ -622,7 +622,7 @@
       "ukrainianExampleStatus": "NONE",
       "ukrainianExampleNote": "Стабільного українського відповідника [ə] немає; редуковані голосні не слід автоматично прирівнювати до schwa.",
       "pronunciationGuideUk": "Розслабте язик у центрі рота й вимовте короткий нейтральний голосний; не наближайте його автоматично до [и].",
-      "graphemeOrigin": "IPA symbol retained as a standalone UFPN grapheme by owner-approved notation decision."
+      "graphemeOrigin": "Cyrillic hard sign used as a project-specific UFPN vowel grapheme by owner-approved decision."
     },
     {
       "id": "nv_alpha",
@@ -2391,18 +2391,18 @@
     }
   ],
   "graphemeInventory": {
-    "policy": "UFPN is a hybrid practical phonetic notation: it uses Ukrainian and selected extended-Cyrillic graphemes where useful, while retaining the IPA symbols ɛ, œ, ɔ and ə as standalone graphemes by owner-approved decision. Grapheme choices do not import unrelated orthographic or phonological rules.",
+    "policy": "UFPN is a hybrid practical phonetic notation: it uses Ukrainian and selected extended-Cyrillic graphemes where useful, retains the IPA symbols ɛ, œ and ɔ, and uses the Cyrillic hard sign ъ as the project-specific practical grapheme for IPA /ə/. Grapheme choices do not import unrelated orthographic or phonological rules.",
     "adopted": [
       {
-        "grapheme": "ə",
-        "origin": "IPA symbol retained (Latin-derived IPA letter)",
+        "grapheme": "ъ",
+        "origin": "Cyrillic hard sign (project-specific UFPN use)",
         "ipa": [
           "ə"
         ],
         "value": "central mid variable reduced vowel",
         "decision": "ADOPTED",
         "decisionBasis": "OWNER_APPROVED",
-        "rationale": "Retain the exact IPA grapheme as the standalone UFPN base; do not replace it with an unrelated Cyrillic vowel.",
+        "rationale": "Use ъ as the practical UFPN grapheme for every IPA /ə/ occurrence. This is a project-specific reading convention, not a claim that /ə/ is silent or identical to Bulgarian /ɤ/.",
         "sources": [
           "S1"
         ]
