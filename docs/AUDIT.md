@@ -386,8 +386,8 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 
 
 ## Editorial motion audit — 2026-11-24
-- Added CSS-only micro-interactions: 140 ms ease-out transitions for selected-word colour/background and reference-link colour; 2 px card lift on fine-pointer hover for spelling/grapheme cards.
-- Hover effects are gated with (hover: hover) and (pointer: fine); prefers-reduced-motion: reduce removes transitions and movement.
-- No scroll reveal, no movement of phonetic output, no JS animation loop, no external runtime dependency.
-- Regression tests were added in tests/editorial-motion.test.js. They have not been executed in this environment: GitHub clone failed because github.com DNS resolution was unavailable. CI must execute them; browser screenshots must be inspected before marking DONE_VERIFIED.
-- Status: PARTIAL pending PR CI and browser rendering evidence.
+- PR #62, branch `feat/editorial-motion-ux-2026-11-24`, based on main `0c8f7bb588c52dd8294b92e355a20304335d4327`.
+- CSS-only micro-interactions: 140 ms ease for selected-word colour/background and reference-link colour; 2 px ease-in-out lift for spelling/grapheme cards only on fine-pointer hover.
+- `prefers-reduced-motion: reduce` removes card transitions and movement while retaining colour feedback. No scroll reveal, no movement of phonetic output, no JS animation loop or external runtime dependency.
+- CI run [45479094417](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417) SUCCESS: build, `npm test`, `npm run check`, Charis 7/OpenType audit, Playwright install and Chromium/Firefox/WebKit rendering. Browser artifact [14961860727](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45479094417/artifacts/14961860727) visually inspected at desktop and mobile; responsive page composition is intact and no visible horizontal overflow/regression was found.
+- Local clone was blocked by DNS, but CI executed the repository checks successfully. MOTION-01 is DONE_VERIFIED in PR #62. Hosting remains outside acceptance until merge and a Pages deployment/live smoke check.
