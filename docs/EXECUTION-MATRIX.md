@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `њ`, `ң`, `ғ` та збережені IPA-графеми `ɛ`, `œ`, `ɔ`, `ə` реалізовано; носові варіанти зберігають базову графему з тильдою; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `њ`, `ң`, `ғ`, збережені IPA-графеми `ɛ`, `œ`, `ɔ` та проєктну графему `ъ` для IPA `/ə/` реалізовано; носові варіанти зберігають базову графему з тильдою; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -235,3 +235,9 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 
 
 - Перший PR workflow [45421702699](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45421702699) виявив застаріле очікування «Латинська підказка». Виправлено на «Підказка латиницею» у `tests/localization.test.js`. Повторний workflow [45433252768](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45433252768) підтвердив build, 74/74 tests, syntax та Charis 7/OpenType audit, але був скасований під час встановлення Playwright після нових комітів документації. Актуальний workflow [45433450826](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45433450826) повторно пройшов build/tests/syntax/font audit; Playwright installation і rendering Chromium/Firefox/WebKit завершилися успішно.
+
+
+### UFPN schwa grapheme decision (2026-11-24)
+- Owner-approved decision: replace every IPA `/ə/` with the project-specific UFPN grapheme `ъ` at Basic, Detailed and Extended levels. IPA output remains `/ə/`; the IPA-first adapter boundary and OpenIPA source trace are unchanged.
+- `ъ` is a practical vowel grapheme in this notation, not a silent hard sign and not an assertion that French `/ə/` is phonetically identical to Bulgarian `/ɤ/`. Schwa elision remains controlled by the selected pronunciation profile: when IPA contains no `/ə/`, UFPN emits no `ъ`.
+- Regression coverage pins all three levels, a word-level sample, and supplied length. Browser/Pages verification is tracked by the PR workflow and post-merge deployment.
