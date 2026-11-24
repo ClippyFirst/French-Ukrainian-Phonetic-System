@@ -40,7 +40,7 @@ const featureValueUk={
  syllabic:'складотворчий', 'non-syllabic':'нескладотворчий', resyllabified:'перенесений до іншого складу',
  singleton:'одиничний приголосний', geminate:'подвоєний приголосний', 'emphatic lengthening':'емфатичне подовження', 'boundary-induced lengthening':'подовження на межі',
  pause:'пауза', 'filled pause':'заповнена пауза', repetition:'повтор', repair:'самовиправлення', hesitation:'вагання', restart:'повторний початок',
- careful:'ретельний', normal:'звичайний', fast:'швидкий', compressed:'стислий', reduced:'редукований
+ careful:'ретельний', normal:'звичайний', fast:'швидкий', compressed:'стислий', reduced:'редукований'
 };
 const featureStatusUk={
  PARTIALLY_ENCODED:'Закодовано частково', ANNOTATION_ONLY:'Лише анотування', RESEARCH_ONLY:'Лише для досліджень',
