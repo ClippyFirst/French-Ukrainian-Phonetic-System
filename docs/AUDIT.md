@@ -223,3 +223,9 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - /ɥ/ is now represented by the composed UFPN string `й̹` (U+0439 U+0339), using the existing U+0339 combining right half ring below as a project-specific more-rounded marker. All three output levels use the same canonical NFC string.
 - /ɲ/ remains the single Cyrillic letter `њ`; the regression test asserts this explicitly.
 - No IPA source, French G2P rule, other segment mapping, or /y/ mapping changed. CI must verify Charis mark-to-base support for `й̹` and browser rendering; no visual pass is claimed yet.
+
+
+## Rounding feature registry consistency — 2026-11-24
+- Follow-up branch: `fix/rounding-feature-registry-for-y-labial-glide`, based on main after PR #33.
+- The machine-readable `featureDimensions.rounding` description now agrees with the adopted /ɥ/ composition `й̹`: dedicated Cyrillic letters encode /y ø œ/, while U+0339 below `й` marks the labial-palatal glide; finer rounding gradience remains evidence-gated.
+- Added a regression assertion linking the rounding feature description to `й̹`. No output mapping changed in this follow-up.
