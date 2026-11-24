@@ -8,7 +8,7 @@
 | U2 | Machine-readable mapping | PARTIAL | 37 segmental units + 15 allophone mappings + 36 diacritic/prosodic markers + 18 feature dimensions + 19 allophone phenomena + 13 processes + 7 profile records; це не повний вузькофонетичний інвентар |
 | U3 | IPA→UFPN adapter | PARTIAL | Детермінований adapter, тести й UI selector; expert review pending |
 | U4 | Unicode robustness | PARTIAL | NFC/NFD тести проходять у Node CI; browser grapheme/cursor/mobile перевірки не виконані |
-| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `ӧ`, `ӹ`, `э`, `њ`, `ң`, `ғ` реалізовано; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
+| U5 | Extended Cyrillic grapheme inventory and Ukrainian sound table | PARTIAL | `ў`, `ү`, `ө`, `њ`, `ң`, `ғ` та збережені IPA-графеми `ɛ`, `œ`, `ɔ`, `ə` реалізовано; носові варіанти зберігають базову графему з тильдою; /ɥ/ uses owner-approved `й̹` composition and /ɲ/ retains `њ`; searchable UI table covers all 37 segments with exact/contextual/approximate/no-equivalent labels and a Ukrainian articulation guide per segment; usability and expert review pending |
 | F1 | Allophone registry | PARTIAL | Документовано evidence-backed cases; не всі можливі реалізації мовців |
 | F2 | Prosody layer | PARTIAL | Optional annotation markers; аудіо prosody engine відсутній |
 | F3 | Regional profiles | PARTIAL | Québec affrication/diphthongization описано; повної regional G2P моделі немає |
@@ -179,3 +179,11 @@ Baseline at the start of PR #25 was `81098345c69a3c58d770b95fd63949133fa872d7`; 
 ## Rounding feature metadata follow-up — 2026-11-24
 - PR #34 aligns `featureDimensions.rounding.ufpn` with the approved /ɥ/ notation `й̹`; this is a metadata consistency change and does not alter adapter output.
 - A regression assertion requires the rounding feature description to mention `й̹`; PR CI is running before merge.
+
+
+## Owner-approved IPA vowel graphemes — 2026-11-24
+- Feature branch: `feat/retain-ipa-vowel-graphemes`, based on main `4117f10cbd51f034835242491beb1dda3ee1c479`.
+- Owner clarification: retain `œ`, `ɔ`, `ə`, `ɛ` as standalone UFPN graphemes. Removed former Cyrillic substitutions `ӧ`, `ӹ`, `э` and the diacritic substitute `о̆` for these four IPA symbols.
+- Nasal counterparts preserve their base grapheme: `œ̃`, `ɔ̃`, `ɛ̃`; `/ɔ̃/` no longer adds a redundant open-mid breve.
+- Runtime mapping, machine-readable inventory, unit tests, Ukrainian notation guide and IPA mapping table updated together. `/ɥ/ → й̹` and `/ɲ/ → њ` are unchanged.
+- Acceptance: all three output levels must preserve the exact graphemes; nasal forms must retain the base symbol plus combining tilde; retired substitutes must not appear as adopted graphemes. CI and live Pages verification pending.
