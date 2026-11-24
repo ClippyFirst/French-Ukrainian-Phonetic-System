@@ -333,3 +333,15 @@ PR #30 moved `actions/upload-pages-artifact@v3` into a dedicated `pages-artifact
 - Приклад bonjour показує IPA як проміжний шар і чинний UFPN результат основного профілю; три рівні нотації пояснені окремо.
 - Регресійні перевірки охоплюють зміст навчальних правил, зв'язок кнопок прикладів з основним полем, генерацію карток із mapping та responsive CSS.
 - Статус до завершення PR CI і production smoke: PARTIAL. Навчальний матеріал не є повним підручником французької мови, не замінює аудіо та не обіцяє покрити всі лексичні винятки.
+
+
+## Final verification — French reading + UFPN web guide (2026-11-24)
+
+<badge>DONE_VERIFIED</badge>
+
+- PR #53 merged by squash into main: `ba02467bd7b8c1102bab0ec79d9fff5568acd87d`.
+- PR CI run [#379 / 45466119617](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45466119617): build PASS; 79/79 tests PASS; syntax check PASS; Charis 7/OpenType audit PASS; Playwright browser install PASS; Chromium/Firefox/WebKit rendering PASS; specimen upload PASS.
+- Main Pages run [#380 / 45466573635](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45466573635): test job PASS (79/79); Pages artifact upload PASS; deploy PASS.
+- Live smoke test via Firecrawl on 2026-11-24: `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/` returned HTTP 200. Extracted live page contains the French reading module, nasal-vowel variation note, liaison/enchaînement, the UFPN visual guide, adopted grapheme cards and technical table anchors. Navigation points to `#ufpn-guide`; the raw `docs/UKRAINIAN-NOTATION.md` is no longer a navigation target.
+- Linguistic scope: educational orientation only. Source registry S38–S44 records peer-reviewed evidence; full PDFs of Racine & Detey, Stridfeldt and Nawafleh were reviewed; abstracts/metadata were reviewed for Law, Brissaud et al., Viebahn et al. and Granget et al. No licensed corpora or paper datasets were imported.
+- The phonetic engine, IPA generation, IPA→UFPN mapping, profiles, notation levels and exports were not changed.
