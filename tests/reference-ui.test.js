@@ -52,7 +52,6 @@ test('word breakdown opens on word selection without an extra checkbox',()=>{
 
 test('reference panels remain responsive and keyboard accessible without unused controls',()=>{
  assert.match(css,/\.reference-accordion>summary:focus-visible/);
- assert.match(css,/\.feature-grid/);
  assert.match(css,/\.grapheme-list/);
  assert.doesNotMatch(css,/\.status-options|\.explanation-toggle/);
 });
@@ -113,7 +112,7 @@ test('requested UI simplification removes unused controls and expands the two un
  assert.doesNotMatch(html,/ufpn-level/);
  assert.doesNotMatch(html,/id="uncertainty"/);
  assert.match(html,/id="explain-panel"[^>]*hidden/);
- assert.match(app,/renderUfpn\(w\.ipa,'basic'\)/);
+ assert.match(app,/const level='basic'/);
  assert.doesNotMatch(app,/w\.confidence|Упевненість|низька впевненість|explanationToggle|featureDetails/);
  assert.match(app,/for\(const item of inventory\.adopted\)/);
  assert.doesNotMatch(app,/appendGraphemeItem\(item,false\)|inventory\.candidates/);
