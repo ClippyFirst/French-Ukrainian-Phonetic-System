@@ -345,3 +345,12 @@ Workflow [45268570405](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-
 - Main Pages workflow [45460636622](https://github.com/ClippyFirst/French-Ukrainian-Phonetic-System/actions/runs/45460636622) completed SUCCESS: build, tests, syntax, Charis 7/OpenType audit, Playwright install, Chromium/Firefox/WebKit rendering, specimen artifact, Pages artifact and deploy.
 - Live production CSS verified with an uncached HTTP 200 request at `https://clippyfirst.github.io/French-Ukrainian-Phonetic-System/styles.css?v=9efa311f0d500ab24347f481cc61ba151cecbea0`; all principal palette tokens are present. The first fetch was served from stale cache; cache-busting confirmed the current deployment.
 - Documentation follow-up branch: `docs/verify-french-palette-deployment-2026-11-24`; this handoff, `docs/EXECUTION-MATRIX.md` and `docs/AUDIT.md` now record the final CI and hosting evidence. Documentation PR/CI remains to be opened and verified.
+
+
+## French reading lessons and rendered UFPN guide — 2026-11-24
+
+- Branch: feat/french-reading-and-ufpn-html-guide-2026-11-24, based on main at 339c69a600a129adf2afeac2136a7abfec07d73f.
+- Main page adds a Ukrainian learning module with practical French reading patterns, caveats and a short interactive self-check. It is explicitly educational, not a pronunciation authority or complete rule system.
+- The UFPN navigation now targets docs/ufpn.html, a rendered responsive page. It reads the current phoneme and grapheme inventory from data/ufpn-mapping.json; the original Markdown specification remains linked as a technical source.
+- New files: docs/ufpn.html, docs/ufpn-page.js, docs/ufpn-page.css, tests/french-reading-and-ufpn-page.test.js. Updated index.html, src/app.js, styles.css, README, WEB-SERVICE, matrix and audit.
+- No phonetic engine, IPA→UFPN mapping, profile or source-data changes were intended. Verification and Pages deployment remain pending until CI completes.
