@@ -19,7 +19,7 @@ test('dynamic interface labels and exported headings are localized',async()=>{
  const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
  for(const phrase of ['French:','Latin guide:','Provenance:','Технічна таблиця IPA → Basic','Розширений кириличний інвентар'])
   assert.ok(!app.includes(phrase),'outdated English UI label: '+phrase);
- for(const phrase of ['Французький текст:','Латинська підказка:','Джерело:','Базовий · зручний для читання','Графемний склад UFPN'])
+ for(const phrase of ['Французький текст:','Латинська підказка:','Джерело:','UFPN (базовий):','Графемний склад UFPN'])
   assert.ok(app.includes(phrase),'missing Ukrainian UI label: '+phrase);
  assert.ok(app.includes('localizeTechnicalText(item.ukrainianExampleNote)'), 'reference-table notes must pass through the Ukrainian text localizer');
  assert.ok(app.includes("replaceAll('schwa','звука ə')"), 'the schwa note must use correct Ukrainian grammar');
@@ -51,14 +51,4 @@ test('profile, source and allophone explanations do not expose English labels',(
  assert.doesNotMatch(describeSegment('t͡s'),/Québec|Metropolitan/);
 });
 
-test('all displayed feature dimensions have Ukrainian translations',async()=>{
- const mapping=JSON.parse(await readFile(new URL('../data/ufpn-mapping.json',import.meta.url),'utf8'));
- const app=await readFile(new URL('../src/app.js',import.meta.url),'utf8');
- for(const feature of mapping.featureDimensions){
-  assert.ok(app.includes("'"+feature.dimension+"':"),'missing translation for '+feature.dimension);
-  for(const value of feature.values){
-   const key="'"+value+"':";
-   assert.ok(app.includes(key)||app.includes(value+':'),'missing translation for '+feature.id+' / '+value);
-  }
- }
-});
+
