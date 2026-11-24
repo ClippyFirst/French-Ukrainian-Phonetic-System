@@ -33,6 +33,7 @@ test('grapheme inventory distinguishes adopted graphemes from unassigned candida
  assert.match(app,/Кандидат · не призначено/);
  assert.equal(mapping.graphemeInventory.adopted.length,10);
  assert.equal(mapping.graphemeInventory.candidates.length,2);
+ assert.ok(mapping.graphemeInventory.adopted.some(item=>item.grapheme==='ъ'&&item.ipa.includes('ə')));
 });
 
 test('explanation checkbox names the exact panel and states that transcription is unaffected',()=>{
